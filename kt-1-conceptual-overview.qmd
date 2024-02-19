@@ -1,0 +1,24 @@
+---
+title: "Intro to Bayesian Knowledge Tracing"
+author: "LASER Institute"
+subtitle: "KT Module 1: A Conceptual Overview"
+format:
+  revealjs: 
+    slide-number: c/t
+    progress: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    logo: img/LASERLogoB.png
+    theme: [default, css/laser.scss]
+    width: 1920
+    height: 1080
+    margin: 0.05
+    footer: <a href=https://www.go.ncsu.edu/laser-institute>go.ncsu.edu/laser-institute
+resources:
+  - demo.pdf
+bibliography: lit/references.bib
+editor: visual
+---
+
+## A Little History
