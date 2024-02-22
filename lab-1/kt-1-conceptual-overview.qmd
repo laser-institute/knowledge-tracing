@@ -1,0 +1,236 @@
+---
+title: "Bayesian Knowledge Tracing"
+subtitle: "KT Learning Lab 1: A Conceptual Overview"
+format:
+  revealjs: 
+    slide-number: c/t
+    progress: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    logo: img/LASERLogoB.png
+    theme: [default, css/laser.scss]
+    width: 1920
+    height: 1080
+    margin: 0.05
+    footer: <a href=https://www.go.ncsu.edu/laser-institute>go.ncsu.edu/laser-institute
+resources:
+  - demo.pdf
+bibliography: lit/references.bib
+editor: visual
+---
+
+## A Little History
+
+::: columns
+::: {.column width="50%"}
+-   The classic approach for measuring tightly defined skills in online learning
+
+-   First proposed by Richard Atkinson
+
+-   Most thoroughly articulated and studied by Albert Corbett and John Anderson @corbett1994knowledge
+:::
+
+::: {.column width="50%"}
+![](img/atkinson.jpeg){fig-align="center" width="30%"}
+
+![](img/corbet.png){fig-align="center" width="50%"}
+:::
+:::
+
+::: notes
+**Speaker Notes:** Add notes here.
+:::
+
+## Flexibility of BKT
+
+-   Been around a long time
+
+-   Still as of today the most widely-used knowledge tracing algorithm used at scale
+
+    -   Interpretable
+
+    -   Predictable
+
+    -   Decent performance
+
+# Goal & Assumptions
+
+::: notes
+**Speaker Notes:**
+
+Add notes here.
+:::
+
+## The Key Goal of BKT
+
+-   Measuring how well a student knows a specific skill/knowledge component at a specific time
+
+-   Based on their past history of performance with that skill/KC
+
+::: notes
+**Speaker Notes:**
+
+Add notes here.
+:::
+
+## What is the typical use of BKT?
+
+-   Assess a student’s knowledge of skill/KC X
+
+-   Based on a sequence of items that are scored between 0 and 1
+
+-   Classically 0 **or** 1, but there are variants that relax this
+
+-   Where each item corresponds to a single skill
+
+-   Where the student can learn on each item, due to help, feedback, scaffolding, etc.
+
+::: notes
+**Speaker Notes:**
+
+Add notes here.
+:::
+
+## Key assumptions of BKT
+
+-   Each item must involve a single latent trait or skill
+
+    -   Different from PFA, which we’ll talk about next lecture
+
+-   Each skill has four parameters
+
+-   Only the first attempt on each item matters
+
+    -   i.e. is included in calculations
+
+::: notes
+**Speaker Notes:**
+
+Add notes here.
+:::
+
+## Key assumptions of BKT Cont.
+
+-   Each skill has four parameters
+
+-   From these parameters, and the pattern of successes and failures the student has had on each relevant skill so far
+
+-   We can compute 
+
+    -   Latent knowledge P(Ln) 
+
+    -   The probability P(CORR) that the learner will get the item correct
+
+::: notes
+**Speaker Notes:**
+
+Add notes here.
+:::
+
+## Key assumptions of BKT
+
+-   Two-state learning model
+
+-   Each skill is either learned or unlearned
+
+-   In problem-solving, the student can learn a skill at each opportunity to apply the skill
+
+-   Each problem (opportunity) has the same chance of learning.
+
+-   A student does not forget a skill, once he or she knows it
+
+::: notes
+**Speaker Notes:**
+
+Add notes here.
+:::
+
+## Model Performance Assumptions
+
+-   If the student knows a skill, there is still some chance the student will slip and make a mistake.
+
+-   If the student does not know a skill, there is still some chance the student will guess correctly.
+
+::: notes
+**Speaker Notes:**
+
+Add notes here.
+:::
+
+## Comments or Questions?
+
+::: notes
+**Speaker Notes:**
+
+Add notes here.
+:::
+
+# The BKT Model
+
+Model Parameters & Predicting Correctness
+
+::: notes
+**Speaker Notes:**
+
+Add notes here.
+:::
+
+## Learning Parameters
+
+::: columns
+::: {.column width="40%"}
+Two [**Learning**]{.underline} Parameters
+
+1.  **p(L0).** Probability the skill is already known before the first opportunity to use the skill in problem solving.
+
+2.  **p(T)**. Probability the skill will be learned at each opportunity to use the skill.
+:::
+
+::: {.column width="60%"}
+![](img/parameters.png){fig-align="center"}
+:::
+:::
+
+::: notes
+**Speaker Notes:**
+
+Add notes here.
+:::
+
+## Performance Parameters
+
+::: columns
+::: {.column width="40%"}
+Two [**Performance**]{.underline} Parameters
+
+1.  **p(G).** Probability the student will guess correctly if the skill is not known.
+
+2.  **p(S)**. Probability the student will slip (make a mistake) if the skill is known.
+:::
+
+::: {.column width="60%"}
+![](img/parameters.png){fig-align="center"}
+:::
+:::
+
+::: notes
+**Speaker Notes:**
+
+Add notes here.
+:::
+
+## Example
+
+P(L0) = 0.4, P(T) = 0.1, P(S) = 0.3, P(G) = 0.2
+
+<br>
+
+| Actual | P(Ln-1) | P(Ln-1\|actual) | P(Ln) |
+|--------|---------|-----------------|-------|
+|        | 0.4     |                 |       |
+|        |         |                 |       |
+|        |         |                 |       |
+|        |         |                 |       |
+
+## References
