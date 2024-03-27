@@ -8,7 +8,7 @@
 <link href="kt-1-conceptual-overview_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="kt-1-conceptual-overview_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="kt-1-conceptual-overview_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.549">
+  <meta name="generator" content="quarto-1.4.550">
 
   <title>Bayesian Knowledge Tracing</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -346,7 +346,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
+<section id="title-slide" data-notes="Hi, everyone, welcome to the week of Bayesian Knowledge Tracing, a method for knowledge inference." class="quarto-title-block center">
   <h1 class="title">Bayesian Knowledge Tracing</h1>
   <p class="subtitle">KT Learning Lab 1: A Conceptual Overview</p>
 
@@ -361,7 +361,7 @@
 <ul>
 <li><p>The classic approach for measuring tightly defined skills in online learning</p></li>
 <li><p>First proposed by Richard Atkinson</p></li>
-<li><p>Most thoroughly articulated and studied by Albert Corbett and John Anderson <span class="citation" data-cites="corbett1994knowledge">Corbett and Anderson (<a href="#/references" role="doc-biblioref" onclick="">1994</a>)</span></p></li>
+<li><p>Most thoroughly articulated and studied by Albert Corbett and John Anderson <span class="citation" data-cites="DBLP:journals/umuai/CorbettA95">Corbett and Anderson (<a href="#/references" role="doc-biblioref" onclick="">1995</a>)</span></p></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
@@ -377,7 +377,7 @@
 </div>
 </div>
 <aside class="notes">
-<p><strong>Speaker Notes:</strong> Add notes here.</p>
+<p>Today, we will discuss Bayesian Knowledge Tracing, the classic approach for measuring tightly defined skills in online learning. It was first proposed, along with several other ideas, in a paper by Richard Atkinson in the ’60s, but it’s most associated with, most thoroughly articulated, and studied by Albert Corbett and John Anderson.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -401,13 +401,30 @@
 <li><p>Decent performance</p></li>
 </ul></li>
 </ul>
+<aside class="notes">
+<p>Bayesian Knowledge Tracing has been around for a long time. It’s still the most widely used knowledge-tracing algorithm at scale because:</p>
+<ul>
+<li><p>It’s interpretable.&nbsp;</p></li>
+<li><p>Its performance is very predictable, unlike some of the algorithms we’ll discuss later.</p></li>
+<li><p>Although its performance is as good as any of the modern alternatives, it still achieves good enough performance for many red-world tasks.</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section>
 <section id="goal-assumptions" class="title-slide slide level1 center">
 <h1>Goal &amp; Assumptions</h1>
 <aside class="notes">
-<p><strong>Speaker Notes:</strong></p>
-<p>Add notes here.</p>
+<p>Transitioning slide, please move on</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -427,8 +444,11 @@
 <li><p>Based on their past history of performance with that skill/KC</p></li>
 </ul>
 <aside class="notes">
-<p><strong>Speaker Notes:</strong></p>
-<p>Add notes here.</p>
+<p>The key goal of BKT is to:</p>
+<ul>
+<li><p>measure how well a student knows a specific skill or knowledge component at a specific time based on their past history of performance with that skill or K-C.</p></li>
+<li><p>The goal is not to measure overall skill for a broadly defined construct, such as arithmetic, but to measure a specific skill or knowledge component, such as adding two-digit numbers where no earring is needed.</p></li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -444,15 +464,28 @@
 <section id="what-is-the-typical-use-of-bkt" class="slide level2">
 <h2>What is the typical use of BKT?</h2>
 <ul>
-<li><p>Assess a student’s knowledge of skill/KC X</p></li>
-<li><p>Based on a sequence of items that are scored between 0 and 1</p></li>
-<li><p>Classically 0 <strong>or</strong> 1, but there are variants that relax this</p></li>
-<li><p>Where each item corresponds to a single skill</p></li>
-<li><p>Where the student can learn on each item, due to help, feedback, scaffolding, etc.</p></li>
+<li>Assess a student’s knowledge of skill/KC X</li>
 </ul>
+<div class="fragment fade-in">
+<ul>
+<li><p>Based on a sequence of items that are scored between 0 and 1</p>
+<ul>
+<li>Classically 0 <strong>or</strong> 1, but there are variants that relax this</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<ul>
+<li>Where each item corresponds to a single skill</li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<ul>
+<li>Where the student can learn on each item, due to help, feedback, scaffolding, etc.</li>
+</ul>
+</div>
 <aside class="notes">
-<p><strong>Speaker Notes:</strong></p>
-<p>Add notes here.</p>
+<p>The typical use of BKT is to: assess a student’s knowledge of a skill or knowledge component X. Based on the sequence of items that are dichotomously scored, the student can get a zero or a no on each item, with nothing in between. It turns out you can use BKT even for cases where there’s partial credit, but it’s not the most common use. Each item corresponds to a single skill. An item doesn’t have to be a separate problem; it could be a problem step and an overall problem that has a distinct skill associated with it. Students can learn about each item due to help, feedback, scaffolding, whatever. The point is that as the students practice, they are also learning. This is not just a test, it’s actually a learning system</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -468,19 +501,38 @@
 <section id="key-assumptions-of-bkt" class="slide level2">
 <h2>Key assumptions of BKT</h2>
 <ul>
-<li><p>Each item must involve a single latent trait or skill</p>
+<li>Each item must involve a single latent trait or skill
 <ul>
 <li>Different from PFA, which we’ll talk about next lecture</li>
 </ul></li>
-<li><p>Each skill has four parameters</p></li>
+</ul>
+<div class="fragment fade-in">
+<ul>
+<li>Each skill has four parameters</li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<ul>
 <li><p>Only the first attempt on each item matters</p>
 <ul>
 <li>i.e.&nbsp;is included in calculations</li>
 </ul></li>
 </ul>
+</div>
+<div class="fragment fade-in">
+<ul>
+<li><p>Help use usually treated as same as incorrect</p>
+<ul>
+<li>Some exceptions I will discuss later</li>
+</ul></li>
+</ul>
+</div>
 <aside class="notes">
-<p><strong>Speaker Notes:</strong></p>
-<p>Add notes here.</p>
+<p>Key assumptions of Bayesian knowledge tracing:</p>
+<ul>
+<li><p>it assumes in its classical form that each item must involve just a single latent taser skill. Each skill has four parameters. Only the first attempt on each item matters, or in other words, is included in the calculations.&nbsp;</p></li>
+<li><p>It’s also worth noting that help use is usually treated the same as incorrect. In other words, if the student asks for help, the system treats that as evidence that the student doesn’t know the skill. There are some exceptions to that in some variants on BKT, which I’ll discuss later.</p></li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -498,15 +550,19 @@
 <ul>
 <li><p>Each skill has four parameters</p></li>
 <li><p>From these parameters, and the pattern of successes and failures the student has had on each relevant skill so far</p></li>
+</ul>
+<div class="fragment fade-in">
+<ul>
 <li><p>We can compute&nbsp;</p>
 <ul>
-<li><p>Latent knowledge P(Ln)&nbsp;</p></li>
+<li><p>Latent knowledge P(L<sub>n</sub>)&nbsp;</p></li>
 <li><p>The probability P(CORR) that the learner will get the item correct</p></li>
 </ul></li>
 </ul>
+</div>
 <aside class="notes">
-<p><strong>Speaker Notes:</strong></p>
-<p>Add notes here.</p>
+<p>From these parameters and the pattern of success and failures the student has had on each relevant skill so far, we can compute the student’s latent knowledge, P of Ln. How probable is the student to know the skill they are currently working on?&nbsp;</p>
+<p>We can also compute the probability P(CORR) that the learner will get the item correct.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -522,15 +578,30 @@
 <section id="key-assumptions-of-bkt-1" class="slide level2">
 <h2>Key assumptions of BKT</h2>
 <ul>
-<li><p>Two-state learning model</p></li>
-<li><p>Each skill is either learned or unlearned</p></li>
+<li>Two-state learning model</li>
+</ul>
+<div class="fragment fade-in">
+<ul>
+<li>Each skill is either learned or unlearned</li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<ul>
 <li><p>In problem-solving, the student can learn a skill at each opportunity to apply the skill</p></li>
 <li><p>Each problem (opportunity) has the same chance of learning.</p></li>
-<li><p>A student does not forget a skill, once he or she knows it</p></li>
 </ul>
+</div>
+<div class="fragment fade-in">
+<ul>
+<li>A student does not forget a skill, once he or she knows it</li>
+</ul>
+</div>
 <aside class="notes">
-<p><strong>Speaker Notes:</strong></p>
-<p>Add notes here.</p>
+<p>Another key assumption is:</p>
+<ul>
+<li><p>a two-state learning model. Each skill is either learner, known, or unlearned, unknown. In problem-solving, the student can learn a skill and apply that skill at each opportunity. And a student doesn’t forget a skill once he or she knows it.&nbsp;</p></li>
+<li><p>There are extensions of BKT that do allow for forgetting.</p></li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -546,12 +617,19 @@
 <section id="model-performance-assumptions" class="slide level2">
 <h2>Model Performance Assumptions</h2>
 <ul>
-<li><p>If the student knows a skill, there is still some chance the student will slip and make a mistake.</p></li>
-<li><p>If the student does not know a skill, there is still some chance the student will guess correctly.</p></li>
+<li>If the student knows a skill, there is still some chance the student will slip and make a mistake.</li>
 </ul>
+<div class="fragment fade-in">
+<ul>
+<li>If the student does not know a skill, there is still some chance the student will guess correctly.</li>
+</ul>
+</div>
 <aside class="notes">
-<p><strong>Speaker Notes:</strong></p>
-<p>Add notes here.</p>
+<p>The model also makes some performance assumptions:</p>
+<ul>
+<li><p>If a student knows a skill, there is still some chance that the student is going to slip and make a mistake.&nbsp;</p></li>
+<li><p>At the same time, if the student doesn’t know the skill, there’s still some chance the student will guess and get the correct answer. So there’s a link between performance and learning, but it’s not a perfect link.</p></li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -567,8 +645,7 @@
 <section id="comments-or-questions" class="slide level2">
 <h2>Comments or Questions?</h2>
 <aside class="notes">
-<p><strong>Speaker Notes:</strong></p>
-<p>Add notes here.</p>
+<p>Any questions so far?</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -586,8 +663,7 @@
 <h1>The BKT Model</h1>
 <p>Model Parameters &amp; Predicting Correctness</p>
 <aside class="notes">
-<p><strong>Speaker Notes:</strong></p>
-<p>Add notes here.</p>
+<p>Transition slide</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -605,9 +681,13 @@
 <div class="columns">
 <div class="column" style="width:40%;">
 <p>Two <u><strong>Learning</strong></u> Parameters</p>
+<div data-id="box1" style="background: #427E93; width: 750px; height: 300px; margin: 5px;">
 <ol type="1">
-<li><p><strong>p(L0).</strong> Probability the skill is already known before the first opportunity to use the skill in problem solving.</p></li>
-<li><p><strong>p(T)</strong>. Probability the skill will be learned at each opportunity to use the skill.</p></li>
+<li><strong>p(L<sub>0</sub>).</strong> Probability the skill is already known before the first opportunity to use the skill in problem solving.</li>
+</ol>
+</div>
+<ol start="2" type="1">
+<li><strong>p(T)</strong>. Probability the skill will be learned at each opportunity to use the skill.</li>
 </ol>
 </div><div class="column" style="width:60%;">
 <div class="quarto-figure quarto-figure-center">
@@ -618,8 +698,42 @@
 </div>
 </div>
 <aside class="notes">
-<p><strong>Speaker Notes:</strong></p>
-<p>Add notes here.</p>
+<p>The first parameter, PL0, is the probability that the student already knows the skill before their first opportunity to use it in problem-solving. In other words, students don’t come into our learning in a blank state. They come in already having a certain probability of knowing what we want them to know.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="learning-parameters-1" class="slide level2">
+<h2>Learning Parameters</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Two <u><strong>Learning</strong></u> Parameters</p>
+<ol type="1">
+<li><strong>p(L<sub>0</sub>).</strong> Probability the skill is already known before the first opportunity to use the skill in problem solving.</li>
+</ol>
+<div data-id="box1" style="background: #427E93; width: 760px; height: 250px; margin: 5px;">
+<ol start="2" type="1">
+<li><strong>p(T)</strong>. Probability the skill will be learned at each opportunity to use the skill.</li>
+</ol>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/parameters.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Second, P of T is the probability that the skill will be learned at each opportunity to use it. If our system promotes learning at all, students’ performance should get better over time. They should actually learn, and P of T accounts for this.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -637,9 +751,13 @@
 <div class="columns">
 <div class="column" style="width:40%;">
 <p>Two <u><strong>Performance</strong></u> Parameters</p>
+<div data-id="box1" style="background: #427E93; width: 750px; height: 250px; margin: 5px;">
 <ol type="1">
-<li><p><strong>p(G).</strong> Probability the student will guess correctly if the skill is not known.</p></li>
-<li><p><strong>p(S)</strong>. Probability the student will slip (make a mistake) if the skill is known.</p></li>
+<li><strong>p(G).</strong> Probability the student will guess correctly if the skill is not known.</li>
+</ol>
+</div>
+<ol start="2" type="1">
+<li><strong>p(S)</strong>. Probability the student will slip (make a mistake) if the skill is known.</li>
 </ol>
 </div><div class="column" style="width:60%;">
 <div class="quarto-figure quarto-figure-center">
@@ -650,8 +768,127 @@
 </div>
 </div>
 <aside class="notes">
-<p><strong>Speaker Notes:</strong></p>
-<p>Add notes here.</p>
+<p>P of G, is the probability that the student will guess correctly if the skill is not known. So even if it’s not learned, even if they haven’t learned the skill, there is still a certain probability they will get it right.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="performance-parameters-1" class="slide level2">
+<h2>Performance Parameters</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Two <u><strong>Performance</strong></u> Parameters</p>
+<ol type="1">
+<li><strong>p(G).</strong> Probability the student will guess correctly if the skill is not known.</li>
+</ol>
+<div data-id="box1" style="background: #427E93; width: 750px; height: 250px; margin: 5px;">
+<ol start="2" type="1">
+<li><strong>p(S)</strong>. Probability the student will slip (make a mistake) if the skill is known.</li>
+</ol>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/parameters.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>P of S, the probability that the student will slip and make a mistake even if the skill i known. Notice that the probability of current, given that you know it, is 1 minus P of S. In other words, if there’s a 20% chance that you’ll slip, then there’s an 80% chance you will get it right if you know it.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="comments-questions" class="slide level2">
+<h2>Comments? Questions?</h2>
+<aside class="notes">
+<p>Any questions?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="predicting-current-student-correctness" class="slide level2">
+<h2>Predicting Current Student Correctness</h2>
+<p>PCORR = P(L<sub>n</sub>)<em>P(S)+P(~L<sub>n</sub>)</em>P(G)</p>
+<aside class="notes">
+<p>How do we predict current student correctness?&nbsp;</p>
+<ul>
+<li>P-CORR is just the probability you know it, of LN, times the probability you didn’t slip, plus the probability you didn’t know it, times the probability you guessed. In other words, there are only two ways to get things correct in the world of Bayesian knowledge tracing. You know it and you don’t slip, or you don’t know it and you guess.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="bayesian-knowledge-tracing" class="slide level2">
+<h2>Bayesian Knowledge Tracing</h2>
+<ul>
+<li><p>Whenever the student has an opportunity to use a skill</p></li>
+<li><p>The probability that the student knows the skill is updated&nbsp;</p></li>
+<li><p>Using formulas derived from Bayes’ Theorem</p>
+<aside class="notes">
+<p>In Bayesian Knowledge Tracing, when the student has an opportunity to use a skill, the probability that the student knows the skill is updated using formulas derived from Bayes’ Theorem.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside></li>
+</ul>
+</section>
+<section id="formulas" class="slide level2">
+<h2>Formulas</h2>
+<p><span class="math display">\[
+P(L_{n-1}|Correct_{n}) = \frac{P(L_{n-1})*(1-P(S))}{P(L_{n-1})*(1-P(S))+(1-P(L_{n-1}))*P(G)}
+\\\\\\
+P(L_{n-1}|Incorrect_{n}) = \frac{P(L_{n-1})*(P(S))}{P(L_{n-1})*(P(S))+(1-P(L_{n-1}))*(1-P(G))}
+\\\\\\
+P(L_{n}|Action_{n}) = P(L_{n-1}|Action_{n}) +(1- P(L_{n-1}|Action_{n}) * p(T))
+\]</span></p>
+<aside class="notes">
+<p>The formulas are as follows:</p>
+<ol type="1">
+<li><p>The probability that you knew it beforehand, given that you got it correct, is the probability that you knew it beforehand and didn’t slip over the probability you knew it and didn’t slip, plus the probability that you didn’t know it and you guessed.&nbsp;&nbsp;</p></li>
+<li><p>Similarly, if you got it wrong, then how did you get it wrong? You must have known it and slipped you already knew it. So if you already knew it, then you previously knew it and you slipped, and the two possibilities are you previously knew it and you slipped, and you didn’t know it and you didn’t guess.</p></li>
+<li><p>Finally, once we know the probability that they knew it beforehand, given their correctness now, we can look at whether they learned it. So the probability that they know it at time n given action n, so after the action, is the probability they know it before the action, plus the probability they didn’t know it before the action, times the probability that they learned it. In other words, let’s say there’s a 30% chance you knew it after the previous action and a 10% chance you learned it. P of T is 10%. In that case, the probability you knew it afterward will be 0.3 plus 0.7, the probability you didn’t know it, times 0.1 for 0.37.</p></li>
+</ol>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -666,15 +903,21 @@
 </section>
 <section id="example" class="slide level2">
 <h2>Example</h2>
-<p>P(L0) = 0.4, P(T) = 0.1, P(S) = 0.3, P(G) = 0.2</p>
+<p>P(L<sub>0</sub>) = 0.4, P(T) = 0.1, P(S) = 0.3, P(G) = 0.2</p>
 <p><br></p>
 <table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Actual</th>
-<th>P(Ln-1)</th>
-<th>P(Ln-1|actual)</th>
-<th>P(Ln)</th>
+<th>P(L<sub>n-1</sub>)</th>
+<th>P(L<sub>n-1</sub>|actual)</th>
+<th>P(L<sub>n</sub>)</th>
 </tr>
 </thead>
 <tbody>
@@ -697,13 +940,2273 @@
 <td>&nbsp;</td>
 </tr>
 <tr class="even">
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>Example:</p>
+<p>If the probability they knew it beforehand is 0.4, the probability they learned it if they&nbsp;don’t know it is 0.1, the probability they slipped is 0.3, and the probability they guessed is 0.2. In that case, the initial probability they know it before they do anything in the system is 0.4. P of L zero becomes P of L n minus one.&nbsp;</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="example-1" class="slide level2">
+<h2>Example</h2>
+<p>P(L<sub>0</sub>) = 0.4, P(T) = 0.1, P(S) = 0.3, P(G) = 0.2</p>
+<p><br></p>
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Actual</th>
+<th>P(L<sub>n-1</sub>)</th>
+<th style="text-align: center;">P(L<sub>n-1</sub>|actual)</th>
+<th>P(L<sub>n</sub>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.4</td>
+<td style="text-align: center;"><span class="math display">\[                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             \frac{(0.4)(0.3)}{(0.4)(0.3)+(0.6)(0.8)}                                                         
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        \]</span></td>
 <td></td>
+</tr>
+<tr class="even">
+<td>.</td>
 <td></td>
+<td style="text-align: center;"></td>
 <td></td>
+</tr>
+<tr class="odd">
+<td>.</td>
+<td></td>
+<td style="text-align: center;"></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>.</td>
+<td></td>
+<td style="text-align: center;"></td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<aside class="notes">
+<p>If they get it wrong. The probability they knew it beforehand is the probability they knew it beforehand without this information times the probability of it slipped because they got it wrong, over that probability plus the probability that they didn’t know it times the probability that they didn’t guess it. So 0.6 times 0.8. The inverse of 0.4 is 0.6,&nbsp; and the inverse of 0.2 is 0.8.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="example-2" class="slide level2">
+<h2>Example</h2>
+<p>P(L<sub>0</sub>) = 0.4, P(T) = 0.1, P(S) = 0.3, P(G) = 0.2</p>
+<p><br></p>
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Actual</th>
+<th>P(L<sub>n-1</sub>)</th>
+<th style="text-align: center;">P(L<sub>n-1</sub>|actual)</th>
+<th>P(L<sub>n</sub>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.4</td>
+<td style="text-align: center;"><span class="math display">\[                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             \frac{(0.12)}{(0.12)+(0.48)}                                                         
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            \]</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>.</td>
+<td></td>
+<td style="text-align: center;"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td style="text-align: center;"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<aside class="notes">
+<p>So when we compute that out, we get 0.2. (Please move on to the next slides)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="example-3" class="slide level2">
+<h2>Example</h2>
+<p>P(L<sub>0</sub>) = 0.4, P(T) = 0.1, P(S) = 0.3, P(G) = 0.2</p>
+<p><br></p>
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Actual</th>
+<th>P(L<sub>n-1</sub>)</th>
+<th>P(L<sub>n-1</sub>|actual)</th>
+<th>P(L<sub>n</sub>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.4</td>
+<td>0.2</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="even">
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="odd">
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>Before we knew they got it wrong, we thought they had a 40% chance of knowing it. But after they get it wrong, we have a 20% chance that they know it. They still might have slipped.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="example-4" class="slide level2">
+<h2>Example</h2>
+<p>P(L<sub>0</sub>) = 0.4, P(T) = 0.1, P(S) = 0.3, P(G) = 0.2</p>
+<p><br></p>
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Actual</th>
+<th>P(L<sub>n-1</sub>)</th>
+<th>P(L<sub>n-1</sub>|actual)</th>
+<th>P(L<sub>n</sub>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.4</td>
+<td>0.2</td>
+<td>0.2+(0.8)(0.1)</td>
+</tr>
+<tr class="even">
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="odd">
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>The probability that they know it afterward is the probability that they knew it plus the probability they didn’t know it times the probability they learned it.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="example-5" class="slide level2">
+<h2>Example</h2>
+<p>P(L<sub>0</sub>) = 0.4, P(T) = 0.1, P(S) = 0.3, P(G) = 0.2</p>
+<p><br>&nbsp;</p>
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Actual</th>
+<th>P(L<sub>n-1</sub>)</th>
+<th>P(L<sub>n-1</sub>|actual)</th>
+<th>P(L<sub>n</sub>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.4</td>
+<td>0.2</td>
+<td>0.28</td>
+</tr>
+<tr class="even">
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="odd">
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>And that is 0.28</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="example-6" class="slide level2">
+<h2>Example</h2>
+<p>P(L<sub>0</sub>) = 0.4, P(T) = 0.1, P(S) = 0.3, P(G) = 0.2</p>
+<p><br>&nbsp;</p>
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Actual</th>
+<th>P(L<sub>n-1</sub>)</th>
+<th>P(L<sub>n-1</sub>|actual)</th>
+<th>P(L<sub>n</sub>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.4</td>
+<td>0.2</td>
+<td>0.28</td>
+</tr>
+<tr class="even">
+<td>&nbsp;</td>
+<td>0.28</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="odd">
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>The probability that they know it afterward is the probability that they knew it before the second action.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="example-7" class="slide level2">
+<h2>Example</h2>
+<p>P(L<sub>0</sub>) = 0.4, P(T) = 0.1, P(S) = 0.3, P(G) = 0.2</p>
+<p><br>&nbsp;</p>
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Actual</th>
+<th>P(L<sub>n-1</sub>)</th>
+<th>P(L<sub>n-1</sub>|actual)</th>
+<th>P(L<sub>n</sub>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.4</td>
+<td>0.2</td>
+<td>0.28</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.28</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="odd">
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>If the student gets the action right.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="example-8" class="slide level2">
+<h2>Example</h2>
+<p>P(L<sub>0</sub>) = 0.4, P(T) = 0.1, P(S) = 0.3, P(G) = 0.2</p>
+<p><br>&nbsp;&nbsp;</p>
+<table>
+<colgroup>
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 31%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Actual</th>
+<th>P(L<sub>n-1</sub>)</th>
+<th style="text-align: center;">P(L<sub>n-1</sub>|actual)</th>
+<th>P(L<sub>n</sub>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.4</td>
+<td style="text-align: center;">0.2</td>
+<td>0.28</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.28</td>
+<td style="text-align: center;"><span class="math display">\[                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          \frac{(0.28)(0.7)}{(0.28)(0.7)+(0.72)(0.2)}                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           \]</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td style="text-align: center;"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>If the student gets the action right. In that case, the probability they knew it before they got it right is the probability they had known it times hadn’t slipped. Over that probability, plus the probability that they didn’t know it and they guessed.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="example-9" class="slide level2">
+<h2>Example</h2>
+<p>P(L<sub>0</sub>) = 0.4, P(T) = 0.1, P(S) = 0.3, P(G) = 0.2</p>
+<p><br>&nbsp;</p>
+<table>
+<colgroup>
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 29%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Actual</th>
+<th>P(L<sub>n-1</sub>)</th>
+<th style="text-align: center;">P(L<sub>n-1</sub>|actual)</th>
+<th>P(L<sub>n</sub>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.4</td>
+<td style="text-align: center;">0.2</td>
+<td>0.28</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.28</td>
+<td style="text-align: center;"><span class="math display">\[                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          \frac{(0.196)}{(0.196)+(0.144)}                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               \]</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td style="text-align: center;"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>Please move on to next slide</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="example-10" class="slide level2">
+<h2>Example</h2>
+<p>P(L<sub>0</sub>) = 0.4, P(T) = 0.1, P(S) = 0.3, P(G) = 0.2</p>
+<p><br></p>
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Actual</th>
+<th>P(L<sub>n-1</sub>)</th>
+<th>P(L<sub>n-1</sub>|actual)</th>
+<th>P(L<sub>n</sub>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.4</td>
+<td>0.2</td>
+<td>0.28</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.28</td>
+<td>0.58</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="odd">
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>That turns into .58.</p>
+<p>When they got it wrong, they went down from .4 to .2,&nbsp;&nbsp;which came up to .28, and then that .28 after they got it right was reassessed to be .58. These are pretty big changes and that’s because the probabilities&nbsp;of slip and guess are pretty low on this model.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="example-11" class="slide level2">
+<h2>Example</h2>
+<p>P(L<sub>0</sub>) = 0.4, P(T) = 0.1, P(S) = 0.3, P(G) = 0.2</p>
+<p><br>&nbsp;</p>
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Actual</th>
+<th>P(L<sub>n-1</sub>)</th>
+<th>P(L<sub>n-1</sub>|actual)</th>
+<th>P(L<sub>n</sub>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.4</td>
+<td>0.2</td>
+<td>0.28</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.28</td>
+<td>0.58</td>
+<td>(0.58) + (0.42)(0.1)</td>
+</tr>
+<tr class="odd">
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>So then the probability that they knew it afterward is the probability that&nbsp;they knew it beforehand, plus the probability that they didn’t know it times the probability they learned it,</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="example-12" class="slide level2">
+<h2>Example</h2>
+<p>P(L<sub>0</sub>) = 0.4, P(T) = 0.1, P(S) = 0.3, P(G) = 0.2</p>
+<p><br>&nbsp;</p>
+<table>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Actual</th>
+<th>P(L<sub>n-1</sub>)</th>
+<th>P(L<sub>n-1</sub>|actual)</th>
+<th>P(L<sub>n</sub>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.4</td>
+<td>0.2</td>
+<td>0.28</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.28</td>
+<td>0.58</td>
+<td>0.62</td>
+</tr>
+<tr class="odd">
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>&nbsp;which comes out to .62.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="your-turn" class="slide level2">
+<h2>Your Turn</h2>
+<p>P(L<sub>0</sub>) = 0.4, P(T) = 0.1, P(S) = 0.3, P(G) = 0.2</p>
+<p><br>&nbsp;&nbsp;</p>
+<table>
+<thead>
+<tr class="header">
+<th>Actual</th>
+<th>P(L<sub>n-1</sub>)</th>
+<th>P(L<sub>n-1</sub>|actual)</th>
+<th>P(L<sub>n</sub>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.4</td>
+<td>0.2</td>
+<td>0.28</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.28</td>
+<td>0.58</td>
+<td>0.62</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="comments-questions-1" class="slide level2">
+<h2>Comments? Questions?</h2>
+<aside class="notes">
+<p>Any questions?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="conceptual-idea-behind-knowledge-tracing" class="title-slide slide level1 center">
+<h1>Conceptual Idea Behind Knowledge Tracing</h1>
+
+</section>
+<section id="parameter-constraints" class="slide level2">
+<h2>Parameter Constraints</h2>
+<ul>
+<li><p>Typically, the potential values of BKT parameters are constrained</p></li>
+<li><p>To avoid <strong>model degeneracy</strong></p></li>
+</ul>
+<aside class="notes">
+<p>Typically the potential values of&nbsp; BKT parameters are constrained.</p>
+<p>The guess and slip we had are kind of low, so the model is fairly dynamic. However, we want to constrain those values somewhat to avoid what’s called model degeneracy, which is based on violating the conceptual idea behind knowledge tracing.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="conceptual-idea-behind-knowledge-tracing-1" class="slide level2">
+<h2>Conceptual Idea Behind Knowledge Tracing</h2>
+<ul>
+<li><p>Knowing a skill generally leads to correct performance</p></li>
+<li><p>Correct performance implies that a student knows the relevant skill</p></li>
+<li><p>Hence, by looking at whether a student’s performance is correct, we can infer whether they know the skill</p></li>
+</ul>
+<aside class="notes">
+<p>That conceptual idea is knowing a skill generally leads to correct performance, and correct performance implies that a student knows the relevant skill. So, the idea is that by looking at whether a student’s performance is correct, we can infer whether they know the skill.&nbsp;</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="essentially" class="slide level2">
+<h2>Essentially</h2>
+<ul>
+<li>A knowledge model is degenerate when it violates this idea</li>
+</ul>
+<div class="fragment fade-in">
+<ul>
+<li>When knowing a skill leads to worse performance</li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<ul>
+<li>When getting a skill wrong means you know it&nbsp;</li>
+</ul>
+</div>
+<aside class="notes">
+<p>Essentially, a knowledge model is degenerate when it violates this idea. Knowing a skill leads to worse performance, and getting a skill wrong means that you know it. It’s weird, right? That’s why it’s called a degenerate model. Different people have proposed some constraints.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="parameter-constraints-proposed" class="slide level2">
+<h2>Parameter Constraints Proposed</h2>
+<ul>
+<li><p>Beck</p>
+<ul>
+<li>P(G)+P(S)&lt;1.0</li>
+</ul></li>
+<li><p><span class="citation" data-cites="baker2008more">R. S. d. Baker, Corbett, and Aleven (<a href="#/references" role="doc-biblioref" onclick="">2008</a>)</span>:</p>
+<ul>
+<li>P(G)&lt;0.5, P(S)&lt;0.5</li>
+</ul></li>
+<li><p><span class="citation" data-cites="DBLP:journals/umuai/CorbettA95">Corbett and Anderson (<a href="#/references" role="doc-biblioref" onclick="">1995</a>)</span></p>
+<ul>
+<li>P(G)&lt;0.3, P(S)&lt;0.1&nbsp;</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<ol type="1">
+<li><p>Joe Beck has proposed&nbsp;that the probability of guessing plus the probability of slip must be less than 1.</p></li>
+<li><p>&nbsp;Baker, Corbin, and Alavin have proposed that guess and slip each has to be less than 0.5.</p></li>
+<li><p>Corbin and Anderson originally proposed, and this was not entirely just for model degeneracy but also based on some theorizing about what was probable, that P of G has to be less than 0.3 and P of S has to be less than 0.1.</p></li>
+<li><p>Baker would say that when either guess or slip gets above 0.5,&nbsp;&nbsp;you’re in a situation where the behavior doesn’t mean what it looks like.</p></li>
+<li><p>Beck would say that for some cases where the modeling can get difficult,&nbsp;specifically like with automated speech responses where you’re making&nbsp;inferences, there might be enough error that you might get a guess or slip above 0.5. But as long as they’re under&nbsp; 1.0 as a sum, it’s still okay.</p></li>
+</ol>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="knowledge-tracing" class="slide level2">
+<h2>Knowledge Tracing</h2>
+<ul>
+<li><p>How do we know if a knowledge tracing model is any good?</p></li>
+<li><p>Our primary goal is to predict <strong>knowledge</strong></p></li>
+</ul>
+<aside class="notes">
+<p>How to know if a knowledge tracing model is any good beyond&nbsp;whether it is degenerate or not? The primary goal is to predict knowledge,</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="knowledge-tracing-1" class="slide level2">
+<h2>Knowledge Tracing</h2>
+<ul>
+<li><p>How do we know if a knowledge tracing model is any good?</p></li>
+<li><p>Our primary goal is to predict <strong>knowledge</strong></p></li>
+</ul>
+<div class="fragment fade-in">
+<ul>
+<li>But knowledge is a latent trait</li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<ul>
+<li>So we instead check our knowledge predictions by checking how well the model predicts <strong>performance</strong></li>
+</ul>
+</div>
+<aside class="notes">
+<p>but knowledge is a latent trait. So, instead, we check our knowledge predictions by checking how all the models predict performance.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="fitting-a-knowledge-tracing-model" class="slide level2">
+<h2>Fitting a Knowledge-Tracing Model</h2>
+<ul>
+<li><p>In principle, any set of four parameters can be used by knowledge-tracing</p></li>
+<li><p>But parameters that predict student performance better are preferred</p></li>
+</ul>
+<aside class="notes">
+<p>In principle, any set of four parameters can be used by knowledge tracing. However, parameters that predict student performance better are preferred.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="knowledge-tracing-2" class="slide level2">
+<h2>Knowledge-Tracing</h2>
+<ul>
+<li><p>So, we pick the knowledge tracing parameters that best predict performance</p></li>
+<li><p>Defined as whether a student’s action will be correct or wrong at a given time</p></li>
+</ul>
+<aside class="notes">
+<p>Pick the knowledge-tracing parameters that best predict performance. That is, whether a student’s action will be&nbsp;correct or wrong at a given time when knowledge tracing predicts it will be.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="are-these-the-same-thing" class="slide level2">
+<h2>Are these the same thing?</h2>
+<ul>
+<li><p>Predicting performance on next attempt</p></li>
+<li><p>Inferring latent knowledge</p></li>
+</ul>
+</section>
+<section id="what-are-some-alternate-ways-to-assess" class="slide level2">
+<h2>What are some alternate ways to assess</h2>
+<ul>
+<li>Whether a model is successful at inferring latent knowledge</li>
+</ul>
+</section>
+<section id="what-are-some-alternate-ways-to-assess-1" class="slide level2">
+<h2>What are some alternate ways to assess</h2>
+<ul>
+<li><p>Whether a model is successful at inferring latent knowledge</p></li>
+<li><p>Why aren’t those approaches used more often?</p></li>
+</ul>
+</section>
+<section id="comments-questions-2" class="slide level2">
+<h2>Comments? Questions?</h2>
+<aside class="notes">
+<p>Questions?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="fitting-a-knowledge-tracing-model-1" class="title-slide slide level1 center">
+<h1>Fitting a Knowledge-Tracing Model</h1>
+
+</section>
+<section id="fitting-a-knowledge-tracing-model-2" class="slide level2">
+<h2>Fitting a Knowledge-Tracing Model</h2>
+<ul>
+<li><p>In principle, any set of four parameters can be used by knowledge-tracing</p></li>
+<li><p>But parameters that predict student performance better are preferred</p></li>
+</ul>
+<aside class="notes">
+<p>In principle, any set of four parameters can be used by knowledge-tracing.</p>
+<p>But parameters that predict student performance better are preferred.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="fit-methods" class="slide level2">
+<h2>Fit Methods</h2>
+<p>I could spend an hour talking about the ways to fit Bayesian Knowledge Tracing models.</p>
+</section>
+<section id="three-public-tools" class="slide level2">
+<h2>Three Public Tools</h2>
+<ul>
+<li><p>hmmsclbl</p>
+<ul>
+<li><a href="https://pslcdatashop.web.cmu.edu/ExternalTools?toolId=1" class="uri">https://pslcdatashop.web.cmu.edu/ExternalTools?toolId=1</a></li>
+</ul></li>
+<li><p>BNT-SM: Bayes Net Toolkit – Student Modeling</p>
+<ul>
+<li>http://www.cs.cmu.edu/~listen/BNT-SM/</li>
+</ul></li>
+<li><p>BKT-BF: BKT-Brute Force (Grid Search)<br>
+<a href="https://learninganalytics.upenn.edu/ryanbaker/BKT-BruteForce.zip" class="uri">https://learninganalytics.upenn.edu/ryanbaker/BKT-BruteForce.zip</a></p></li>
+<li><p>Python Grid Search (slower than BKT-BF)</p>
+<ul>
+<li>https://github.com/ChNabil/BKT_python_gridsearch</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>There are three public tools you can use:</p>
+<ul>
+<li><p>HMMSCLBL by <strong><em>Michael</em></strong> Yudelson..</p></li>
+<li><p>BNTSM, the Bayes&nbsp;Net Toolkit Student Modeling, which does&nbsp;expectation maximization</p></li>
+<li><p>BKTBF, BKT Brute&nbsp; Force, which does a grid search algorithm.<br>
+</p></li>
+</ul>
+<p>All three of these are open on the web, and you can use them, they’re all fine really and work approximately equally well.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="which-one-should-you-use" class="slide level2">
+<h2>Which one should you use?</h2>
+<ul>
+<li><p>They’re all fine – they work approximately equally well</p></li>
+<li><p>My group uses BKT-BF to fit Classical BKT and BNT-SM to fit variant models</p></li>
+<li><p>But some commercial colleagues use Fit BKT at Scale</p></li>
+</ul>
+<aside class="notes">
+<p>All three of these are open on the web, and you can use them, they’re all fine really and work approximately equally well.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="note" class="slide level2">
+<h2>Note…</h2>
+<ul>
+<li>The Equation Solver in Excel replicably does worse for this problem than these packages</li>
+</ul>
+<aside class="notes">
+<p>The one thing you shouldn’t do is to use the Excel equation solver. That replicably does worse for&nbsp;the problem than these packages. So use some existing package - they’re out there.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="how-much-data-do-you-need-slater2018degree" class="slide level2">
+<h2>How much data do you need? <span class="citation" data-cites="slater2018degree">Slater and Baker (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span></h2>
+<ul>
+<li>Depends on your goal</li>
+</ul>
+<!-- -->
+<ul>
+<li><p>Predict student mastery, if ok to be off by 2-3 problems:&nbsp;</p>
+<ul>
+<li>As few as 25 students and 3 problems apiece, if P(T) values are low</li>
+</ul></li>
+<li><p>&nbsp;Predict student mastery, if higher precision desired:</p>
+<ul>
+<li>250 students and 3 problems apiece</li>
+</ul></li>
+</ul>
+<!-- -->
+<ul>
+<li><p>Make inferences about model parameter values (for example, to identify skills that need to be fixed)</p>
+<ul>
+<li>250 students and 6 problems apiece</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>One common practical question that people ask is:</p>
+<ul>
+<li><p>how much data you need to fit BKT.&nbsp;</p></li>
+<li><p>The answer depends on your goal. As Slater and Baker’s large-scale simulation study showed, if you’re intending to predict student mastery, and it’s ok for the system to decide the student has mastered two or three problems too early or too late, you can get away with as few as 25 students and 3 problems per skill, as long as P(T) values are low. If you do this, and see high P(T) values, you might need to get more data. If you want high precision on exactly when the student mastered, you might want to go as high as 250 students, but 3 problems per student is still generally OK. A harder task is making inferences about model parameter values. You might do this if, for example, you want to find skills with really high slip or guess rates, to fix them. In this case, you need 250 students and 6 problems per student.</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="bkt-core-uses" class="slide level2">
+<h2>BKT: Core Uses</h2>
+<ul>
+<li><p>Mastery learning</p></li>
+<li><p>Reports to teachers on student skill</p></li>
+</ul>
+<aside class="notes">
+<p>The two core uses of BKT are, of course:</p>
+<ol type="1">
+<li><p>supporting mastery learning – determining when a student has mastered a skill in order to advance them</p></li>
+<li><p>and providing reports to teachers (or the student themself) on what skills the student has and hasn’t yet mastered.</p></li>
+</ol>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="bkt-extended-uses" class="slide level2">
+<h2>BKT: Extended Uses</h2>
+<ul>
+<li><p>Use in behavior detectors (such as gaming the system)</p></li>
+<li><p>Use to identify problematic skills for re-design (with very high slip or guess or initial knowledge)</p></li>
+<li><p>Use in discovery with models analyses (such as correlating student in-platform learning to test scores)</p></li>
+</ul>
+<aside class="notes">
+<p>But there are several other common uses as well, including using them as components in behavior detectors, like gaming the system, or identifying skills with very high slip or guess or initial knowledge, to drive iterative improvement of the learning system, or in variables in various kinds of analyses, like correlation students’ performance and learning within a learning platform, to external measures like their test scores.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="bkt-extended-uses-1" class="slide level2">
+<h2>BKT: Extended Uses</h2>
+<ul>
+<li><p>Conditionalizing P(T)&nbsp;</p>
+<ul>
+<li><p>Does help help? (<span class="citation" data-cites="beck2008does">Beck et al. (<a href="#/references" role="doc-biblioref" onclick="">2008</a>)</span>)</p></li>
+<li><p>Which content is most effective? (<span class="citation" data-cites="baker2018modeling">Ryan S. Baker, Gowda, and Salamin (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span>)</p></li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>There have been a bunch of extensions to BKT. It’s not just a good model, it’s also been the basis for a lot of other interesting work.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="bkt-extended-uses-2" class="slide level2">
+<h2>BKT: Extended Uses</h2>
+<ul>
+<li><p>Moment-by-moment learning estimation<br>
+(calculating P(T) in specific step)</p></li>
+<li><p>Which moment-by-moment learning curves are associated with more robust learning? (<span class="citation" data-cites="baker2013predicting">Ryan S. Baker et al. (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span>)</p></li>
+<li><p>What behaviors predict “eureka” moments (<span class="citation" data-cites="moore2015antecedents">Moore, Baker, and Gowda (<a href="#/references" role="doc-biblioref" onclick="">2015</a>)</span>)</p></li>
+<li><p>Which types of content are associated with more learning? (<span class="citation" data-cites="slater2016semantic">Slater et al. (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span>)</p></li>
+</ul>
+<aside class="notes">
+<p>Some examples here, they will be introduced later in Advanced BKT part.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="bkt-extended-uses-3" class="slide level2">
+<h2>BKT: Extended Uses</h2>
+<ul>
+<li><p>Detecting carelessness (contextual slip)<br>
+(calculating P(S) in specific step)</p></li>
+<li><p>Predicts test score (<span class="citation" data-cites="pardos2014affective">Pardos et al. (<a href="#/references" role="doc-biblioref" onclick="">2014</a>)</span>), college enrollment (<span class="citation" data-cites="pedro2013predicting">M. O. Pedro et al. (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span>), job several years later (<span class="citation" data-cites="almeda2020predicting">Almeda and Baker (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span>)</p></li>
+</ul>
+<aside class="notes">
+<p>Some examples here, they will be introduced later in Advanced BKT part.BKT: Extended Uses</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="bkt-extended-uses-4" class="slide level2">
+<h2>BKT: Extended Uses</h2>
+<ul>
+<li><p>Transfer assessment<br>
+(adding P(T) from other skills)</p></li>
+<li><p>Used to study relationship between skills (<span class="citation" data-cites="pedro2014identifying">M. S. Pedro et al. (<a href="#/references" role="doc-biblioref" onclick="">2014</a>)</span>)</p></li>
+<li><p>Including in graduate students learning research skills across several years (<span class="citation" data-cites="kang2022detecting">Kang et al. (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>)</p></li>
+</ul>
+<aside class="notes">
+<p>Some examples here, they will be introduced later in Advanced BKT part.BKT: Extended Uses</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="further-discussion" class="slide level2">
+<h2>Further Discussion</h2>
+<p>How can you apply these methods to your own research or practice?</p>
+<aside class="notes">
+<p><strong>DISCUSSION</strong>:&nbsp;</p>
+<ul>
+<li>How can you apply these methods to your own research or practice?</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="whats-next" class="slide level2">
+<h2>What’s NEXT?</h2>
+<ul>
+<li><p>Complete the ASSISTments activity: [insert link here]</p></li>
+<li><p>Complete the badge requirement document: [insert link here]</p></li>
+</ul>
+<p><strong>Thank you! Any questions?</strong></p>
+<aside class="notes">
+<p>What’s next?</p>
+<ul>
+<li>assignments</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="more-detail-on-advanced-bkt" class="title-slide slide level1 center">
+<h1>More Detail on Advanced BKT</h1>
+
+</section>
+<section id="more-detail-on-advanced-bkt-1" class="slide level2">
+<h2>More Detail on Advanced BKT</h2>
+<ul>
+<li><p>BKT has strong assumptions</p></li>
+<li><p>One of the key assumptions is that parameters vary by skill, but are constant for all other factors</p></li>
+<li><p>What happens if we remove this assumption?</p></li>
+</ul>
+<aside class="notes">
+<p>Modifying the assumptions of Bayesian knowledge tracing:</p>
+<ul>
+<li>BKTS has strong assumptions. One key&nbsp;assumption is that parameters vary by skill but are constant for all other factors. What happens if we remove this assumption?</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="bkt-with-modified-assumptions" class="slide level2">
+<h2>BKT with modified assumptions</h2>
+<ul>
+<li><p><strong>Conditionalizing Help or Learning</strong></p></li>
+<li><p>Contextual Guess and Slip</p></li>
+<li><p>Moment by Moment Learning</p></li>
+<li><p>Modeling Transfer Between Skills</p></li>
+</ul>
+<aside class="notes">
+<p>If we remove any of those assumptions,&nbsp;we get different kinds of algorithms that can be used for different purposes,&nbsp;like algorithms for conditionalizing help or learning, algorithms for contextual guessing slip,&nbsp;moment-by-moment learning models, and algorithms that can model the transfer between skills.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="beck-chang-mostow-corbett-2008" class="slide level2">
+<h2>Beck, Chang, Mostow, &amp; Corbett 2008</h2>
+<ul>
+<li><p>Beck, J.E., Chang, K-m., Mostow, J., Corbett, A. (2008) Does Help Help? Introducing the Bayesian Evaluation and Assessment Methodology. Proceedings of the International Conference on Intelligent Tutoring Systems.</p>
+<p><img data-src="img/Beck,%20Chang,%20Mostow,%20Corbett%202008.png" width="338"></p></li>
+</ul>
+<aside class="notes">
+<p>Now let’s first discuss Beck’s help model.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="notes" class="slide level2">
+<h2>Notes</h2>
+<ul>
+<li><p>In this model, help use is not treated as direct evidence of not knowing the skill</p></li>
+<li><p>Instead, it is used to choose between parameters</p></li>
+<li><p>Makes two variants of each parameter</p>
+<ul>
+<li><p>One assuming help was requested&nbsp;</p></li>
+<li><p>One assuming that help was not requested</p></li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>In this model, help use is not treated as direct evidence of not knowing the skill,&nbsp;&nbsp;unlike classical BKT, but instead, it’s&nbsp;used to choose between parameters. This model makes two variants of each parameter,&nbsp;one of them assuming help was requested and one of them assuming that help was not requested.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="beck-et-al.s-2008-help-model" class="slide level2">
+<h2>Beck, et al.’s (2008) Help Model</h2>
+
+<img data-src="img/Beck,%20et%20al.’s%20(2008)%20Help%20Model.png" class="r-stretch"><aside class="notes">
+<p>This model otherwise looks just like BKT, at every single parameter,&nbsp;&nbsp;there are two variants of it, a given help, a&nbsp; given H, and a given not help, given not H. This gives us eight parameters per skill&nbsp;and the four classical parameters times two.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="beck-et-al.s-2008-help-model-1" class="slide level2">
+<h2>Beck, et al.’s (2008) Help Model</h2>
+<ul>
+<li>Parameters per skill: 8</li>
+</ul>
+<div class="fragment fade-in">
+<ul>
+<li>Fit using Expectation Maximization</li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<pre><code>-   Takes too long to fit using Grid Search</code></pre>
+</div>
+<aside class="notes">
+<p>This gives eight parameters per skill,&nbsp; and the four classical parameters times two. It fits using expectation maximization because it takes too long to fit using brute force. Brute force works when we’ve got&nbsp;an end of the fourth problem,&nbsp;but it doesn’t work so well for an end of the eighth problem.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="beck-et-al.s-2008-help-model-2" class="slide level2">
+<h2>Beck, et al.’s (2008) Help Model</h2>
+
+<img data-src="img/Table%201%20Comparing%20parameters%20of%20KT%20and%20Help%20model%20.png" class="r-stretch"><aside class="notes">
+<p>In his original paper, he found that there were fairly different parameter values&nbsp;for guess and slip based on whether&nbsp;or not the person asked for help.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="beck-et-al.s-2008-help-model-3" class="slide level2">
+<h2>Beck, et al.’s (2008) Help Model</h2>
+
+<img data-src="img/Table%201%20Comparing%20parameters%20of%20KT%20and%20Help%20model%202.png" class="r-stretch"><aside class="notes">
+<p>(Explaining about the difference)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="notes-1" class="slide level2">
+<h2>Notes</h2>
+<ul>
+<li><p>This model did not lead to better prediction of student performance</p></li>
+<li><p>But useful for understanding effects of help</p></li>
+</ul>
+<aside class="notes">
+<p>It’s worth noting that:</p>
+<ul>
+<li><p>&nbsp;this model didn’t lead to a better prediction of student&nbsp;performance, but it was useful for&nbsp;understanding the effects of help. One thing about BKT that’s noteworthy is that a lot of&nbsp;the modern extensions of BKT actually&nbsp;aren’t about fitting the data better.</p></li>
+<li><p>A lot of the things that BKT can do for you have to do not with getting slightly better&nbsp;prediction of next problem correctness,&nbsp; but with being able to infer other things.</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="bkt-with-modified-assumptions-1" class="slide level2">
+<h2>BKT with modified assumptions</h2>
+<ul>
+<li><p>Conditionalizing Help or Learning</p></li>
+<li><p><strong>Contextual Guess and Slip</strong></p></li>
+<li><p>Moment by Moment Learning</p></li>
+<li><p>Modeling Transfer Between Skills</p></li>
+</ul>
+<aside class="notes">
+<p>The 2nd modification of assumptions of BKT is contextual guess and slope.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="contexual-guess-and-slip" class="slide level2">
+<h2>Contexual Guess-and-Slip</h2>
+<ul>
+<li><p>Baker, R.S.J.d., Corbett, A.T., Aleven, V. (2008) More Accurate Student Modeling Through Contextual Estimation of Slip and Guess Probabilities in Bayesian Knowledge Tracing. Proceedings of the 9th International Conference on Intelligent Tutoring Systems, 406-415.</p>
+<p><img data-src="img/CorbettAleven.png" width="237"></p></li>
+</ul>
+<aside class="notes">
+<p>The 2nd modification of assumptions of BKT is contextual guess and slope.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="contexual-guess-and-slip-1" class="slide level2">
+<h2>Contexual Guess-and-Slip</h2>
+
+<img data-src="img/Contexual%20Guess-and-Slip.png" class="r-stretch"><aside class="notes">
+<p>In this model, we have the&nbsp;exact same L0, T, G, and S,&nbsp;but the G and S aren’t parameters per skill. They’re models.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="contexual-slip-the-big-data" class="slide level2">
+<h2>Contexual Slip: The Big Data</h2>
+<ul>
+<li><p>Why one parameter for slip</p>
+<ul>
+<li>For all situations</li>
+</ul></li>
+</ul>
+<div class="fragment fade-in">
+<pre><code>-   For each skill</code></pre>
+</div>
+<!-- -->
+<div class="fragment fade-in">
+<ul>
+<li><p>When we can have a different prediction for slip</p>
+<ul>
+<li><p>For each situation</p></li>
+<li><p>Across all skills</p></li>
+</ul></li>
+</ul>
+</div>
+<aside class="notes">
+<p>The big idea is why one parameter for&nbsp;slip for all situations for each skill&nbsp;when we can have a different prediction for&nbsp;slip for each situation across all skills.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="in-other-words" class="slide level2">
+<h2>In other words</h2>
+<ul>
+<li>P(S) varies according to context&nbsp;</li>
+</ul>
+<!-- -->
+<ul>
+<li><p>For example</p>
+<ul>
+<li><p>Perhaps very quick actions are more likely to be slips</p></li>
+<li><p>Perhaps errors on actions which you’ve gotten right several times in a row are more likely to be slips</p></li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>In other words, P of S&nbsp; varies according to context.</p>
+<ul>
+<li>Example: perhaps very quick actions are&nbsp;more likely to be slips, or perhaps errors&nbsp;in actions that you’ve gotten right several times in a row are more likely to be slips.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="contexual-guess-and-slip-model" class="slide level2">
+<h2>Contexual Guess and Slip Model</h2>
+<ul>
+<li><p>Guess and slip fit using contextual models across all skills</p></li>
+<li><p>Parameters per skill: 2 + (P (S) model size)/skills + (P (G) model size)/skills</p></li>
+</ul>
+<aside class="notes">
+<p>Guess and slip are therefore fit using&nbsp;contextual models across all skills.</p>
+<p>In this case, the parameters per skill are 2 plus the model size of P&nbsp;&nbsp;of S divided by the number of skills plus&nbsp;the guess model size divided by skills. This ends up amortizing to a good bit less than four parameters per skill.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="how-are-these-models-developed" class="slide level2">
+<h2>How are these models developed?</h2>
+<ol type="1">
+<li><p>Take an existing skill model&nbsp;</p></li>
+<li><p>Label a set of actions with the probability that each action is a guess or slip, using data about the future</p></li>
+</ol>
+<div class="fragment fade-in">
+<ol start="3" type="1">
+<li>Use these labels to machine-learn models that can predict the probability that an action is a guess or slip, without using data about the future</li>
+</ol>
+</div>
+<div class="fragment fade-in">
+<ol start="4" type="1">
+<li>Use these machine-learned models to compute the probability that an action is a guess or slip, in knowledge tracing&nbsp;</li>
+</ol>
+</div>
+<aside class="notes">
+<p>How are these models developed?&nbsp;</p>
+<ul>
+<li><p>We take&nbsp;an existing skill model, and label a set of&nbsp;actions with the probability that each action is&nbsp;a guess or a slip using data about the future. We’re going to use the data about the future,&nbsp;&nbsp;but we’re not actually going to use it in the running model.</p></li>
+<li><p>We use these labels to machine learning&nbsp;models that can predict the probability&nbsp;that an action is a guess or a slip&nbsp;without using data about the future.</p></li>
+<li><p>We then use these machine learning&nbsp;models to compute the probability that&nbsp;an action is a guess or a slip&nbsp;in real-time knowledge tracing.</p></li>
+</ul>
+<p>Again, we’re using the&nbsp;future to build the models,&nbsp;but we’re not using the future to actually run the models.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="how-are-these-models-developed-1" class="slide level2">
+<h2>How are these models developed?</h2>
+<p><strong>2. Label a set of actions with the probability that each action is a guess or slip, using data about the future</strong></p>
+<ul>
+<li><p>Predict whether action at time <strong>N</strong> is guess/slip</p></li>
+<li><p>Using data about actions at time <strong>N+1, N+2</strong></p></li>
+<li><p>This is <strong>only for labeling data</strong>! @</p></li>
+<li><p>Not for use in the guess/slip models</p></li>
+</ul>
+<aside class="notes">
+<p>More specifically, we label a&nbsp;set of actions with the probability&nbsp;that each action is a guess or a&nbsp;slip using data about the future. Predict whether an action at a time is a guess or a slip using data&nbsp;about the actions at time n plus 1 and n plus 2.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="how-are-these-models-developed-2" class="slide level2">
+<h2>How are these models developed?</h2>
+<p><strong>2. Label a set of actions with the probability that each action is a guess or slip, using data about the future</strong></p>
+<ul>
+<li><p>The intuition:</p></li>
+<li><p>If action <strong>N</strong> is right</p></li>
+<li><p>And actions <strong>N+1, N+2</strong> are also right</p>
+<ul>
+<li>It’s unlikely that action <strong>N</strong> was a guess</li>
+</ul></li>
+<li><p>If actions <strong>N+1, N+2</strong> were wrong</p>
+<ul>
+<li>It becomes more likely that action <strong>N</strong> was a guess</li>
+</ul></li>
+<li><p>I’ll give an example of this math in few minutes…</p></li>
+</ul>
+<aside class="notes">
+<p>The intuition is that if action n is right and actions n plus 1 and n plus 2 were also right,&nbsp;it’s probabilistically unlikely that action n was a guess because the probability that&nbsp;you’d get three things right in a row by&nbsp;guessing is just really infinitesimal. Similarly,&nbsp;if actions n plus 1 and n plus 2 were wrong, it&nbsp;becomes more likely that action n was a guess.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="how-are-these-models-developed-3" class="slide level2">
+<h2>How are these models developed?</h2>
+<p><strong>3. Use these labels to machine-learn models that can predict the probability that an action is a guess or slip</strong></p>
+<ul>
+<li><p>Features distilled from logs of student interactions with tutor software</p></li>
+<li><p>Broadly capture behavior indicative of learning</p>
+<ul>
+<li><p>Selected from same initial set of features previously used in detectors of&nbsp;</p>
+<ul>
+<li><p>gaming the system (<span class="citation" data-cites="baker2008developing">R. S. d. Baker et al. (<a href="#/references" role="doc-biblioref" onclick="">2008</a>)</span>)</p></li>
+<li><p>off-task behavior (<span class="citation" data-cites="baker2007modeling">R. Sj. Baker (<a href="#/references" role="doc-biblioref" onclick="">2007</a>)</span>)</p></li>
+</ul></li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>Having gotten these labels, we then&nbsp;use them to machine-learn models that&nbsp;can predict the probability that&nbsp;an action is a guess or a slip. We take features distilled from logs of student interactions of the tutor&nbsp;software that broadly capture behavior indicative of learning.</p>
+<ul>
+<li>In Baker-Corbinolev in 2008,&nbsp; it selected these from the same&nbsp;set of initial features previously&nbsp;used in detectors of gaming a&nbsp;system and off-task behavior.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="how-are-these-models-developed-4" class="slide level2">
+<h2>How are these models developed?</h2>
+<p><strong>3. Use these labels to machine-learn models that can predict the probability that an action is a guess or slip</strong></p>
+<ul>
+<li><p>Linear regression</p>
+<ol type="1">
+<li>Did better on cross-validation than fancier algorithms</li>
+</ol></li>
+<li><p>One guess model</p></li>
+<li><p>One slip model</p></li>
+</ul>
+<aside class="notes">
+<p>In the first work, we used linear regression,&nbsp;which, in this early work, did better on cross-validation than fancier algorithms. One guess model, one slip model.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="how-are-these-models-developed-5" class="slide level2">
+<h2>How are these models developed?</h2>
+<p><strong>4. Use these machine-learned models to compute the probability that an action is a guess or slip, in knowledge tracing</strong></p>
+<ul>
+<li><p>Within Bayesian Knowledge Tracing</p></li>
+<li><p>Exact same formulas</p></li>
+<li><p>Just substitute a contextual prediction about guessing and slipping for the prediction-for-each-skill</p></li>
+</ul>
+<aside class="notes">
+<p>Having these probabilities,&nbsp;we just plug the estimates, the numbers,&nbsp;into Bayesian knowledge tracing,&nbsp; the exact same formulas as before. We’re just substituting a contextual prediction&nbsp;about guessing and slipping for the prediction for each skill.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="bkt-with-modified-assumptions-2" class="slide level2">
+<h2>BKT with modified assumptions</h2>
+<ul>
+<li><p>Conditionalizing Help or Learning</p></li>
+<li><p>Contextual Guess and Slip</p></li>
+<li><p><strong>Moment by Moment Learning</strong></p></li>
+<li><p>Modeling Transfer Between Skills</p></li>
+</ul>
+<aside class="notes">
+<p>A third&nbsp;way to modify BKT’s assumptions:&nbsp;</p>
+<ul>
+<li>moment-by-moment learning.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="moment-by-moment-learning-model" class="slide level2">
+<h2>Moment-by-Moment Learning Model</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Baker, R.S.J.d., Goldstein, A.B., Heffernan, N.T. (2011) Detecting Learning Moment-by-Moment. International Journal of Artificial Intelligence in Education, 21 (1-2), 5-25.</p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="img/Goldstein.png"></p>
+</div>
+</div>
+<aside class="notes">
+<p>A third&nbsp;way to modify BKT’s assumptions:&nbsp;</p>
+<ul>
+<li>moment-by-moment learning.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="moment-by-moment-learning-model-baker-goldstein-heffernan-2010" class="slide level2">
+<h2>Moment-by-Moment Learning Model (Baker, Goldstein, &amp; Heffernan, 2010)</h2>
+
+<img data-src="img/MomentByMomentModel.png" class="r-stretch"><aside class="notes">
+<p>The moment-by-moment learning model, as published, uses Bayesian knowledge&nbsp;tracing and doesn’t try to&nbsp;substitute any of the four parameters. It just adds a variant parameter for P&nbsp; of T, the probability you just learned. That’s not quite the same as P of T.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pj" class="slide level2">
+<h2>P(J)</h2>
+<ul>
+<li><p>P(T) = chance you will learn if you didn’t know it</p></li>
+<li><p>P(J) = probability you Just Learned</p>
+<ul>
+<li>P(J) = P(~L<sub>n</sub> ^ T)</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>P of T is the chance you’re going to&nbsp;learn if you didn’t know it already. P of J is the probability you just learned. In other words, it’s the probability that you didn’t know it and then you learned it. Not quite the same thing,&nbsp; although it’s quite related.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pj-is-distinct-from-pt" class="slide level2">
+<h2>P(J) is distinct from P(T)</h2>
+
+<img data-src="img/P(J)%20is%20distinct%20from%20P(T).png" class="r-stretch"><aside class="notes">
+<p>When say P of J is distinct from&nbsp;P of T, they can have&nbsp;values that are quite different.</p>
+<ul>
+<li><p>Example: the difference&nbsp;between a probability of T of 0.6&nbsp;in the context where you have an initial&nbsp;probability of knowing it of 0.1 or 0.96. If you had a 10% chance of knowing it and you have a 60% chance of&nbsp;learning it if you didn’t know it, the&nbsp;probability you just learned is 54%.</p></li>
+<li><p>That’s learning. But if your probability of knowing it&nbsp;to begin with was 96% and you had a 60%&nbsp;chance of learning it, you only have a 2% chance that you just learned it. That’s not very much learning.</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="labeling-pj" class="slide level2">
+<h2>Labeling P(J)</h2>
+<ul>
+<li><p>Based on this concept:</p>
+<ul>
+<li>“The probability a student did not know a skill but then learns it by doing the current problem, given their performance on the next two.”</li>
+</ul></li>
+</ul>
+<p>P(J) = P(~Ln ^ T | A+1+2 )</p>
+<p>*For full list of equations, see<br>
+<span class="citation" data-cites="baker2011detecting">Ryan SJD Baker, Goldstein, and Heffernan (<a href="#/references" role="doc-biblioref" onclick="">2011</a>)</span></p>
+<aside class="notes">
+<aside class="notes">
+<p>P of J is labeled based on the concept. It’s very similar to the contextual guess and slip model. The probability a student doesn’t know a skill but then learns it&nbsp;by doing the current problem given their performance on the next two.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="breaking-down-pln-t-a12" class="slide level2">
+<h2>Breaking down&nbsp; P(~L<sub>n</sub> ^ T | A+1+2&nbsp;)</h2>
+
+<img data-src="img/BreakingDown.png" class="r-stretch"><aside class="notes">
+<p>We can calculate the probability that they didn’t know it and they&nbsp;learned it from those next two actions&nbsp;with an application of Bayes’ theorem. We say the probability they didn’t know it and learned it given the next two actions&nbsp;is the probability of those next two actions&nbsp;given that they didn’t know it and they learned it&nbsp;times the probability that in general,&nbsp;regardless of those two actions, they didn’t&nbsp;know it and they learned it over the probability of those next two actions across all contexts.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="breaking-down-pa12-ln-pln-one-example" class="slide level2">
+<h2>Breaking down P(A+1+2 | L<sub>n</sub>) P(L<sub>n</sub>): One example</h2>
+<p>P(A+1+2 = C, C | Ln ) = P(~S)P(~S)</p>
+<p>P(A+1+2 = C, ~C | Ln ) = P(~S)P(S)</p>
+<p>P(A+1+2 = ~C, C | Ln ) = P(S)P(~S)</p>
+<p>P(A+1+2 = ~C, ~C | Ln ) = P(S)P(S)</p>
+
+<img data-src="img/BreakdownExampleTable.png" class="r-stretch"><aside class="notes">
+<p>Example:</p>
+<ul>
+<li><p>What about the probabilities of the next two actions, given that they knew it, times the&nbsp;probability that they knew it? Well, there are&nbsp;only 4 possibilities for those two actions.</p>
+<ul>
+<li><p>Correct, correct.</p></li>
+<li><p>Correct, not correct.</p></li>
+<li><p>Not correct, correct.</p></li>
+<li><p>And not correct, not correct.</p></li>
+</ul></li>
+</ul>
+<p>And those turn out to be if you knew it, the&nbsp;probability of correct, correct if you knew&nbsp;it is the probability you didn’t slip,&nbsp; times the probability you didn’t slip.</p>
+<p>The probability that you got it wrong&nbsp;and then right if you knew it was the&nbsp;probability you didn’t slip, times the&nbsp;probability you slipped, and so on.</p>
+<p>This case is going to be more complicated for the case that&nbsp;you didn’t know it and you didn’t learn it because in that case, we’re trying to estimate the probability as we go forward based on the possibility&nbsp;that you may have learned it or not between the first and second attempts. So, the equations get really hairy at this point.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="features-of-pj" class="slide level2">
+<h2>Features of P(J)</h2>
+<ul>
+<li><p>Distilled from logs of student interactions with tutor software</p></li>
+<li><p>Broadly capture behavior indicative of learning</p>
+<ul>
+<li><p>Selected from same initial set of features previously used in detectors of&nbsp;</p>
+<ul>
+<li><p>gaming the system (<span class="citation" data-cites="baker2008developing">R. S. d. Baker et al. (<a href="#/references" role="doc-biblioref" onclick="">2008</a>)</span>)</p></li>
+<li><p>off-task behavior (<span class="citation" data-cites="baker2007modeling">R. Sj. Baker (<a href="#/references" role="doc-biblioref" onclick="">2007</a>)</span>)</p></li>
+<li><p>carelessness (<span class="citation" data-cites="baker2008more">R. S. d. Baker, Corbett, and Aleven (<a href="#/references" role="doc-biblioref" onclick="">2008</a>)</span>)</p></li>
+</ul></li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>Now P of J, like contextual P of S and G, we&nbsp;took features distilled from logs of student&nbsp;interactions with tutor software that broadly&nbsp;captured behaviors indicative of learning. These features were selected from the same initial set of features previously&nbsp;used in detectors of gaming a system, off-task behavior, and carelessness, aka&nbsp;the probability of contextual slip.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="features-of-pj-1" class="slide level2">
+<h2>Features of P(J)</h2>
+<ul>
+<li>All features use only first response data</li>
+</ul>
+<!-- -->
+<ul>
+<li>Later extension to include subsequent responses only increased model correlation very slightly – not significantly</li>
+</ul>
+<aside class="notes">
+<p>All the features in the original work used only first response data. Later extensions to include subsequent responses&nbsp;only increased the model correlation very slightly, not statistically significantly.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="uses" class="slide level2">
+<h2>Uses</h2>
+<ul>
+<li><p>Patterns in P(J) over time can be used to predict whether a student will be prepared for future learning (<span class="citation" data-cites="hershkovitz2013predicting">Hershkovitz et al. (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span>, <span class="citation" data-cites="baker2013predicting">Ryan S. Baker et al. (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span>) and standardized exam scores (<span class="citation" data-cites="jiang2015learning">Jiang et al. (<a href="#/references" role="doc-biblioref" onclick="">2015</a>)</span>)</p></li>
+<li><p>P(J) can be used as a proxy for Eureka moments in Cognitive Science research (<span class="citation" data-cites="moore2015antecedents">Moore, Baker, and Gowda (<a href="#/references" role="doc-biblioref" onclick="">2015</a>)</span>)</p></li>
+</ul>
+<aside class="notes">
+<p>We then had a model that we could use for a few things.</p>
+<ul>
+<li><p>We’re not using this model at&nbsp;any point to try to improve our&nbsp;prediction of student performance in the system. Instead, we’re looking at how&nbsp;we can use this in analysis. It turns out that patterns in&nbsp; P of J over time can be used to&nbsp;predict whether it’s student prepared for future learning.</p></li>
+<li><p>when they encounter the first piece of curriculum material beyond&nbsp;this current system can they actually&nbsp;learn from it and do well on a test. Patterns of P of J during the use of the&nbsp;system turn out to be predictive of this. Also, it turns out that P of J over time can be used to predict standard as exam scores.</p></li>
+<li><p>in a third recent use, P of J can be used as a&nbsp;proxy for eureka moments in&nbsp;cognitive science research. We can look for moments where students had&nbsp;spectacularly high learning say higher than&nbsp;99 percent of all learning episodes and say what&nbsp;distinguishes the behavior that precedes this.</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="alternate-method" class="slide level2">
+<h2>Alternate Method</h2>
+<ul>
+<li><p>Assume at most one moment of learning</p></li>
+<li><p>Try to infer when that single moment occurred, across entire sequence of student behavior</p>
+<p><span class="citation" data-cites="van2013properties">De Sande (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span> <span class="citation" data-cites="pardos2013towards">Pardos and Yudelson (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span></p></li>
+<li><p>Some good theoretical arguments for this – more closely matches assumptions of BKT</p></li>
+<li><p>Has not yet been studied whether this approach has same predictive power as P(~Ln ^ T | A+1+2 ) method</p></li>
+</ul>
+<aside class="notes">
+<p>There is an alternate&nbsp;method for calculating P of J:</p>
+<ul>
+<li>unlike the&nbsp;Baker-Goldstein-Heffernan&nbsp;method, we assume at most one moment of learning, and then we try to infer when&nbsp;that single moment occurred across the entire sequence of student behavior. This was done both by Vandasand&nbsp;and by Pardos and Utilson. There are some good theoretical reasons why you might want to do this. It actually more closely&nbsp;matches the assumptions of BKT.</li>
+</ul>
+<p>Is it better? We don’t know yet.&nbsp;</p>
+<p>Although there have been a couple&nbsp;of papers on it, we haven’t yet seen&nbsp;anyone study whether this approach has the&nbsp;same predictive power as the method from&nbsp;Baker-Goldstein-Heffernan for things like&nbsp;predicting preparation for future learning. Stairway as the exam scores or Eureka moments.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="bkt-with-modified-assumptions-3" class="slide level2">
+<h2>BKT with modified assumptions</h2>
+<ul>
+<li><p>Conditionalizing Help or Learning</p></li>
+<li><p>Contextual Guess and Slip</p></li>
+<li><p>Moment by Moment Learning</p></li>
+<li><p><strong>Modeling Transfer Between Skills</strong></p></li>
+</ul>
+<aside class="notes">
+<p>A fourth type of modifying the assumption of&nbsp;&nbsp;BKT is modeling transfer between skills.</p>
+<ul>
+<li><p>This is unlike the other three, for which we’re still looking within a skill&nbsp;essentially, even though some of the variants in contextual guessing slip vary by skill.</p></li>
+<li><p>This one actually says what if&nbsp;we relax the assumption that&nbsp;each skill is independent from every other skill?</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="modeling-transfer-between-skills" class="slide level2">
+<h2>Modeling Transfer Between Skills</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Sao Pedro, M., Jiang, Y., Paquette, L., Baker, R.S., Gobert, J. (2014) Identifying Transfer of Inquiry Skills across Physical Science Simulations using Educational Data Mining. Proceedings of the 11th International Conference of the Learning Sciences.</p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="img/SaoPedro,Jiang,Paquette,Gobert.png"></p>
+</div>
+</div>
+<aside class="notes">
+<p>The first paper on this comes from&nbsp;Sao Pedro and colleagues in 2014, and what this model did was it said all right.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="how-this-model-works" class="slide level2">
+<h2>How this model works</h2>
+<ul>
+<li>Classic BKT: Separate BKT model for each skill</li>
+</ul>
+<!-- -->
+<ul>
+<li><p>BKT-PST (Partial Skill Transfer) <span class="citation" data-cites="pedro2014identifying">M. S. Pedro et al. (<a href="#/references" role="doc-biblioref" onclick="">2014</a>)</span>: Each skill’s model can transfer in information from other skills</p>
+<ol type="1">
+<li><p>BKT-PST: One time (when switching skill)</p></li>
+<li><p>BKT-PSTC <span class="citation" data-cites="kang2022detecting">Kang et al. (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>: At each time step</p></li>
+</ol></li>
+</ul>
+<aside class="notes">
+<p>Classic BKT said that there would&nbsp;be a separate BKT model for each skill. BKT PST partial skill transfer says instead that each skill model can&nbsp;transfer information from other skills, and in its original formulation in 2014&nbsp;, this happened exactly once when switching between skills in a system. But in 2022 it said wait a minute&nbsp;sometimes you switch back&nbsp;and forth between skills. So in that case we’re going&nbsp;to do it at each time step.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="bkt-pstpstc-model" class="slide level2">
+<h2>BKT-PST/PSTC Model</h2>
+
+<img data-src="img/BKT-PSTPSTC%20Model.png" class="r-stretch"><aside class="notes">
+<p>The BKT PST or PSTC model is basically the original BKT graph, which you see at the bottom. But then from some other skill, there’s a transfer in which has parameter K. This method of transferring information between skills hasn’t been used a ton&nbsp;but it has been used by Sale Pedro and colleagues&nbsp;to study the relationship between skills in a science simulation.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="uses-1" class="slide level2">
+<h2>Uses</h2>
+<ul>
+<li><p>Used to study relationship between skills in science simulation</p>
+<p>( <span class="citation" data-cites="pedro2014identifying">M. S. Pedro et al. (<a href="#/references" role="doc-biblioref" onclick="">2014</a>)</span>)</p></li>
+<li><p>Used to study which research skills help graduate students learn other research skills, across several years (<span class="citation" data-cites="kang2022detecting">Kang et al. (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>)</p></li>
+</ul>
+<aside class="notes">
+<p>Specifically, if you master skill A are&nbsp;you starting off better in skill B. Tom and her colleagues used it&nbsp;to study which research skills&nbsp;help graduate students learn other research skills across several years. In that case every year the grad student might be getting better&nbsp;in each of several research skills, and the question is if they acquire&nbsp;skill A in year N are they better at skill B in your N plus one?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="uses-2" class="slide level2">
+<h2>Uses</h2>
+<ul>
+<li><p>Contextualization approaches do not appear to lead to overall improvement on predicting within-tutor performance</p></li>
+<li><p>But they can be useful for other purposes</p>
+<ul>
+<li><p>Predicting robust learning</p></li>
+<li><p>Understanding learning better</p></li>
+<li><p>Understanding relationships between skills</p></li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>Overall, across all four of these types of&nbsp;examples, contextualization approaches generally&nbsp;don’t appear to lead to big overall improvements&nbsp;in predicting xatutor performance (see Gonzales-Brennan&nbsp;et al., 2014). But in general, they’re really good for other purposes, like predicting&nbsp;robust learning, understanding learning better, and understanding the relationship between the skills.</p>
+<p>There are a lot of utilities to modifying the&nbsp;assumptions of BKT that are harder&nbsp;with some of the more contemporary&nbsp;algorithms which is one of the reasons&nbsp;why researchers still sometimes use BKT.</p>
+<p>Thank you!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
@@ -713,14 +3216,71 @@
 <p><a href="https://www.go.ncsu.edu/laser-institute">go.ncsu.edu/laser-institute</a></p><a href="https://www.go.ncsu.edu/laser-institute">
 </a></div><a href="https://www.go.ncsu.edu/laser-institute">
 </a></div><a href="https://www.go.ncsu.edu/laser-institute">
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-corbett1994knowledge" class="csl-entry" role="listitem">
-Corbett, Albert T, and John R Anderson. 1994. <span>“Knowledge Tracing: Modeling the Acquisition of Procedural Knowledge.”</span> <em>User Modeling and User-Adapted Interaction</em> 4: 253–78.
+</a><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list"><a href="https://www.go.ncsu.edu/laser-institute">
+<div id="ref-almeda2020predicting" class="csl-entry" role="listitem">
+Almeda, Ma Victoria, and Ryan S Baker. 2020. <span>“Predicting Student Participation in STEM Careers: The Role of Affect and Engagement During Middle School.”</span> <em>Journal of Educational Data Mining</em> 12 (2): 33–47.
+</div>
+<div id="ref-baker2018modeling" class="csl-entry" role="listitem">
+Baker, Ryan S, Sujith M Gowda, and Eyad Salamin. 2018. <span>“Modeling the Learning That Takes Place Between Online Assessments.”</span> In <em>Proceedings of the 26th International Conference on Computers in Education</em>, 21–28.
+</div>
+<div id="ref-baker2013predicting" class="csl-entry" role="listitem">
+Baker, Ryan S, Arnon Hershkovitz, Lisa M Rossi, Adam B Goldstein, and Sujith M Gowda. 2013. <span>“Predicting Robust Learning with the Visual Form of the Moment-by-Moment Learning Curve.”</span> <em>Journal of the Learning Sciences</em> 22 (4): 639–66.
+</div>
+<div id="ref-baker2008more" class="csl-entry" role="listitem">
+Baker, Ryan SJ d, Albert T Corbett, and Vincent Aleven. 2008. <span>“More Accurate Student Modeling Through Contextual Estimation of Slip and Guess Probabilities in Bayesian Knowledge Tracing.”</span> In <em>Intelligent Tutoring Systems: 9th International Conference, ITS 2008, Montreal, Canada, June 23-27, 2008 Proceedings 9</em>, 406–15. Springer.
+</div>
+<div id="ref-baker2008developing" class="csl-entry" role="listitem">
+Baker, Ryan SJ d, Albert T Corbett, Ido Roll, and Kenneth R Koedinger. 2008. <span>“Developing a Generalizable Detector of When Students Game the System.”</span> <em>User Modeling and User-Adapted Interaction</em> 18: 287–314.
+</div>
+<div id="ref-baker2007modeling" class="csl-entry" role="listitem">
+Baker, Ryan SJd. 2007. <span>“Modeling and Understanding Students’ Off-Task Behavior in Intelligent Tutoring Systems.”</span> In <em>Proceedings of the SIGCHI Conference on Human Factors in Computing Systems</em>, 1059–68.
+</div>
+<div id="ref-baker2011detecting" class="csl-entry" role="listitem">
+Baker, Ryan SJD, Adam B Goldstein, and Neil T Heffernan. 2011. <span>“Detecting Learning Moment-by-Moment.”</span> <em>International Journal of Artificial Intelligence in Education</em> 21 (1-2): 5–25.
+</div>
+<div id="ref-beck2008does" class="csl-entry" role="listitem">
+Beck, Joseph E, Kai-min Chang, Jack Mostow, and Albert Corbett. 2008. <span>“Does Help Help? Introducing the Bayesian Evaluation and Assessment Methodology.”</span> In <em>Intelligent Tutoring Systems: 9th International Conference, ITS 2008, Montreal, Canada, June 23-27, 2008 Proceedings 9</em>, 383–94. Springer.
+</div>
+</a><div id="ref-DBLP:journals/umuai/CorbettA95" class="csl-entry" role="listitem"><a href="https://www.go.ncsu.edu/laser-institute">
+Corbett, Albert T., and John R. Anderson. 1995. <span>“Knowledge Tracing: Modelling the Acquisition of Procedural Knowledge.”</span> <em>User Model. User Adapt. Interact.</em> 4 (4): 253–78. </a><a href="https://doi.org/10.1007/BF01099821">https://doi.org/10.1007/BF01099821</a>.
+</div>
+<div id="ref-van2013properties" class="csl-entry" role="listitem">
+De Sande, Brett van. 2013. <span>“Properties of the Bayesian Knowledge Tracing Model.”</span> <em>Journal of Educational Data Mining</em> 5 (2): 1–10.
+</div>
+<div id="ref-hershkovitz2013predicting" class="csl-entry" role="listitem">
+Hershkovitz, Arnon, Ryan Baker, Sujith M Gowda, and Albert T Corbett. 2013. <span>“Predicting Future Learning Better Using Quantitative Analysis of Moment-by-Moment Learning.”</span> In <em>Educational Data Mining 2013</em>.
+</div>
+<div id="ref-jiang2015learning" class="csl-entry" role="listitem">
+Jiang, Yang, Ryan S Baker, Luc Paquette, Maria San Pedro, and Neil T Heffernan. 2015. <span>“Learning, Moment-by-Moment and over the Long Term.”</span> In <em>Artificial Intelligence in Education: 17th International Conference, AIED 2015, Madrid, Spain, June 22-26, 2015. Proceedings 17</em>, 654–57. Springer.
+</div>
+<div id="ref-kang2022detecting" class="csl-entry" role="listitem">
+Kang, Jina, Ryan Baker, Zhang Feng, Chungsoo Na, Peter Granville, and David F Feldon. 2022. <span>“Detecting Threshold Concepts Through Bayesian Knowledge Tracing: Examining Research Skill Development in Biological Sciences at the Doctoral Level.”</span> <em>Instructional Science</em> 50 (3): 475–97.
+</div>
+<div id="ref-moore2015antecedents" class="csl-entry" role="listitem">
+Moore, Gregory R, Ryan Shaun Baker, and Sujith M Gowda. 2015. <span>“The Antecedents of Moments of Learning.”</span> In <em>CogSci</em>.
+</div>
+<div id="ref-pardos2014affective" class="csl-entry" role="listitem">
+Pardos, Zachary A, Ryan SJD Baker, Maria OCZ San Pedro, Sujith M Gowda, and Supreeth M Gowda. 2014. <span>“Affective States and State Tests: Investigating How Affect and Engagement During the School Year Predict End-of-Year Learning Outcomes.”</span> <em>Journal of Learning Analytics</em> 1 (1): 107–28.
+</div>
+<div id="ref-pardos2013towards" class="csl-entry" role="listitem">
+Pardos, Zachary A, and Michael V Yudelson. 2013. <span>“Towards Moment of Learning Accuracy.”</span> In <em>AIED 2013 Workshops Proceedings Volume</em>, 4:3. Citeseer.
+</div>
+<div id="ref-pedro2013predicting" class="csl-entry" role="listitem">
+Pedro, Maria Ofelia, Ryan Baker, Alex Bowers, and Neil Heffernan. 2013. <span>“Predicting College Enrollment from Student Interaction with an Intelligent Tutoring System in Middle School.”</span> In <em>Educational Data Mining 2013</em>.
+</div>
+<div id="ref-pedro2014identifying" class="csl-entry" role="listitem">
+Pedro, Michael Sao, Yang Jiang, Luc Paquette, Ryan S Baker, and Janice Gobert. 2014. <span>“Identifying Transfer of Inquiry Skills Across Physical Science Simulations Using Educational Data Mining.”</span> In. Boulder, CO: International Society of the Learning Sciences.
+</div>
+<div id="ref-slater2018degree" class="csl-entry" role="listitem">
+Slater, Stefan, and Ryan S Baker. 2018. <span>“Degree of Error in Bayesian Knowledge Tracing Estimates from Differences in Sample Sizes.”</span> <em>Behaviormetrika</em> 45 (2): 475–93.
+</div>
+<div id="ref-slater2016semantic" class="csl-entry" role="listitem">
+Slater, Stefan, Ryan Baker, Jaclyn Ocumpaugh, Paul Inventado, Peter Scupelli, and Neil Heffernan. 2016. <span>“Semantic Features of Math Problems: Relationships to Student Learning and Engagement.”</span> <em>International Educational Data Mining Society</em>.
 </div>
 </div>
-</a></section></section><a href="https://www.go.ncsu.edu/laser-institute">
-    </a></div><a href="https://www.go.ncsu.edu/laser-institute">
-  </a></div><a href="https://www.go.ncsu.edu/laser-institute">
+</section></section>
+    </div>
+  </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
   <script src="kt-1-conceptual-overview_files/libs/revealjs/dist/reveal.js"></script>
@@ -1087,4 +3647,4 @@ Corbett, Albert T, and John R Anderson. 1994. <span>“Knowledge Tracing: Modeli
     </script>
     
 
-</a></body></html>
+</body></html>
