@@ -1,0 +1,157 @@
+---
+title: "Module 5: Memory Algorithms"
+subtitle: "KT Learning Lab 5: A Conceptual Overview"
+format:
+  revealjs: 
+    slide-number: c/t
+    progress: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    logo: images/LASERLogoB.png
+    theme: [default, css/laser.scss]
+    width: 1920
+    height: 1080
+    margin: 0.05
+    footer: <a href=https://www.go.ncsu.edu/laser-institute>go.ncsu.edu/laser-institute
+resources:
+  - demo.pdf
+bibliography: lit/references.bib
+editor: visual
+title-slide-attributes: 
+  data-notes: 
+---
+
+## Is future correctness enough?
+
+-   Up until this point we’ve been talking about predicting future correctness
+
+## But what if you forget it tomorrow?
+
+-   Another way to look at knowledge is – how long will you remember it?
+
+## Relevant for all knowledge
+
+-   Mostly considered in the context of memory for facts, rather than skills
+
+-   How do you say banana in Spanish?
+
+-   What is the capital of New York?
+
+-   Where are the Islands of Langerhans?
+
+## Most Common Application Areas
+
+-   Flashcard apps
+
+-   Language learning apps
+
+## Spacing Effect
+
+-   It has long been known that spaced practice (i.e. pausing between studying the same fact) is better than massed practice (i.e. cramming)
+
+-   Early adaptive systems implemented this behavior in simple ways @leitner1972so
+
+## ACT-R Memory Equations @pavlik2005practice
+
+-   Memory duration can be understood in terms of memory strength (referred to as activation)
+
+## ACT-R Memory Equations @pavlik2005practice
+
+-   Formula for probability of remembering
+
+$$
+P(m) = \frac{1}{1+e^{\frac{\tau-m}{s}}}
+$$
+
+-   Where m = activation strength of current fact t = threshold parameter for how hard it is to remember s is noise parameter for how sensitive memory is to changes in activation
+
+-   Note logistic function (like PFA)
+
+## ACT-R Memory Equations @pavlik2005practice
+
+-   Formula for activation
+
+$$
+m_{n}(t_{1..n}) = \ln ()\sum_i^n t_{i}^{-d}
+$$
+
+-   We have a sequence of n cases where the learner encountered the fact
+
+-   Each 𝑡_𝑖 represents how long ago the learner encountered the fact for the i-th time
+
+-   The decay parameter d represents the speed of forgetting under exponential decay
+
+## ACT-R Memory Equations @pavlik2005practice
+
+-   Implications
+
+-   More practice = better memory
+
+-   More time between practices = better memory
+
+-   Most efficient learning comes from dense practice followed by expanding amounts of time in between practices @pavlik2008using
+
+## MCM @Mozer2009PredictingTO
+
+-   Postulates that decay speed drops, the more times a fact is encountered
+
+-   Functionally complex model where
+
+-   Knowledge strength (and therefore probability of remembering) is a function of the sum of the traces’ actual contributions, divided by the product of their potential contributions
+
+-   Power function is estimated as a combination of exponential functions
+
+## DASH @mozer2016predicting
+
+-   DASH Extends previous approaches to also include item difficulty and latent student ability
+
+-   Can use either MCM or ACT-R as its internal representation of how memory decays over time
+
+## Duolingo @settles2016trainable
+
+-   Fits regression model to predict both recall and estimated half-life of memory (based on lag time)
+
+-   Based on estimate of exponential decay of memory
+
+## Duolingo @settles2016trainable
+
+-   Uses feature set including
+
+    -   Time since word last seen
+
+    -   Total number of times student has seen the word
+
+    -   Total number of times student has correctly recalled the word
+
+    -   Total number of times student has failed to recalled the word Word difficulty
+
+## Another Key Memory Phenomenon
+
+-   Spreading Activation
+
+    -   Encountering or recalling something in memory also increases memory activation of related concepts/facts/ideas @anderson1983spreading
+
+    -   @ma2023each build a DKT-family algorithm for memory that uses associations between items along these lines
+
+## And of course…
+
+-   Remember what we talked about earlier this week on integrating time into DKT-family algorithms and LKT-family algorithms
+
+## When to use memory models
+
+-   You care about memory for specific items
+
+    -   If you care about memory for skills, see LKT extensions that include time
+
+-   Forgetting is a real concern – the student can do it today, not tomorrow
+
+-   Relatively small amounts of data OK
+
+-   Once you have a memory model, you can safely add new items to it and it will work
+
+    -   Many algorithms don’t have item-specific parameters at all
+
+## Questions? Comments?
+
+## References

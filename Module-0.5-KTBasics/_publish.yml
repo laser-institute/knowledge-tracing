@@ -1,0 +1,4 @@
+- source: KTBasics.qmd
+  quarto-pub:
+    - id: 2eb72d0a-baa9-44f8-b150-1548bb1336fc
+      url: 'https://yilinl.quarto.pub/ktbasics'

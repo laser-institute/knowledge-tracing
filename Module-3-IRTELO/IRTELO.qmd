@@ -1,0 +1,572 @@
+---
+title: "Module 4 tem Response Theory and ELO"
+subtitle: "KT Learning Lab 4: A Conceptual Overview"
+format:
+  revealjs: 
+    slide-number: c/t
+    progress: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    logo: images/LASERLogoB.png
+    theme: [default, css/laser.scss]
+    width: 1920
+    height: 1080
+    margin: 0.05
+    transition: fade
+    footer: <a href=https://www.go.ncsu.edu/laser-institute>go.ncsu.edu/laser-institute
+resources:
+  - demo.pdf
+bibliography: lit/references.bib
+editor: visual
+title-slide-attributes: 
+  data-notes: Today we are going to learn about knowledge inference methods with Item Response Theory.
+---
+
+## Item Response Theory
+
+-   A classic approach for assessment, used for decades in tests and some online learning environments
+
+-   In its classical form, has some key limitations that make it less useful for assessment in online learning\
+
+    -   But variants such as ELO and T-IRT address some of those limitations
+
+::: notes
+**Speaker Notes:**
+
+A classic approach for assessment has been used for decades in tests and some online learning environments. In its classical form, it has some key limitations that make it less useful for assessment in online learning, but variants like ELO, and T-IRT (temporal IRT) address some of those limitations.
+:::
+
+## Key goal of IRT
+
+-   Measuring how much of some latent trait a person has
+
+-   How intelligent is Bob?
+
+    -   How much does Bob know about snorkeling?
+
+    -   SnorkelTutor
+
+::: notes
+**Speaker Notes:**
+
+The key goal of IRT is:
+
+-   different than the key goal of BKT or PFA
+
+-   it's to measure how much of some latent trait or general domain a person has
+
+-   so instead of saying, can Bob do 2 plus 5,  it says, how smart is Bob? Instead of asking if Bob knows this specific skill about snorkeling, it asks how much Bob knows about snorkeling in general
+
+    -   check out more info about this example in SnorkeITutor 
+:::
+
+## Typical use of IRT
+
+-   Assess a student’s current knowledge of topic X
+
+-   Based on a sequence of items that are dichotomously scored
+
+    -   E.g. the student can get a score of 0 or 1 on each item
+
+::: notes
+**Speaker Notes:**
+
+A typical use of IRT is:
+
+-   to assess a student's current knowledge of a general topic X,  general domain, based on a sequence of items that are dichotomously scored
+
+-   in other words, a student can get a score of 0 or 1 on each item
+:::
+
+## Key assumptions
+
+-   There is only one latent trait or skill being measured per set of items
+
+    -   This assumption is relaxed in the extension Cognitive Diagnosis Models (CDM) @henson2009defining
+
+-   No learning is occurring in between items
+
+    -   E.g. a testing situation with no help or feedback
+
+::: notes
+**Speaker Notes:**
+
+IRT makes some key assumptions;
+
+-   the first, and kind of the most controversial, is that there's only one latent trait or skill being measured per set of items
+
+    -   this assumption is relaxed in the extension Cognitive Diagnosis Models (CDM) (Henson, Templin, & Willse, 2009), but in core IRT, there's just one skill, one general ability. How smart are you in math? 
+
+-   another key assumption that's particularly questionable for online learning is that - no learning is occurring in between items 
+
+    -   in other words, you have a testing situation with no help or feedback. Now, in most systems, where the student is actually getting better, we don't necessarily want to make this assumption
+:::
+
+## Key assumptions
+
+-   Each learner has ability θ
+
+-   Each item has difficulty b and discriminability a
+
+-   From these parameters, we can compute the probability P(θ) that the learner will get the item correct
+
+::: notes
+**Speaker Notes:**
+
+Another assumption: 
+
+-   each student has an ability called theta, and each item has a difficulty b, and discriminability a
+
+-   from these parameters, we can compute the probability P of theta that the learner is going to get the current item correct
+:::
+
+## Note
+
+-   The assumption that all items tap the same latent construct, but have different difficulties
+
+-   Is a very different assumption than is seen in PFA or BKT
+
+::: notes
+**Speaker Notes:**
+
+Now the assumption is, again, that all items tap the same latent construct. Everything involves math, but they have different difficulties. This is a very different assumption than seen in PFA or BKT.
+:::
+
+## The Rasch (1PL) model
+
+-   Simplest IRT model, very popular
+
+-   Mathematically the same model (with a different coefficient), but some different practices surrounding the math (that are out of scope for our discussion)
+
+-   There is an entire special interest group of AERA devoted solely to the Rasch model and modeling related to Rasch (Rasch Measurement)
+
+::: notes
+**Speaker Notes:**
+
+Let's start with the Rasch (1PL) model. It's the simplest IRT model. Rasch is mathematically the same model with a different coefficient as another model called 1PL, but there are some different practices surrounding math.
+:::
+
+## The Rasch (1PL) model
+
+-   No discriminability parameter
+
+-   Parameters for student ability and item difficulty
+
+::: notes
+**Speaker Notes:**
+
+It's got no discriminability parameters. But it does have two sets of parameters, a set of parameters for student ability, and a set of parameters for item difficulty.
+:::
+
+## The Rasch (1PL) model
+
+-   Each learner has ability θ
+
+-   Each item has difficulty b
+
+$$
+P(\theta ) = \frac{1}{1+e^{-1(\theta -b)}}
+$$
+
+::: notes
+**Speaker Notes:**
+
+Each learner has the ability theta, each item has difficulty b, and you can compute the probability that the student will get something right by a function involving an exponential function with theta minus b.
+
+So we take the ability, we subtract the difficulty, they're on the same scale.
+:::
+
+## Item Characteristic Curve
+
+-   A visualization that shows the relationship between student skill and performance
+
+![](images/Item%20Characteristic%20Curve.png)
+
+::: notes
+**Speaker Notes:**
+
+In IRT, we can understand an item's difficulty by looking at: 
+
+-   for that item, the relationship between student skill and performance. As you can see on this graph, the x-axis is the theta, student ability, and the y-axis is correctness
+
+-   when theta equals zero, for this graph, probably if correctness equals 0.5. This actually has to mean that b is equal to zero because for P of correct to be 0.5, theta and b have to be exactly balanced
+:::
+
+## As student skill goes up, correctness goes up
+
+-   This graph represents b=0
+
+-   When θ=b (knowledge=difficulty), performance = 50%
+
+![](images/Item%20Characteristic%20Curve.png)
+
+::: notes
+**Speaker Notes:**
+
+Let's look at the item characteristic curve. This is a visualization that shows the relationship between student skill and performance. This graph represents b equals zero. When theta equals b, knowledge equals difficulty, performance is 50%. \
+
+So in other words, if you look across the x-axis and at the thetas, theta zero is 50%, so this has to be b equals to zero as well. And the y-axis has the probability of correctness.
+:::
+
+## As student skill goes up, correctness goes up
+
+![](images/SkillUpCorrectnessUp.png)
+
+::: notes
+**Speaker Notes:**
+
+Let's look at three students:
+
+1.  a green student who really knows their stuff,  theta of 3, probably getting it right at 95%
+
+2.  a student who doesn't really know their stuff, theta of 0, probably of getting it right at 50% 
+
+3.  a student who really doesn't know their stuff, theta of negative 3, probably of correctness of 5%
+:::
+
+## Changing difficulty parameter
+
+-   Green line: b=-2 (easy item)
+
+-   Orange line: b=2 (hard item)
+
+    ![](images/DifficultyParameter.png)
+
+::: notes
+**Speaker Notes:**
+
+If we change the difficulty parameter, we get different lines:
+
+-   if you look at the green line, B equals negative two, that's an easy item. In this case, the student with theta of three doesn't improve much, but the student with theta of zero goes up from 50% to 88%. And the student with theta of negative three still goes up a good bit from like 5% to almost 30%
+
+<!-- -->
+
+-   the orange line is B equals two, that's a hard item. So in other words, now the really good student, even the really good student, whose theta of three has only a 70% chance of getting it right
+
+-   the student with a theta of zero, the average student, is barely above 10% chance of getting it right. And the student whose theta of negative three, just no hope
+:::
+
+## Note
+
+-   The good student finds the easy and medium items almost equally difficult
+
+![](images/DifficultyParameter.png)
+
+::: notes
+**Speaker Notes:**
+
+You'll notice, that the good student finds the easy and medium items almost equally difficult. If you look over the top right corner of the graph, you can see that way up at the top, if the item is easy or medium, it doesn’t really matter if the student is really good.
+:::
+
+## Note
+
+-   The weak student finds the medium and hard items almost equally hard
+
+![](images/DifficultyParameter.png)
+
+::: notes
+**Speaker Notes:**
+
+Similarly, if you look down at the bottom, the weak student finds the medium and hard items almost equally hard. So IRT is most informational, kind of close to the middle for items and close to the middle for students.
+:::
+
+## Note
+
+-   When b=θ
+
+-   Performance is 50%
+
+![](images/WhenB=theta.png)
+
+::: notes
+**Speaker Notes:**
+
+Now when b equals theta, performance is 50%. This happens all through the spectrum. 
+
+-   if you've got a really easy item and a really weak student, they’ll get performance of 50%
+
+-   if you've got a really strong student and a really hard item, you'll get a performance of 50%
+
+-   this model accounts for the fact that the difficulty of items and the skill of students can be in balance
+:::
+
+## The 2PL model
+
+-   Another simple IRT model, very popular
+
+-   Discriminability parameter a added
+
+::: notes
+**Speaker Notes:**
+
+Another simple IRT model that's pretty popular is the 2PL model. In this one, there's a discriminability parameter a added.
+:::
+
+## Formula
+
+$$
+Rasch: P(\theta ) = \frac{1}{1+e^{-1(\theta -b)}}
+$$
+
+$$
+2PL:P(\theta ) = \frac{1}{1+e^{-a(\theta -b)}}
+$$
+
+::: notes
+**Speaker Notes:**
+
+Now if we look at the Rasch, we can see that the 2PL model is exactly like the Rasch, except that negative 1 up in the Rasch becomes a negative a. So if you have a 2PL model where a equals 1, it's the Rasch model.
+:::
+
+## Different values of a
+
+-   Green line: a = 2 (higher discriminability)
+
+-   Blue line: a = 0.5 (lower discriminability)
+
+![](images/Different%20values%20of%20a.png)
+
+::: notes
+**Speaker Notes:**
+
+Now if we look at different values of a, we can see:
+
+-   the green line has a equals 2 and that gives it higher discriminability. It's kind of making a faster transition as students get better between being really hard and really easy
+
+-   the blue line, A equals 0.5,  has lower discriminability. It makes a much slower transition as students get better between correctness and incorrectness. Generally, you want items with relatively high discriminability, although in some cases being too high for discriminability isn't very useful because it only distinguishes a very small set of the range
+:::
+
+## Extremely high and low discriminability
+
+-   a=0
+
+-   a approaches infinity
+
+![](images/Extremely%20high%20and%20low%20discriminability.png)
+
+::: notes
+**Speaker Notes:**
+
+If we look at extremely high and extremely low discriminability: 
+
+-   if you take a look at red, the line where a equals 0, there's no discriminability. People do equally well no matter what it is. I guess that would be a coin flip. How I already guess a coin flip
+
+-   as a approaches infinity, you get something looking more and more like the green line, where there's just this very small range between getting it wrong and getting it right
+
+-   even though this is very discriminable, it may not be useful because it's only going to tell you the difference between, in this case, students with a theta of about negative 0.1, and students with a theta of positive 0.1. Anything below or above that range is just going to be completely certain to get it right or wrong
+:::
+
+## Model degeneracy
+
+-   a below 0…
+
+![](images/Model%20degeneracy.png)
+
+::: notes
+**Speaker Notes:**
+
+Model degeneracy, which can't happen in Rasch but can happen in  2PL when you get a - discriminability below 0. In this case, the model tells you that the smarter you are, the more likely you are to get things wrong. And the less strong you are as a student, the more likely you are to get things right. This is even weirder than it is in BKT.
+:::
+
+## The 3PL model
+
+-   A more complex model
+
+-   Adds a guessing parameter c
+
+::: notes
+**Speaker Notes:**
+
+The 3PL model, which is a more complex model, which adds a guessing parameter, c.
+:::
+
+## The 3PL model
+
+$$
+P(\theta ) = c+ (1-c)\frac{1}{1+e^{-a(\theta -b)}}
+$$
+
+-   Either you guess (and get it right)
+
+-   Or you don’t guess (and get it right based on knowledge)
+
+::: notes
+**Speaker Notes:**
+
+-   the problem you get things right is the problem you guessed it plus the problem you didn't guess times the problem you knew it 
+
+-   so either you guess and you just get it right or you don't guess and then you get it right based on knowledge
+:::
+
+## Fitting an IRT model
+
+-   Can be done with Expectation Maximization
+
+-   Estimate knowledge and difficulty together
+
+    -   Then, given item difficulty estimates, you can assess a student’s knowledge in real time
+
+::: notes
+**Speaker Notes:**
+
+How do you fit an IRT model?  
+
+-   you can do this with expectation maximization as we discussed previously
+
+-   you estimate knowledge and difficulty together. Then once you've done this, given an item difficulty estimate, you can take a new student and assess their knowledge in real-time
+:::
+
+## Uses…
+
+-   IRT is used quite a bit in computer-adaptive testing
+
+-   Not used quite so often in online learning, where student knowledge is changing as we assess it
+
+::: notes
+**Speaker Notes:**
+
+IRT has been used quite a bit in assessment. On the online world, you see it in computer adaptive testing. Testing that tries to infer what a student knows and tries to give items the right level of difficulty and discriminability to better pinpoint what the student knows. It’s not used quite so often in online learning where student knowledge is changing as we assess it. IRT doesn't have any provision for that. For those situations, BKT  and PFA are more popular.
+:::
+
+## ELO @elo1978rating @pelanek2016applications
+
+-   A variant of the Rasch model which can be used in a running system
+
+-   Continually estimates item difficulty and student ability, updating both every time a student encounters an item
+
+::: notes
+**Speaker Notes:**
+
+t's worth briefly mentioning one extension to IRT which is ELO.
+
+-   ELO has been around for a long time. It was used to rank chess players. It's a variant of a Rasch model that can be used in a running system,  which is a big difference than classical IRT, which makes estimates kind of post hoc. It continually estimates both item difficulty and the student's ability, updating both every time a student encounters an item
+:::
+
+## ELO @elo1978rating @pelanek2016applications
+
+-   You may know of ELO from Chess or Pokemon rankings!
+
+## ELO @elo1978rating @pelanek2016applications
+
+$$
+\theta_{i+1} = \theta_{i} + K(c-P(c))
+$$
+
+$$
+b_{i+1} = b_{i} + K(c-P(c))
+$$
+
+-   Where K is a parameter for how strongly the model should consider new information
+
+::: notes
+**Speaker Notes:**
+
+ELO does this based on two very simple formulas where it changes the student parameter and it changes the item parameter every time it encounters a new experience, taking the difference between the student's actual response and the predicted response, and weighting that by some factor k, a parameter for how strongly the model should consider new information when updating the new estimates of ability and item difficulty.
+:::
+
+## Multivariate ELO @abdi2019multivariate
+
+-   Allows an item to involve multiple skills
+
+-   Averages difficulty across skills
+
+::: notes
+**Speaker Notes:**
+
+An important extensionto to ELO is:
+
+-   multivariate ELO, which allows an item to involve multiple skills and averages difficulty across skills
+:::
+
+## MV-Glicko @abdi2021modelling
+
+-   Allows an item to involve multiple skills
+
+-   Averages difficulty across skills
+
+-   Takes time between practices of a skill into account (much like LKT extensions to PFA)
+
+::: notes
+**Speaker Notes:**
+
+Another important extension is:
+
+-   MV-Glicko, which allows an item to involve multiple skills, averages difficulty across skills, and takes time between practices of skill into account, much like LKT extensions to PFA can do
+:::
+
+## Using ELO in the real world
+
+-   ELO is used in several real-world systems
+
+    -   MathGarden
+
+    -   Slepempapy.cz
+
+    -   Top Parent
+
+    -   Shadowspect
+
+-   There are some issues that need to be considered to use it sanely in a real-world system @kim2023learning
+
+::: notes
+**Speaker Notes:**
+
+Please follow the slides content here
+:::
+
+## Using ELO in real world
+
+-   The biggest is that you don’t actually want to let ELO item values change in real time
+
+-   If you let that happen, then two students in the same classroom, with the exact same history of correct and incorrect, on the exact same items
+
+-   Will end up with different knowledge estimates
+
+::: notes
+**Speaker Notes:**
+
+Please follow the slides content here
+:::
+
+## Using ELO in real world
+
+-   The solution: fit item parameters with initial data set
+
+-   Then keep item parameters constant during actual real-world use
+
+::: notes
+**Speaker Notes:**
+
+Please follow the slides content here
+:::
+
+## Using ELO in real world
+
+-   The solution: fit item parameters with initial data set
+
+-   Then keep item parameters constant during actual real-world use
+
+-   This is generally a good policy – if you don’t do this, the first several students will have really inaccurate knowledge estimates
+
+::: notes
+**Speaker Notes:**
+
+Please follow the slides content here
+:::
+
+## When to use ELO
+
+-   Items have very different difficulty within skills
+
+-   Relatively small amounts of data is OK
+
+-   New items can be added without refitting the entire model – but you have to wait a little while to get valid estimates for those new items
+
+::: notes
+**Speaker Notes:**
+
+Please follow the slides content here
+:::
+
+## References

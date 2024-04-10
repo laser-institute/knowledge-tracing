@@ -1,0 +1,4 @@
+- source: IRTELO.qmd
+  quarto-pub:
+    - id: aaeab73b-4906-4677-9578-911dc30d4841
+      url: 'https://yilinl.quarto.pub/irtelo'

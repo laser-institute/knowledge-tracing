@@ -1,0 +1,274 @@
+---
+title: "Module 0.5 Knowledge Tracing Basics"
+subtitle: "Introduction"
+format:
+  revealjs: 
+    transition: fade
+    slide-number: c/t
+    progress: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    logo: images/LASERLogoB.png
+    theme: [default, css/laser.scss]
+    width: 1920
+    height: 1080
+    margin: 0.05
+    footer: <a href=https://www.go.ncsu.edu/laser-institute>go.ncsu.edu/laser-institute
+resources:
+  - demo.pdf
+bibliography: lit/references.bib
+editor: visual
+title-slide-attributes: 
+  data-notes: Hi, everyone, welcome to to the lecture on Bayesian Knowledge Tracing, a method for knowledge inference.
+---
+
+## Goal of Knowledge Tracing (KT)
+
+-   Measuring what a student knows at a specific time
+
+## Goal of Knowledge Tracing
+
+-   Measuring what a student knows at a specific time
+
+-   Measuring what relevant knowledge components a student knows at a specific time
+
+## Knowledge Component (KC)
+
+-   Anything a student can know that is meaningful to the current learning situation
+
+-   Skill
+
+-   Fact
+
+-   Concept
+
+-   Principle
+
+-   Schema
+
+-   <http://www.learnlab.org/research/wiki/index.php/Knowledge_component>
+
+## Knowledge Component
+
+-   Anything a student can know that is meaningful to the current learning situation
+
+-   Skill: Subtracting two fractions
+
+-   Fact: The capitol of Germany is Berlin
+
+-   Concept: Identifying a simile
+
+-   <http://www.learnlab.org/research/wiki/index.php/Knowledge_component>
+
+## Why is it useful to measure student knowledge?
+
+-   Enhancing student knowledge is the primary goal of a lot of education
+
+-   If you can measure it, you know whether you’re making it better
+
+-   If you can measure it, you can inform instructors (and other stakeholders) about it
+
+-   If you can measure it, you can make automated pedagogical decisions
+
+## Different than measuring performance
+
+-   You can use prediction models to determine if a student will do well on a future test
+
+-   You can use prediction models to infer if a student’s performance right now is associated with successfully demonstrating a skill
+
+## Different than measuring performance
+
+-   Inferring if a student’s performance right now is associated with successfully demonstrating a skill
+
+-   Not the same as knowing whether the student has a skill, which is not directly observable
+
+    -   Maybe they appeared to demonstrate skill without having it (“guess”)
+
+    -   Maybe they appeared to not demonstrate skill despite having it (“slip”)
+
+## How do we get at latent knowledge?
+
+-   We can’t measure it directly
+
+-   We can’t look directly into the brain
+
+-   Yet
+
+-   But we can look at performance
+
+-   And we can look at performance over time
+
+    -   More information than performance at one specific moment
+
+## Not trivial…
+
+-   This is a research problem with a long history…
+
+## This week
+
+-   We will cover some of the key approaches for knowledge tracing, within EDM
+
+-   We will differentiate knowledge tracing from measuring learning from tests
+
+    -   Different goal
+
+    -   Different mathematical methods
+
+## What’s the difference?
+
+-   Tests
+
+    -   Learning is not changing while it’s being measured
+
+-   Digital Learning Platforms
+
+    -   Learning is changing while it’s being measured
+
+    -   Often the measurements themselves are changing learning
+
+## Contexts where knowledge tracing is used
+
+-   Intelligent Tutoring Systems
+
+    ::: columns
+    ::: {.column width="25%"}
+    ![](images/Mathia.png) Mathia
+    :::
+
+    ::: {.column width="25%"}
+    ![](images/INQ-ITS.png)
+
+    INQ-ITS
+    :::
+
+    ::: {.column width="25%"}
+    ![](images/Amira.png)
+
+    Amira
+    :::
+
+    ::: {.column width="25%"}
+    ![](images/AlefNextgen.png)
+
+    Alef NextGen
+    :::
+    :::
+
+## Contexts where knowledge tracing is used
+
+-   Educational Games
+
+    ::: columns
+    ::: {.column width="25%"}
+    ![](images/Impulse.png) Impulse
+    :::
+
+    ::: {.column width="25%"}
+    ![](images/Zoombinis.png)
+
+    Zoombinis
+    :::
+
+    ::: {.column width="25%"}
+    ![](images/Shadowspect.png)
+
+    Shadowspect
+    :::
+
+    ::: {.column width="25%"}
+    :::
+    :::
+
+## Contexts where knowledge tracing is used
+
+-   Flashcard apps
+
+    ::: columns
+    ::: {.column width="90%"}
+    ![](images/Anki.png)
+
+    Anki
+    :::
+
+    ::: {.column width="50%"}
+    :::
+    :::
+
+## Contexts where knowledge tracing is used
+
+-   Language learning apps
+
+    ::: columns
+    ::: {.column width="50%"}
+    ![](images/Duolingo.png)
+
+    Duolingo
+    :::
+
+    ::: {.column width="50%"}
+    ![](images/Alelo.png)
+
+    Alelo
+    :::
+    :::
+
+## Contexts where knowledge tracing is used
+
+-   Real-world learning
+
+-   @kang2022detecting use KT to study graduate students learning research skills over several years
+
+## Purposes of knowledge tracing
+
+Reports for teachers
+
+::: columns
+::: {.column width="50%"}
+![](images/ASSISTments1.png)
+
+ASSISTments Teacher report
+:::
+
+::: {.column width="50%"}
+![ASSISTments Teacher report](images/ASSISTments2.png)
+:::
+:::
+
+## Purposes of knowledge tracing
+
+-   Reports for students
+
+-   ![](images/cognitivetutor.png)
+
+## Purposes of knowledge tracing
+
+-   Mastery learning
+
+## Purposes of knowledge tracing
+
+-   Use in analyses
+
+-   We will discuss in detail throughout the week but examples include
+
+    -   Finding content that is too hard or too easy
+
+    -   Finding content with bad properties
+
+    -   Studying effectiveness of hints or learning materials
+
+    -   As components in various other models (disengagement, affect, self-regulated learning)
+
+    -   As predictors of external knowledge measures (such as standardized examinations)
+
+## What applications are you interested in?
+
+-   How do you envision possibly using KT?
+
+-   What kind of contexts would you be interested in using KT in?
+
+## First Up
+
+-   Bayesian Knowledge Tracing
+
+## References

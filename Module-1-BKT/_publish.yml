@@ -1,0 +1,4 @@
+- source: kt-1-conceptual-overview.qmd
+  quarto-pub:
+    - id: c2d10c35-f862-424b-8445-9e3793b08b56
+      url: 'https://yilinl.quarto.pub/bayesian-knowledge-tracing'
