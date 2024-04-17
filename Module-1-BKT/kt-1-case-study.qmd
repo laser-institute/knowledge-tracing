@@ -1,0 +1,145 @@
+---
+title: "Intro to BKT"
+subtitle: "TM Module 1: Case Study"
+author: "LASER Institute"
+date: today 
+format:
+  html:
+    toc: true
+    toc-depth: 4
+    toc-location: right
+theme:
+  light: simplex
+  dark: cyborg
+editor: visual
+jupyter: python3
+bibliography: lit/references.bib
+---
+
+## 1. PREPARE
+
+Our first KT case study is guided by the work of @zambrano2024investigating, which analyzed the performance of the BKT model and carelessness detector on every demographic group in the sample.
+
+Our primary aim for this case study is to gain some hands-on experience with essential Python packages and functions for Bayesian Knowledge Tracing. We learn how to do the data wrangling, fiting the model, and analyze the goodness of the model. The paper utilized brute-force grid(Java) search to fit the BKT model but we will use Python here. Specifically, this case study will cover the following topics pertaining to each data-intensive
+
+1.  **Prepare**: Prior to analysis, we'll look at the context from which our data came, formulate some research questions, and get introduced the {pandas}, {sklearn}, and {pyBKT} packages for data wrangling and analyzing BKT model.
+
+2.  **Wrangle**: In the wrangling section of our case study, we will learn some basic techniques for manipulating, cleaning, and transforming the raw BKT data.
+
+3.  **Explore**: With our BKT data tidied, we learn to measure what relevant knowledge components a student knows at a specific timem
+
+4.  **Model**: We conclude our analysis by fitting the BKT model for all the demographic group and see what are the best parameters for our current data set.
+
+5.  **Analysis**: We compare the performance of the BKT model across all demographic groups
+
+### 1a. Review the Research
+
+![](images/clipboard-272687324.png)
+
+[link to the full paper](https://learninganalytics.upenn.edu/ryanbaker/lak24-47-4.pdf)
+
+#### Abstract
+
+In today’s data-driven educational technologies, algorithms have a pivotal impact on student experiences and outcomes. Therefore, it is critical to take steps to minimize biases, to avoid perpetuating or exacerbating inequalities. In this paper, we investigate the degree to which algorithmic biases are present in two learning analytics models: knowledge estimates based on Bayesian Knowledge Tracing (BKT) and carelessness detectors. Using data from a learning platform used across the United States at scale, we explore algorithmic bias following three different approaches: 1) analyzing the performance of the models on every demographic group in the sample, 2) comparing performance across intersectional groups of these demographics, and 3) investigating whether the models trained using specific groups can be transferred to demographics that were not observed during the training process. Our experimental results show that the performance of these models is close to equal across all the demographic and intersectional groups. These findings establish the feasibility of validating educational algorithms for intersectional groups and indicate that these algorithms can be fairly used for diverse students at scale.
+
+#### Research Questions
+
+The central goal of this research is to
+
+> investigate the degree to which algorithmic biases are present in two learning analytics models: Bayesian Knowledge Tracing (BKT) and carelessness detectors.
+
+We will focus on BKT part in the following activities. Specifically, we will fit a BKT model and analyze its performance on each demographic groups in the Dataset.
+
+#### Data Collection
+
+In this study, we examine data from 5,856 students enrolled in 12 middle and high schools in a district in a small city in the northeastern United States. These students engaged with Carnegie Learning’s MATHia software @ritter2007cognitive for mathematics instruction during the academic years 2021-2022. MATHia is an Intelligent Tutoring System (ITS) used by over 600,000 students in thousands of schools every year. The content within MATHia is structured into "workspaces," which consist of multi-step problems. Students advance by working through these pre-determined sequences of content. This system is closely aligned to the use of the BKT algorithm; BKT has been used within this system for well over two decades, and content has been adjusted to improve BKT fit (for example, by modifying items less well predicted by BKT). The collected data includes students’ interactions with the software (averaging 8124 actions over 433 problems and 1425 problem steps solved per student), as well as demographic data provided by the school district. The district demographic data covers standard categories such as age, gender, race/ethnicity (i.e., African American, Asian, Hispanic, White, Native American, Native Hawaiian and Pacific Islander, and Multi-race non-Hispanic), whether the student has special needs, is an English learner, or is economically disadvantaged. The demographic distributions are detailed in Table
+
+#### Analyses
+
+For each of the demographics and intersections previously outlined, we calculate the knowledge estimates of each particular skill that students in this dataset practiced using Bayesian Knowledge Tracing (BKT; @corbett1994knowledge). The parameters for the BKT models for each skill were fitted using brute-force grid search @baker2010contextual, as in that previous work. To avoid model degeneracy and ensure that the parameter values align with the model’s conceptual meaning (such as a higher likelihood that students will correctly answer if they have already mastered the skill), we adopted the common practice of setting upper limits of 0.3 and 0.1 for the ’Guess’ and ’Slip’ parameters, respectively @baker2008more @baker2010contextual. The parameters of these BKT models are not designed to inherently favor or disfavor any demographic group. They are built solely using students’ initial responses to each problem (correct or incorrect) without directly considering demographic characteristics @kusner2017counterfactual.
+
+To assess the effectiveness of these correctness estimations for each demographic, and consequently recognize any potential bias of the BKT model parameters, we conducted a 4-fold student level cross-validation that was stratified by demographics, ensuring that each fold maintained a demographic distribution similar to that of the overall dataset. We then evaluate model performance calculating the Area Under the Receiver Operating Characteristic Curve (AUC ROC; AUC for short) within each demographic group and intersection.
+
+#### Key Findings
+
+As reported by @zambrano2024investigating in their findings section:
+
+> We found evidence that performance was close to equal across demographic groups, for these models, including intersectional categories, and tests where we held out entire demographic groups during model training (a test of model applicability to entirely new demographic groups), for carelessness.
+
+#### ❓Question
+
+Based on what you know about networks and the context so far, what other research question(s) might we ask in this context that a social network perspective might be able to answer?
+
+Type a brief response in the space below:
+
+-   YOUR RESPONSE HERE
+
+### 1b. Load Packages
+
+As highlighted in [Chapter 6 of Data Science in Education Using R](https://datascienceineducation.com/c06.html) (DSIEUR), one of the first steps of every workflow should be to set up your "Project" within RStudio. Recall that:
+
+> A **Project** is the home for all of the files, images, reports, and code that are used in any given project
+
+Since we are working from an R project cloned from GitHub, a Project has already been set up for you as indicated by the `.Rproj` file in your main directory in the Files pane. Instead, we will focus on getting our project set up withe the requisite packages we'll need for analysis.
+
+**Packages**, or sometimes called libraries, are shareable collections of R code that can contain functions, data, and/or documentation and extend the functionality of R. You can always check to see which packages have already been installed and loaded into RStudio Cloud by looking at the the Files, Plots, & Packages Pane in the lower right-hand corner.
+
+#### pyBKT 📦
+
+Based on the work of Zachary A. Pardos and Matthew J. Johnson, the {pyBKT} package is a Python implementation of the Bayesian Knowledge Tracing algorithm and variants, estimating student cognitive mastery from problem solving sequences [@badrinath2021pybkt].
+
+pyBKT can be used to define and fit many BKT variants, including these from the literature:
+
+-   Individual student priors, learn rate, guess, and slip
+
+-   Individual item guess and slip
+
+-   Individual item or resource learn rate
+
+Click the green arrow in the right corner of the "code chunk" that follows to load the {pandas} library introduced in LA Workflow labs.
+
+```{python}
+from pyBKT.models import Model 
+```
+
+#### pandas 📦
+
+![](img/pandas.svg){width="30%"}
+
+One package that we'll be using extensively is {pandas}. [Pandas](https://pandas.pydata.org) [@mckinney-proc-scipy-2010] is a powerful and flexible open source data analysis and wrangling tool for Python that is used widely by the data science community.
+
+Click the green arrow in the right corner of the "code chunk" that follows to load the {pandas} library introduced in LA Workflow labs.
+
+`{python}  import pandas as pd}`
+
+#### SciPy 📦
+
+![](img/scipy.svg){width="20%"}
+
+SciPy is a collection of mathematical algorithms and convenience functions built on NumPy. It adds significant power to Python by providing the user with high-level commands and classes for manipulating and visualizing data.
+
+Click the green arrow in the right corner of the "code chunk" that follows to load the {scipy} library:
+
+`{python}  import scipy as sp}`
+
+#### Pyplot 📦
+
+![](img/matplotlib.png){width="20%"}
+
+Pyplot is a module in the {matplotlib) package, a comprehensive library for creating static, animated, and interactive visualizations in Python. **`pyplot`** provides a MATLAB-like interface for making plots and is particularly suited for interactive plotting and simple cases of programmatic plot generation.
+
+Click the green arrow in the right corner of the "code chunk" that follows to load **`pyplot`**:
+
+`{python}  import matplotlib.pyplot as plt}`
+
+#### **👉 Your Turn** **⤵**
+
+Use the code chunk below to import the pyBKT package as pb:
+
+`{python} # YOUR CODE HERE}`
+
+## 2. WRANGLE
+
+In general, data wrangling involves some combination of cleaning, reshaping, transforming, and merging data [@wickham2016r]. As highlighted in @estrellado2020e, wrangling network data can be even more challenging than other data sources since network data often includes variables about both individuals and their relationships.
+
+For our data wrangling in lab 1, we're keeping it relatively simple since working with relational data is a bit of a departure from our working with rectangular data frames. Our primary goals for Lab 1 is learning how to:
