@@ -74,16 +74,6 @@ In this case study, you will not replicate the data analysis in @zambrano2024inv
 
 **Packages**, sometimes called libraries, are shareable collections of Python code that can contain functions, data, and/or documentation and extend the functionality of Python. You can always check to see which Python packages that are not dependencies of other packages have already been installed and loaded into RStudio Cloud using the command `pip list` in the terminal.
 
-#### pyBKT 📦
-
-The {pyBKT} package [@badrinath2021pybkt] is a Python implementation of the Bayesian Knowledge Tracing algorithm and variants, estimating student cognitive mastery from problem-solving sequences [@badrinath2021pybkt].
-
-Click the green arrow in the right corner of the "code chunk" that follows to load the {pyBKT} library.
-
-```{python}
-from pyBKT.models import Model
-```
-
 #### pandas 📦
 
 ![](img/pandas.svg){width="30%"}
@@ -108,13 +98,17 @@ Click the green arrow in the right corner of the "code chunk" that follows to lo
 import numpy as np
 ```
 
+#### pyBKT 📦
+
+The {pyBKT} package [@badrinath2021pybkt] is a Python implementation of the Bayesian Knowledge Tracing algorithm and variants, estimating student cognitive mastery from problem-solving sequences [@badrinath2021pybkt].
+
 #### **👉 Your Turn** **⤵**
 
 Use the code chunk below to import the pyBKT package:
 
 ```{python}
 # Your code starts here
-
+from pyBKT.models import Model
 ```
 
 ## 2. WRANGLE
