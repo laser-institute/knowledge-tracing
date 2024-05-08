@@ -20,18 +20,26 @@ resources:
 bibliography: lit/references.bib
 editor: visual
 title-slide-attributes: 
-  data-notes: Hi, everyone, welcome to to the lecture on Bayesian Knowledge Tracing, a method for knowledge inference.
+  data-notes: Hi, today we are going to discuss the basic idea of knowledge tracing.
 ---
 
 ## Goal of Knowledge Tracing (KT)
 
 -   Measuring what a student knows at a specific time
 
+::: notes
+The goal of knowledge tracing is to measure what a student knows at a specific time.
+:::
+
 ## Goal of Knowledge Tracing
 
 -   Measuring what a student knows at a specific time
 
 -   Measuring what relevant knowledge components a student knows at a specific time
+
+::: notes
+This is usually operationalized as measuring what relevant knowledge components the student knows at a specific time.
+:::
 
 ## Knowledge Component (KC)
 
@@ -49,6 +57,22 @@ title-slide-attributes:
 
 -   <http://www.learnlab.org/research/wiki/index.php/Knowledge_component>
 
+::: notes
+A knowledge component is anything a student can know that's meaningful to the current learning situation, including:
+
+-   Skill
+
+-   Fact
+
+-   Concept
+
+-   Principle
+
+-   Schema
+
+-   Anything that a student can know
+:::
+
 ## Knowledge Component
 
 -   Anything a student can know that is meaningful to the current learning situation
@@ -61,6 +85,18 @@ title-slide-attributes:
 
 -   <http://www.learnlab.org/research/wiki/index.php/Knowledge_component>
 
+::: notes
+To give an example of what these are:
+
+-   Skills are something you can actually do. So the ability to subtract two fractions is a skill. It's usually characterized by — if you get some of the items right, you're expected to get all of them right. And if you get some of the items wrong, you're expected to get all of them wrong. In other words, they're kind of demonstrations of ability that are highly correlated to each other
+
+-   A fact is a single piece of knowledge like the capital of Germany is Berlin
+
+<!-- -->
+
+-   A concept is a relationship between facts or structure or a schema of knowledge
+:::
+
 ## Why is it useful to measure student knowledge?
 
 -   Enhancing student knowledge is the primary goal of a lot of education
@@ -71,11 +107,27 @@ title-slide-attributes:
 
 -   If you can measure it, you can make automated pedagogical decisions
 
+::: notes
+So why is it useful to measure student knowledge? Enhancing student knowledge is the primary goal of a lot of education.
+
+-   If you can measure it, you know whether you're making it better
+
+-   If you can measure it, you can inform instructors and other stakeholders about it
+
+-   If you can measure it, you can make automated pedagogical decisions
+
+    -   For example, mastery learning, where the system only moves students on when they've demonstrated the skill
+:::
+
 ## Different than measuring performance
 
 -   You can use prediction models to determine if a student will do well on a future test
 
 -   You can use prediction models to infer if a student’s performance right now is associated with successfully demonstrating a skill
+
+::: notes
+Now, measuring knowledge is different from measuring performance. You can use prediction models, for example, to determine if a student will do well on a future test. And you can use prediction models to infer if a student's performance right now is associated with successfully demonstrating the skill. 
+:::
 
 ## Different than measuring performance
 
@@ -86,6 +138,18 @@ title-slide-attributes:
     -   Maybe they appeared to demonstrate skill without having it (“guess”)
 
     -   Maybe they appeared to not demonstrate skill despite having it (“slip”)
+
+::: notes
+But that's not the same as knowing whether the student has the skill, which is not directly observable. Because no matter how good your model is, maybe the student appeared to demonstrate skill without having it. 
+
+-   That's called a guess. It comes from the idea of guessing on multiple-choice items
+
+    -   But in knowledge tracing, it's often used to mean any case where the student doesn't know the skill and somehow miraculously gets the right answer
+
+-   Alternatively, maybe the student appeared to not demonstrate the skill despite having it
+
+    -   This is called a slip. This happens when the student knows how to do this. But something about the given situation, their given state, causes them not to
+:::
 
 ## How do we get at latent knowledge?
 
@@ -101,9 +165,27 @@ title-slide-attributes:
 
     -   More information than performance at one specific moment
 
+::: notes
+How do we get at latent knowledge? 
+
+-   We can't measure it directly
+
+-   We can't look directly into the brain, yet
+
+-   But we can look at student's performance
+
+    -   More specifically, we can look at a student's performance over time, which gives us more information than performance at one specific moment
+
+In other words, if a student demonstrates skill once or fails to demonstrate skill once, that could be a guess or slip. But if they demonstrate it six times in a row, or twice right, once wrong, twice right, they probably know it.
+:::
+
 ## Not trivial…
 
 -   This is a research problem with a long history…
+
+::: notes
+This seems like it might be kind of simple. It's in fact not trivial. It's a research problem with a long history.
+:::
 
 ## This week
 
@@ -114,6 +196,10 @@ title-slide-attributes:
     -   Different goal
 
     -   Different mathematical methods
+
+::: notes
+This week, we'll cover some of the key approaches for knowledge tracing within the EDM. In doing so, we'll differentiate knowledge tracing from measuring learning from tests. These two methods have different goals and involve different mathematical methods.
+:::
 
 ## What’s the difference?
 
@@ -126,6 +212,18 @@ title-slide-attributes:
     -   Learning is changing while it’s being measured
 
     -   Often the measurements themselves are changing learning
+
+::: notes
+What's the difference? They both involve measuring knowledge.
+
+-   The key is that in a test, tests are designed so that the student's knowledge state does not change while their knowledge is being measured
+
+-   By contrast, in digital learning platforms, the learning is inherently changing while it's being measured
+
+-   We want students to learn, but we also want to know what they know while they're learning.
+
+    Often the very act of measurement is designed to change the knowledge state. In other words, for example, when you tell a student they're wrong, that's information that can help them learn. If you give them hints, if they ask for hints, or if you give them other scaffolds, all that changes their knowledge state. Our challenge, a little trickier than just a test, is to assess what they know while their knowledge is actually changing.
+:::
 
 ## Contexts where knowledge tracing is used
 
@@ -155,6 +253,10 @@ title-slide-attributes:
     :::
     :::
 
+::: notes
+There are a lot of cases where knowledge tracing is used. Perhaps the most common case is intelligent tutoring systems, also called adaptive learning systems. In these systems, the student is scaffolded and supported in the process of learning. As part of that, we want to know what they know so the system can appropriately change its behavior.
+:::
+
 ## Contexts where knowledge tracing is used
 
 -   Educational Games
@@ -180,6 +282,16 @@ title-slide-attributes:
     :::
     :::
 
+::: notes
+Increasingly, knowledge tracing is also used in educational games. Here are a few examples:
+
+-   Impulse, they measured conceptual knowledge from student gameplay
+
+-   In Zoombinis, they measured a student's computational thinking strategies and whether they were able to reliably demonstrate those computational thinking strategies
+
+-   In Shadowspect, geometry knowledge and spatial reasoning skill is measured
+:::
+
 ## Contexts where knowledge tracing is used
 
 -   Flashcard apps
@@ -194,6 +306,10 @@ title-slide-attributes:
     ::: {.column width="50%"}
     :::
     :::
+
+::: notes
+Knowledge tracing is also used in flashcard apps like Anki that decide which flashcard to give the student next based on optimizing their memory.
+:::
 
 ## Contexts where knowledge tracing is used
 
@@ -213,11 +329,25 @@ title-slide-attributes:
     :::
     :::
 
+::: notes
+Knowledge tracing is used in more sophisticated language learning apps like Duolingo, Alelo, and other systems that do more than simply just present flashcards of vocabulary.
+:::
+
 ## Contexts where knowledge tracing is used
 
 -   Real-world learning
 
 -   @kang2022detecting use KT to study graduate students learning research skills over several years
+
+::: notes
+Occasionally, knowledge tracing is used in real-world learning:
+
+-   For example, Kang and her colleagues use knowledge tracing to study graduate students' learning research skills over the course of several years
+
+-   They gave annual assessments of research skills, and they not only looked at what research skills students could demonstrate over time but also how those skills were interconnected
+
+-   In other words, did learning skill A lead to then learning skill B?
+:::
 
 ## Purposes of knowledge tracing
 
@@ -235,15 +365,29 @@ ASSISTments Teacher report
 :::
 :::
 
+::: notes
+Knowledge tracing is used in these various contexts for a number of purposes, including:
+
+-   Reports for teachers about what skills students know
+:::
+
 ## Purposes of knowledge tracing
 
 -   Reports for students
 
 -   ![](images/cognitivetutor.png)
 
+::: notes
+-   Reports for students about what skills they know and what progress they are making
+:::
+
 ## Purposes of knowledge tracing
 
 -   Mastery learning
+
+::: notes
+It's used in an automated fashion for mastery learning, among other adaptive interventions, but mastery learning is by far the most common. Again, that's where a student continues to work on a subject until they've mastered it.
+:::
 
 ## Purposes of knowledge tracing
 
@@ -261,14 +405,40 @@ ASSISTments Teacher report
 
     -   As predictors of external knowledge measures (such as standardized examinations)
 
+::: notes
+They're used in various analyses, sometimes called discovery of model analyses. We are going to discuss this in detail throughout the courses, but there are a lot of examples of this. Knowledge tracing models are used, for example:
+
+-   To find content that's too hard or too easy
+
+-   To find content with other bad properties such as really high guess or slip rates
+
+-   To study the effectiveness of hints or learning materials. For example, if a student watches a specific video, does their learning shoot up? 
+
+-   Knowledge tracing models are used as components in various other kinds of models
+
+    -   learner disengagement, affect, and self-regulated learning
+
+<!-- -->
+
+-   Knowledge tracing models have been used in multiple systems as predictors of external knowledge measures, most notably where they have been shown in some cases to predict standardized examinations well enough that it seems possible we could dispense with some of the assessment tools that pull students entirely out of learning
+:::
+
 ## What applications are you interested in?
 
 -   How do you envision possibly using KT?
 
 -   What kind of contexts would you be interested in using KT in?
 
+::: notes
+Let's take a moment to go around the room and discuss what applications you're interested in. How do you envision possibly using KT? What kind of context would you be interested in using knowledge tracing in?
+:::
+
 ## First Up
 
 -   Bayesian Knowledge Tracing
+
+::: notes
+The first topic we'll talk about in the span of various knowledge tracing algorithms is — Bayesian Knowledge Tracing. The first widely used knowledge tracing algorithm and still one that's probably the most popular in the industry.
+:::
 
 ## References

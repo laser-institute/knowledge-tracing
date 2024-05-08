@@ -19,7 +19,7 @@ resources:
 bibliography: lit/references.bib
 editor: visual
 title-slide-attributes: 
-  data-notes: Hi, everyone
+  data-notes: Hi, lets talk about Deep Knowledge Tracing (DKT), and other deep learning algorithms that kind of followed since DKT. First, a quick conceptual overview of what DKT is and what made it so different.
 ---
 
 ## Deep Knowledge Tracing (DKT) @piech2015deep
@@ -34,11 +34,31 @@ title-slide-attributes:
 
     -   Very complex relationships between items over time
 
+::: notes
+Deep knowledge tracing was originally created by Pitch et al., (2015). It was based on recurrent nerual networks, specifically a variant called long-short term memory networks. 
+
+-   It fits a sequence of student performance across skills, so a student’s performance on one skill does affect their predictions for all other skills
+
+-   It predicts performance on future items within the system
+
+-   It can fit very complex functions
+
+    -   Compared to BKT and PFA, which generally have few enough parameters that you can count them. DKT has hundreds/thousands of parameters, so it can fit almost every type of function
+
+    -   There are very complicated relationships between the items over time
+:::
+
 ## Deep Knowledge Tracing (DKT)
 
 -   Initial paper reported massively better performance than original BKT or PFA @piech2015deep\
 
 -   Seemed at first too good to be true, and @xiong2016going reported that @piech2015deep had used the same data points for both training and test
+
+::: notes
+Xiong et al., 2016 is <https://files.eric.ed.gov/fulltext/ED592679.pdf>. 
+
+Xiong et al. reimplemented DKT in PyTorch and Tensorflow - TF was better - and found that while DKT still outperformed PFA and BKT, the performance gap was much smaller than earlier reported.
+:::
 
 ## Contemporary comparisons of DKT
 
@@ -49,6 +69,14 @@ title-slide-attributes:
 -   @wilson2016estimating compared DKT to temporal IRT on same data set
 
 -   Bottom line: All three approaches appeared to perform comparably well
+
+::: notes
+Khajah et al., 2016: <https://arxiv.org/pdf/1604.02416.pdf>
+
+The refitting essentially collapses similar skills into one in the data. That reduces some of BKT’s disadvantage - its inability to look across skills. 
+
+IRT came from psychometrics, where you test a student at time t and there isn’t any learning going on during the test; temporal IRT adds in the possibility of learning.
+:::
 
 ## But this was the beginning of what could be called  DKT-Family algorithms
 
@@ -61,6 +89,10 @@ title-slide-attributes:
     -   But in aggregate, there appear to be some real improvements to predictive performance (see comparison in @gervet2020deep 2020 for example)
 
 -   We will discuss some of the key issues that researchers have tried to address, and what their approaches were.
+
+::: notes
+We’re going to be mentioning a lot of algorithms here - I think there are about 15 different ones in this presentation. Don’t worry too much about any particular one; try to pay more attention on what the author was trying to do with it.
+:::
 
 ## Degenerate behavior
 
@@ -76,11 +108,19 @@ title-slide-attributes:
 
     -   Reducing amount model is allowed to change future estimates
 
+::: notes
+It’s not clear how many (if any) later DKT implementations followed their lead. Unfortunately, their implementation (they called it DKTPlus) is very picky about Python library versions and tricky to get running today.
+:::
+
 ## Impossible to interpret in terms of skills
 
 -   DKT Family generally predicts individual item correctness, not skills.
 
 -   Some variants estimate skill ability, but those skills are not always the same as the pre-defined skills, and the estimates may not be accurate.
+
+::: notes
+This is a departure from BKT, PFA, and most earlier algorithms. 
+:::
 
 ## Extension for Latent Knowledge Estimation
 
@@ -89,6 +129,10 @@ title-slide-attributes:
     -   Based on Memory-Augmented Neural Network, that keeps an external memory matrix that neurons update and refer back to 
 
     -   Latent skills are “discovered” by the algorithm and difficult to interpret.
+
+::: notes
+We’ll talk more about the latent skills in a bit. If you’ve done any factor analysis, you can think of them as factors - items load onto the latent skills, with each item generally loading on one skill much more than the others. The number of skills the algorithm attempts to use is a parameter, but it doesn’t have to use all of the available skills.
+:::
 
 ## Extension for Latent Knowledge Estimation
 
@@ -99,6 +143,14 @@ title-slide-attributes:
     -   Also attempts to fit amount of information transfer between skills
 
     -   Still not that interpretable
+
+::: notes
+Both Dit-Yan Yeung and Chun-Kit Yeung, from the DKTPlus paper, worked on variants to DKVMN. Here’s the first one.
+
+<https://dl.acm.org/doi/abs/10.1145/3303772.3303786> 
+
+They have vector representations of skills and knowledge states, then they compute the dot product between the two to show the interaction. 
+:::
 
 ## Extension for Latent Knowledge Estimation
 
@@ -112,6 +164,12 @@ title-slide-attributes:
 
     -   Somewhat more interpretable (the IRT half, at least)
 
+::: notes
+<https://arxiv.org/pdf/1904.11738.pdf>
+
+The argument is that since people are used to IRT parameters, they’ll be able to understand these estimated versions. Which, well, OK, but they’re still coming out of a black box.
+:::
+
 ## One caveat for skill estimation
 
 -   Some deep learning-based algorithms attempt to estimate skill level.
@@ -121,6 +179,10 @@ title-slide-attributes:
 -   (Most large datasets don’t have that data available)
 
 -   Therefore, we don’t really know if the estimates are any good.
+
+::: notes
+We just talked about DeepIRT and KQN. Both of those papers fall in this category. There are some nice graphs to explain how the skill groupings are reasonable, or how the estimated difficulties should be good, but it all comes back to the AUC of the correctness predictions in the end.
+:::
 
 ## Extension for Latent Knowledge Estimation
 
@@ -134,11 +196,21 @@ title-slide-attributes:
 
 -   Led to successful prediction of post-tests outside the learning system
 
+::: notes
+Where “successful” means that the Pearson correlation between the skill estimate and the posttest score on that skill ranged from 0.36 to 0.72, depending on the skill and knowledge tracing algorithm.
+:::
+
 ## Latent Knowledge Estimation
 
 -   In unpublished work, I used DKVMN’s internal concept estimates to predict a posttest, but they were less predictive than skill estimates generated by AOA.
 
 -   In @scruggs2023well internal skill estimates from Elo and BKT were outperformed by AOA skill estimates generated from those algorithms’ correctness predictions.
+
+::: notes
+However, including both the internal concept estimates and AOA skill estimates produced more accurate predictions than either set of estimates alone, suggesting that the two don’t overlap completely. 
+
+(and IRT, and PFA).
+:::
 
 ## Deep learning and skill discovery
 
@@ -150,6 +222,10 @@ title-slide-attributes:
 
 -   @zhang2017dynamic repeat the experiment for DKVMN and also show reasonable item clusters for Assistments data.
 
+::: notes
+The Assistments clustering was done at item level, without using skill tags. The evaluation is mostly that the clusters look good and the groupings of items seem reasonable. In a few slides, we’ll show that grouping.
+:::
+
 ## Deep learning and skill discovery
 
 -   The figures shown in @zhang2017dynamic use t-SNE @van2008visualizing to visualize neural network weights.
@@ -158,19 +234,43 @@ title-slide-attributes:
 
 -   In unpublished work, I used DKVMN on a large dataset with very reliable skill tags; the resultant clusters sometimes reflect the underlying skills, but sometimes do not.
 
+::: notes
+Piech et al. are a little quieter about their method - “The graph of our model’s conditional influences” is all they say, but it looks identical to Zhang et al., who say that they used t-SNE.
+
+The value for that parameter isn’t usually reported in KT papers that show clusters.
+
+Now I’ll show a few clusters from different algorithms and different datasets and talk about them.
+:::
+
 ## Deep learning and skill discovery
 
 ![](images/Deep%20learning%20and%20skill%20discovery.png)
 
 DKVMN can cluster the exercises in the Synthetic-5 dataset into their five ground-truth concepts.
 
+::: notes
+This is from the DKVMN paper (Zhang et al., 2017). For this figure, they explicitly set the memory size of DKVMN to five - that is, tell the model to use five underlying concepts; they show a similarly impressive figure after setting the memory size to 50 - t-SNE still clustered the exercises into five groups.
+:::
+
 ## Deep learning and skill discovery
 
 ![](images/Deep%20learning%20and%20skill%20discovery2.png)
 
+::: notes
+These clusters come from 2009 Assistments data. They’re not quite as perfect, but there is still good separation and clearly separated clusters. Note that the colors don’t always match the clusters - colors show which of DKVMN’s internal concepts exercises load on (presumably which concept has the highest loading); clusters are generated by t-SNE based on all exercise-concept loadings. 
+
+This is from the DKVMN paper (Zhang et al., 2017).
+:::
+
 ## Deep learning and skill discovery
 
 ![](images/Deep%20learning%20and%20skill%20discovery3.png)
+
+::: notes
+And these are the exercises that loaded onto the internal concepts. This is where I start getting skeptical. There are some reasonable-sounding groupings but plenty that don’t make intuitive sense. For example, why are the “Area”-related exercises spread across four different concepts?
+
+This is from the DKVMN paper (Zhang et al., 2017).
+:::
 
 ## Deep learning and skill discovery
 
@@ -186,6 +286,10 @@ TSNE with perplexity=5
 
 Different colors are different skills
 :::
+:::
+
+::: notes
+Lower perplexity means it tries harder to make tight clusters.
 :::
 
 ## Deep learning and skill discovery
@@ -204,11 +308,19 @@ Different colors are different skills
 :::
 :::
 
+::: notes
+\[Following the slide’s content\]
+:::
+
 ## Deep learning and skills
 
 -   Finally, @karumbaiah2022context found that DKVMN’s correctness predictions were more accurate when the model had no skill tags at all (it treated all items as belonging to the same skill) than when it had possibly-unreliable skill tags, or when it had accurate domain-level tags.
 
 -   This suggests that deep learning algorithms may be well suited for data without good skill tags.
+
+::: notes
+I liked that finding at the time and I like it even more now that I’ve got a job in industry where there’s a lot of data that hasn’t been labeled with skill tags.
+:::
 
 ## Discussion 1
 
@@ -220,11 +332,21 @@ Different colors are different skills
 
     -   BKT and PFA fit skill-level parameters which make it much easier to add new items without retraining the model.
 
+::: notes
+There’s the argument that next problem correctness would let you offer problems at the “correct difficulty”. Assuming we know what that is. On the other hand, I’d argue that just showing a teacher next problem correctness is useless.
+:::
+
 ## What is DKT really learning?
 
 -   @ding2019deep demonstrated theoretically that a lot of what DKT learns is how good a student is overall
 
 -   They replicate that finding in a 2021 paper using a larger dataset.
+
+::: notes
+<https://files.eric.ed.gov/fulltext/ED599227.pdf> and <https://arxiv.org/pdf/2101.11335.pdf>
+
+Both of these papers are worth reading if you really want to dig into this stuff. They also show evidence that the model performance is due to projecting the items into a high-dimensional vector space.
+:::
 
 ## What is DKT really learning?
 
@@ -232,17 +354,35 @@ Different colors are different skills
 
 ![](images/What%20is%20DKT%20really%20learning?.png)
 
+::: notes
+So what they did is that – they compared BKT with PFA and DKVMN, looking at the “cold-start problem” - how many skill attempts does it take before an algorithm’s predictions start being good? This graph shows that the traditional KT algorithms (classic BKT and PFA) lag behind DKVMN initially, but nearly catch up by attempt 3 (BKT) and 4 (PFA) respectively. This was using data from Assistments 2009.
+:::
+
 ## What is DKT really learning?
 
 -   In particular, there’s essentially no benefit to deep learning after several attempts on a skill (about where students often reach mastery, if they didn’t already know skill)
 
 ![](images/What%20is%20DKT%20really%20learning?.png)
 
+::: notes
+\[Following the slide’s content\]
+:::
+
 ## Other Important DKT Variants: SAKT
 
 -   @pandey2019self proposed a DKT variant, called SAKT, which fits attentional weights between exercises and more explicitly predicts performance on current exercise from performance on past exercises
 
 -   Gets a little better fit, doubles down a little more on some limitations we’ve already discussed
+
+::: notes
+I’m going to skim over the DKT variants - I think the details are not particularly important for most of them.
+
+(self-attentive knowledge tracing). Neural networks folks might jump at “attentive”; yes, this uses transformers. 
+
+The idea of SAKT is that not all past skill attempts are equally relevant. The model tried to identify the most relevant past attempts, then uses those to predict the present. The paper argues that SAKT should do better on large, sparse datasets. The numbers in this paper are very good, but have not been replicated by others.
+
+<https://arxiv.org/pdf/1907.06837.pdf>
+:::
 
 ## Other Important DKT variants: AKT
 
@@ -254,9 +394,23 @@ Different colors are different skills
 
     -   Uses Rasch-model embeddings to calculate item difficulty
 
+::: notes
+Context-Aware Attentive Knowledge Tracing
+
+Again, attentive = transformer architecture.
+
+<https://dl.acm.org/doi/pdf/10.1145/3394486.3403282>
+:::
+
 ## Adding in more information: SAINT+
 
 -   @shin2021saint+ added elapsed time and lag time as additional inputs, leading to better performance
+
+::: notes
+[https://dl.acm.org/doi/abs/10.1145/3448139.3448188](https://dl.acm.org/doi/abs/10.1145/3448139.3448188?casa_token=VgPS4grLsw0AAAAA%3AlVHZZM7-XlW28wv9LvelO9FAcHdflBWhaeXog5nXNYd0aOcPi6H2YQ_62eOvU80PviNee8dImgU) 
+
+This built off SAINT (Choi et al, 2021), another Transformer-based model with more layers than before. These algorithms were the first that were developed using EdNet data, coming from a popular English tutor app in Korea. That dataset is noteworthy for being an order of magnitude bigger - some 600K students, 72M responses, 16K exercises - than earlier datasets.
+:::
 
 ## Adding in more information: Process-BERT
 
@@ -264,11 +418,21 @@ Different colors are different skills
 
 -   Additional information leads to better performance
 
+::: notes
+<https://arxiv.org/pdf/2204.13607.pdf>
+
+This is meant to be a more general approach for time series data in education. Their model attempts to work on less-formatted data, first learning representations of the learning process from the data, then using those representations to predict learning outcomes. They worked with clickstream data from students completing a NAEP exam, so the data had events for (e.g.) opening the calculator, typing into an answer field, changing to a different question, etc.
+:::
+
 ## Curious methodological note
 
 -   Most DKT-family papers report large improvements over previous algorithms, including other DKT-family algorithms\
 
 -   Improvements that seem to mostly or entirely dissipate in the next paper
+
+::: notes
+This is true of some of the papers listed here. For example, Ghosh et al. (2020) fit SAKT on some of the same datasets as Pandey and Karypis (2019), but saw much worse results.
+:::
 
 ## Some reasons
 
@@ -279,6 +443,10 @@ Different colors are different skills
     -   Poor cross-validation benefits DKT-family algorithms more than other algorithms, because DKT-family fits more aggressively
 
 -   A lot of DKT-family papers fit their own hyperparameters but use past hyperparameters for other algorithms
+
+::: notes
+I’m still confused about some of the cases, though; sometimes the numbers don’t match for the same algorithm on the same dataset. This is not always discussed - another reason to look at good review papers, which we’ll talk about next.
+:::
 
 ## An evaluation
 
@@ -296,6 +464,12 @@ Different colors are different skills
 
     -   DKT-family algorithms reach peak performance faster than other algorithms (also seen in @zhang2021knowledge)
 
+::: notes
+<https://jedm.educationaldatamining.org/index.php/JEDM/article/view/451>
+
+This is a good paper. If you read one DKT-related paper from here, make it this one. They try a lot of algorithms on several datasets. They also fail to replicate the SAKT results and theorize that the reported numbers are erroneous.
+:::
+
 ## Another evaluation
 
 -   @schmucker2021assessing compares KT algorithms on four large datasets
@@ -306,9 +480,25 @@ Different colors are different skills
 
 -   Later DKT-family variants were outperformed by standard DKT on all datasets.
 
+::: notes
+<https://jedm.educationaldatamining.org/index.php/JEDM/article/view/541>
+
+“Large” = 100K+ students, 15M+ responses for all datasets.
+
+This paper comes from the same lab as the earlier Gervet et al., but focuses more on their feature-based approach.
+
+That last is interesting to me since I know they actually did the hyperparameters on everything.
+:::
+
 ## Next Frontier for DKT-family: Beyond Correctness
 
 -   Option Tracing @ghosh2021option extends output layer to predict which multiple choice item the student will select
+
+::: notes
+<https://arxiv.org/pdf/2104.09043.pdf>
+
+Works with large datasets. Doesn’t use a whole new algorithm, instead adjusts existing ones such as DKVMN to do this.
+:::
 
 ## Next Frontier for DKT-family: Beyond Correctness
 
@@ -318,6 +508,14 @@ Different colors are different skills
 
 -   In order to generate predicted student code which makes predicted specific errors
 
+::: notes
+<https://par.nsf.gov/servlets/purl/10419674>
+
+Of course, since this is a fine-tuned GPT-2, it takes a ridiculous amount of training data.
+
+The other interesting bit is that once you fine-tune this model, it might be able to make similar errors on unseen problems.
+:::
+
 ## DKT-family: work continues
 
 -   Dozens of recent papers trying to get better results by adjusting the deep learning framework in various ways 
@@ -326,6 +524,10 @@ Different colors are different skills
 
 -   As shown in @schmucker2022transferable, better results on some datasets do not always translate to better results on all datasets.
 
+::: notes
+\[Following the slide’s content\]
+:::
+
 ## Discussion 2
 
 -   Is the prediction of next-problem correctness the right thing to fit on?
@@ -333,6 +535,10 @@ Different colors are different skills
     -   Are there other options?
 
 -   How can you show that one DKT-family algorithm is better than another one?
+
+::: notes
+Option Tracing is fitting on the student’s actual option choice, which adds something.
+:::
 
 ## How to quickly evaluate a new deep learning KT algorithm
 
@@ -346,6 +552,12 @@ Different colors are different skills
 
     -   If there’s no overlap, or the numbers disagree, I’d give up on it.
 
+::: notes
+Since deep learning based knowledge tracing is moving so fast, it might be useful to know a few tips on how to quickly evaluate a new deep learning KT algorithm. 
+
+Ideally a good other paper.
+:::
+
 ## How to quickly evaluate a new deep learning KT algorithm
 
 -   If you actually want to use the algorithm yourself, I’d go a little deeper.
@@ -355,6 +567,10 @@ Different colors are different skills
 -   Try running it on one of the smaller Assistments datasets, making sure to use student-level cross-validation.
 
 -   One more note: Implementation performance will vary. Some implementations are much faster than others.
+
+::: notes
+\[Following the slide’s content\]
+:::
 
 ## Why use a DKT-family algorithm
 
@@ -368,6 +584,12 @@ Different colors are different skills
 
 -   Your dataset has students working through material in predefined sequences
 
+::: notes
+Finally, why use a DKT-family algorithm, and why not use one?
+
+That third one seems to be often violated in real-world datasets, but people rarely talk about skill-level prediction accuracy.
+:::
+
 ## Why not use a DKT-family algorithm
 
 -   You want interpretable parameters
@@ -377,3 +599,7 @@ Different colors are different skills
 -   You want to add new items without refitting the model.
 
 -   You want an algorithm with more thoroughly-understood and more consistent behavior.
+
+::: notes
+Why not use a DKT-family algorithm?
+:::

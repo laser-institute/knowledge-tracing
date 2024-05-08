@@ -1,0 +1,361 @@
+---
+title: "Module 1: Case Study"
+subtitle: "Bayesian Knowledge Tracing"
+author: "LASER Institute"
+date: today 
+format:
+  html:
+    toc: true
+    toc-depth: 4
+    toc-location: right
+theme:
+  light: simplex
+  dark: cyborg
+editor: visual
+jupyter: python3
+bibliography: lit/references.bib
+---
+
+## 1. Prepare
+
+The first KT case study is inspired by the work of @zambrano2024investigating, which analyzed the performance of the Bayesian Knowledge Tracing(BKT) model and carelessness detector on every demographic group in the sample.
+
+The primary aim of this case study is to gain some hands-on experience with essential Python packages and functions for Bayesian Knowledge Tracing. You will learn how to do the data wrangling, fit the model, and analyze the goodness of the model. @zambrano2024investigating utilized BKT brute-force grid search(BKT-BF, in Java) to fit the BKT model but you will use pyBKT(Python) here. pyBKT is easier to start with but slower in performance. Specifically, this case study will cover the following topics:
+
+1.  **Prepare**: Before analysis, you'll read a recent paper about BKT, learn about the current trend, and get introduced to the {pandas}, {sklearn}, and {pyBKT} packages for data wrangling and analyzing the BKT model.
+
+2.  **Fitting the model**: In the fitting section of the case study, you will learn basic techniques for fitting and evaluating a BKT model.
+
+3.  **Advanced Features**: You will explore a variant of the BKT model and an advanced feature called Roster in the pyBKT package.
+
+### 1a. Review the Research
+
+![](images/case-study-paper.png)
+
+[link to the full paper](https://learninganalytics.upenn.edu/ryanbaker/lak24-47-4.pdf)
+
+In this study, @zambrano2024investigating assessed the degree to which algorithmic biases are present in two learning analytics models: knowledge estimates based on Bayesian Knowledge Tracing (BKT) and carelessness detectors. Specifically, this analysis evaluated the model performance across demographic groups, compared performance across intersectional groups of these demographics, and explored models' transferability across unobserved demographics. Results show close to equal performance across these groups. Thus, these algorithms can be used fairly at scale.
+
+#### Research Questions
+
+The central goal of this research is to
+
+> investigate the degree to which algorithmic biases are present in two learning analytics models: Bayesian Knowledge Tracing (BKT) and carelessness detectors.
+
+#### Data Collection
+
+The data is from 5,856 students across 12 middle and high schools in a northeastern US city. The students used Carnegie Learning’s MATHia @ritter2007cognitive software for math instruction during the 2021-2022 academic years. The content includes multi-step questions, guiding students through predetermined content sequences. MATHia's structure closely aligns with the Bayesian Knowledge Tracing (BKT) algorithm.
+
+#### Analysis
+
+The knowledge estimate for specific skills was calculated using BKT. The authors fitted BKT parameters with brute-force grid search. Upper limits of 0.3 and 0.1 for the ’Guess’ and ’Slip’ parameters were adopted respectively to avoid model degeneracy and ensure the parameter values are aligned with conceptual meaning. Demographic characteristics are not taken into calculation directly when building the BKT model. However, sample sizes are not even across demographic groups so the parameters could be more representative of demographics with a larger number of students.
+
+The authors adopted a 4-fold student level cross-validation that was stratified by demographics and evaluated the model performance with AUC ROC. The max difference between AUC for the best and worst predicted group was also calculated.
+
+#### Key Findings
+
+As reported by @zambrano2024investigating in their findings section:
+
+> We found evidence that performance was close to equal across demographic groups, for these models, including intersectional categories, and tests where we held out entire demographic groups during model training (a test of model applicability to entirely new demographic groups), for carelessness.
+
+#### ❓Question
+
+Based on what you know about BKT and the context so far, what other research question(s) might you ask in this context that a knowledge inference perspective might be able to answer?
+
+Type a brief response in the space below:
+
+### 1b. Load Packages
+
+In this case study, you will not replicate the data analysis in @zambrano2024investigating. Instead, you will use the data from @baker2008developing to learn how to fit a BKT model. First, you will learn about the essential packages you will be using in this case study.
+
+**Packages**, sometimes called libraries, are shareable collections of Python code that can contain functions, data, and/or documentation and extend the functionality of Python. You can always check to see which Python packages that are not dependencies of other packages have already been installed and loaded into RStudio Cloud using the command `pip list` in the terminal.
+
+#### pyBKT 📦
+
+The {pyBKT} package [@badrinath2021pybkt] is a Python implementation of the Bayesian Knowledge Tracing algorithm and variants, estimating student cognitive mastery from problem-solving sequences [@badrinath2021pybkt].
+
+Click the green arrow in the right corner of the "code chunk" that follows to load the {pyBKT} library.
+
+```{python}
+from pyBKT.models import Model
+```
+
+#### pandas 📦
+
+![](img/pandas.svg){width="30%"}
+
+One package that you'll be using extensively is {pandas}. [Pandas](https://pandas.pydata.org) [@mckinney-proc-scipy-2010] is a powerful and flexible open-source data analysis and wrangling tool for Python. Python is also used widely by the data science community.
+
+Click the green arrow in the right corner of the "code chunk" that follows to load the {pandas} library introduced in LA Workflow labs.
+
+```{python}
+import pandas as pd
+```
+
+#### Numpy📦
+
+![](images/numpy.png){width="142"}
+
+NumPy (pronounced /ˈnʌmpaɪ/ NUM-py) is a library for the Python programming language, adding support for large, multi-dimensional arrays and matrices, along with a large collection of high-level mathematical functions to operate on these arrays.
+
+Click the green arrow in the right corner of the "code chunk" that follows to load **`numpy`**:
+
+```{python}
+import numpy as np
+```
+
+#### **👉 Your Turn** **⤵**
+
+Use the code chunk below to import the pyBKT package:
+
+```{python}
+# Your code starts here
+
+```
+
+## 2. WRANGLE
+
+This is an example of model fitting:
+
+![](images/fitting.png){width="370"}
+
+In this example, linear regression is used to fit the model and this is one of the simplest techniques. You are fitting the model (the line) to a dataset (the dots). The model will be on the form y = a x + b, and you’re trying to find the optimal values of a and b. You draw a line that best fits the existing data points on average. Once you’ve fitted the model, you can use it to predict outcomes (y-axis) based on inputs (x-axis).
+
+### 2a. Import the dataset
+
+To realize the goals, you'll need to first import the CSV files originally obtained from @baker2008developing This data set is a subset of the data set used in @baker2008developing. A description of each file is below along with a link to the original file:
+
+1.  [Example CSV dataset](https://learninganalytics.upenn.edu/ryanbaker/EDM2014/AsgnBA3-dataset.zip): This BKT dataset consists of 298 students' performance in 67 skills.
+
+2.  [Dataset description](https://learninganalytics.upenn.edu/ryanbaker/EDM2023/basic-asgn-4-CoreMethods-2023-v1.pdf): This file includes the descriptions of all the variables in this dataset.
+
+Let's use the `read_csv` function from the {pandas} package to import the `AsgnBA3-dataset.csv`.
+
+```{python}
+df = pd.read_csv("data/AsgnBA3-dataset.csv")
+df.head()
+```
+
+`df` here stands for "DataFrame" in the Pandas package. A Pandas DataFrame is a two-dimensional data structure, like a two-dimensional array, or a table with rows and columns.
+
+#### Remove unnecessary rows
+
+Before moving to the next step, use the code chunk below to filter out all the rows in which the firstattempt equals 1. Then filter out all the rows that represent the "CHOOSE-X-AXIS-QUANTITATIVE" skill.
+
+```{python}
+#just an example, this will not show in students' version
+df2 = df[df["firstattempt"]==1]
+df3 = df2[df2["KC"]=="CHOOSE-X-AXIS-QUANTITATIVE"]
+```
+
+#### Mapping the column names
+
+The accepted input formats in pyBKT are Pandas DataFrames and data files of type CSV (comma separated) or TSV (tab separated). pyBKT will automatically infer which delimiter to use in the case that it is passed a data file. Since column names mapping meaning to each field in the data (i.e. skill name, correct/incorrect) varies per data source, you may need to specify a mapping from your data file's column names to pyBKT's expected column names.
+
+Thus, you will need to create a column name mapping before training the model.
+
+```{python}
+defaults = {'order_id': 'ID', 'skill_name': 'KC', 'correct': 'right', 'user_id': 'Student'}
+```
+
+This is a dictionary. Dictionaries are used to store data values in key: value pairs. Dictionaries are written with curly brackets.
+
+The column names you need to specify are order_id, skill_name, correct, and user_id. You may refer to the document in 2a about the descriptions of all the variables.
+
+## 4. MODEL
+
+#### Fit the model
+
+pyBKT makes fitting the model very easy. It only takes 2 lines:
+
+```{python}
+model = Model(seed = 42)
+model.fit(data = df3, defaults = defaults)
+print(model.params())
+```
+
+First, use the `Model` function of the pyBKT package to create a BKT model.
+
+The `seed` parameter is used to initialize the random number generator. The random number generator needs a number to start with (a seed value), to be able to generate a random number.
+
+Then, use the `fit` method and input `df3` and `defaults`, the dataset you have cleaned so far, and the column name mapping.
+
+Let's run the code chunk below to see what are the best parameters.
+
+```{python}
+print(model.params())
+```
+
+#### RMSE and AUC
+
+pyBKT provides various ways to evaluate your BKT model, such as RMSE, and AUC.
+
+```{python}
+training_rmse = model.evaluate(data = df3) 
+training_auc = model.evaluate(data= df3, metric = 'auc') 
+
+print("Training RMSE: %f" % training_rmse) 
+print("Training AUC: %f" % training_auc)
+```
+
+The Root Mean Squared Error (RMSE) is one of the two main performance indicators for a regression model. It measures the average difference between values predicted by a model and the actual values. To put it simply, the lower, the better.
+
+AUC ROC is the area under the ROC curve. [@baker2024fixingEach] point out that the ROC curve shows the trade-off between the sensitivity and specificity of the model. When expanded to the entire curve, it shows this trade-off across all possible thresholds.
+
+#### Create your metrics
+
+You can even create your metrics, such as the sum of squared residuals (SSR), used by BKT-BF @baker2010contextual.
+
+```{python}
+def SSR(true_vals, pred_vals):   
+  return np.sum(np.square(true_vals - pred_vals))  
+training_SSR = model.evaluate(data= df3, metric = SSR) 
+print("Training SSR: %f" % training_SSR)
+```
+
+The sum of squared residuals (SSR) **measures the level of variance in the error term, or residuals, of a regression model**. The smaller the residual sum of squares, the better your model fits your data; the greater the residual sum of squares, the poorer your model fits your data.
+
+#### ❓Challenge
+
+Split the data into the training set and the testing set by 80%/20% and fit your BKT model on a skill. This skill should not be the same as the one above and the one in the ASSISTments activity. Then, evaluate the MAE and AUC by predicting the given test set and training set in the respective variables.
+
+```{python}
+#split the dataset by 80%/20%
+```
+
+### 3b. Conditionalizing and Cross-validation in BKT
+
+#### Conditionalize guess, slip, and learn on other factors
+
+You can also conditionalize guess, slip, or learn on other factors in the BKT model. You need to provide guess/slip/learn classes to use in fitting the model. Let's say you are going to fit each item's priors, learn rate, guess, and slip model with the data. You will need to first specify which column is the class.
+
+Use the code chunk below to test this variant:
+
+```{python}
+defaults_multi = {'order_id': 'ID', 'skill_name': 'KC', 'correct': 'right', 'user_id': 'Student', 'multigs': 'item', 'multilearn':'item'}
+model_multi = Model(seed=42, num_fits = 1)
+
+model_multi.fit(data= df3, multilearn = True, multigs= True, defaults = defaults_multi)
+print(model_multi.params())  
+```
+
+As you can see from the output, each item now has the guess, slip, and learn rate. You can conditionalize on lots of factors, depending on the dataset you collected.
+
+### ❓Challenge: Conditionalize slip on response time
+
+Another variant of BKT is to Conditionalize slip on whether the time taken was under 5 seconds. Thus, you will have two sets of the 4 classical parameters: one set is for those actions that took more than 5 seconds. The other set is for those actions that take less than 5 seconds. Please notice that this is not exactly great practice, but feasible with the data set you have.
+
+The current dataset only has response time. You will need to create another binary column for this challenge.
+
+#### Build a Column on whether the students took more than 5 seconds
+
+```{python}
+#This part is just an example and the code will not show to the participants  
+df4=df3 
+df4.insert(8, 'FiveSecs', 0)  
+def cal_5secs(row):    
+  if row['time'] > 5:         
+    return 1    
+  else:         
+    return 0  
+df4["FiveSecs"] = df4.apply(cal_5secs, axis=1)
+```
+
+#### Build your 5 seconds model
+
+```{python}
+#This part is just an example and the code will not show to the participants  
+defaults = {'order_id': 'ID', 'skill_name': 'KC', 'correct': 'right', 'user_id': 'Student', 'multigs': 'FiveSecs'}  
+model_5sec = Model(seed = 42, num_fits = 1) 
+model_5sec.fit(data= df4, multigs = True,defaults = defaults) 
+print(model_5sec.params())
+```
+
+### 3b Cross Validation
+
+pyBKT also allows you to easily use cross-validation.
+
+Cross-validation is a technique to evaluate the performance of a model on unseen data. The picture below shows how a 5-fold cross-validation works.
+
+![](images/cross-validation.png){width="432"}
+
+Cross-validation is offered as a blackbox function similar to a combination of fit and evaluate that accepts a particular number of folds, a seed, and a metric(either one of the 3 provided that are 'rmse', 'auc' or 'accuracy' or a custom Python function)
+
+```{python}
+model2 = Model(seed = 42, num_fits=1)
+cross_vali = model2.crossvalidate(data = df3, folds = 10, defaults = defaults, metric = 'auc')
+print(cross_vali)
+```
+
+### ❓Challenge: Cross-validation on your response time model
+
+Please use the code chunk below to conduct a 10-fold cross-validation on your response time model and answer the following question:
+
+Is the model better when conditionalizing slip on response time? Why?
+
+```{python}
+# It is just an example. It will not show in students' version
+cross_validation = model_5sec.crossvalidate(data = df4, folds = 10, defaults = defaults, metric = 'auc', multigs= True)
+print(cross_validation)
+```
+
+## 4. Other advanced features in pyBKT
+
+pyBKT also offers some other advanced features, such as Roster and Parameter Fixing.
+
+### 4a. Roster
+
+Roster is used to simulate the learning environment for a group of students learning any combination of individual skills.
+
+You need to first create a backend pyBKT model and fit it on the dataset.
+
+```{python}
+defaults_roster = {'order_id': 'ID', 'skill_name': 'KC', 'correct': 'right', 'user_id': 'Student'}
+model_roster = Model()
+model_roster.fit(data = df2, defaults = defaults_roster )
+```
+
+Then you can use the `Roster` to create a roster with two students and one skill.
+
+```{python}
+from pyBKT.models import *
+roster = Roster(students = ['Jack', 'Rachel'], skills = "VALUING-NUM-FEATURES", model = model_roster)
+```
+
+You can update Rachel's status by adding one or more responses to a particular skill. In this case, Rachel correctly answered one question. Then check Rachel's updated mastery state and probability.
+
+```{python}
+rachel_new_state = roster.update_state('VALUING-NUM-FEATURES', 'Rachel', 1)
+print("Rachel's mastery:", roster.get_state_type('VALUING-NUM-FEATURES', 'Rachel'))
+print("Rachel's probability of mastery:", roster.get_mastery_prob('VALUING-NUM-FEATURES', 'Rachel'))
+```
+
+### ❓Challenge
+
+Create a new roster on the model you fitted in section 2. If you add 3 consecutive correct answers to Rachel and 3 consecutive incorrect answers to Jack, will they master the skill or not? Use the code chunk below:
+
+```{python}
+
+```
+
+### 4b. Parameter Fixing
+
+Another advanced feature supported by pyBKT is parameter fixing, where you can fix one or more parameters and train the model conditioned on those fixed parameters. For example, you could fix the slip rate to 0.2
+
+```{python}
+model_fixedparam = Model()
+defaults = {'order_id': 'ID', 'skill_name': 'KC', 'correct': 'right', 'user_id': 'Student'}
+model_fixedparam.coef_ = {'CHOOSE-X-AXIS-QUANTITATIVE': {'slips': np.array([0.2])}}
+model_fixedparam.fit(data = df3, fixed=True, defaults = defaults)
+model_fixedparam.params()
+```
+
+### ❓Challenge
+
+Fix the slip rate to 0.3 and the guess rate to 0.2 when fitting your model, is the model getting better or worse?
+
+```{python}
+
+```
+
+## 5. COMMUNICATE

@@ -346,7 +346,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-notes="" class="quarto-title-block center">
+<section id="title-slide" data-notes="Today we are going to discuss memory algorithms." class="quarto-title-block center">
   <h1 class="title">Module 5: Memory Algorithms</h1>
   <p class="subtitle">KT Learning Lab 5: A Conceptual Overview</p>
 
@@ -357,7 +357,20 @@
 <section id="is-future-correctness-enough" class="slide level2">
 <h2>Is future correctness enough?</h2>
 <ul>
-<li>Up until this point we’ve been talking about predicting future correctness</li>
+<li><p>Up until this point we’ve been talking about predicting future correctness</p>
+<aside class="notes">
+<p>Up to this point, we’ve been talking about predicting future correctness. But is future correctness enough?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside></li>
 </ul>
 </section>
 <section id="but-what-if-you-forget-it-tomorrow" class="slide level2">
@@ -365,6 +378,23 @@
 <ul>
 <li>Another way to look at knowledge is – how long will you remember it?</li>
 </ul>
+<aside class="notes">
+<ul>
+<li><p>What if you forget about it tomorrow?&nbsp;</p></li>
+<li><p>What if you know it today and you can show it again in five minutes but tomorrow you’ll never remember it anymore?</p></li>
+<li><p>So another way to look at knowledge is — how long will you remember it?</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="relevant-for-all-knowledge" class="slide level2">
 <h2>Relevant for all knowledge</h2>
@@ -374,6 +404,19 @@
 <li><p>What is the capital of New York?</p></li>
 <li><p>Where are the Islands of Langerhans?</p></li>
 </ul>
+<aside class="notes">
+<p>This is relevant for all knowledge,</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="most-common-application-areas" class="slide level2">
 <h2>Most Common Application Areas</h2>
@@ -381,6 +424,31 @@
 <li><p>Flashcard apps</p></li>
 <li><p>Language learning apps</p></li>
 </ul>
+<aside class="notes">
+<aside class="notes">
+<p>but it’s mostly been studied in the context of memory for facts rather than skills.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="spacing-effect" class="slide level2">
 <h2>Spacing Effect</h2>
@@ -388,12 +456,42 @@
 <li><p>It has long been known that spaced practice (i.e.&nbsp;pausing between studying the same fact) is better than massed practice (i.e.&nbsp;cramming)</p></li>
 <li><p>Early adaptive systems implemented this behavior in simple ways <span class="citation" data-cites="leitner1972so">Leitner and Totter (<a href="#/references" role="doc-biblioref" onclick="">1972</a>)</span></p></li>
 </ul>
+<aside class="notes">
+<ul>
+<li><p>It’s long been known that spaced practice, or in other words, pausing between studying the same fact, is better than massed practice (i.e.&nbsp;cramming for an exam).&nbsp;</p></li>
+<li><p>Early adaptive systems like Leitner’s flashcards (1972) implemented this behavior in simple ways.</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="act-r-memory-equations-pavlik2005practice" class="slide level2">
 <h2>ACT-R Memory Equations <span class="citation" data-cites="pavlik2005practice">Pavlik Jr and Anderson (<a href="#/references" role="doc-biblioref" onclick="">2005</a>)</span></h2>
 <ul>
 <li>Memory duration can be understood in terms of memory strength (referred to as activation)</li>
 </ul>
+<aside class="notes">
+<p>We start our discussion of algorithms for modeling memory with the ACT-R Memory Equations.</p>
+<p>In Pavlik Jr &amp; Anderson’s (2005) ACT-R memory equations, memory duration can be understood in terms of memory strength, which is sometimes referred to as activation.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="act-r-memory-equations-pavlik2005practice-1" class="slide level2">
 <h2>ACT-R Memory Equations <span class="citation" data-cites="pavlik2005practice">Pavlik Jr and Anderson (<a href="#/references" role="doc-biblioref" onclick="">2005</a>)</span></h2>
@@ -407,6 +505,25 @@ P(m) = \frac{1}{1+e^{\frac{\tau-m}{s}}}
 <li><p>Where m = activation strength of current fact t = threshold parameter for how hard it is to remember s is noise parameter for how sensitive memory is to changes in activation</p></li>
 <li><p>Note logistic function (like PFA)</p></li>
 </ul>
+<aside class="notes">
+<p>The formula for the probability of remembering in ACT-R is based on three parameters:</p>
+<ol type="1">
+<li><p>m, the activation strength of the current fact</p></li>
+<li><p>tau, the threshold parameter for how hard it is to remember</p></li>
+<li><p>s, the noise parameter for how sensitive memory is to changes in activation. In other words, when you re-encounter a fact,&nbsp; how much better does your memory get?&nbsp;</p></li>
+</ol>
+<p>*Note here, that this was not building off PFA, PFA was building off of this.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="act-r-memory-equations-pavlik2005practice-2" class="slide level2">
 <h2>ACT-R Memory Equations <span class="citation" data-cites="pavlik2005practice">Pavlik Jr and Anderson (<a href="#/references" role="doc-biblioref" onclick="">2005</a>)</span></h2>
@@ -421,6 +538,21 @@ m_{n}(t_{1..n}) = \ln ()\sum_i^n t_{i}^{-d}
 <li><p>Each 𝑡_𝑖 represents how long ago the learner encountered the fact for the i-th time</p></li>
 <li><p>The decay parameter d represents the speed of forgetting under exponential decay</p></li>
 </ul>
+<aside class="notes">
+<p>The formula for the activation is represented by this formula, where we have a sequence of n cases where the learner encountered the fact. Each t of i represents how long ago the learner encountered the fact&nbsp;&nbsp;</p>
+<p>for the i-th time. And the decay parameter d represents the speed of forgetting under exponential decay.&nbsp;</p>
+<p>So in other words, based on the parameters of this model, we can kind of infer — how much will your memory decay over time, and how rapidly it will decay over time.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="act-r-memory-equations-pavlik2005practice-3" class="slide level2">
 <h2>ACT-R Memory Equations <span class="citation" data-cites="pavlik2005practice">Pavlik Jr and Anderson (<a href="#/references" role="doc-biblioref" onclick="">2005</a>)</span></h2>
@@ -430,6 +562,23 @@ m_{n}(t_{1..n}) = \ln ()\sum_i^n t_{i}^{-d}
 <li><p>More time between practices = better memory</p></li>
 <li><p>Most efficient learning comes from dense practice followed by expanding amounts of time in between practices <span class="citation" data-cites="pavlik2008using">Pavlik and Anderson (<a href="#/references" role="doc-biblioref" onclick="">2008</a>)</span></p></li>
 </ul>
+<aside class="notes">
+<p>There are a couple of implications for the ACT-R memory equations:</p>
+<ol type="1">
+<li><p>First, more practice equals better memory. That’s an implication here, and it’s kind of true in the real world. You’re probably more likely to remember something if you encounter it more</p></li>
+<li><p>Also, more time between practices equals better memory. That’s true of almost all the memory models. But one kind of interesting implication of Pavlik Jr &amp; Anderson’s model (2005) is that the most efficient learning comes from dense practice followed by expanding amounts of time in between practices (Pavlik Jr &amp; Anderson, 2008).&nbsp;</p></li>
+</ol>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="mcm-mozer2009predictingto" class="slide level2">
 <h2>MCM <span class="citation" data-cites="Mozer2009PredictingTO">Michael C. Mozer et al. (<a href="#/references" role="doc-biblioref" onclick="">2009</a>)</span></h2>
@@ -439,6 +588,22 @@ m_{n}(t_{1..n}) = \ln ()\sum_i^n t_{i}^{-d}
 <li><p>Knowledge strength (and therefore probability of remembering) is a function of the sum of the traces’ actual contributions, divided by the product of their potential contributions</p></li>
 <li><p>Power function is estimated as a combination of exponential functions</p></li>
 </ul>
+<aside class="notes">
+<p>A more recent competitor to ACT-R memory equations is MCM by Mozer et al., (2009) and his colleagues. This model postulates that the decay speed drops, the more times the facts are encountered. So in ACT-R, the decay speed is constant whether you’ve encountered something one time or a million times.&nbsp;</p>
+<p>But in MCM, the more times you’ve encountered a fact, the slower it is to decay.&nbsp;<br>
+</p>
+<p>MCM is represented by a functionally complex model where knowledge strength, and therefore the probability of remembering, is a function of the sum of the traces’ actual contributions divided by the product of their potential contributions. A power function is estimated as a combination of exponential functions. Each encounter with the knowledge has an exponential function for decay, but it turns out to sum up to a power function.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="dash-mozer2016predicting" class="slide level2">
 <h2>DASH <span class="citation" data-cites="mozer2016predicting">Michael C. Mozer and Lindsey (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span></h2>
@@ -446,6 +611,24 @@ m_{n}(t_{1..n}) = \ln ()\sum_i^n t_{i}^{-d}
 <li><p>DASH Extends previous approaches to also include item difficulty and latent student ability</p></li>
 <li><p>Can use either MCM or ACT-R as its internal representation of how memory decays over time</p></li>
 </ul>
+<aside class="notes">
+<p>Building on that, Mozer &amp; Lindsay (2016) introduced the DASH framework:&nbsp;</p>
+<ul>
+<li><p>Which extends previous approaches to also include item difficulty and latent student ability</p></li>
+<li><p>DASH has a neat feature. It can use either MCM or ACT-R or other frameworks as its internal representation of how memory decays over time</p></li>
+<li><p>So whether or not you like ACT-R or MCM better, you can use DASH to also include item difficulty and latent student ability in your estimate of student forgetting and memory over time</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="duolingo-settles2016trainable" class="slide level2">
 <h2>Duolingo <span class="citation" data-cites="settles2016trainable">Settles and Meeder (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span></h2>
@@ -453,6 +636,19 @@ m_{n}(t_{1..n}) = \ln ()\sum_i^n t_{i}^{-d}
 <li><p>Fits regression model to predict both recall and estimated half-life of memory (based on lag time)</p></li>
 <li><p>Based on estimate of exponential decay of memory</p></li>
 </ul>
+<aside class="notes">
+<p>Also very recently, Duolingo — fits a regression model to predict both the recall and the estimated half-life of memory based on the lag time. It’s based on an estimate of the exponential decay of memory.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="duolingo-settles2016trainable-1" class="slide level2">
 <h2>Duolingo <span class="citation" data-cites="settles2016trainable">Settles and Meeder (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span></h2>
@@ -465,6 +661,23 @@ m_{n}(t_{1..n}) = \ln ()\sum_i^n t_{i}^{-d}
 <li><p>Total number of times student has failed to recalled the word Word difficulty</p></li>
 </ul></li>
 </ul>
+<aside class="notes">
+<p>But Duolingo does this calculation (Settles &amp; Meeder, 2016):</p>
+<ul>
+<li><p>Not based on the kind of complex algorithms that are recursive or iterative in nature like seen in Pavlik or Mozer, but instead uses a feature set including the time since the word last seen, the total number of times the student seen the word, total number of times the student’s correctly recalled the word or failed to recall the word, and the word difficulty</p></li>
+<li><p>So it tries to capture some of the same ideas as DASH in a formulation that is quicker to implement, and quicker to run in real-time</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="another-key-memory-phenomenon" class="slide level2">
 <h2>Another Key Memory Phenomenon</h2>
@@ -475,12 +688,38 @@ m_{n}(t_{1..n}) = \ln ()\sum_i^n t_{i}^{-d}
 <li><p><span class="citation" data-cites="ma2023each">Ma et al. (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span> build a DKT-family algorithm for memory that uses associations between items along these lines</p></li>
 </ul></li>
 </ul>
+<aside class="notes">
+<p>Following slides content</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="and-of-course" class="slide level2">
 <h2>And of course…</h2>
 <ul>
 <li>Remember what we talked about earlier this week on integrating time into DKT-family algorithms and LKT-family algorithms</li>
 </ul>
+<aside class="notes">
+<p>Following slides content</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="when-to-use-memory-models" class="slide level2">
 <h2>When to use memory models</h2>
@@ -496,6 +735,19 @@ m_{n}(t_{1..n}) = \ln ()\sum_i^n t_{i}^{-d}
 <li>Many algorithms don’t have item-specific parameters at all</li>
 </ul></li>
 </ul>
+<aside class="notes">
+<p>Following slides content</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="questions-comments" class="slide level2">
 <h2>Questions? Comments?</h2>

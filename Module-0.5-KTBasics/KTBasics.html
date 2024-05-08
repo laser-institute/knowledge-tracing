@@ -346,7 +346,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-notes="Hi, everyone, welcome to to the lecture on Bayesian Knowledge Tracing, a method for knowledge inference." class="quarto-title-block center">
+<section id="title-slide" data-notes="Hi, today we are going to discuss the basic idea of knowledge tracing." class="quarto-title-block center">
   <h1 class="title">Module 0.5 Knowledge Tracing Basics</h1>
   <p class="subtitle">Introduction</p>
 
@@ -359,6 +359,19 @@
 <ul>
 <li>Measuring what a student knows at a specific time</li>
 </ul>
+<aside class="notes">
+<p>The goal of knowledge tracing is to measure what a student knows at a specific time.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="goal-of-knowledge-tracing" class="slide level2">
 <h2>Goal of Knowledge Tracing</h2>
@@ -366,6 +379,19 @@
 <li><p>Measuring what a student knows at a specific time</p></li>
 <li><p>Measuring what relevant knowledge components a student knows at a specific time</p></li>
 </ul>
+<aside class="notes">
+<p>This is usually operationalized as measuring what relevant knowledge components the student knows at a specific time.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="knowledge-component-kc" class="slide level2">
 <h2>Knowledge Component (KC)</h2>
@@ -378,6 +404,27 @@
 <li><p>Schema</p></li>
 <li><p><a href="http://www.learnlab.org/research/wiki/index.php/Knowledge_component" class="uri">http://www.learnlab.org/research/wiki/index.php/Knowledge_component</a></p></li>
 </ul>
+<aside class="notes">
+<p>A knowledge component is anything a student can know that’s meaningful to the current learning situation, including:</p>
+<ul>
+<li><p>Skill</p></li>
+<li><p>Fact</p></li>
+<li><p>Concept</p></li>
+<li><p>Principle</p></li>
+<li><p>Schema</p></li>
+<li><p>Anything that a student can know</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="knowledge-component" class="slide level2">
 <h2>Knowledge Component</h2>
@@ -388,6 +435,27 @@
 <li><p>Concept: Identifying a simile</p></li>
 <li><p><a href="http://www.learnlab.org/research/wiki/index.php/Knowledge_component" class="uri">http://www.learnlab.org/research/wiki/index.php/Knowledge_component</a></p></li>
 </ul>
+<aside class="notes">
+<p>To give an example of what these are:</p>
+<ul>
+<li><p>Skills are something you can actually do. So the ability to subtract two fractions is a skill. It’s usually characterized by — if you get some of the items right, you’re expected to get all of them right. And if you get some of the items wrong, you’re expected to get all of them wrong. In other words, they’re kind of demonstrations of ability that are highly correlated to each other</p></li>
+<li><p>A fact is a single piece of knowledge like the capital of Germany is Berlin</p></li>
+</ul>
+<!-- -->
+<ul>
+<li>A concept is a relationship between facts or structure or a schema of knowledge</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="why-is-it-useful-to-measure-student-knowledge" class="slide level2">
 <h2>Why is it useful to measure student knowledge?</h2>
@@ -397,6 +465,27 @@
 <li><p>If you can measure it, you can inform instructors (and other stakeholders) about it</p></li>
 <li><p>If you can measure it, you can make automated pedagogical decisions</p></li>
 </ul>
+<aside class="notes">
+<p>So why is it useful to measure student knowledge? Enhancing student knowledge is the primary goal of a lot of education.</p>
+<ul>
+<li><p>If you can measure it, you know whether you’re making it better</p></li>
+<li><p>If you can measure it, you can inform instructors and other stakeholders about it</p></li>
+<li><p>If you can measure it, you can make automated pedagogical decisions</p>
+<ul>
+<li>For example, mastery learning, where the system only moves students on when they’ve demonstrated the skill</li>
+</ul></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="different-than-measuring-performance" class="slide level2">
 <h2>Different than measuring performance</h2>
@@ -404,6 +493,19 @@
 <li><p>You can use prediction models to determine if a student will do well on a future test</p></li>
 <li><p>You can use prediction models to infer if a student’s performance right now is associated with successfully demonstrating a skill</p></li>
 </ul>
+<aside class="notes">
+<p>Now, measuring knowledge is different from measuring performance. You can use prediction models, for example, to determine if a student will do well on a future test. And you can use prediction models to infer if a student’s performance right now is associated with successfully demonstrating the skill.&nbsp;</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="different-than-measuring-performance-1" class="slide level2">
 <h2>Different than measuring performance</h2>
@@ -415,6 +517,29 @@
 <li><p>Maybe they appeared to not demonstrate skill despite having it (“slip”)</p></li>
 </ul></li>
 </ul>
+<aside class="notes">
+<p>But that’s not the same as knowing whether the student has the skill, which is not directly observable. Because no matter how good your model is, maybe the student appeared to demonstrate skill without having it.&nbsp;</p>
+<ul>
+<li><p>That’s called a guess. It comes from the idea of guessing on multiple-choice items</p>
+<ul>
+<li>But in knowledge tracing, it’s often used to mean any case where the student doesn’t know the skill and somehow miraculously gets the right answer</li>
+</ul></li>
+<li><p>Alternatively, maybe the student appeared to not demonstrate the skill despite having it</p>
+<ul>
+<li>This is called a slip. This happens when the student knows how to do this. But something about the given situation, their given state, causes them not to</li>
+</ul></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="how-do-we-get-at-latent-knowledge" class="slide level2">
 <h2>How do we get at latent knowledge?</h2>
@@ -428,12 +553,47 @@
 <li>More information than performance at one specific moment</li>
 </ul></li>
 </ul>
+<aside class="notes">
+<p>How do we get at latent knowledge?&nbsp;</p>
+<ul>
+<li><p>We can’t measure it directly</p></li>
+<li><p>We can’t look directly into the brain, yet</p></li>
+<li><p>But we can look at student’s performance</p>
+<ul>
+<li>More specifically, we can look at a student’s performance over time, which gives us more information than performance at one specific moment</li>
+</ul></li>
+</ul>
+<p>In other words, if a student demonstrates skill once or fails to demonstrate skill once, that could be a guess or slip. But if they demonstrate it six times in a row, or twice right, once wrong, twice right, they probably know it.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="not-trivial" class="slide level2">
 <h2>Not trivial…</h2>
 <ul>
 <li>This is a research problem with a long history…</li>
 </ul>
+<aside class="notes">
+<p>This seems like it might be kind of simple. It’s in fact not trivial. It’s a research problem with a long history.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="this-week" class="slide level2">
 <h2>This week</h2>
@@ -445,6 +605,19 @@
 <li><p>Different mathematical methods</p></li>
 </ul></li>
 </ul>
+<aside class="notes">
+<p>This week, we’ll cover some of the key approaches for knowledge tracing within the EDM. In doing so, we’ll differentiate knowledge tracing from measuring learning from tests. These two methods have different goals and involve different mathematical methods.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="whats-the-difference" class="slide level2">
 <h2>What’s the difference?</h2>
@@ -459,6 +632,25 @@
 <li><p>Often the measurements themselves are changing learning</p></li>
 </ul></li>
 </ul>
+<aside class="notes">
+<p>What’s the difference? They both involve measuring knowledge.</p>
+<ul>
+<li><p>The key is that in a test, tests are designed so that the student’s knowledge state does not change while their knowledge is being measured</p></li>
+<li><p>By contrast, in digital learning platforms, the learning is inherently changing while it’s being measured</p></li>
+<li><p>We want students to learn, but we also want to know what they know while they’re learning.</p>
+<p>Often the very act of measurement is designed to change the knowledge state. In other words, for example, when you tell a student they’re wrong, that’s information that can help them learn. If you give them hints, if they ask for hints, or if you give them other scaffolds, all that changes their knowledge state. Our challenge, a little trickier than just a test, is to assess what they know while their knowledge is actually changing.</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="contexts-where-knowledge-tracing-is-used" class="slide level2">
 <h2>Contexts where knowledge tracing is used</h2>
@@ -479,6 +671,19 @@
 </div>
 </div></li>
 </ul>
+<aside class="notes">
+<p>There are a lot of cases where knowledge tracing is used. Perhaps the most common case is intelligent tutoring systems, also called adaptive learning systems. In these systems, the student is scaffolded and supported in the process of learning. As part of that, we want to know what they know so the system can appropriately change its behavior.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="contexts-where-knowledge-tracing-is-used-1" class="slide level2">
 <h2>Contexts where knowledge tracing is used</h2>
@@ -498,6 +703,24 @@
 </div>
 </div></li>
 </ul>
+<aside class="notes">
+<p>Increasingly, knowledge tracing is also used in educational games. Here are a few examples:</p>
+<ul>
+<li><p>Impulse, they measured conceptual knowledge from student gameplay</p></li>
+<li><p>In Zoombinis, they measured a student’s computational thinking strategies and whether they were able to reliably demonstrate those computational thinking strategies</p></li>
+<li><p>In Shadowspect, geometry knowledge and spatial reasoning skill is measured</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="contexts-where-knowledge-tracing-is-used-2" class="slide level2">
 <h2>Contexts where knowledge tracing is used</h2>
@@ -512,6 +735,19 @@
 </div>
 </div></li>
 </ul>
+<aside class="notes">
+<p>Knowledge tracing is also used in flashcard apps like Anki that decide which flashcard to give the student next based on optimizing their memory.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="contexts-where-knowledge-tracing-is-used-3" class="slide level2">
 <h2>Contexts where knowledge tracing is used</h2>
@@ -527,6 +763,19 @@
 </div>
 </div></li>
 </ul>
+<aside class="notes">
+<p>Knowledge tracing is used in more sophisticated language learning apps like Duolingo, Alelo, and other systems that do more than simply just present flashcards of vocabulary.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="contexts-where-knowledge-tracing-is-used-4" class="slide level2">
 <h2>Contexts where knowledge tracing is used</h2>
@@ -534,6 +783,24 @@
 <li><p>Real-world learning</p></li>
 <li><p><span class="citation" data-cites="kang2022detecting">Kang et al. (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span> use KT to study graduate students learning research skills over several years</p></li>
 </ul>
+<aside class="notes">
+<p>Occasionally, knowledge tracing is used in real-world learning:</p>
+<ul>
+<li><p>For example, Kang and her colleagues use knowledge tracing to study graduate students’ learning research skills over the course of several years</p></li>
+<li><p>They gave annual assessments of research skills, and they not only looked at what research skills students could demonstrate over time but also how those skills were interconnected</p></li>
+<li><p>In other words, did learning skill A lead to then learning skill B?</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="purposes-of-knowledge-tracing" class="slide level2">
 <h2>Purposes of knowledge tracing</h2>
@@ -551,6 +818,22 @@
 </div>
 </div>
 </div>
+<aside class="notes">
+<p>Knowledge tracing is used in these various contexts for a number of purposes, including:</p>
+<ul>
+<li>Reports for teachers about what skills students know</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="purposes-of-knowledge-tracing-1" class="slide level2">
 <h2>Purposes of knowledge tracing</h2>
@@ -558,12 +841,40 @@
 <li><p>Reports for students</p></li>
 <li><p><img data-src="images/cognitivetutor.png"></p></li>
 </ul>
+<aside class="notes">
+<ul>
+<li>Reports for students about what skills they know and what progress they are making</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="purposes-of-knowledge-tracing-2" class="slide level2">
 <h2>Purposes of knowledge tracing</h2>
 <ul>
 <li>Mastery learning</li>
 </ul>
+<aside class="notes">
+<p>It’s used in an automated fashion for mastery learning, among other adaptive interventions, but mastery learning is by far the most common. Again, that’s where a student continues to work on a subject until they’ve mastered it.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="purposes-of-knowledge-tracing-3" class="slide level2">
 <h2>Purposes of knowledge tracing</h2>
@@ -578,6 +889,32 @@
 <li><p>As predictors of external knowledge measures (such as standardized examinations)</p></li>
 </ul></li>
 </ul>
+<aside class="notes">
+<p>They’re used in various analyses, sometimes called discovery of model analyses. We are going to discuss this in detail throughout the courses, but there are a lot of examples of this. Knowledge tracing models are used, for example:</p>
+<ul>
+<li><p>To find content that’s too hard or too easy</p></li>
+<li><p>To find content with other bad properties such as really high guess or slip rates</p></li>
+<li><p>To study the effectiveness of hints or learning materials. For example, if a student watches a specific video, does their learning shoot up?&nbsp;</p></li>
+<li><p>Knowledge tracing models are used as components in various other kinds of models</p>
+<ul>
+<li>learner disengagement, affect, and self-regulated learning</li>
+</ul></li>
+</ul>
+<!-- -->
+<ul>
+<li>Knowledge tracing models have been used in multiple systems as predictors of external knowledge measures, most notably where they have been shown in some cases to predict standardized examinations well enough that it seems possible we could dispense with some of the assessment tools that pull students entirely out of learning</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="what-applications-are-you-interested-in" class="slide level2">
 <h2>What applications are you interested in?</h2>
@@ -585,12 +922,38 @@
 <li><p>How do you envision possibly using KT?</p></li>
 <li><p>What kind of contexts would you be interested in using KT in?</p></li>
 </ul>
+<aside class="notes">
+<p>Let’s take a moment to go around the room and discuss what applications you’re interested in. How do you envision possibly using KT? What kind of context would you be interested in using knowledge tracing in?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="first-up" class="slide level2">
 <h2>First Up</h2>
 <ul>
 <li>Bayesian Knowledge Tracing</li>
 </ul>
+<aside class="notes">
+<p>The first topic we’ll talk about in the span of various knowledge tracing algorithms is — Bayesian Knowledge Tracing. The first widely used knowledge tracing algorithm and still one that’s probably the most popular in the industry.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>

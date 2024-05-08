@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="LASER Institute">
+<meta name="dcterms.date" content="2024-05-07">
+
+<title>Module 1: Case Study</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="kt-1-case-study_files/libs/clipboard/clipboard.min.js"></script>
+<script src="kt-1-case-study_files/libs/quarto-html/quarto.js"></script>
+<script src="kt-1-case-study_files/libs/quarto-html/popper.min.js"></script>
+<script src="kt-1-case-study_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="kt-1-case-study_files/libs/quarto-html/anchor.min.js"></script>
+<link href="kt-1-case-study_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="kt-1-case-study_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="kt-1-case-study_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="kt-1-case-study_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="kt-1-case-study_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="kt-1-case-study_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="kt-1-case-study_files/libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#prepare" id="toc-prepare" class="nav-link active" data-scroll-target="#prepare">1. Prepare</a>
+  <ul>
+  <li><a href="#a.-review-the-research" id="toc-a.-review-the-research" class="nav-link" data-scroll-target="#a.-review-the-research">1a. Review the Research</a>
+  <ul class="collapse">
+  <li><a href="#research-questions" id="toc-research-questions" class="nav-link" data-scroll-target="#research-questions">Research Questions</a></li>
+  <li><a href="#data-collection" id="toc-data-collection" class="nav-link" data-scroll-target="#data-collection">Data Collection</a></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
+  <li><a href="#key-findings" id="toc-key-findings" class="nav-link" data-scroll-target="#key-findings">Key Findings</a></li>
+  <li><a href="#question" id="toc-question" class="nav-link" data-scroll-target="#question">❓Question</a></li>
+  </ul></li>
+  <li><a href="#b.-load-packages" id="toc-b.-load-packages" class="nav-link" data-scroll-target="#b.-load-packages">1b. Load Packages</a>
+  <ul class="collapse">
+  <li><a href="#pybkt" id="toc-pybkt" class="nav-link" data-scroll-target="#pybkt">pyBKT 📦</a></li>
+  <li><a href="#pandas" id="toc-pandas" class="nav-link" data-scroll-target="#pandas">pandas 📦</a></li>
+  <li><a href="#numpy" id="toc-numpy" class="nav-link" data-scroll-target="#numpy">Numpy📦</a></li>
+  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn"><strong>👉 Your Turn</strong> <strong>⤵</strong></a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#fitting-the-model" id="toc-fitting-the-model" class="nav-link" data-scroll-target="#fitting-the-model">2. Fitting the model</a>
+  <ul>
+  <li><a href="#a.-import-the-dataset" id="toc-a.-import-the-dataset" class="nav-link" data-scroll-target="#a.-import-the-dataset">2a. Import the dataset</a>
+  <ul class="collapse">
+  <li><a href="#remove-unnecessary-rows" id="toc-remove-unnecessary-rows" class="nav-link" data-scroll-target="#remove-unnecessary-rows">Remove unnecessary rows</a></li>
+  </ul></li>
+  <li><a href="#b.-fit-the-model" id="toc-b.-fit-the-model" class="nav-link" data-scroll-target="#b.-fit-the-model">2b. Fit the model</a>
+  <ul class="collapse">
+  <li><a href="#mapping-the-column-names" id="toc-mapping-the-column-names" class="nav-link" data-scroll-target="#mapping-the-column-names">Mapping the column names</a></li>
+  <li><a href="#fit-the-model" id="toc-fit-the-model" class="nav-link" data-scroll-target="#fit-the-model">Fit the model</a></li>
+  <li><a href="#rmse-and-auc" id="toc-rmse-and-auc" class="nav-link" data-scroll-target="#rmse-and-auc">RMSE and AUC</a></li>
+  <li><a href="#create-your-metrics" id="toc-create-your-metrics" class="nav-link" data-scroll-target="#create-your-metrics">Create your metrics</a></li>
+  <li><a href="#challenge" id="toc-challenge" class="nav-link" data-scroll-target="#challenge">❓Challenge</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#conditionalizing-and-cross-validation-in-bkt" id="toc-conditionalizing-and-cross-validation-in-bkt" class="nav-link" data-scroll-target="#conditionalizing-and-cross-validation-in-bkt">3. Conditionalizing and Cross-validation in BKT</a>
+  <ul>
+  <li><a href="#a.-conditionalize-guess-slip-and-learn-on-other-factors" id="toc-a.-conditionalize-guess-slip-and-learn-on-other-factors" class="nav-link" data-scroll-target="#a.-conditionalize-guess-slip-and-learn-on-other-factors">3a. Conditionalize guess, slip, and learn on other factors</a></li>
+  <li><a href="#challenge-conditionalize-slip-on-response-time" id="toc-challenge-conditionalize-slip-on-response-time" class="nav-link" data-scroll-target="#challenge-conditionalize-slip-on-response-time">❓Challenge: Conditionalize slip on response time</a>
+  <ul class="collapse">
+  <li><a href="#build-a-column-on-whether-the-students-took-more-than-5-seconds" id="toc-build-a-column-on-whether-the-students-took-more-than-5-seconds" class="nav-link" data-scroll-target="#build-a-column-on-whether-the-students-took-more-than-5-seconds">Build a Column on whether the students took more than 5 seconds</a></li>
+  <li><a href="#build-your-5-seconds-model" id="toc-build-your-5-seconds-model" class="nav-link" data-scroll-target="#build-your-5-seconds-model">Build your 5 seconds model</a></li>
+  </ul></li>
+  <li><a href="#b-cross-validation" id="toc-b-cross-validation" class="nav-link" data-scroll-target="#b-cross-validation">3b Cross Validation</a></li>
+  <li><a href="#challenge-cross-validation-on-your-response-time-model" id="toc-challenge-cross-validation-on-your-response-time-model" class="nav-link" data-scroll-target="#challenge-cross-validation-on-your-response-time-model">❓Challenge: Cross-validation on your response time model</a></li>
+  </ul></li>
+  <li><a href="#other-advanced-features-in-pybkt" id="toc-other-advanced-features-in-pybkt" class="nav-link" data-scroll-target="#other-advanced-features-in-pybkt">4. Other advanced features in pyBKT</a>
+  <ul>
+  <li><a href="#a.-roster" id="toc-a.-roster" class="nav-link" data-scroll-target="#a.-roster">4a. Roster</a></li>
+  <li><a href="#challenge-1" id="toc-challenge-1" class="nav-link" data-scroll-target="#challenge-1">❓Challenge</a></li>
+  <li><a href="#b.-parameter-fixing" id="toc-b.-parameter-fixing" class="nav-link" data-scroll-target="#b.-parameter-fixing">4b. Parameter Fixing</a></li>
+  <li><a href="#challenge-2" id="toc-challenge-2" class="nav-link" data-scroll-target="#challenge-2">❓Challenge</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Module 1: Case Study</h1>
+<p class="subtitle lead">Bayesian Knowledge Tracing</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>LASER Institute </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 7, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="prepare" class="level2">
+<h2 class="anchored" data-anchor-id="prepare">1. Prepare</h2>
+<p>The first KT case study is inspired by the work of <span class="citation" data-cites="zambrano2024investigating">Zambrano, Zhang, and Baker (<a href="#ref-zambrano2024investigating" role="doc-biblioref">2024</a>)</span>, which analyzed the performance of the Bayesian Knowledge Tracing(BKT) model and carelessness detector on every demographic group in the sample.</p>
+<p>The primary aim of this case study is to gain some hands-on experience with essential Python packages and functions for Bayesian Knowledge Tracing. You will learn how to do the data wrangling, fit the model, and analyze the goodness of the model. <span class="citation" data-cites="zambrano2024investigating">Zambrano, Zhang, and Baker (<a href="#ref-zambrano2024investigating" role="doc-biblioref">2024</a>)</span> utilized BKT brute-force grid search(BKT-BF, in Java) to fit the BKT model but you will use pyBKT(Python) here. pyBKT is easier to start with but slower in performance. Specifically, this case study will cover the following topics:</p>
+<ol type="1">
+<li><p><strong>Prepare</strong>: Before analysis, you’ll read a recent paper about BKT, learn about the current trend, and get introduced to the {pandas}, {sklearn}, and {pyBKT} packages for data wrangling and analyzing the BKT model.</p></li>
+<li><p><strong>Fitting the model</strong>: In the fitting section of the case study, you will learn basic techniques for fitting and evaluating a BKT model.</p></li>
+<li><p><strong>Advanced Features</strong>: You will explore a variant of the BKT model and an advanced feature called Roster in the pyBKT package.</p></li>
+</ol>
+<section id="a.-review-the-research" class="level3">
+<h3 class="anchored" data-anchor-id="a.-review-the-research">1a. Review the Research</h3>
+<p><img src="images/case-study-paper.png" class="img-fluid"></p>
+<p><a href="https://learninganalytics.upenn.edu/ryanbaker/lak24-47-4.pdf">link to the full paper</a></p>
+<p>In this study, <span class="citation" data-cites="zambrano2024investigating">Zambrano, Zhang, and Baker (<a href="#ref-zambrano2024investigating" role="doc-biblioref">2024</a>)</span> assessed the degree to which algorithmic biases are present in two learning analytics models: knowledge estimates based on Bayesian Knowledge Tracing (BKT) and carelessness detectors. Specifically, this analysis evaluated the model performance across demographic groups, compared performance across intersectional groups of these demographics, and explored models’ transferability across unobserved demographics. Results show close to equal performance across these groups. Thus, these algorithms can be used fairly at scale.</p>
+<section id="research-questions" class="level4">
+<h4 class="anchored" data-anchor-id="research-questions">Research Questions</h4>
+<p>The central goal of this research is to</p>
+<blockquote class="blockquote">
+<p>investigate the degree to which algorithmic biases are present in two learning analytics models: Bayesian Knowledge Tracing (BKT) and carelessness detectors.</p>
+</blockquote>
+</section>
+<section id="data-collection" class="level4">
+<h4 class="anchored" data-anchor-id="data-collection">Data Collection</h4>
+<p>The data is from 5,856 students across 12 middle and high schools in a northeastern US city. The students used Carnegie Learning’s MATHia <span class="citation" data-cites="ritter2007cognitive">Ritter et al. (<a href="#ref-ritter2007cognitive" role="doc-biblioref">2007</a>)</span> software for math instruction during the 2021-2022 academic years. The content includes multi-step questions, guiding students through predetermined content sequences. MATHia’s structure closely aligns with the Bayesian Knowledge Tracing (BKT) algorithm.</p>
+</section>
+<section id="analysis" class="level4">
+<h4 class="anchored" data-anchor-id="analysis">Analysis</h4>
+<p>The knowledge estimate for specific skills was calculated using BKT. The authors fitted BKT parameters with brute-force grid search. Upper limits of 0.3 and 0.1 for the ’Guess’ and ’Slip’ parameters were adopted respectively to avoid model degeneracy and ensure the parameter values are aligned with conceptual meaning. Demographic characteristics are not taken into calculation directly when building the BKT model. However, sample sizes are not even across demographic groups so the parameters could be more representative of demographics with a larger number of students.</p>
+<p>The authors adopted a 4-fold student level cross-validation that was stratified by demographics and evaluated the model performance with AUC ROC. The max difference between AUC for the best and worst predicted group was also calculated.</p>
+</section>
+<section id="key-findings" class="level4">
+<h4 class="anchored" data-anchor-id="key-findings">Key Findings</h4>
+<p>As reported by <span class="citation" data-cites="zambrano2024investigating">Zambrano, Zhang, and Baker (<a href="#ref-zambrano2024investigating" role="doc-biblioref">2024</a>)</span> in their findings section:</p>
+<blockquote class="blockquote">
+<p>We found evidence that performance was close to equal across demographic groups, for these models, including intersectional categories, and tests where we held out entire demographic groups during model training (a test of model applicability to entirely new demographic groups), for carelessness.</p>
+</blockquote>
+</section>
+<section id="question" class="level4">
+<h4 class="anchored" data-anchor-id="question">❓Question</h4>
+<p>Based on what you know about BKT and the context so far, what other research question(s) might you ask in this context that a knowledge inference perspective might be able to answer?</p>
+<p>Type a brief response in the space below:</p>
+</section>
+</section>
+<section id="b.-load-packages" class="level3">
+<h3 class="anchored" data-anchor-id="b.-load-packages">1b. Load Packages</h3>
+<p>In this case study, you will not replicate the data analysis in <span class="citation" data-cites="zambrano2024investigating">Zambrano, Zhang, and Baker (<a href="#ref-zambrano2024investigating" role="doc-biblioref">2024</a>)</span>. Instead, you will use the data from <span class="citation" data-cites="baker2008developing">Baker et al. (<a href="#ref-baker2008developing" role="doc-biblioref">2008</a>)</span> to learn how to fit a BKT model. First, you will learn about the essential packages you will be using in this case study.</p>
+<p><strong>Packages</strong>, sometimes called libraries, are shareable collections of Python code that can contain functions, data, and/or documentation and extend the functionality of Python. You can always check to see which Python packages that are not dependencies of other packages have already been installed and loaded into RStudio Cloud using the command <code>pip list</code> in the terminal.</p>
+<section id="pybkt" class="level4">
+<h4 class="anchored" data-anchor-id="pybkt">pyBKT 📦</h4>
+<p>The {pyBKT} package <span class="citation" data-cites="badrinath2021pybkt">(<a href="#ref-badrinath2021pybkt" role="doc-biblioref">Badrinath, Wang, and Pardos 2021</a>)</span> is a Python implementation of the Bayesian Knowledge Tracing algorithm and variants, estimating student cognitive mastery from problem-solving sequences <span class="citation" data-cites="badrinath2021pybkt">(<a href="#ref-badrinath2021pybkt" role="doc-biblioref">Badrinath, Wang, and Pardos 2021</a>)</span>.</p>
+<p>Click the green arrow in the right corner of the “code chunk” that follows to load the {pyBKT} library.</p>
+<div id="56d2b691" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyBKT.models <span class="im">import</span> Model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="pandas" class="level4">
+<h4 class="anchored" data-anchor-id="pandas">pandas 📦</h4>
+<p><img src="img/pandas.svg" class="img-fluid" style="width:30.0%"></p>
+<p>One package that you’ll be using extensively is {pandas}. <a href="https://pandas.pydata.org">Pandas</a> <span class="citation" data-cites="mckinney-proc-scipy-2010">(<a href="#ref-mckinney-proc-scipy-2010" role="doc-biblioref">McKinney 2010</a>)</span> is a powerful and flexible open-source data analysis and wrangling tool for Python. Python is also used widely by the data science community.</p>
+<p>Click the green arrow in the right corner of the “code chunk” that follows to load the {pandas} library introduced in LA Workflow labs.</p>
+<div id="0991ce1b" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="numpy" class="level4">
+<h4 class="anchored" data-anchor-id="numpy">Numpy📦</h4>
+<p><img src="images/numpy.png" class="img-fluid" width="142"></p>
+<p>NumPy (pronounced /ˈnʌmpaɪ/&nbsp;NUM-py) is a library for the&nbsp;Python programming language, adding support for large, multi-dimensional arrays and matrices, along with a large collection of high-level mathematical functions to operate on these arrays.</p>
+<p>Click the green arrow in the right corner of the “code chunk” that follows to load <strong><code>numpy</code></strong>:</p>
+<div id="0697cb63" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="your-turn" class="level4">
+<h4 class="anchored" data-anchor-id="your-turn"><strong>👉 Your Turn</strong> <strong>⤵</strong></h4>
+<p>Use the code chunk below to import the pyBKT package:</p>
+<div id="1b5c1ba7" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code starts here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="fitting-the-model" class="level2">
+<h2 class="anchored" data-anchor-id="fitting-the-model">2. Fitting the model</h2>
+<p>This is an example of model fitting:</p>
+<p><img src="images/fitting.png" class="img-fluid" width="370"></p>
+<p>In this example, linear regression is used to fit the model and this is one of the simplest techniques. You are fitting the model (the line) to a dataset (the dots). The model will be on the form y = a x + b, and you’re trying to find the optimal values of a and b. You draw a line that best fits the existing data points on average. Once you’ve fitted the model, you can use it to predict outcomes (y-axis) based on inputs (x-axis).</p>
+<section id="a.-import-the-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="a.-import-the-dataset">2a. Import the dataset</h3>
+<p>To realize the goals, you’ll need to first import the CSV files originally obtained from <span class="citation" data-cites="baker2008developing">Baker et al. (<a href="#ref-baker2008developing" role="doc-biblioref">2008</a>)</span> This data set is a subset of the data set used in <span class="citation" data-cites="baker2008developing">Baker et al. (<a href="#ref-baker2008developing" role="doc-biblioref">2008</a>)</span>. A description of each file is below along with a link to the original file:</p>
+<ol type="1">
+<li><p><a href="https://learninganalytics.upenn.edu/ryanbaker/EDM2014/AsgnBA3-dataset.zip">Example CSV dataset</a>: This BKT dataset consists of 298 students’ performance in 67 skills.</p></li>
+<li><p><a href="https://learninganalytics.upenn.edu/ryanbaker/EDM2023/basic-asgn-4-CoreMethods-2023-v1.pdf">Dataset description</a>: This file includes the descriptions of all the variables in this dataset.</p></li>
+</ol>
+<p>Let’s use the <code>read_csv</code> function from the {pandas} package to import the <code>AsgnBA3-dataset.csv</code>.</p>
+<div id="68d55515" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/AsgnBA3-dataset.csv"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Lesson</th>
+<th data-quarto-table-cell-role="th">Student</th>
+<th data-quarto-table-cell-role="th">KC</th>
+<th data-quarto-table-cell-role="th">item</th>
+<th data-quarto-table-cell-role="th">right</th>
+<th data-quarto-table-cell-role="th">firstattempt</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0</td>
+<td>Splot</td>
+<td>AGUFADE</td>
+<td>VALUING-CAT-FEATURES</td>
+<td>META-VALUING-CAT-FEATURES-1</td>
+<td>1</td>
+<td>1</td>
+<td>3.29700</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>Splot</td>
+<td>AGUFADE</td>
+<td>VALUING-NUM-FEATURES</td>
+<td>META-VALUING-NUM-FEATURES-1</td>
+<td>0</td>
+<td>1</td>
+<td>4.04700</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2</td>
+<td>Splot</td>
+<td>AGUFADE</td>
+<td>CHOOSE-VAR-TYPE</td>
+<td>CHOOSE-VAR-TYPE-NUM-1</td>
+<td>1</td>
+<td>1</td>
+<td>1.59300</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>3</td>
+<td>Splot</td>
+<td>AGUFADE</td>
+<td>VALUING-NUM-FEATURES</td>
+<td>META-VALUING-NUM-FEATURES-1</td>
+<td>0</td>
+<td>0</td>
+<td>2.92200</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>4</td>
+<td>Splot</td>
+<td>AGUFADE</td>
+<td>CHOOSE-VAR-TYPE</td>
+<td>CHOOSE-VAR-TYPE-NUM-2</td>
+<td>1</td>
+<td>1</td>
+<td>1.59400</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<p><code>df</code> here stands for “DataFrame” in the Pandas package. A Pandas DataFrame is a two-dimensional data structure, like a two-dimensional array, or a table with rows and columns.</p>
+<section id="remove-unnecessary-rows" class="level4">
+<h4 class="anchored" data-anchor-id="remove-unnecessary-rows">Remove unnecessary rows</h4>
+<p>Before moving to the next step, use the code chunk below to filter out all the rows in which the firstattempt equals 1. Then filter out all the rows that represent the “CHOOSE-X-AXIS-QUANTITATIVE” skill.</p>
+<div id="5d81383c" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#just an example, this will not show in students' version</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> df[df[<span class="st">"firstattempt"</span>]<span class="op">==</span><span class="dv">1</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>df3 <span class="op">=</span> df2[df2[<span class="st">"KC"</span>]<span class="op">==</span><span class="st">"CHOOSE-X-AXIS-QUANTITATIVE"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="b.-fit-the-model" class="level3">
+<h3 class="anchored" data-anchor-id="b.-fit-the-model">2b. Fit the model</h3>
+<section id="mapping-the-column-names" class="level4">
+<h4 class="anchored" data-anchor-id="mapping-the-column-names">Mapping the column names</h4>
+<p>The accepted input formats in pyBKT are Pandas DataFrames and data files of type CSV (comma separated) or TSV (tab separated). pyBKT will automatically infer which delimiter to use in the case that it is passed a data file. Since column names mapping meaning to each field in the data (i.e.&nbsp;skill name, correct/incorrect) varies per data source, you may need to specify a mapping from your data file’s column names to pyBKT’s expected column names.</p>
+<p>Thus, you will need to create a column name mapping before training the model.</p>
+<div id="40420f78" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>defaults <span class="op">=</span> {<span class="st">'order_id'</span>: <span class="st">'ID'</span>, <span class="st">'skill_name'</span>: <span class="st">'KC'</span>, <span class="st">'correct'</span>: <span class="st">'right'</span>, <span class="st">'user_id'</span>: <span class="st">'Student'</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is a dictionary. Dictionaries are used to store data values in key: value pairs. Dictionaries are written with curly brackets.</p>
+<p>The column names you need to specify are order_id, skill_name, correct, and user_id. You may refer to the document in 2a about the descriptions of all the variables.</p>
+</section>
+<section id="fit-the-model" class="level4">
+<h4 class="anchored" data-anchor-id="fit-the-model">Fit the model</h4>
+<p>pyBKT makes fitting the model very easy. It only takes 2 lines:</p>
+<div id="48dc2a44" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> Model(seed <span class="op">=</span> <span class="dv">42</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>model.fit(data <span class="op">=</span> df3, defaults <span class="op">=</span> defaults)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.params())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                             value
+skill                      param   class          
+CHOOSE-X-AXIS-QUANTITATIVE prior   default 0.50016
+                           learns  default 0.44768
+                           guesses default 0.21683
+                           slips   default 0.15422
+                           forgets default 0.00000</code></pre>
+</div>
+</div>
+<p>First, use the <code>Model</code> function of the pyBKT package to create a BKT model.</p>
+<p>The <code>seed</code> parameter is used to initialize the random number generator. The random number generator needs a number to start with (a seed value), to be able to generate a random number.</p>
+<p>Then, use the <code>fit</code> method and input <code>df3</code> and <code>defaults</code>, the dataset you have cleaned so far, and the column name mapping.</p>
+<p>Let’s run the code chunk below to see what are the best parameters.</p>
+<div id="a7b68b3a" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.params())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                             value
+skill                      param   class          
+CHOOSE-X-AXIS-QUANTITATIVE prior   default 0.50016
+                           learns  default 0.44768
+                           guesses default 0.21683
+                           slips   default 0.15422
+                           forgets default 0.00000</code></pre>
+</div>
+</div>
+</section>
+<section id="rmse-and-auc" class="level4">
+<h4 class="anchored" data-anchor-id="rmse-and-auc">RMSE and AUC</h4>
+<p>pyBKT provides various ways to evaluate your BKT model, such as RMSE, and AUC.</p>
+<div id="71d77bb0" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>training_rmse <span class="op">=</span> model.evaluate(data <span class="op">=</span> df3) </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>training_auc <span class="op">=</span> model.evaluate(data<span class="op">=</span> df3, metric <span class="op">=</span> <span class="st">'auc'</span>) </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Training RMSE: </span><span class="sc">%f</span><span class="st">"</span> <span class="op">%</span> training_rmse) </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Training AUC: </span><span class="sc">%f</span><span class="st">"</span> <span class="op">%</span> training_auc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Training RMSE: 0.446825
+Training AUC: 0.653699</code></pre>
+</div>
+</div>
+<p>The Root Mean Squared Error (RMSE) is&nbsp;one of the two main performance indicators for a regression model. It measures the average difference between values predicted by a model and the actual values. To put it simply, the lower, the better.</p>
+<p>AUC ROC is the area under the ROC curve. <span class="citation" data-cites="baker2024fixingEach">(<a href="#ref-baker2024fixingEach" role="doc-biblioref"><strong>baker2024fixingEach?</strong></a>)</span> point out that the ROC curve shows the trade-off between the sensitivity and specificity of the model. When expanded to the entire curve, it shows this trade-off across all possible thresholds.</p>
+</section>
+<section id="create-your-metrics" class="level4">
+<h4 class="anchored" data-anchor-id="create-your-metrics">Create your metrics</h4>
+<p>You can even create your metrics, such as the sum of squared residuals (SSR), used by BKT-BF <span class="citation" data-cites="baker2010contextual">Baker et al. (<a href="#ref-baker2010contextual" role="doc-biblioref">2010</a>)</span>.</p>
+<div id="489d8353" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> SSR(true_vals, pred_vals):   </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> np.<span class="bu">sum</span>(np.square(true_vals <span class="op">-</span> pred_vals))  </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>training_SSR <span class="op">=</span> model.evaluate(data<span class="op">=</span> df3, metric <span class="op">=</span> SSR) </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Training SSR: </span><span class="sc">%f</span><span class="st">"</span> <span class="op">%</span> training_SSR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Training SSR: 166.111049</code></pre>
+</div>
+</div>
+<p>The sum of squared residuals (SSR) <strong>measures the level of variance in the error term, or residuals, of a regression model</strong>. The smaller the residual sum of squares, the better your model fits your data; the greater the residual sum of squares, the poorer your model fits your data.</p>
+</section>
+<section id="challenge" class="level4">
+<h4 class="anchored" data-anchor-id="challenge">❓Challenge</h4>
+<p>Split the data into the training set and the testing set by 80%/20% and fit your BKT model on a skill. This skill should not be the same as the one above and the one in the ASSISTments activity. Then, evaluate the MAE and AUC by predicting the given test set and training set in the respective variables.</p>
+<div id="31c3cfc2" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#split the dataset by 80%/20%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="conditionalizing-and-cross-validation-in-bkt" class="level2">
+<h2 class="anchored" data-anchor-id="conditionalizing-and-cross-validation-in-bkt">3. Conditionalizing and Cross-validation in BKT</h2>
+<section id="a.-conditionalize-guess-slip-and-learn-on-other-factors" class="level3">
+<h3 class="anchored" data-anchor-id="a.-conditionalize-guess-slip-and-learn-on-other-factors">3a. Conditionalize guess, slip, and learn on other factors</h3>
+<p>You can also conditionalize guess, slip, or learn on other factors in the BKT model. You need to provide guess/slip/learn classes to use in fitting the model. Let’s say you are going to fit each item’s priors, learn rate, guess, and slip model with the data. You will need to first specify which column is the class.</p>
+<p>Use the code chunk below to test this variant:</p>
+<div id="2a7da47a" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>defaults_multi <span class="op">=</span> {<span class="st">'order_id'</span>: <span class="st">'ID'</span>, <span class="st">'skill_name'</span>: <span class="st">'KC'</span>, <span class="st">'correct'</span>: <span class="st">'right'</span>, <span class="st">'user_id'</span>: <span class="st">'Student'</span>, <span class="st">'multigs'</span>: <span class="st">'item'</span>, <span class="st">'multilearn'</span>:<span class="st">'item'</span>}</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>model_multi <span class="op">=</span> Model(seed<span class="op">=</span><span class="dv">42</span>, num_fits <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>model_multi.fit(data<span class="op">=</span> df3, multilearn <span class="op">=</span> <span class="va">True</span>, multigs<span class="op">=</span> <span class="va">True</span>, defaults <span class="op">=</span> defaults_multi)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model_multi.params())  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                   value
+skill                      param   class                                
+CHOOSE-X-AXIS-QUANTITATIVE prior   default                       0.80665
+                           learns  CHOOSE-X-AXIS-QUANTITATIVE-1  0.71828
+                                   CHOOSE-X-AXIS-QUANTITATIVE-10 0.45880
+                                   CHOOSE-X-AXIS-QUANTITATIVE-11 1.00000
+                                   CHOOSE-X-AXIS-QUANTITATIVE-2  0.59323
+                                   CHOOSE-X-AXIS-QUANTITATIVE-3  0.58896
+                                   CHOOSE-X-AXIS-QUANTITATIVE-4  0.58888
+                                   CHOOSE-X-AXIS-QUANTITATIVE-5  0.92769
+                                   CHOOSE-X-AXIS-QUANTITATIVE-6  0.45929
+                                   CHOOSE-X-AXIS-QUANTITATIVE-7  0.37564
+                                   CHOOSE-X-AXIS-QUANTITATIVE-8  0.46272
+                                   CHOOSE-X-AXIS-QUANTITATIVE-9  0.88974
+                           guesses CHOOSE-X-AXIS-QUANTITATIVE-1  0.06186
+                                   CHOOSE-X-AXIS-QUANTITATIVE-10 0.61002
+                                   CHOOSE-X-AXIS-QUANTITATIVE-11 0.00000
+                                   CHOOSE-X-AXIS-QUANTITATIVE-2  0.08702
+                                   CHOOSE-X-AXIS-QUANTITATIVE-3  0.03506
+                                   CHOOSE-X-AXIS-QUANTITATIVE-4  0.03049
+                                   CHOOSE-X-AXIS-QUANTITATIVE-5  0.02153
+                                   CHOOSE-X-AXIS-QUANTITATIVE-6  0.99353
+                                   CHOOSE-X-AXIS-QUANTITATIVE-7  0.00147
+                                   CHOOSE-X-AXIS-QUANTITATIVE-8  0.00285
+                                   CHOOSE-X-AXIS-QUANTITATIVE-9  0.00000
+                           slips   CHOOSE-X-AXIS-QUANTITATIVE-1  0.37164
+                                   CHOOSE-X-AXIS-QUANTITATIVE-10 0.50000
+                                   CHOOSE-X-AXIS-QUANTITATIVE-11 1.00000
+                                   CHOOSE-X-AXIS-QUANTITATIVE-2  0.21020
+                                   CHOOSE-X-AXIS-QUANTITATIVE-3  0.23873
+                                   CHOOSE-X-AXIS-QUANTITATIVE-4  0.20004
+                                   CHOOSE-X-AXIS-QUANTITATIVE-5  0.16110
+                                   CHOOSE-X-AXIS-QUANTITATIVE-6  0.16004
+                                   CHOOSE-X-AXIS-QUANTITATIVE-7  0.57133
+                                   CHOOSE-X-AXIS-QUANTITATIVE-8  0.62499
+                                   CHOOSE-X-AXIS-QUANTITATIVE-9  1.00000
+                           forgets CHOOSE-X-AXIS-QUANTITATIVE-1  0.00000
+                                   CHOOSE-X-AXIS-QUANTITATIVE-10 0.00000
+                                   CHOOSE-X-AXIS-QUANTITATIVE-11 0.00000
+                                   CHOOSE-X-AXIS-QUANTITATIVE-2  0.00000
+                                   CHOOSE-X-AXIS-QUANTITATIVE-3  0.00000
+                                   CHOOSE-X-AXIS-QUANTITATIVE-4  0.00000
+                                   CHOOSE-X-AXIS-QUANTITATIVE-5  0.00000
+                                   CHOOSE-X-AXIS-QUANTITATIVE-6  0.00000
+                                   CHOOSE-X-AXIS-QUANTITATIVE-7  0.00000
+                                   CHOOSE-X-AXIS-QUANTITATIVE-8  0.00000
+                                   CHOOSE-X-AXIS-QUANTITATIVE-9  0.00000</code></pre>
+</div>
+</div>
+<p>As you can see from the output, each item now has the guess, slip, and learn rate. You can conditionalize on lots of factors, depending on the dataset you collected.</p>
+</section>
+<section id="challenge-conditionalize-slip-on-response-time" class="level3">
+<h3 class="anchored" data-anchor-id="challenge-conditionalize-slip-on-response-time">❓Challenge: Conditionalize slip on response time</h3>
+<p>Another variant of BKT is to Conditionalize slip on whether the time taken was under 5 seconds. Thus, you will have two sets of the 4 classical parameters: one set is for those actions that took more than 5 seconds. The other set is for those actions that take less than 5 seconds. Please notice that this is not exactly great practice, but feasible with the data set you have.</p>
+<p>The current dataset only has response time. You will need to create another binary column for this challenge.</p>
+<section id="build-a-column-on-whether-the-students-took-more-than-5-seconds" class="level4">
+<h4 class="anchored" data-anchor-id="build-a-column-on-whether-the-students-took-more-than-5-seconds">Build a Column on whether the students took more than 5 seconds</h4>
+<div id="a4563a3a" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#This part is just an example and the code will not show to the participants  </span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df4<span class="op">=</span>df3 </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>df4.insert(<span class="dv">8</span>, <span class="st">'FiveSecs'</span>, <span class="dv">0</span>)  </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cal_5secs(row):    </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> row[<span class="st">'time'</span>] <span class="op">&gt;</span> <span class="dv">5</span>:         </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span>    </span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:         </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span>  </span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>df4[<span class="st">"FiveSecs"</span>] <span class="op">=</span> df4.<span class="bu">apply</span>(cal_5secs, axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="build-your-5-seconds-model" class="level4">
+<h4 class="anchored" data-anchor-id="build-your-5-seconds-model">Build your 5 seconds model</h4>
+<div id="70d8b632" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#This part is just an example and the code will not show to the participants  </span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>defaults <span class="op">=</span> {<span class="st">'order_id'</span>: <span class="st">'ID'</span>, <span class="st">'skill_name'</span>: <span class="st">'KC'</span>, <span class="st">'correct'</span>: <span class="st">'right'</span>, <span class="st">'user_id'</span>: <span class="st">'Student'</span>, <span class="st">'multigs'</span>: <span class="st">'FiveSecs'</span>}  </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>model_5sec <span class="op">=</span> Model(seed <span class="op">=</span> <span class="dv">42</span>, num_fits <span class="op">=</span> <span class="dv">1</span>) </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>model_5sec.fit(data<span class="op">=</span> df4, multigs <span class="op">=</span> <span class="va">True</span>,defaults <span class="op">=</span> defaults) </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model_5sec.params())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                             value
+skill                      param   class          
+CHOOSE-X-AXIS-QUANTITATIVE prior   default 0.99387
+                           learns  default 0.97018
+                           guesses 0       0.00000
+                                   1       0.00001
+                           slips   0       0.63572
+                                   1       0.23534
+                           forgets default 0.00000</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="b-cross-validation" class="level3">
+<h3 class="anchored" data-anchor-id="b-cross-validation">3b Cross Validation</h3>
+<p>pyBKT also allows you to easily use cross-validation.</p>
+<p>Cross-validation is a technique to evaluate the performance of a model on unseen data. The picture below shows how a 5-fold cross-validation works.</p>
+<p><img src="images/cross-validation.png" class="img-fluid" width="432"></p>
+<p>Cross-validation is offered as a blackbox function similar to a combination of fit and evaluate that accepts a particular number of folds, a seed, and a metric(either one of the 3 provided that are ‘rmse’, ‘auc’ or ‘accuracy’ or a custom Python function)</p>
+<div id="a7f189a7" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>model2 <span class="op">=</span> Model(seed <span class="op">=</span> <span class="dv">42</span>, num_fits<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>cross_vali <span class="op">=</span> model2.crossvalidate(data <span class="op">=</span> df3, folds <span class="op">=</span> <span class="dv">10</span>, defaults <span class="op">=</span> defaults, metric <span class="op">=</span> <span class="st">'auc'</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cross_vali)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                               auc
+skill                             
+CHOOSE-X-AXIS-QUANTITATIVE 0.62969</code></pre>
+</div>
+</div>
+</section>
+<section id="challenge-cross-validation-on-your-response-time-model" class="level3">
+<h3 class="anchored" data-anchor-id="challenge-cross-validation-on-your-response-time-model">❓Challenge: Cross-validation on your response time model</h3>
+<p>Please use the code chunk below to conduct a 10-fold cross-validation on your response time model and answer the following question:</p>
+<p>Is the model better when conditionalizing slip on response time? Why?</p>
+<div id="33ca87b7" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># It is just an example. It will not show in students' version</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>cross_validation <span class="op">=</span> model_5sec.crossvalidate(data <span class="op">=</span> df4, folds <span class="op">=</span> <span class="dv">10</span>, defaults <span class="op">=</span> defaults, metric <span class="op">=</span> <span class="st">'auc'</span>, multigs<span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cross_validation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                               auc
+skill                             
+CHOOSE-X-AXIS-QUANTITATIVE 0.74675</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="other-advanced-features-in-pybkt" class="level2">
+<h2 class="anchored" data-anchor-id="other-advanced-features-in-pybkt">4. Other advanced features in pyBKT</h2>
+<p>pyBKT also offers some other advanced features, such as Roster and Parameter Fixing.</p>
+<section id="a.-roster" class="level3">
+<h3 class="anchored" data-anchor-id="a.-roster">4a. Roster</h3>
+<p>Roster is used to simulate the learning environment for a group of students learning any combination of individual skills.</p>
+<p>You need to first create a backend pyBKT model and fit it on the dataset.</p>
+<div id="549b8af9" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>defaults_roster <span class="op">=</span> {<span class="st">'order_id'</span>: <span class="st">'ID'</span>, <span class="st">'skill_name'</span>: <span class="st">'KC'</span>, <span class="st">'correct'</span>: <span class="st">'right'</span>, <span class="st">'user_id'</span>: <span class="st">'Student'</span>}</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>model_roster <span class="op">=</span> Model()</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>model_roster.fit(data <span class="op">=</span> df2, defaults <span class="op">=</span> defaults_roster )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then you can use the <code>Roster</code> to create a roster with two students and one skill.</p>
+<div id="9f5f606b" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyBKT.models <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>roster <span class="op">=</span> Roster(students <span class="op">=</span> [<span class="st">'Jack'</span>, <span class="st">'Rachel'</span>], skills <span class="op">=</span> <span class="st">"VALUING-NUM-FEATURES"</span>, model <span class="op">=</span> model_roster)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can update Rachel’s status by adding one or more responses to a particular skill. In this case, Rachel correctly answered one question. Then check Rachel’s updated mastery state and probability.</p>
+<div id="094e4046" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>rachel_new_state <span class="op">=</span> roster.update_state(<span class="st">'VALUING-NUM-FEATURES'</span>, <span class="st">'Rachel'</span>, <span class="dv">1</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Rachel's mastery:"</span>, roster.get_state_type(<span class="st">'VALUING-NUM-FEATURES'</span>, <span class="st">'Rachel'</span>))</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Rachel's probability of mastery:"</span>, roster.get_mastery_prob(<span class="st">'VALUING-NUM-FEATURES'</span>, <span class="st">'Rachel'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rachel's mastery: StateType.UNMASTERED
+Rachel's probability of mastery: 0.5750390776035513</code></pre>
+</div>
+</div>
+</section>
+<section id="challenge-1" class="level3">
+<h3 class="anchored" data-anchor-id="challenge-1">❓Challenge</h3>
+<p>Create a new roster on the model you fitted in section 2. If you add 3 consecutive correct answers to Rachel and 3 consecutive incorrect answers to Jack, will they master the skill or not? Use the code chunk below:</p>
+</section>
+<section id="b.-parameter-fixing" class="level3">
+<h3 class="anchored" data-anchor-id="b.-parameter-fixing">4b. Parameter Fixing</h3>
+<p>Another advanced feature supported by pyBKT is parameter fixing, where you can fix one or more parameters and train the model conditioned on those fixed parameters. For example, you could fix the slip rate to 0.2</p>
+<div id="cc7fdecd" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>model_fixedparam <span class="op">=</span> Model()</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>defaults <span class="op">=</span> {<span class="st">'order_id'</span>: <span class="st">'ID'</span>, <span class="st">'skill_name'</span>: <span class="st">'KC'</span>, <span class="st">'correct'</span>: <span class="st">'right'</span>, <span class="st">'user_id'</span>: <span class="st">'Student'</span>}</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>model_fixedparam.coef_ <span class="op">=</span> {<span class="st">'CHOOSE-X-AXIS-QUANTITATIVE'</span>: {<span class="st">'slips'</span>: np.array([<span class="fl">0.2</span>])}}</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>model_fixedparam.fit(data <span class="op">=</span> df3, fixed<span class="op">=</span><span class="va">True</span>, defaults <span class="op">=</span> defaults)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>model_fixedparam.params()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">value</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">skill</th>
+<th data-quarto-table-cell-role="th">param</th>
+<th data-quarto-table-cell-role="th">class</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="5" data-quarto-table-cell-role="th" data-valign="top">CHOOSE-X-AXIS-QUANTITATIVE</td>
+<td data-quarto-table-cell-role="th">prior</td>
+<td data-quarto-table-cell-role="th">default</td>
+<td>0.68396</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">learns</td>
+<td data-quarto-table-cell-role="th">default</td>
+<td>0.51380</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">guesses</td>
+<td data-quarto-table-cell-role="th">default</td>
+<td>0.02199</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">slips</td>
+<td data-quarto-table-cell-role="th">default</td>
+<td>0.20000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">forgets</td>
+<td data-quarto-table-cell-role="th">default</td>
+<td>0.00000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="challenge-2" class="level3">
+<h3 class="anchored" data-anchor-id="challenge-2">❓Challenge</h3>
+<p>Fix the slip rate to 0.3 and the guess rate to 0.2 when fitting your model, is the model getting better or worse?</p>
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-badrinath2021pybkt" class="csl-entry" role="listitem">
+Badrinath, Anirudhan, Frederic Wang, and Zachary Pardos. 2021. <span>“Pybkt: An Accessible Python Library of Bayesian Knowledge Tracing Models.”</span> <em>arXiv Preprint arXiv:2105.00385</em>.
+</div>
+<div id="ref-baker2010contextual" class="csl-entry" role="listitem">
+Baker, Ryan SJ d, Albert T Corbett, Sujith M Gowda, Angela Z Wagner, Benjamin A MacLaren, Linda R Kauffman, Aaron P Mitchell, and Stephen Giguere. 2010. <span>“Contextual Slip and Prediction of Student Performance After Use of an Intelligent Tutor.”</span> In <em>User Modeling, Adaptation, and Personalization: 18th International Conference, UMAP 2010, Big Island, HI, USA, June 20-24, 2010. Proceedings 18</em>, 52–63. Springer.
+</div>
+<div id="ref-baker2008developing" class="csl-entry" role="listitem">
+Baker, Ryan SJ d, Albert T Corbett, Ido Roll, and Kenneth R Koedinger. 2008. <span>“Developing a Generalizable Detector of When Students Game the System.”</span> <em>User Modeling and User-Adapted Interaction</em> 18: 287–314.
+</div>
+<div id="ref-mckinney-proc-scipy-2010" class="csl-entry" role="listitem">
+McKinney, Wes. 2010. <span>“<span>D</span>ata <span>S</span>tructures for <span>S</span>tatistical <span>C</span>omputing in <span>P</span>ython.”</span> In <em><span>P</span>roceedings of the 9th <span>P</span>ython in <span>S</span>cience <span>C</span>onference</em>, edited by Stéfan van der Walt and Jarrod Millman, 56–61. <a href="https://doi.org/ 10.25080/Majora-92bf1922-00a ">https://doi.org/ 10.25080/Majora-92bf1922-00a </a>.
+</div>
+<div id="ref-ritter2007cognitive" class="csl-entry" role="listitem">
+Ritter, Steven, John R Anderson, Kenneth R Koedinger, and Albert Corbett. 2007. <span>“Cognitive Tutor: Applied Research in Mathematics Education.”</span> <em>Psychonomic Bulletin &amp; Review</em> 14: 249–55.
+</div>
+<div id="ref-zambrano2024investigating" class="csl-entry" role="listitem">
+Zambrano, Andres Felipe, Jiayi Zhang, and Ryan S Baker. 2024. <span>“Investigating Algorithmic Bias on Bayesian Knowledge Tracing and Carelessness Detectors.”</span>
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

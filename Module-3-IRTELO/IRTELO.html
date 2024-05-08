@@ -10,7 +10,7 @@
 <link href="IRTELO_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.550">
 
-  <title>Module 3 Knowledge Inference:</title>
+  <title>Module 4 tem Response Theory and ELO</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -346,9 +346,9 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-notes="Today we are going to learn about knowledge inference methods with Item Response Theory." class="quarto-title-block center">
-  <h1 class="title">Module 3 Knowledge Inference:</h1>
-  <p class="subtitle">Item Response Theory and ELO</p>
+<section id="title-slide" data-notes="Today we are going to talk about item response theory." class="quarto-title-block center">
+  <h1 class="title">Module 4 tem Response Theory and ELO</h1>
+  <p class="subtitle">KT Learning Lab 4: A Conceptual Overview</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -364,20 +364,8 @@
 <li>But variants such as ELO and T-IRT address some of those limitations</li>
 </ul></li>
 </ul>
-<aside class="notes">
 <p><strong>Speaker Notes:</strong></p>
-<p>A classic approach for assessment has been used for decades in tests and some online learning environments. In its classical form, it has some key limitations that make it less useful for assessment in online learning, but variants like ELO, and T-IRT (temporal IRT) address some of those limitations.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<p>A classic approach for assessment has been used for decades in tests and some online learning environments. In its classical form, it has some key limitations that make it less useful for assessment in online learning, but variants like ELO and T-IRT address some of those limitations.</p>
 </section>
 <section id="key-goal-of-irt" class="slide level2">
 <h2>Key goal of IRT</h2>
@@ -391,13 +379,13 @@
 </ul>
 <aside class="notes">
 <p><strong>Speaker Notes:</strong></p>
-<p>The key goal of IRT is:</p>
+<p>The key goal of IRT:</p>
 <ul>
-<li><p>different than the key goal of BKT or PFA</p></li>
-<li><p>it’s to measure how much of some latent trait or general domain a person has</p></li>
-<li><p>so instead of saying, can Bob do 2 plus 5,&nbsp; it says, how smart is Bob? Instead of asking if Bob knows this specific skill about snorkeling, it asks how much Bob knows about snorkeling in general</p>
+<li><p>Different than the key goal of BKT or PFA</p></li>
+<li><p>It’s to measure how much of some latent trait or general domain a person has</p>
 <ul>
-<li>check out more info about this example in SnorkeITutor&nbsp;</li>
+<li><p>So instead of saying, can Bob do 2 plus 5, it says, how smart is Bob? Instead of asking if Bob knows this specific skill about snorkeling, it asks how much Bob knows about snorkeling in general</p></li>
+<li><p>check out more info about this example in SnorkelTutor&nbsp;</p></li>
 </ul></li>
 </ul>
 <style type="text/css">
@@ -423,10 +411,12 @@
 </ul>
 <aside class="notes">
 <p><strong>Speaker Notes:</strong></p>
-<p>A typical use of IRT is:</p>
+<p>Typical use of IRT is:</p>
 <ul>
-<li><p>to assess a student’s current knowledge of a general topic X,&nbsp; general domain, based on a sequence of items that are dichotomously scored</p></li>
-<li><p>in other words, a student can get a score of 0 or 1 on each item</p></li>
+<li><p>To assess a student’s current knowledge of a general topic X, a general domain, based on a sequence of items that are dichotomously scored</p>
+<ul>
+<li>in other words, a student can get a score of 0 or 1 on each item</li>
+</ul></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -454,15 +444,15 @@
 </ul>
 <aside class="notes">
 <p><strong>Speaker Notes:</strong></p>
-<p>IRT makes some key assumptions;</p>
+<p>IRT makes some key assumptions:</p>
 <ul>
-<li><p>the first, and kind of the most controversial, is that there’s only one latent trait or skill being measured per set of items</p>
+<li><p>First, there is only one latent trait or skill being measured per set of items</p>
 <ul>
-<li>this assumption is relaxed in the extension Cognitive Diagnosis Models (CDM) (Henson, Templin, &amp; Willse, 2009), but in core IRT, there’s just one skill, one general ability. How smart are you in math?&nbsp;</li>
+<li>this assumption is relaxed in the extension Cognitive Diagnosis Models (CDM) (Henson, Templin, and Willse, 2009), but in core IRT, there’s just one skill, one general ability.&nbsp;</li>
 </ul></li>
-<li><p>another key assumption that’s particularly questionable for online learning is that - no learning is occurring in between items&nbsp;</p>
+<li><p>Another key assumption is that, no learning is occurring in between items&nbsp;</p>
 <ul>
-<li>in other words, you have a testing situation with no help or feedback. Now, in most systems, where the student is actually getting better, we don’t necessarily want to make this assumption</li>
+<li>in other words, you have a testing situation with no help or feedback. In most systems, where the student is actually getting better, we don’t necessarily want to make this assumption</li>
 </ul></li>
 </ul>
 <style type="text/css">
@@ -486,10 +476,10 @@
 </ul>
 <aside class="notes">
 <p><strong>Speaker Notes:</strong></p>
-<p>Another assumption:&nbsp;</p>
+<p>Other assumptions:&nbsp;</p>
 <ul>
-<li><p>each student has an ability called theta, and each item has a difficulty b, and discriminability a</p></li>
-<li><p>from these parameters, we can compute the probability P of theta that the learner is going to get the current item correct</p></li>
+<li><p>Each student has an ability called theta, and each item has a difficulty b, and discriminability a</p></li>
+<li><p>From these parameters, we can compute the probability P of theta that the learner will get the current item correct</p></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -511,7 +501,7 @@
 </ul>
 <aside class="notes">
 <p><strong>Speaker Notes:</strong></p>
-<p>Now the assumption is, again, that all items tap the same latent construct. Everything involves math, but they have different difficulties. This is a very different assumption than seen in PFA or BKT.</p>
+<p>Now the assumption is that all items tap the same latent construct, but they have different difficulties. This is a very different assumption than seen in PFA or BKT.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -533,7 +523,7 @@
 </ul>
 <aside class="notes">
 <p><strong>Speaker Notes:</strong></p>
-<p>Let’s start with the Rasch (1PL) model. It’s the simplest IRT model. Rasch is mathematically the same model with a different coefficient as another model called 1PL, but there are some different practices surrounding math.</p>
+<p>Let’s start with the Rasch (1PL) model. It’s the simplest IRT model and is very popular. Rasch is mathematically the same model with a different coefficient as another model called 1PL, but there are some different practices surrounding the math.&nbsp;</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -554,7 +544,7 @@
 </ul>
 <aside class="notes">
 <p><strong>Speaker Notes:</strong></p>
-<p>It’s got no discriminability parameters. But it does have two sets of parameters, a set of parameters for student ability, and a set of parameters for item difficulty.</p>
+<p>It’s got no discriminability parameter. But it does have two sets of parameters, a set of parameters for student ability, and a set of parameters for item difficulty.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -578,8 +568,7 @@ P(\theta ) = \frac{1}{1+e^{-1(\theta -b)}}
 \]</span></p>
 <aside class="notes">
 <p><strong>Speaker Notes:</strong></p>
-<p>Each learner has the ability theta, each item has difficulty b, and you can compute the probability that the student will get something right by a function involving an exponential function with theta minus b.</p>
-<p>So we take the ability, we subtract the difficulty, they’re on the same scale.</p>
+<p>Each learner has the ability theta, each item has difficulty b, and you can compute the probability that the student will get something right by a function involving an exponential function with theta minus b. So we take the ability, we subtract the difficulty, they’re on the same scale.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -602,8 +591,8 @@ P(\theta ) = \frac{1}{1+e^{-1(\theta -b)}}
 <p><strong>Speaker Notes:</strong></p>
 <p>In IRT, we can understand an item’s difficulty by looking at:&nbsp;</p>
 <ul>
-<li><p>for that item, the relationship between student skill and performance. As you can see on this graph, the x-axis is the theta, student ability, and the y-axis is correctness</p></li>
-<li><p>when theta equals zero, for this graph, probably if correctness equals 0.5. This actually has to mean that b is equal to zero because for P of correct to be 0.5, theta and b have to be exactly balanced</p></li>
+<li><p>For that item, the relationship between student skill and performance. As you can see on this graph, the x-axis is the theta, student ability, and the y-axis is correctness</p></li>
+<li><p>When theta equals zero, for this graph, the probability of correctness equals 0.5. This actually has to mean that b is equal to zero because for P of correct to be 0.5, theta and b have to be exactly balanced</p></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -626,9 +615,10 @@ P(\theta ) = \frac{1}{1+e^{-1(\theta -b)}}
 
 <img data-src="images/Item%20Characteristic%20Curve.png" class="r-stretch"><aside class="notes">
 <p><strong>Speaker Notes:</strong></p>
-<p>Let’s look at the item characteristic curve. This is a visualization that shows the relationship between student skill and performance. This graph represents b equals zero. When theta equals b, knowledge equals difficulty, performance is 50%.&nbsp;<br>
+<p>Let’s look at the item characteristic curve. This is a visualization that shows the relationship between student skill and performance. This graph represents b equals zero. When theta equals b, knowledge equals difficulty, performance is 50%.&nbsp;</p>
+<p><br>
 </p>
-<p>So in other words, if you look across the x-axis and at the thetas, theta zero is 50%, so this has to be b equals to zero as well. And the y-axis has the probability of correctness.</p>
+<p>So in other words, if you look across the x-axis and at the thetas, theta zero is 50%, so this has to be b equals zero as well. And the y-axis has the probability of correctness.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -648,9 +638,9 @@ P(\theta ) = \frac{1}{1+e^{-1(\theta -b)}}
 <p><strong>Speaker Notes:</strong></p>
 <p>Let’s look at three students:</p>
 <ol type="1">
-<li><p>a green student who really knows their stuff,&nbsp; theta of 3, probably getting it right at 95%</p></li>
-<li><p>a student who doesn’t really know their stuff, theta of 0, probably of getting it right at 50%&nbsp;</p></li>
-<li><p>a student who really doesn’t know their stuff, theta of negative 3, probably of correctness of 5%</p></li>
+<li><p>a green student who really knows their stuff,&nbsp; theta of 3, probability of getting it right at 95%</p></li>
+<li><p>a student who doesn’t really know their stuff, theta of 0, probability of getting it right at 50%&nbsp;</p></li>
+<li><p>a student who really doesn’t know their stuff, theta of negative 3, probability of correctness of 5%</p></li>
 </ol>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -675,12 +665,12 @@ P(\theta ) = \frac{1}{1+e^{-1(\theta -b)}}
 <p><strong>Speaker Notes:</strong></p>
 <p>If we change the difficulty parameter, we get different lines:</p>
 <ul>
-<li>if you look at the green line, B equals negative two, that’s an easy item. In this case, the student with theta of three doesn’t improve much, but the student with theta of zero goes up from 50% to 88%. And the student with theta of negative three still goes up a good bit from like 5% to almost 30%</li>
+<li>If you look at the green line, B equals negative two, that’s an easy item. In this case, the student with theta of three doesn’t improve much, but the student with theta of zero goes up from 50% to 88%. And the student with theta of negative three still goes up a good bit from like 5% to almost 30%</li>
 </ul>
 <!-- -->
 <ul>
-<li><p>the orange line is B equals two, that’s a hard item. So in other words, now the really good student, even the really good student, whose theta of three has only a 70% chance of getting it right</p></li>
-<li><p>the student with a theta of zero, the average student, is barely above 10% chance of getting it right. And the student whose theta of negative three, just no hope</p></li>
+<li><p>The orange line is B equals two, that’s a hard item. So in other words, now the really good student, even the really good student, whose theta of three has only a 70% chance of getting it right</p></li>
+<li><p>The student with a theta of zero, the average student, is barely above 10% chance of getting it right. And the student whose theta of negative three, just no hope</p></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -724,6 +714,8 @@ P(\theta ) = \frac{1}{1+e^{-1(\theta -b)}}
 <img data-src="images/DifficultyParameter.png" class="r-stretch"><aside class="notes">
 <p><strong>Speaker Notes:</strong></p>
 <p>Similarly, if you look down at the bottom, the weak student finds the medium and hard items almost equally hard. So IRT is most informational, kind of close to the middle for items and close to the middle for students.</p>
+<p><br>
+</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -747,9 +739,9 @@ P(\theta ) = \frac{1}{1+e^{-1(\theta -b)}}
 <p><strong>Speaker Notes:</strong></p>
 <p>Now when b equals theta, performance is 50%. This happens all through the spectrum.&nbsp;</p>
 <ul>
-<li><p>if you’ve got a really easy item and a really weak student, they’ll get performance of 50%</p></li>
-<li><p>if you’ve got a really strong student and a really hard item, you’ll get a performance of 50%</p></li>
-<li><p>this model accounts for the fact that the difficulty of items and the skill of students can be in balance</p></li>
+<li><p>If you’ve got a really easy item and a really weak student, they’ll get performance of 50%</p></li>
+<li><p>If you’ve got a really strong student and a really hard item, you’ll get a performance of 50%</p></li>
+<li><p>This model accounts for the fact that the difficulty of items and the skill of students can be in balance</p></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -818,8 +810,9 @@ Rasch: P(\theta ) = \frac{1}{1+e^{-1(\theta -b)}}
 <p><strong>Speaker Notes:</strong></p>
 <p>Now if we look at different values of a, we can see:</p>
 <ul>
-<li><p>the green line has a equals 2 and that gives it higher discriminability. It’s kind of making a faster transition as students get better between being really hard and really easy</p></li>
-<li><p>the blue line, A equals 0.5,&nbsp; has lower discriminability. It makes a much slower transition as students get better between correctness and incorrectness. Generally, you want items with relatively high discriminability, although in some cases being too high for discriminability isn’t very useful because it only distinguishes a very small set of the range</p></li>
+<li><p>The green line has a equals 2, and that gives it higher discriminability. It’s kind of making a faster transition as students get better between being really hard and really easy</p></li>
+<li><p>The blue line, a equals 0.5,&nbsp; has lower discriminability. It makes a much slower transition as students get better between correctness and incorrectness</p></li>
+<li><p>Generally, you want items with relatively high discriminability, although in some cases being too high for discriminability isn’t very useful because it only distinguishes a very small set of the range</p></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -844,9 +837,9 @@ Rasch: P(\theta ) = \frac{1}{1+e^{-1(\theta -b)}}
 <p><strong>Speaker Notes:</strong></p>
 <p>If we look at extremely high and extremely low discriminability:&nbsp;</p>
 <ul>
-<li><p>if you take a look at red, the line where a equals 0, there’s no discriminability. People do equally well no matter what it is. I guess that would be a coin flip. How I already guess a coin flip</p></li>
-<li><p>as a approaches infinity, you get something looking more and more like the green line, where there’s just this very small range between getting it wrong and getting it right</p></li>
-<li><p>even though this is very discriminable, it may not be useful because it’s only going to tell you the difference between, in this case, students with a theta of about negative 0.1, and students with a theta of positive 0.1. Anything below or above that range is just going to be completely certain to get it right or wrong</p></li>
+<li><p>If you take a look at red, the line where a equals 0, there’s no discriminability. People do equally well no matter what it is</p></li>
+<li><p>As a approaches infinity, you get something looking more and more like the green line, where there’s just this very small range between getting it wrong and getting it right</p></li>
+<li><p>Even though this is very discriminal, it may not be useful because it’s only going to tell you the difference between, in this case, students with a theta of about negative 0.1, and students with a theta of positive 0.1. Anything below or above that range is just going to be completely certain to get it right or wrong</p></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -868,7 +861,7 @@ Rasch: P(\theta ) = \frac{1}{1+e^{-1(\theta -b)}}
 
 <img data-src="images/Model%20degeneracy.png" class="r-stretch"><aside class="notes">
 <p><strong>Speaker Notes:</strong></p>
-<p>Model degeneracy, which can’t happen in Rasch but can happen in&nbsp; 2PL when you get a - discriminability below 0. In this case, the model tells you that the smarter you are, the more likely you are to get things wrong. And the less strong you are as a student, the more likely you are to get things right. This is even weirder than it is in BKT.</p>
+<p>Model degeneracy, which can’t happen in Rasch but can happen in 2PL, occurs when you get a — discriminability below 0. In this case, the model tells you that the smarter you are, the more likely you are to get things wrong. And the less strong you are as a student, the more likely you are to get things right.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -889,7 +882,7 @@ Rasch: P(\theta ) = \frac{1}{1+e^{-1(\theta -b)}}
 </ul>
 <aside class="notes">
 <p><strong>Speaker Notes:</strong></p>
-<p>The 3PL model, which is a more complex model, which adds a guessing parameter, c.</p>
+<p>The 3PL model is a more complex model, which adds a guessing parameter — c.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -914,8 +907,8 @@ P(\theta ) = c+ (1-c)\frac{1}{1+e^{-a(\theta -b)}}
 <aside class="notes">
 <p><strong>Speaker Notes:</strong></p>
 <ul>
-<li><p>the problem you get things right is the problem you guessed it plus the problem you didn’t guess times the problem you knew it&nbsp;</p></li>
-<li><p>so either you guess and you just get it right or you don’t guess and then you get it right based on knowledge</p></li>
+<li><p>The probability you get things right is the probability you guessed it plus the probability you didn’t guess times the probability you knew it&nbsp;</p></li>
+<li><p>So either you guess and you just get it right, or you don’t guess, and then you get it right based on knowledge</p></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -942,8 +935,8 @@ P(\theta ) = c+ (1-c)\frac{1}{1+e^{-a(\theta -b)}}
 <p><strong>Speaker Notes:</strong></p>
 <p>How do you fit an IRT model?&nbsp;&nbsp;</p>
 <ul>
-<li><p>you can do this with expectation maximization as we discussed previously</p></li>
-<li><p>you estimate knowledge and difficulty together. Then once you’ve done this, given an item difficulty estimate, you can take a new student and assess their knowledge in real-time</p></li>
+<li><p>You can do this with expectation maximization</p></li>
+<li><p>You estimate knowledge and difficulty together. Then once you’ve done this, given item difficulty estimates, you can take a new student and assess their knowledge in real-time</p></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -986,9 +979,9 @@ P(\theta ) = c+ (1-c)\frac{1}{1+e^{-a(\theta -b)}}
 </ul>
 <aside class="notes">
 <p><strong>Speaker Notes:</strong></p>
-<p>t’s worth briefly mentioning one extension to IRT which is ELO.</p>
+<p>It’s worth briefly mentioning one extension to IRT, which is ELO:</p>
 <ul>
-<li>ELO has been around for a long time. It was used to rank chess players. It’s a variant of a Rasch model that can be used in a running system,&nbsp; which is a big difference than classical IRT, which makes estimates kind of post hoc. It continually estimates both item difficulty and the student’s ability, updating both every time a student encounters an item</li>
+<li>It’s a variant of a Rasch model that can be used in a running system, which is a big difference than classical IRT. It continually estimates both item difficulty and the student’s ability, updating both every time a student encounters an item</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -1007,6 +1000,22 @@ P(\theta ) = c+ (1-c)\frac{1}{1+e^{-a(\theta -b)}}
 <ul>
 <li>You may know of ELO from Chess or Pokemon rankings!</li>
 </ul>
+<aside class="notes">
+<p><strong>Speaker Notes:</strong></p>
+<ul>
+<li>ELO has been around for a long time. It was used to rank chess players</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="elo-elo1978rating-pelanek2016applications-2" class="slide level2">
 <h2>ELO <span class="citation" data-cites="elo1978rating">Elo and Sloan (<a href="#/references" role="doc-biblioref" onclick="">1978</a>)</span> <span class="citation" data-cites="pelanek2016applications">Pelánek (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span></h2>
@@ -1021,7 +1030,7 @@ b_{i+1} = b_{i} + K(c-P(c))
 </ul>
 <aside class="notes">
 <p><strong>Speaker Notes:</strong></p>
-<p>ELO does this based on two very simple formulas where it changes the student parameter and it changes the item parameter every time it encounters a new experience, taking the difference between the student’s actual response and the predicted response, and weighting that by some factor k, a parameter for how strongly the model should consider new information when updating the new estimates of ability and item difficulty.</p>
+<p>ELO does this based on two very simple formulas, where it changes the student parameter and it changes the item parameter every time it encounters a new experience, taking the difference between the student’s actual response and the predicted response, and weighting that by some factor k, a parameter for how strongly the model should consider new information when updating the new estimates of ability and item difficulty.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1042,9 +1051,11 @@ b_{i+1} = b_{i} + K(c-P(c))
 </ul>
 <aside class="notes">
 <p><strong>Speaker Notes:</strong></p>
-<p>An&nbsp;important extensionto to ELO is:</p>
 <ul>
-<li>multivariate ELO, which allows an item to involve multiple skills and averages difficulty across skills</li>
+<li>An important extension to ELO is:
+<ul>
+<li>Multivariate ELO (Abdi et al., 2019), which allows an item to involve multiple skills and averages difficulty across skills</li>
+</ul></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -1069,7 +1080,7 @@ b_{i+1} = b_{i} + K(c-P(c))
 <p><strong>Speaker Notes:</strong></p>
 <p>Another important extension is:</p>
 <ul>
-<li>MV-Glicko, which allows an item to involve multiple skills, averages difficulty across skills, and takes time between practices of skill into account, much like LKT extensions to PFA can do</li>
+<li>MV-Glicko (Abdi et al., 2021), which allows an item to involve multiple skills, averages difficulty across skills, and takes time between practices of a skill into account, much like LKT extensions to PFA</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {

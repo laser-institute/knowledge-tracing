@@ -28,7 +28,27 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="DKT_files/libs/revealjs/dist/theme/quarto.css">
   <link href="DKT_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="DKT_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -326,7 +346,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-notes="Hi, everyone" class="quarto-title-block center">
+<section id="title-slide" data-notes="Hi, lets talk about Deep Knowledge Tracing (DKT), and other deep learning algorithms that kind of followed since DKT. First, a quick conceptual overview of what DKT is and what made it so different." class="quarto-title-block center">
   <h1 class="title">Module 3: Deep Knowledge Tracing</h1>
   <p class="subtitle">KT Learning Lab 3: A Conceptual Overview</p>
 
@@ -334,8 +354,8 @@
 </div>
 
 </section>
-<section id="deep-knowledge-tracing-dkt-piech-et-al.-2015" class="slide level2">
-<h2>Deep Knowledge Tracing (DKT) (Piech et al., 2015)</h2>
+<section id="deep-knowledge-tracing-dkt-piech2015deep" class="slide level2">
+<h2>Deep Knowledge Tracing (DKT) <span class="citation" data-cites="piech2015deep">Piech et al. (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2015</a>)</span></h2>
 <ul>
 <li><p>Based on long short term memory networks</p></li>
 <li><p>Fits on sequence of student performance across skills</p>
@@ -347,25 +367,76 @@
 <li>Very complex relationships between items over time</li>
 </ul></li>
 </ul>
+<aside class="notes">
+<p>Deep knowledge tracing was originally created by Pitch et al., (2015). It was based on recurrent nerual networks, specifically a variant called long-short term memory networks.&nbsp;</p>
+<ul>
+<li><p>It fits a sequence of student performance across skills, so a student’s performance on one skill does affect their predictions for all other skills</p></li>
+<li><p>It predicts performance on future items within the system</p></li>
+<li><p>It can fit very complex functions</p>
+<ul>
+<li><p>Compared to BKT and PFA, which generally have few enough parameters that you can count them. DKT has hundreds/thousands of parameters, so it can fit almost every type of function</p></li>
+<li><p>There are very complicated relationships between the items over time</p></li>
+</ul></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="deep-knowledge-tracing-dkt" class="slide level2">
 <h2>Deep Knowledge Tracing (DKT)</h2>
 <ul>
-<li><p>Initial paper reported massively better performance than original BKT or PFA (Piech et al., 2015)<br>
+<li><p>Initial paper reported massively better performance than original BKT or PFA <span class="citation" data-cites="piech2015deep">Piech et al. (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2015</a>)</span><br>
 </p></li>
-<li><p>Seemed at first too good to be true, and (Xiong et al., 2016) reported that (Piech et al., 2015) had used the same data points for both training and test</p></li>
+<li><p>Seemed at first too good to be true, and <span class="citation" data-cites="xiong2016going">Xiong et al. (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2016</a>)</span> reported that <span class="citation" data-cites="piech2015deep">Piech et al. (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2015</a>)</span> had used the same data points for both training and test</p></li>
 </ul>
+<aside class="notes">
+<p>Xiong et al., 2016 is <a href="https://files.eric.ed.gov/fulltext/ED592679.pdf" class="uri">https://files.eric.ed.gov/fulltext/ED592679.pdf</a>.&nbsp;</p>
+<p>Xiong et al.&nbsp;reimplemented DKT in PyTorch and Tensorflow - TF was better - and found that while DKT still outperformed PFA and BKT, the performance gap was much smaller than earlier reported.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="contemporary-comparisons-of-dkt" class="slide level2">
 <h2>Contemporary comparisons of DKT</h2>
 <ul>
-<li><p>(Khajah et al., 2016) compared DKT to modern extensions to BKT on same data set</p>
+<li><p><span class="citation" data-cites="khajah2016deep">Khajah, Lindsey, and Mozer (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2016</a>)</span> compared DKT to modern extensions to BKT on same data set</p>
 <ul>
 <li>Particularly beneficial to re-fit item-skill mappings</li>
 </ul></li>
-<li><p>(Wilson et al., 2016) compared DKT to temporal IRT on same data set</p></li>
+<li><p><span class="citation" data-cites="wilson2016estimating">Wilson et al. (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2016</a>)</span> compared DKT to temporal IRT on same data set</p></li>
 <li><p>Bottom line: All three approaches appeared to perform comparably well</p></li>
 </ul>
+<aside class="notes">
+<p>Khajah et al., 2016: <a href="https://arxiv.org/pdf/1604.02416.pdf" class="uri">https://arxiv.org/pdf/1604.02416.pdf</a></p>
+<p>The refitting essentially collapses similar skills into one in the data. That reduces some of BKT’s disadvantage - its inability to look across skills.&nbsp;</p>
+<p>IRT came from psychometrics, where you test a student at time t and there isn’t any learning going on during the test; temporal IRT adds in the possibility of learning.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="but-this-was-the-beginning-of-what-could-be-called-dkt-family-algorithms" class="slide level2">
 <h2>But this was the beginning of what could be called&nbsp; DKT-Family algorithms</h2>
@@ -374,15 +445,28 @@
 <li><p>Now literally hundreds of published variants</p>
 <ul>
 <li><p>Most of them tiny tweaks to get tiny gains in performance</p></li>
-<li><p>But in aggregate, there appear to be some real improvements to predictive performance (see comparison in Gervet et al., 2020 for example)</p></li>
+<li><p>But in aggregate, there appear to be some real improvements to predictive performance (see comparison in <span class="citation" data-cites="gervet2020deep">Gervet et al. (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2020</a>)</span> 2020 for example)</p></li>
 </ul></li>
 <li><p>We will discuss some of the key issues that researchers have tried to address, and what their approaches were.</p></li>
 </ul>
+<aside class="notes">
+<p>We’re going to be mentioning a lot of algorithms here - I think there are about 15 different ones in this presentation. Don’t worry too much about any particular one; try to pay more attention on what the author was trying to do with it.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="degenerate-behavior" class="slide level2">
 <h2>Degenerate behavior</h2>
 <ul>
-<li><p>(C.-K. Yeung &amp; D.-Y. Yeung, 2018) reported degenerate behavior for DKT</p>
+<li><p><span class="citation" data-cites="yeung2018addressing">Yeung and Yeung (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2018</a>)</span> reported degenerate behavior for DKT</p>
 <ul>
 <li><p>Getting answers right leads to lower knowledge</p></li>
 <li><p>Wild swings in probability estimates in short periods of time</p></li>
@@ -393,6 +477,19 @@
 <li><p>Reducing amount model is allowed to change future estimates</p></li>
 </ul></li>
 </ul>
+<aside class="notes">
+<p>It’s not clear how many (if any) later DKT implementations followed their lead. Unfortunately, their implementation (they called it DKTPlus) is very picky about Python library versions and tricky to get running today.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="impossible-to-interpret-in-terms-of-skills" class="slide level2">
 <h2>Impossible to interpret in terms of skills</h2>
@@ -400,32 +497,73 @@
 <li><p>DKT Family generally predicts individual item correctness, not skills.</p></li>
 <li><p>Some variants estimate skill ability, but those skills are not always the same as the pre-defined skills, and the estimates may not be accurate.</p></li>
 </ul>
+<aside class="notes">
+<p>This is a departure from BKT, PFA, and most earlier algorithms.&nbsp;</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="extension-for-latent-knowledge-estimation" class="slide level2">
 <h2>Extension for Latent Knowledge Estimation</h2>
 <ul>
-<li><p>(Zhang et al., 2017) proposed an extension to DKT, called DKVMN, that fits an item-skill mapping too</p>
+<li><p><span class="citation" data-cites="zhang2017dynamic">Jiani Zhang et al. (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2017</a>)</span> proposed an extension to DKT, called DKVMN, that fits an item-skill mapping too</p>
 <ul>
 <li><p>Based on Memory-Augmented Neural Network, that keeps an external memory matrix that neurons update and refer back to&nbsp;</p></li>
 <li><p>Latent skills are “discovered” by the algorithm and difficult to interpret.</p></li>
 </ul></li>
 </ul>
+<aside class="notes">
+<p>We’ll talk more about the latent skills in a bit. If you’ve done any factor analysis, you can think of them as factors - items load onto the latent skills, with each item generally loading on one skill much more than the others. The number of skills the algorithm attempts to use is a parameter, but it doesn’t have to use all of the available skills.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="extension-for-latent-knowledge-estimation-1" class="slide level2">
 <h2>Extension for Latent Knowledge Estimation</h2>
 <ul>
-<li><p>(Lee &amp; D.-Y. Yeung, 2019) proposed an alternative to DKT, called KQN, that attempts to output more interpretable latent skill estimates</p>
+<li><p><span class="citation" data-cites="lee2019knowledge">Lee and Yeung (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2019</a>)</span> proposed an alternative to DKT, called KQN, that attempts to output more interpretable latent skill estimates</p>
 <ul>
 <li><p>Again, fits an external memory network to fit skills</p></li>
 <li><p>Also attempts to fit amount of information transfer between skills</p></li>
 <li><p>Still not that interpretable</p></li>
 </ul></li>
 </ul>
+<aside class="notes">
+<p>Both Dit-Yan Yeung and Chun-Kit Yeung, from the DKTPlus paper, worked on variants to DKVMN. Here’s the first one.</p>
+<p><a href="https://dl.acm.org/doi/abs/10.1145/3303772.3303786" class="uri">https://dl.acm.org/doi/abs/10.1145/3303772.3303786</a>&nbsp;</p>
+<p>They have vector representations of skills and knowledge states, then they compute the dot product between the two to show the interaction.&nbsp;</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="extension-for-latent-knowledge-estimation-2" class="slide level2">
 <h2>Extension for Latent Knowledge Estimation</h2>
 <ul>
-<li><p>(C.-K. Yeung, 2019) proposed an alternative to DKT, called Deep-IRT, that attempts to output more interpretable latent skill estimates</p>
+<li><p><span class="citation" data-cites="yeung2019deep">Yeung (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2019</a>)</span> proposed an alternative to DKT, called Deep-IRT, that attempts to output more interpretable latent skill estimates</p>
 <ul>
 <li><p>Again, fits an external memory network to fit skills</p></li>
 <li><p>Fits separate networks to estimate student ability, item difficulty</p></li>
@@ -433,6 +571,20 @@
 <li><p>Somewhat more interpretable (the IRT half, at least)</p></li>
 </ul></li>
 </ul>
+<aside class="notes">
+<p><a href="https://arxiv.org/pdf/1904.11738.pdf" class="uri">https://arxiv.org/pdf/1904.11738.pdf</a></p>
+<p>The argument is that since people are used to IRT parameters, they’ll be able to understand these estimated versions. Which, well, OK, but they’re still coming out of a black box.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="one-caveat-for-skill-estimation" class="slide level2">
 <h2>One caveat for skill estimation</h2>
@@ -442,11 +594,24 @@
 <li><p>(Most large datasets don’t have that data available)</p></li>
 <li><p>Therefore, we don’t really know if the estimates are any good.</p></li>
 </ul>
+<aside class="notes">
+<p>We just talked about DeepIRT and KQN. Both of those papers fall in this category. There are some nice graphs to explain how the skill groupings are reasonable, or how the estimated difficulties should be good, but it all comes back to the AUC of the correctness predictions in the end.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="extension-for-latent-knowledge-estimation-3" class="slide level2">
 <h2>Extension for Latent Knowledge Estimation</h2>
 <ul>
-<li><p>(Scruggs et al., 2020) proposed AOA, an extension to any knowledge tracing algorithm</p>
+<li><p><span class="citation" data-cites="scruggs2019extending">Scruggs, Baker, and McLaren (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2019</a>)</span> proposed AOA, an extension to any knowledge tracing algorithm</p>
 <ul>
 <li><p>Human-derived skill-item mapping used</p></li>
 <li><p>Predicted performance on all items in skill averaged</p>
@@ -456,44 +621,140 @@
 </ul></li>
 <li><p>Led to successful prediction of post-tests outside the learning system</p></li>
 </ul>
+<aside class="notes">
+<p>Where “successful” means that the Pearson correlation between the skill estimate and the posttest score on that skill ranged from 0.36 to 0.72, depending on the skill and knowledge tracing algorithm.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="latent-knowledge-estimation" class="slide level2">
 <h2>Latent Knowledge Estimation</h2>
 <ul>
 <li><p>In unpublished work, I used DKVMN’s internal concept estimates to predict a posttest, but they were less predictive than skill estimates generated by AOA.</p></li>
-<li><p>In (Baker et al., 2023), internal skill estimates from Elo and BKT were outperformed by AOA skill estimates generated from those algorithms’ correctness predictions.</p></li>
+<li><p>In <span class="citation" data-cites="scruggs2023well">Scruggs et al. (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2023</a>)</span> internal skill estimates from Elo and BKT were outperformed by AOA skill estimates generated from those algorithms’ correctness predictions.</p></li>
 </ul>
+<aside class="notes">
+<p>However, including both the internal concept estimates and AOA skill estimates produced more accurate predictions than either set of estimates alone, suggesting that the two don’t overlap completely.&nbsp;</p>
+<p>(and IRT, and PFA).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="deep-learning-and-skill-discovery" class="slide level2">
 <h2>Deep learning and skill discovery</h2>
 <ul>
 <li><p>Automated skill discovery would make it a lot easier to use knowledge tracing on data without skill tags.</p></li>
 <li><p>It could also show relationships between skills.</p></li>
-<li><p>(Piech et al., 2015) mention that DKT accurately clustered items to skills in a synthetic data set.</p></li>
-<li><p>(Zhang et al., 2017) repeat the experiment for DKVMN and also show reasonable item clusters for Assistments data.</p></li>
+<li><p><span class="citation" data-cites="piech2015deep">Piech et al. (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2015</a>)</span> mention that DKT accurately clustered items to skills in a synthetic data set.</p></li>
+<li><p><span class="citation" data-cites="zhang2017dynamic">Jiani Zhang et al. (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2017</a>)</span> repeat the experiment for DKVMN and also show reasonable item clusters for Assistments data.</p></li>
 </ul>
+<aside class="notes">
+<p>The Assistments clustering was done at item level, without using skill tags. The evaluation is mostly that the clusters look good and the groupings of items seem reasonable. In a few slides, we’ll show that grouping.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="deep-learning-and-skill-discovery-1" class="slide level2">
 <h2>Deep learning and skill discovery</h2>
 <ul>
-<li><p>The figures shown in (Zhang et al., 2017) use t-SNE (van der Maaten &amp; Hinton, 2008) to visualize neural network weights.</p></li>
+<li><p>The figures shown in <span class="citation" data-cites="zhang2017dynamic">Jiani Zhang et al. (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2017</a>)</span> use t-SNE <span class="citation" data-cites="van2008visualizing">Van der Maaten and Hinton (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2008</a>)</span> to visualize neural network weights.</p></li>
 <li><p>t-SNE is a very popular method, but the clusters it creates can be strongly influenced by the value of the perplexity parameter - lower values make t-SNE try harder to create clusters.</p></li>
 <li><p>In unpublished work, I used DKVMN on a large dataset with very reliable skill tags; the resultant clusters sometimes reflect the underlying skills, but sometimes do not.</p></li>
 </ul>
+<aside class="notes">
+<p>Piech et al.&nbsp;are a little quieter about their method - “The graph of our model’s conditional influences” is all they say, but it looks identical to Zhang et al., who say that they used t-SNE.</p>
+<p>The value for that parameter isn’t usually reported in KT papers that show clusters.</p>
+<p>Now I’ll show a few clusters from different algorithms and different datasets and talk about them.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="deep-learning-and-skill-discovery-2" class="slide level2">
 <h2>Deep learning and skill discovery</h2>
 
 <img data-src="images/Deep%20learning%20and%20skill%20discovery.png" class="r-stretch"><p>DKVMN can cluster the exercises in the Synthetic-5 dataset into their five ground-truth concepts.</p>
+<aside class="notes">
+<p>This is from the DKVMN paper (Zhang et al., 2017). For this figure, they explicitly set the memory size of DKVMN to five - that is, tell the model to use five underlying concepts; they show a similarly impressive figure after setting the memory size to 50 - t-SNE still clustered the exercises into five groups.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="deep-learning-and-skill-discovery-3" class="slide level2">
 <h2>Deep learning and skill discovery</h2>
 
-<img data-src="images/Deep%20learning%20and%20skill%20discovery2.png" class="r-stretch"></section>
+<img data-src="images/Deep%20learning%20and%20skill%20discovery2.png" class="r-stretch"><aside class="notes">
+<p>These clusters come from 2009 Assistments data. They’re not quite as perfect, but there is still good separation and clearly separated clusters. Note that the colors don’t always match the clusters - colors show which of DKVMN’s internal concepts exercises load on (presumably which concept has the highest loading); clusters are generated by t-SNE based on all exercise-concept loadings.&nbsp;</p>
+<p>This is from the DKVMN paper (Zhang et al., 2017).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="deep-learning-and-skill-discovery-4" class="slide level2">
 <h2>Deep learning and skill discovery</h2>
 
-<img data-src="images/Deep%20learning%20and%20skill%20discovery3.png" class="r-stretch"></section>
+<img data-src="images/Deep%20learning%20and%20skill%20discovery3.png" class="r-stretch"><aside class="notes">
+<p>And these are the exercises that loaded onto the internal concepts. This is where I start getting skeptical. There are some reasonable-sounding groupings but plenty that don’t make intuitive sense. For example, why are the “Area”-related exercises spread across four different concepts?</p>
+<p>This is from the DKVMN paper (Zhang et al., 2017).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="deep-learning-and-skill-discovery-5" class="slide level2">
 <h2>Deep learning and skill discovery</h2>
 <div class="columns">
@@ -511,6 +772,19 @@
 <p>Different colors are different skills</p>
 </div>
 </div>
+<aside class="notes">
+<p>Lower perplexity means it tries harder to make tight clusters.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="deep-learning-and-skill-discovery-6" class="slide level2">
 <h2>Deep learning and skill discovery</h2>
@@ -524,15 +798,576 @@
 <p>Different colors are different skills</p>
 </div>
 </div>
+<aside class="notes">
+<p>[Following the slide’s content]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
+<section id="deep-learning-and-skills" class="slide level2">
+<h2>Deep learning and skills</h2>
+<ul>
+<li><p>Finally, <span class="citation" data-cites="karumbaiah2022context">Karumbaiah, Ocumpaugh, and Baker (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2022</a>)</span> found that DKVMN’s correctness predictions were more accurate when the model had no skill tags at all (it treated all items as belonging to the same skill) than when it had possibly-unreliable skill tags, or when it had accurate domain-level tags.</p></li>
+<li><p>This suggests that deep learning algorithms may be well suited for data without good skill tags.</p></li>
+</ul>
+<aside class="notes">
+<p>I liked that finding at the time and I like it even more now that I’ve got a job in industry where there’s a lot of data that hasn’t been labeled with skill tags.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="discussion-1" class="slide level2">
+<h2>Discussion 1</h2>
+<ul>
+<li><p>What information can DKT-family algorithms provide teachers?</p>
+<ul>
+<li>Is “next problem correctness” useful? Why or why not?</li>
+</ul></li>
+<li><p>What do you do for entirely new items?</p>
+<ul>
+<li>BKT and PFA fit skill-level parameters which make it much easier to add new items without retraining the model.</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>There’s the argument that next problem correctness would let you offer problems at the “correct difficulty”. Assuming we know what that is. On the other hand, I’d argue that just showing a teacher next problem correctness is useless.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-is-dkt-really-learning" class="slide level2">
+<h2>What is DKT really learning?</h2>
+<ul>
+<li><p><span class="citation" data-cites="ding2019deep">Ding and Larson (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2019</a>)</span> demonstrated theoretically that a lot of what DKT learns is how good a student is overall</p></li>
+<li><p>They replicate that finding in a 2021 paper using a larger dataset.</p></li>
+</ul>
+<aside class="notes">
+<p><a href="https://files.eric.ed.gov/fulltext/ED599227.pdf" class="uri">https://files.eric.ed.gov/fulltext/ED599227.pdf</a> and <a href="https://arxiv.org/pdf/2101.11335.pdf" class="uri">https://arxiv.org/pdf/2101.11335.pdf</a></p>
+<p>Both of these papers are worth reading if you really want to dig into this stuff. They also show evidence that the model performance is due to projecting the items into a high-dimensional vector space.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-is-dkt-really-learning-1" class="slide level2">
+<h2>What is DKT really learning?</h2>
+<ul>
+<li><span class="citation" data-cites="zhang2021knowledge">Jiayi Zhang et al. (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2021</a>)</span> followed this up with empirical work showing that most of the improvement in performance for DKVMN is in the first attempt on a new skill</li>
+</ul>
+
+<img data-src="images/What%20is%20DKT%20really%20learning?.png" class="r-stretch"><aside class="notes">
+<p>So what they did is that – they compared BKT with PFA and DKVMN, looking at the “cold-start problem” - how many skill attempts does it take before an algorithm’s predictions start being good? This graph shows that the traditional KT algorithms (classic BKT and PFA) lag behind DKVMN initially, but nearly catch up by attempt 3 (BKT) and 4 (PFA) respectively. This was using data from Assistments 2009.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="what-is-dkt-really-learning-2" class="slide level2">
+<h2>What is DKT really learning?</h2>
+<ul>
+<li>In particular, there’s essentially no benefit to deep learning after several attempts on a skill (about where students often reach mastery, if they didn’t already know skill)</li>
+</ul>
+
+<img data-src="images/What%20is%20DKT%20really%20learning?.png" class="r-stretch"><aside class="notes">
+<p>[Following the slide’s content]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="other-important-dkt-variants-sakt" class="slide level2">
+<h2>Other Important DKT Variants: SAKT</h2>
+<ul>
+<li><p><span class="citation" data-cites="pandey2019self">Pandey and Karypis (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2019</a>)</span> proposed a DKT variant, called SAKT, which fits attentional weights between exercises and more explicitly predicts performance on current exercise from performance on past exercises</p></li>
+<li><p>Gets a little better fit, doubles down a little more on some limitations we’ve already discussed</p></li>
+</ul>
+<aside class="notes">
+<p>I’m going to skim over the DKT variants - I think the details are not particularly important for most of them.</p>
+<p>(self-attentive knowledge tracing). Neural networks folks might jump at “attentive”; yes, this uses transformers.&nbsp;</p>
+<p>The idea of SAKT is that not all past skill attempts are equally relevant. The model tried to identify the most relevant past attempts, then uses those to predict the present. The paper argues that SAKT should do better on large, sparse datasets. The numbers in this paper are very good, but have not been replicated by others.</p>
+<p><a href="https://arxiv.org/pdf/1907.06837.pdf" class="uri">https://arxiv.org/pdf/1907.06837.pdf</a></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="other-important-dkt-variants-akt" class="slide level2">
+<h2>Other Important DKT variants: AKT</h2>
+<ul>
+<li><p><span class="citation" data-cites="ghosh2020context">Ghosh, Heffernan, and Lan (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2020</a>)</span> proposed a DKT variant, called AKT, which</p>
+<ul>
+<li><p>Explicitly stores and uses learner’s entire past practice history for each prediction</p></li>
+<li><p>Uses exponential decay curve to downweight past actions</p></li>
+<li><p>Uses Rasch-model embeddings to calculate item difficulty</p></li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>Context-Aware Attentive Knowledge Tracing</p>
+<p>Again, attentive = transformer architecture.</p>
+<p><a href="https://dl.acm.org/doi/pdf/10.1145/3394486.3403282" class="uri">https://dl.acm.org/doi/pdf/10.1145/3394486.3403282</a></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="adding-in-more-information-saint" class="slide level2">
+<h2>Adding in more information: SAINT+</h2>
+<ul>
+<li><span class="citation" data-cites="shin2021saint">(<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick=""><strong>shin2021saint?</strong></a>)</span>+ added elapsed time and lag time as additional inputs, leading to better performance</li>
+</ul>
+<aside class="notes">
+<p><a href="https://dl.acm.org/doi/abs/10.1145/3448139.3448188?casa_token=VgPS4grLsw0AAAAA%3AlVHZZM7-XlW28wv9LvelO9FAcHdflBWhaeXog5nXNYd0aOcPi6H2YQ_62eOvU80PviNee8dImgU">https://dl.acm.org/doi/abs/10.1145/3448139.3448188</a>&nbsp;</p>
+<p>This built off SAINT (Choi et al, 2021), another Transformer-based model with more layers than before. These algorithms were the first that were developed using EdNet data, coming from a popular English tutor app in Korea. That dataset is noteworthy for being an order of magnitude bigger - some 600K students, 72M responses, 16K exercises - than earlier datasets.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="adding-in-more-information-process-bert" class="slide level2">
+<h2>Adding in more information: Process-BERT</h2>
+<ul>
+<li><p><span class="citation" data-cites="scarlatos2022process">Scarlatos, Brinton, and Lan (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2022</a>)</span> added timing and use of resources such as calculator<br>
+</p></li>
+<li><p>Additional information leads to better performance</p></li>
+</ul>
+<aside class="notes">
+<p><a href="https://arxiv.org/pdf/2204.13607.pdf" class="uri">https://arxiv.org/pdf/2204.13607.pdf</a></p>
+<p>This is meant to be a more general approach for time series data in education. Their model attempts to work on less-formatted data, first learning representations of the learning process from the data, then using those representations to predict learning outcomes. They worked with clickstream data from students completing a NAEP exam, so the data had events for (e.g.) opening the calculator, typing into an answer field, changing to a different question, etc.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="curious-methodological-note" class="slide level2">
+<h2>Curious methodological note</h2>
+<ul>
+<li><p>Most DKT-family papers report large improvements over previous algorithms, including other DKT-family algorithms<br>
+</p></li>
+<li><p>Improvements that seem to mostly or entirely dissipate in the next paper</p></li>
+</ul>
+<aside class="notes">
+<p>This is true of some of the papers listed here. For example, Ghosh et al.&nbsp;(2020) fit SAKT on some of the same datasets as Pandey and Karypis (2019), but saw much worse results.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="some-reasons" class="slide level2">
+<h2>Some reasons</h2>
+<ul>
+<li><p>Poor validation and over-fitting</p></li>
+<li><p>A lot of DKT-family papers don’t use student-level cross-validation</p>
+<ul>
+<li>Poor cross-validation benefits DKT-family algorithms more than other algorithms, because DKT-family fits more aggressively</li>
+</ul></li>
+<li><p>A lot of DKT-family papers fit their own hyperparameters but use past hyperparameters for other algorithms</p></li>
+</ul>
+<aside class="notes">
+<p>I’m still confused about some of the cases, though; sometimes the numbers don’t match for the same algorithm on the same dataset. This is not always discussed - another reason to look at good review papers, which we’ll talk about next.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="an-evaluation" class="slide level2">
+<h2>An evaluation</h2>
+<ul>
+<li><p><span class="citation" data-cites="gervet2020deep">Gervet et al. (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2020</a>)</span> compares KT algorithms on several data sets</p></li>
+<li><p>Key findings</p>
+<ul>
+<li><p>Different data sets have different winners</p></li>
+<li><p>DKT-family performs better than other algorithms on large data sets, but worse on smaller data sets</p></li>
+<li><p>DKT-family algorithms perform worse than LKT-family on data sets with very high numbers of practices per skill (i.e.&nbsp;language learning)</p></li>
+<li><p>DKT-family algorithms do better at predicting if exact order of items matters (which can occur if items within a skill vary a lot)</p></li>
+<li><p>DKT-family algorithms reach peak performance faster than other algorithms (also seen in <span class="citation" data-cites="zhang2021knowledge">Jiayi Zhang et al. (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2021</a>)</span>)</p></li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p><a href="https://jedm.educationaldatamining.org/index.php/JEDM/article/view/451" class="uri">https://jedm.educationaldatamining.org/index.php/JEDM/article/view/451</a></p>
+<p>This is a good paper. If you read one DKT-related paper from here, make it this one. They try a lot of algorithms on several datasets. They also fail to replicate the SAKT results and theorize that the reported numbers are erroneous.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="another-evaluation" class="slide level2">
+<h2>Another evaluation</h2>
+<ul>
+<li><p><span class="citation" data-cites="schmucker2021assessing">Schmucker et al. (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2021</a>)</span> compares KT algorithms on four large datasets</p></li>
+<li><p>Their feature-based logistic regression model outperformed all other approaches on nearly all datasets tested.</p></li>
+<li><p>DKT was the best-performing algorithm on one dataset.&nbsp;</p></li>
+<li><p>Later DKT-family variants were outperformed by standard DKT on all datasets.</p></li>
+</ul>
+<aside class="notes">
+<p><a href="https://jedm.educationaldatamining.org/index.php/JEDM/article/view/541" class="uri">https://jedm.educationaldatamining.org/index.php/JEDM/article/view/541</a></p>
+<p>“Large” = 100K+ students, 15M+ responses for all datasets.</p>
+<p>This paper comes from the same lab as the earlier Gervet et al., but focuses more on their feature-based approach.</p>
+<p>That last is interesting to me since I know they actually did the hyperparameters on everything.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="next-frontier-for-dkt-family-beyond-correctness" class="slide level2">
+<h2>Next Frontier for DKT-family:&nbsp;Beyond Correctness</h2>
+<ul>
+<li>Option Tracing <span class="citation" data-cites="ghosh2021option">Ghosh, Raspat, and Lan (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2021</a>)</span> extends output layer to predict which multiple choice item the student will select</li>
+</ul>
+<aside class="notes">
+<p><a href="https://arxiv.org/pdf/2104.09043.pdf" class="uri">https://arxiv.org/pdf/2104.09043.pdf</a></p>
+<p>Works with large datasets. Doesn’t use a whole new algorithm, instead adjusts existing ones such as DKVMN to do this.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="next-frontier-for-dkt-family-beyond-correctness-1" class="slide level2">
+<h2>Next Frontier for DKT-family:&nbsp;Beyond Correctness</h2>
+<ul>
+<li><p>Open-Ended Knowledge Tracing <span class="citation" data-cites="liu2022open">Liu et al. (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2022</a>)</span> integrates KT with&nbsp;</p>
+<ul>
+<li>A GPT-2 model fine-tuned on 2.1 million Java code exercises and written descriptions of them</li>
+</ul></li>
+<li><p>In order to generate predicted student code which makes predicted specific errors</p></li>
+</ul>
+<aside class="notes">
+<p><a href="https://par.nsf.gov/servlets/purl/10419674" class="uri">https://par.nsf.gov/servlets/purl/10419674</a></p>
+<p>Of course, since this is a fine-tuned GPT-2, it takes a ridiculous amount of training data.</p>
+<p>The other interesting bit is that once you fine-tune this model, it might be able to make similar errors on unseen problems.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="dkt-family-work-continues" class="slide level2">
+<h2>DKT-family: work continues</h2>
+<ul>
+<li><p>Dozens of recent papers trying to get better results by adjusting the deep learning framework in various ways&nbsp;</p></li>
+<li><p>Better results = higher AUC values for predictions of next-item correctness on test data in selected datasets.</p></li>
+<li><p>As shown in <span class="citation" data-cites="schmucker2022transferable">Schmucker and Mitchell (<a href="#/why-not-use-a-dkt-family-algorithm" role="doc-biblioref" onclick="">2022</a>)</span>, better results on some datasets do not always translate to better results on all datasets.</p></li>
+</ul>
+<aside class="notes">
+<p>[Following the slide’s content]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="discussion-2" class="slide level2">
+<h2>Discussion 2</h2>
+<ul>
+<li><p>Is the prediction of next-problem correctness the right thing to fit on?</p>
+<ul>
+<li>Are there other options?</li>
+</ul></li>
+<li><p>How can you show that one DKT-family algorithm is better than another one?</p></li>
+</ul>
+<aside class="notes">
+<p>Option Tracing is fitting on the student’s actual option choice, which adds something.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="how-to-quickly-evaluate-a-new-deep-learning-kt-algorithm" class="slide level2">
+<h2>How to quickly evaluate a new deep learning KT algorithm</h2>
+<ul>
+<li><p>Every paper will claim great performance.</p></li>
+<li><p>Look at the methods. Do they mention student-level cross-validation? Hyperparameter fitting procedures?</p>
+<ul>
+<li>Many won’t. That’s not always a dealbreaker. Check the code.</li>
+</ul></li>
+<li><p>Look at the results; find an algorithm and dataset that were also tested in another paper. Check to see if the numbers match.&nbsp;</p>
+<ul>
+<li>If there’s no overlap, or the numbers disagree, I’d give up on it.</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>Since deep learning based knowledge tracing is moving so fast, it might be useful to know a few tips on how to quickly evaluate a new deep learning KT algorithm.&nbsp;</p>
+<p>Ideally a good other paper.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="how-to-quickly-evaluate-a-new-deep-learning-kt-algorithm-1" class="slide level2">
+<h2>How to quickly evaluate a new deep learning KT algorithm</h2>
+<ul>
+<li><p>If you actually want to use the algorithm yourself, I’d go a little deeper.</p></li>
+<li><p>Download the implementation and try to replicate a result.</p></li>
+<li><p>Try running it on one of the smaller Assistments datasets, making sure to use student-level cross-validation.</p></li>
+<li><p>One more note: Implementation performance will vary. Some implementations are much faster than others.</p></li>
+</ul>
+<aside class="notes">
+<p>[Following the slide’s content]</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="why-use-a-dkt-family-algorithm" class="slide level2">
+<h2>Why use a DKT-family algorithm</h2>
+<ul>
+<li><p>You care about predicting next-problem correctness</p>
+<ul>
+<li>Or you’re willing to use a method like AOA to get skill estimates</li>
+</ul></li>
+<li><p>You may have unreliable skill tags, or no skill tags at all</p></li>
+<li><p>Your dataset has a reasonably balanced number of attempts - or you don’t care as much about items/skills with fewer attempts</p></li>
+<li><p>Your dataset has students working through material in predefined sequences</p></li>
+</ul>
+<aside class="notes">
+<p>Finally, why use a DKT-family algorithm, and why not use one?</p>
+<p>That third one seems to be often violated in real-world datasets, but people rarely talk about skill-level prediction accuracy.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="why-not-use-a-dkt-family-algorithm" class="slide level2 smaller scrollable">
+<h2>Why not use a DKT-family algorithm</h2>
+<ul>
+<li><p>You want interpretable parameters</p></li>
+<li><p>You have a small dataset (&lt;1M interactions)</p></li>
+<li><p>You want to add new items without refitting the model.</p></li>
+<li><p>You want an algorithm with more thoroughly-understood and more consistent behavior.</p></li>
+</ul>
+<aside class="notes">
+<p>Why not use a DKT-family algorithm?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="quarto-auto-generated-content">
 <p><img src="images/LASERLogoB.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p><a href="https://www.go.ncsu.edu/laser-institute">go.ncsu.edu/laser-institute</a></p><a href="https://www.go.ncsu.edu/laser-institute">
 </a></div><a href="https://www.go.ncsu.edu/laser-institute">
 </a></div><a href="https://www.go.ncsu.edu/laser-institute">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-ding2019deep" class="csl-entry" role="listitem">
+Ding, Xinyi, and Eric C Larson. 2019. <span>“Why Deep Knowledge Tracing Has Less Depth Than Anticipated.”</span> <em>International Educational Data Mining Society</em>.
+</div>
+<div id="ref-gervet2020deep" class="csl-entry" role="listitem">
+Gervet, Theophile, Ken Koedinger, Jeff Schneider, Tom Mitchell, et al. 2020. <span>“When Is Deep Learning the Best Approach to Knowledge Tracing?”</span> <em>Journal of Educational Data Mining</em> 12 (3): 31–54.
+</div>
+<div id="ref-ghosh2020context" class="csl-entry" role="listitem">
+Ghosh, Aritra, Neil Heffernan, and Andrew S Lan. 2020. <span>“Context-Aware Attentive Knowledge Tracing.”</span> In <em>Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining</em>, 2330–39.
+</div>
+<div id="ref-ghosh2021option" class="csl-entry" role="listitem">
+Ghosh, Aritra, Jay Raspat, and Andrew Lan. 2021. <span>“Option Tracing: Beyond Correctness Analysis in Knowledge Tracing.”</span> In <em>International Conference on Artificial Intelligence in Education</em>, 137–49. Springer.
+</div>
+<div id="ref-karumbaiah2022context" class="csl-entry" role="listitem">
+Karumbaiah, Shamya, Jaclyn Ocumpaugh, and Ryan S Baker. 2022. <span>“Context Matters: Differing Implications of Motivation and Help-Seeking in Educational Technology.”</span> <em>International Journal of Artificial Intelligence in Education</em> 32 (3): 685–724.
+</div>
+<div id="ref-khajah2016deep" class="csl-entry" role="listitem">
+Khajah, Mohammad, Robert V Lindsey, and Michael C Mozer. 2016. <span>“How Deep Is Knowledge Tracing?”</span> <em>arXiv Preprint arXiv:1604.02416</em>.
+</div>
+<div id="ref-lee2019knowledge" class="csl-entry" role="listitem">
+Lee, Jinseok, and Dit-Yan Yeung. 2019. <span>“Knowledge Query Network for Knowledge Tracing: How Knowledge Interacts with Skills.”</span> In <em>Proceedings of the 9th International Conference on Learning Analytics &amp; Knowledge</em>, 491–500.
+</div>
+<div id="ref-liu2022open" class="csl-entry" role="listitem">
+Liu, Naiming, Zichao Wang, Richard Baraniuk, and Andrew Lan. 2022. <span>“Open-Ended Knowledge Tracing for Computer Science Education.”</span> In <em>Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing</em>.
+</div>
+<div id="ref-pandey2019self" class="csl-entry" role="listitem">
+Pandey, Shalini, and George Karypis. 2019. <span>“A Self-Attentive Model for Knowledge Tracing.”</span> <em>arXiv Preprint arXiv:1907.06837</em>.
+</div>
+<div id="ref-piech2015deep" class="csl-entry" role="listitem">
+Piech, Chris, Jonathan Bassen, Jonathan Huang, Surya Ganguli, Mehran Sahami, Leonidas J Guibas, and Jascha Sohl-Dickstein. 2015. <span>“Deep Knowledge Tracing.”</span> <em>Advances in Neural Information Processing Systems</em> 28.
+</div>
+<div id="ref-scarlatos2022process" class="csl-entry" role="listitem">
+Scarlatos, Alexander, Christopher Brinton, and Andrew Lan. 2022. <span>“Process-BERT: A Framework for Representation Learning on Educational Process Data.”</span> <em>arXiv Preprint arXiv:2204.13607</em>.
+</div>
+<div id="ref-schmucker2022transferable" class="csl-entry" role="listitem">
+Schmucker, Robin, and Tom M Mitchell. 2022. <span>“Transferable Student Performance Modeling for Intelligent Tutoring Systems.”</span> <em>arXiv Preprint arXiv:2202.03980</em>.
+</div>
+<div id="ref-schmucker2021assessing" class="csl-entry" role="listitem">
+Schmucker, Robin, Jingbo Wang, Shijia Hu, and Tom M Mitchell. 2021. <span>“Assessing the Performance of Online Students–New Data, New Approaches, Improved Accuracy.”</span> <em>arXiv Preprint arXiv:2109.01753</em>.
+</div>
+<div id="ref-scruggs2019extending" class="csl-entry" role="listitem">
+Scruggs, Richard, Ryan S Baker, and Bruce M McLaren. 2019. <span>“Extending Deep Knowledge Tracing: Inferring Interpretable Knowledge and Predicting Post-System Performance.”</span> <em>arXiv Preprint arXiv:1910.12597</em>.
+</div>
+<div id="ref-scruggs2023well" class="csl-entry" role="listitem">
+Scruggs, Richard, Ryan S Baker, Philip I Pavlik Jr, Bruce M McLaren, and Ziyang Liu. 2023. <span>“How Well Do Contemporary Knowledge Tracing Algorithms Predict the Knowledge Carried Out of a Digital Learning Game?”</span> <em>Educational Technology Research and Development</em> 71 (3): 901–18.
+</div>
+<div id="ref-van2008visualizing" class="csl-entry" role="listitem">
+Van der Maaten, Laurens, and Geoffrey Hinton. 2008. <span>“Visualizing Data Using t-SNE.”</span> <em>Journal of Machine Learning Research</em> 9 (11).
+</div>
+<div id="ref-wilson2016estimating" class="csl-entry" role="listitem">
+Wilson, Kevin H, Xiaolu Xiong, Mohammad Khajah, Robert V Lindsey, Siyuan Zhao, Yan Karklin, Eric G Van Inwegen, et al. 2016. <span>“Estimating Student Proficiency: Deep Learning Is Not the Panacea.”</span> In <em>In Neural Information Processing Systems, Workshop on Machine Learning for Education</em>. Vol. 3.
+</div>
+<div id="ref-xiong2016going" class="csl-entry" role="listitem">
+Xiong, Xiaolu, Siyuan Zhao, Eric G Van Inwegen, and Joseph E Beck. 2016. <span>“Going Deeper with Deep Knowledge Tracing.”</span> <em>International Educational Data Mining Society</em>.
+</div>
+<div id="ref-yeung2019deep" class="csl-entry" role="listitem">
+Yeung, Chun-Kit. 2019. <span>“Deep-IRT: Make Deep Learning Based Knowledge Tracing Explainable Using Item Response Theory.”</span> <em>arXiv Preprint arXiv:1904.11738</em>.
+</div>
+<div id="ref-yeung2018addressing" class="csl-entry" role="listitem">
+Yeung, Chun-Kit, and Dit-Yan Yeung. 2018. <span>“Addressing Two Problems in Deep Knowledge Tracing via Prediction-Consistent Regularization.”</span> In <em>Proceedings of the Fifth Annual ACM Conference on Learning at Scale</em>, 1–10.
+</div>
+<div id="ref-zhang2017dynamic" class="csl-entry" role="listitem">
+Zhang, Jiani, Xingjian Shi, Irwin King, and Dit-Yan Yeung. 2017. <span>“Dynamic Key-Value Memory Networks for Knowledge Tracing.”</span> In <em>Proceedings of the 26th International Conference on World Wide Web</em>, 765–74.
+</div>
+<div id="ref-zhang2021knowledge" class="csl-entry" role="listitem">
+Zhang, Jiayi, Rohini Das, Ryan Baker, and Richard Scruggs. 2021. <span>“Knowledge Tracing Models’ Predictive Performance When a Student Starts a Skill.”</span> In <em>Proceedings of the 14th International Conference on Educational Data Mining. EDM, Paris, France</em>, 625–29.
+</div>
+</div>
 </a></section><a href="https://www.go.ncsu.edu/laser-institute">
     </a></div><a href="https://www.go.ncsu.edu/laser-institute">
   </a></div><a href="https://www.go.ncsu.edu/laser-institute">

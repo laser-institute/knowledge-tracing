@@ -19,16 +19,28 @@ resources:
 bibliography: lit/references.bib
 editor: visual
 title-slide-attributes: 
-  data-notes: 
+  data-notes: Today we are going to discuss memory algorithms.
 ---
 
 ## Is future correctness enough?
 
 -   Up until this point we’ve been talking about predicting future correctness
 
+    ::: notes
+    Up to this point, we've been talking about predicting future correctness. But is future correctness enough?
+    :::
+
 ## But what if you forget it tomorrow?
 
 -   Another way to look at knowledge is – how long will you remember it?
+
+::: notes
+-   What if you forget about it tomorrow? 
+
+-   What if you know it today and you can show it again in five minutes but tomorrow you'll never remember it anymore?
+
+-   So another way to look at knowledge is — how long will you remember it?
+:::
 
 ## Relevant for all knowledge
 
@@ -40,11 +52,21 @@ title-slide-attributes:
 
 -   Where are the Islands of Langerhans?
 
+::: notes
+This is relevant for all knowledge,
+:::
+
 ## Most Common Application Areas
 
 -   Flashcard apps
 
 -   Language learning apps
+
+::: notes
+::: notes
+but it's mostly been studied in the context of memory for facts rather than skills.
+:::
+:::
 
 ## Spacing Effect
 
@@ -52,9 +74,21 @@ title-slide-attributes:
 
 -   Early adaptive systems implemented this behavior in simple ways @leitner1972so
 
+::: notes
+-   It's long been known that spaced practice, or in other words, pausing between studying the same fact, is better than massed practice (i.e. cramming for an exam). 
+
+-   Early adaptive systems like Leitner's flashcards (1972) implemented this behavior in simple ways.
+:::
+
 ## ACT-R Memory Equations @pavlik2005practice
 
 -   Memory duration can be understood in terms of memory strength (referred to as activation)
+
+::: notes
+We start our discussion of algorithms for modeling memory with the ACT-R Memory Equations.
+
+In Pavlik Jr & Anderson's (2005) ACT-R memory equations, memory duration can be understood in terms of memory strength, which is sometimes referred to as activation.
+:::
 
 ## ACT-R Memory Equations @pavlik2005practice
 
@@ -67,6 +101,18 @@ $$
 -   Where m = activation strength of current fact t = threshold parameter for how hard it is to remember s is noise parameter for how sensitive memory is to changes in activation
 
 -   Note logistic function (like PFA)
+
+::: notes
+The formula for the probability of remembering in ACT-R is based on three parameters:
+
+1.  m, the activation strength of the current fact
+
+2.  tau, the threshold parameter for how hard it is to remember
+
+3.  s, the noise parameter for how sensitive memory is to changes in activation. In other words, when you re-encounter a fact,  how much better does your memory get? 
+
+\*Note here, that this was not building off PFA, PFA was building off of this.
+:::
 
 ## ACT-R Memory Equations @pavlik2005practice
 
@@ -82,6 +128,14 @@ $$
 
 -   The decay parameter d represents the speed of forgetting under exponential decay
 
+::: notes
+The formula for the activation is represented by this formula, where we have a sequence of n cases where the learner encountered the fact. Each t of i represents how long ago the learner encountered the fact  
+
+for the i-th time. And the decay parameter d represents the speed of forgetting under exponential decay. 
+
+So in other words, based on the parameters of this model, we can kind of infer — how much will your memory decay over time, and how rapidly it will decay over time.
+:::
+
 ## ACT-R Memory Equations @pavlik2005practice
 
 -   Implications
@@ -91,6 +145,14 @@ $$
 -   More time between practices = better memory
 
 -   Most efficient learning comes from dense practice followed by expanding amounts of time in between practices @pavlik2008using
+
+::: notes
+There are a couple of implications for the ACT-R memory equations:
+
+1.  First, more practice equals better memory. That's an implication here, and it's kind of true in the real world. You're probably more likely to remember something if you encounter it more
+
+2.  Also, more time between practices equals better memory. That's true of almost all the memory models. But one kind of interesting implication of Pavlik Jr & Anderson's model (2005) is that the most efficient learning comes from dense practice followed by expanding amounts of time in between practices (Pavlik Jr & Anderson, 2008). 
+:::
 
 ## MCM @Mozer2009PredictingTO
 
@@ -102,17 +164,39 @@ $$
 
 -   Power function is estimated as a combination of exponential functions
 
+::: notes
+A more recent competitor to ACT-R memory equations is MCM by Mozer et al., (2009) and his colleagues. This model postulates that the decay speed drops, the more times the facts are encountered. So in ACT-R, the decay speed is constant whether you've encountered something one time or a million times. 
+
+But in MCM, the more times you've encountered a fact, the slower it is to decay. \
+
+MCM is represented by a functionally complex model where knowledge strength, and therefore the probability of remembering, is a function of the sum of the traces' actual contributions divided by the product of their potential contributions. A power function is estimated as a combination of exponential functions. Each encounter with the knowledge has an exponential function for decay, but it turns out to sum up to a power function.
+:::
+
 ## DASH @mozer2016predicting
 
 -   DASH Extends previous approaches to also include item difficulty and latent student ability
 
 -   Can use either MCM or ACT-R as its internal representation of how memory decays over time
 
+::: notes
+Building on that, Mozer & Lindsay (2016) introduced the DASH framework: 
+
+-   Which extends previous approaches to also include item difficulty and latent student ability
+
+-   DASH has a neat feature. It can use either MCM or ACT-R or other frameworks as its internal representation of how memory decays over time
+
+-   So whether or not you like ACT-R or MCM better, you can use DASH to also include item difficulty and latent student ability in your estimate of student forgetting and memory over time
+:::
+
 ## Duolingo @settles2016trainable
 
 -   Fits regression model to predict both recall and estimated half-life of memory (based on lag time)
 
 -   Based on estimate of exponential decay of memory
+
+::: notes
+Also very recently, Duolingo — fits a regression model to predict both the recall and the estimated half-life of memory based on the lag time. It's based on an estimate of the exponential decay of memory.
+:::
 
 ## Duolingo @settles2016trainable
 
@@ -126,6 +210,14 @@ $$
 
     -   Total number of times student has failed to recalled the word Word difficulty
 
+::: notes
+But Duolingo does this calculation (Settles & Meeder, 2016):
+
+-   Not based on the kind of complex algorithms that are recursive or iterative in nature like seen in Pavlik or Mozer, but instead uses a feature set including the time since the word last seen, the total number of times the student seen the word, total number of times the student's correctly recalled the word or failed to recall the word, and the word difficulty
+
+-   So it tries to capture some of the same ideas as DASH in a formulation that is quicker to implement, and quicker to run in real-time
+:::
+
 ## Another Key Memory Phenomenon
 
 -   Spreading Activation
@@ -134,9 +226,17 @@ $$
 
     -   @ma2023each build a DKT-family algorithm for memory that uses associations between items along these lines
 
+::: notes
+Following slides content
+:::
+
 ## And of course…
 
 -   Remember what we talked about earlier this week on integrating time into DKT-family algorithms and LKT-family algorithms
+
+::: notes
+Following slides content
+:::
 
 ## When to use memory models
 
@@ -151,6 +251,10 @@ $$
 -   Once you have a memory model, you can safely add new items to it and it will work
 
     -   Many algorithms don’t have item-specific parameters at all
+
+::: notes
+Following slides content
+:::
 
 ## Questions? Comments?
 

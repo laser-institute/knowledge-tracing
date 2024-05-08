@@ -1,0 +1,4 @@
+- source: DKT.qmd
+  quarto-pub:
+    - id: a08cb87c-589a-4c87-8bd7-2937b053c835
+      url: 'https://yilinl.quarto.pub/module-3-deep-knowledge-tracing'
