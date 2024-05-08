@@ -24,9 +24,13 @@ The primary aim of this case study is to gain some hands-on experience with esse
 
 1.  **Prepare**: Before analysis, you'll read a recent paper about BKT, learn about the current trend, and get introduced to the {pandas}, {sklearn}, and {pyBKT} packages for data wrangling and analyzing the BKT model.
 
-2.  **Fitting the model**: In the fitting section of the case study, you will learn basic techniques for fitting and evaluating a BKT model.
+2.  **Wrangle**:
 
-3.  **Advanced Features**: You will explore a variant of the BKT model and an advanced feature called Roster in the pyBKT package.
+3.  **Explore**:
+
+4.  **Model**: In the model section of the case study, you will learn basic techniques for fitting and evaluating a BKT model. You will also explore a variant of the BKT model and an advanced feature called Roster in the pyBKT package.
+
+5.  
 
 ### 1a. Review the Research
 
@@ -115,11 +119,7 @@ Use the code chunk below to import the pyBKT package:
 
 ## 2. WRANGLE
 
-This is an example of model fitting:
-
-![](images/fitting.png){width="370"}
-
-In this example, linear regression is used to fit the model and this is one of the simplest techniques. You are fitting the model (the line) to a dataset (the dots). The model will be on the form y = a x + b, and you’re trying to find the optimal values of a and b. You draw a line that best fits the existing data points on average. Once you’ve fitted the model, you can use it to predict outcomes (y-axis) based on inputs (x-axis).
+Brief intro...
 
 ### 2a. Import the dataset
 
@@ -140,11 +140,26 @@ df.head()
 
 #### Remove unnecessary rows
 
-Before moving to the next step, use the code chunk below to filter out all the rows in which the firstattempt equals 1. Then filter out all the rows that represent the "CHOOSE-X-AXIS-QUANTITATIVE" skill.
+Before moving to the next step, use the code chunk below to filter out all the rows in which the firstattempt equals 1.
 
 ```{python}
 #just an example, this will not show in students' version
 df2 = df[df["firstattempt"]==1]
+```
+
+Just as a refresher, in the code above we created a new DataFrame **`df2`** by filtering the original DataFrame **`df`**. In the expression **`df[df["firstattempt"]==1]`**, the brackets serve a specific function in the context of Python's Pandas library:
+
+1.  **Outer Brackets**: These are used to access elements of the DataFrame **`df`**. In Pandas, brackets are used to select columns (when you use a string or list) or rows (when you use slicing or boolean indexing).
+
+2.  **Inner Brackets**: The inner brackets contain the condition **`df["firstattempt"]==1`**. Here, **`df["firstattempt"]`** selects the column named "firstattempt" from the DataFrame, and selects only the rows where the value of the column **`"firstattempt"`** is equal to 1.
+
+Essentially, **`df2`** will contain all the rows from **`df`** where the first attempt at a the test question is marked by a 1, indicating that it was indeed the student's first attempt.
+
+#### **👉 Your Turn** **⤵**
+
+Now filter out all the rows that represent the "CHOOSE-X-AXIS-QUANTITATIVE" skill.
+
+```{python}
 df3 = df2[df2["KC"]=="CHOOSE-X-AXIS-QUANTITATIVE"]
 ```
 
@@ -158,11 +173,37 @@ Thus, you will need to create a column name mapping before training the model.
 defaults = {'order_id': 'ID', 'skill_name': 'KC', 'correct': 'right', 'user_id': 'Student'}
 ```
 
-This is a dictionary. Dictionaries are used to store data values in key: value pairs. Dictionaries are written with curly brackets.
+This is a dictionary. Dictionaries are used to store data values in key: value pairs. Dictionaries are written with curly brackets. Here’s what each part of the code is doing:
+
+-   **`defaults = {...}`**: This initializes **`defaults`** as a Python dictionary. Dictionaries in Python are collections of key-value pairs, which are used to store data values like a map.
+
+-   **Key-Value Pairs**: Inside the dictionary, there are several key-value pairs defined:
+
+    -   **`'order_id': 'ID'`** maps the key **`'order_id'`** to the value **`'ID'`**.
+
+    -   **`'skill_name': 'KC'`** maps the key **`'skill_name'`** to the value **`'KC'`**.
+
+    -   **`'correct': 'right'`** maps the key **`'correct'`** to the value **`'right'`**.
+
+    -   **`'user_id': 'Student'`** maps the key **`'user_id'`** to the value **`'Student'`**.
+
+\
 
 The column names you need to specify are order_id, skill_name, correct, and user_id. You may refer to the document in 2a about the descriptions of all the variables.
 
+## 3. EXPLORE
+
+Before we begin learning about how to fit a basic BKT model, we'll
+
 ## 4. MODEL
+
+In this section we'll learn to fit a basic BKT model, but what exactly does is mean to "fit" a model?
+
+This is an example of model fitting:
+
+![](images/fitting.png){width="370"}
+
+In this example, linear regression is used to fit the model and this is one of the simplest techniques. You are fitting the model (the line) to a dataset (the dots). The model will be on the form y = a x + b, and you’re trying to find the optimal values of a and b. You draw a line that best fits the existing data points on average. Once you’ve fitted the model, you can use it to predict outcomes (y-axis) based on inputs (x-axis).
 
 #### Fit the model
 
@@ -223,7 +264,7 @@ Split the data into the training set and the testing set by 80%/20% and fit your
 #split the dataset by 80%/20%
 ```
 
-### 3b. Conditionalizing and Cross-validation in BKT
+### 3b. Conditionalizing in BKT
 
 #### Conditionalize guess, slip, and learn on other factors
 
@@ -240,6 +281,8 @@ print(model_multi.params())
 ```
 
 As you can see from the output, each item now has the guess, slip, and learn rate. You can conditionalize on lots of factors, depending on the dataset you collected.
+
+#### **👉 Your Turn** **⤵**
 
 ### ❓Challenge: Conditionalize slip on response time
 
@@ -271,13 +314,13 @@ model_5sec.fit(data= df4, multigs = True,defaults = defaults)
 print(model_5sec.params())
 ```
 
-### 3b Cross Validation
+### 3c. Cross Validation in BKT
 
 pyBKT also allows you to easily use cross-validation.
 
 Cross-validation is a technique to evaluate the performance of a model on unseen data. The picture below shows how a 5-fold cross-validation works.
 
-![](images/cross-validation.png){width="432"}
+![](images/cross-validation.png){width="80%"}
 
 Cross-validation is offered as a blackbox function similar to a combination of fit and evaluate that accepts a particular number of folds, a seed, and a metric(either one of the 3 provided that are 'rmse', 'auc' or 'accuracy' or a custom Python function)
 
@@ -286,6 +329,8 @@ model2 = Model(seed = 42, num_fits=1)
 cross_vali = model2.crossvalidate(data = df3, folds = 10, defaults = defaults, metric = 'auc')
 print(cross_vali)
 ```
+
+#### **👉 Your Turn** **⤵**
 
 ### ❓Challenge: Cross-validation on your response time model
 
@@ -299,7 +344,7 @@ cross_validation = model_5sec.crossvalidate(data = df4, folds = 10, defaults = d
 print(cross_validation)
 ```
 
-## 4. Other advanced features in pyBKT
+### 4c. Other advanced features in pyBKT
 
 pyBKT also offers some other advanced features, such as Roster and Parameter Fixing.
 
@@ -330,7 +375,7 @@ print("Rachel's mastery:", roster.get_state_type('VALUING-NUM-FEATURES', 'Rachel
 print("Rachel's probability of mastery:", roster.get_mastery_prob('VALUING-NUM-FEATURES', 'Rachel'))
 ```
 
-### ❓Challenge
+#### **👉 Your Turn** **⤵**
 
 Create a new roster on the model you fitted in section 2. If you add 3 consecutive correct answers to Rachel and 3 consecutive incorrect answers to Jack, will they master the skill or not? Use the code chunk below:
 
