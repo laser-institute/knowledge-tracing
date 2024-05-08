@@ -18,9 +18,11 @@ bibliography: lit/references.bib
 
 ## 1. Prepare
 
-The first KT case study is inspired by the work of @zambrano2024investigating, which analyzed the performance of the Bayesian Knowledge Tracing(BKT) model and carelessness detector on every demographic group in the sample.
+The first KT case study is inspired by the work of @zambrano2024investigating, which analyzed the performance of the Bayesian Knowledge Tracing(BKT) model and carelessness detector on every demographic group in the sample. The primary aim of this case study is to gain some hands-on experience with essential Python packages and functions for Bayesian Knowledge Tracing. This case study and those in the modules that follow are organized around data-intensive workflow processes that are common to Learning Analytics [@krumm2018]:
 
-The primary aim of this case study is to gain some hands-on experience with essential Python packages and functions for Bayesian Knowledge Tracing. You will learn how to do the data wrangling, fit the model, and analyze the goodness of the model. @zambrano2024investigating utilized BKT brute-force grid search(BKT-BF, in Java) to fit the BKT model but you will use pyBKT(Python) here. pyBKT is easier to start with but slower in performance. Specifically, this case study will cover the following topics:
+![](images/laser-cycle.png){width="80%"}
+
+In this case study, you will learn how to do the data wrangling, fit the model, and analyze the goodness of the model. @zambrano2024investigating utilized BKT brute-force grid search(BKT-BF, in Java) to fit the BKT model but you will use pyBKT(Python) here. pyBKT is easier to start with but slower in performance. Specifically, this case study addresses the follow topics:
 
 1.  **Prepare**: Before analysis, you'll read a recent paper about BKT, learn about the current trend, and get introduced to the {pandas}, {sklearn}, and {pyBKT} packages for data wrangling and analyzing the BKT model.
 
@@ -199,7 +201,7 @@ This is an example of model fitting:
 
 In this example, linear regression is used to fit the model and this is one of the simplest techniques. You are fitting the model (the line) to a dataset (the dots). The model will be on the form y = a x + b, and you’re trying to find the optimal values of a and b. You draw a line that best fits the existing data points on average. Once you’ve fitted the model, you can use it to predict outcomes (y-axis) based on inputs (x-axis).
 
-#### Fit the model
+### 4a. Fit the model
 
 pyBKT makes fitting the model very easy. It only takes 2 lines:
 
@@ -250,7 +252,7 @@ print("Training SSR: %f" % training_SSR)
 
 The sum of squared residuals (SSR) **measures the level of variance in the error term, or residuals, of a regression model**. The smaller the residual sum of squares, the better your model fits your data; the greater the residual sum of squares, the poorer your model fits your data.
 
-#### ❓Challenge
+#### **👉 Your Turn** **⤵**
 
 Split the data into the training set and the testing set by 80%/20% and fit your BKT model on a skill. This skill should not be the same as the one above and the one in the ASSISTments activity. Then, evaluate the MAE and AUC by predicting the given test set and training set in the respective variables.
 
@@ -258,7 +260,7 @@ Split the data into the training set and the testing set by 80%/20% and fit your
 #split the dataset by 80%/20%
 ```
 
-### 3b. Conditionalizing in BKT
+### 4b. Conditionalizing in BKT
 
 #### Conditionalize guess, slip, and learn on other factors
 
@@ -308,7 +310,7 @@ model_5sec.fit(data= df4, multigs = True,defaults = defaults)
 print(model_5sec.params())
 ```
 
-### 3c. Cross Validation in BKT
+### 4c. Cross Validation in BKT
 
 pyBKT also allows you to easily use cross-validation.
 
