@@ -191,6 +191,10 @@ The column names you need to specify are order_id, skill_name, correct, and user
 
 Before we begin learning about how to fit a basic BKT model, we'll
 
+summary stats students and ID
+
+Histogram of the time variable and talking a little bit about what time signifies
+
 ## 4. MODEL
 
 In this section we'll learn to fit a basic BKT model, but what exactly does is mean to "fit" a model?
@@ -391,7 +395,7 @@ model_fixedparam.fit(data = df3, fixed=True, defaults = defaults)
 model_fixedparam.params()
 ```
 
-### ❓Challenge
+#### **👉 Your Turn** **⤵**
 
 Fix the slip rate to 0.3 and the guess rate to 0.2 when fitting your model, is the model getting better or worse?
 
