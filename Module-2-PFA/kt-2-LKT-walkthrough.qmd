@@ -1,0 +1,175 @@
+---
+title: "Module 2: LKT walkthrough"
+author: "LASER Institute"
+date: today 
+format:
+  html:
+    toc: true
+    toc-depth: 4
+    toc-location: right
+theme:
+  light: simplex
+  dark: cyborg
+editor: visual
+bibliography: lit/references.bib
+---
+
+## Introduction
+
+This guide seeks to help beginners with posit cloud environments, and logistic knowledge tracing by @pavlik2021logistic
+
+<https://ieeexplore.ieee.org/document/9616435>.
+
+## Set up your Posit Cloud R environment
+
+1.  Go to<https://posit.cloud/plans/free>, Click the **Sign Up**
+
+2.  Signing up with Google/Github is recommended but feel free to use other methods.
+
+    ![](images/signup.png)
+
+<!-- -->
+
+3.  Then, log in your account. Click **“New Project”,** then **New RStudio Project**
+
+  ![](images/newproject.png)
+
+4.  Wait a few seconds for it to load. On the top, give your R project a name:
+
+![](images/projectname.png)
+
+Then click “**New Blank File**” on the right, select **R Script.**
+
+![](images/blankfile.png)
+
+5.  Try **print(“Hello World”)** in your R script:
+
+![](images/helloworld.png)
+
+6.  Click the run here, maker sure **the cursor is on the first line**
+
+    ![](images/run.png)
+
+It should show:
+
+![](images/output.png)
+
+**Congratulations on your first R project!**
+
+\
+\
+
+**Tip:** Unlike other languages, clicking Run here only runs the line where you cursor is on. To run multiple lines at the same time, highlight all the code you would like to run, then click Run.
+
+**Shortcuts:**
+
+MacOS:  Command+Shift+Return: run all the lines in current file
+
+```         
+    Command+ Return: run    
+```
+
+PC(Windows): Control + Shift + Enter: run all the lines in current file
+
+Control + Enter: run
+
+## Logistic Knowledge Tracing
+
+1.  Let’s install the LKT package first
+
+**install.packages("LKT")**
+
+Run this line.
+
+![](images/instalLKT.png)
+
+2.  When you see this in Console, it means that it is successfully installed:
+
+Now please delete this line.
+
+![](images/installsuccess.png)
+
+3.  **Here is the sample code from the documentation, copy and paste it into your R file:**
+
+library(LKT)
+
+set.seed(41)
+
+val\<-largerawsample
+
+#clean it up
+
+val\$KC..Default.\<-val\$Problem.Name
+
+\# make it a data table
+
+val= setDT(val)
+
+#make unstratified folds for crossvaldiations
+
+val\$fold\<-sample(1:5,length(val\$Anon.Student.Id),replace=T)
+
+\# make student stratified folds (for crossvalidation for unseen sample)
+
+unq = sample(unique(val\$Anon.Student.Id))
+
+sfold = rep(1:5,length.out=length(unq))
+
+val\$fold = rep(0,length(val\[,1\]))
+
+for(i in 1:5){val\$fold\[which(val\$Anon.Student.Id %in% unq\[which(sfold==i)\])\]=i}
+
+\# get the times of each trial in seconds from 1970
+
+val\$CF..Time.\<-as.numeric(as.POSIXct(as.character(val\$Time),format="%Y-%m-%d %H:%M:%S"))
+
+#make sure it is ordered in the way the code expects
+
+val\<-val\[order(val\$Anon.Student.Id, val\$CF..Time.),\]
+
+#create a binary response column to predict and extract only data with a valid value
+
+val\$CF..ansbin.\<-ifelse(tolower(val\$Outcome)=="correct",1,ifelse(tolower(val\$Outcome)=="incorrect",0,-1))
+
+val\<-val\[val\$CF..ansbin.==0 \| val\$CF..ansbin.==1,\]
+
+\
+
+modelob \<- LKT(
+
+  data = val, interc=FALSE,
+
+  components = c("Anon.Student.Id","KC..Default.","KC..Default."),
+
+  features = c("intercept", "intercept", "lineafm"))
+
+4.  Run all the lines, you should see:
+
+![](images/finaloutput.png)
+
+Here in this code, we use the dataset that comes with the LKT package, called “largerawsample”. Then we clean the data and build a PFA model with it.
+
+\
+
+McFadden’s R square and Log likelihood are two metrics to measure the goodness of fitting model.  
+
+\
+
+McFadden’s R square represents the proportion of variance in the dependent variable that is explained by the independent variables. A higher value of McFadden's R-squared indicates a better fit of the model to the data. 
+
+\
+
+The log-likelihood value of a regression model is also a way to measure the goodness of fit for a model. The higher the value of the log-likelihood, the better a model fits a dataset. The log-likelihood value for a given model can range from negative infinity to positive infinity.
+
+\
+\
+
+**Resources:**
+
+**LKT package Cran:** <https://cran.r-project.org/web/packages/LKT/index.html>
+
+**LKT Examples:** <https://cran.r-project.org/web/packages/LKT/vignettes/Examples.html>
+
+**LKT documentation:** <https://cran.r-project.org/web/packages/LKT/LKT.pdf>
+
+\

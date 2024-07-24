@@ -27,7 +27,7 @@ title-slide-attributes:
 
 ::: columns
 ::: {.column width="50%"}
-A broad framework for knowledge tracing models based on logistic regression @pavlik2021logistic
+A broad framework for knowledge tracing models based on logistic regression (Pavlik, Eglington, & Harrell-Williams, 2021)
 :::
 
 ::: {.column width="50%"}
@@ -46,7 +46,7 @@ Logistic knowledge tracing is a broad framework for knowledge tracing models bas
 ::: columns
 ::: {.column width="50%"}
 ::: columns
-First member of the LKT family that ran in real-time @pavlik2009performance
+First member of the LKT family that ran in real-time (Pavlik et al., 2009)
 :::
 :::
 
@@ -674,12 +674,12 @@ EM is vulnerable to local minima, which means sometimes you get to a parameter b
 
 ## Is PFA better than BKT?
 
--   Approximately equal predictive power across a lot of studies @pavlik2009performance, @gong2010comparing; @baker2011towards; @pardos2011ensembling; @pardos2012sum
+-   Approximately equal predictive power across a lot of studies (Pavlik et al., 2009; Gong et al., 2010; Baker et al., 2011; Pardos et al., 2011, 2012)
 
 -   Different virtues and flaws – choose the one that better fits your goals
 
 ::: notes
-**Speaker Notes:**
+**Notes:**
 
 Is PFA better than BKT?
 
@@ -690,7 +690,7 @@ Is PFA better than BKT?
 
 ## Is PFA used in the real world?
 
--   Yes, but by far fewer learning systems than BKT
+-   Yes, but far fewer learning systems than BKT
 
 -   @maier2021challenges discuss its use in Reveal Math 1
 
@@ -724,7 +724,7 @@ One issue in real-world use:
 -   When you have an item tagged to multiple skills, a rare skill is going to impact the common skills it intersects with. Maier et al., (2021) handled this by creating a catch-all skill for rare skills, and they found that using average parameters from all the common skills also works 
 :::
 
-## Final Thoughts on PFA
+## Final Thoughts on (original)PFA
 
 -   PFA is a competitor for measuring student skill, which predicts the probability of correctness rather than latent knowledge\
 
@@ -778,7 +778,11 @@ An early major extension to PFA was:
 
 -   Weights actions further back in order less strongly
 
--   Looks at proportion of success-failure, weighting by distance in order from current action Adds an evidence decay parameter b Adds “ghost practices” before current practice to make math work
+-   Looks at proportion of success-failure, weighting by distance in order from current action
+
+-   Adds an evidence decay parameter b
+
+-   Adds “ghost practices” before current practice to make math work
 
 -   Substitutes
 
@@ -786,7 +790,7 @@ An early major extension to PFA was:
 
 -   For the previous summation
 
--   A little higher AUC (0.003-0.027) @pavlik2021automatic
+-   A little higher AUC (0.003-0.027) (Pavlik et al., 2021)
 
 ::: notes
 **Speaker Notes:**
@@ -828,15 +832,15 @@ Building on this and some other work that had been going on in his lab at the ti
 Here’s a table. You can see many variants, and there are many things you can do to modify PFA. 
 :::
 
-## LKT @pavlik2021logistic
+## LKT (Pavlik et al., 2021)
 
 -   Ongoing work on variants to PFA typically frames itself in terms of LKT components (and proposes additional components)
 
 -   Examples
 
-    -   Fluctuation in response time @chu2023predictiveness
+    -   Fluctuation in response time(Chu & Pavlik, 2023)
 
-    -   Different models of memory decay and spacing effect @Maier2023StudyingMD
+    -   Different models of memory decay and spacing effect(Maier et al., 2023).
 
 ::: notes
 **Speaker Notes**

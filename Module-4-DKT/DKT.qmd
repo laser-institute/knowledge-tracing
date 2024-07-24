@@ -1,6 +1,6 @@
 ---
-title: "Module 3: Deep Knowledge Tracing"
-subtitle: "KT Learning Lab 3: A Conceptual Overview"
+title: "Module 4: Deep Knowledge Tracing"
+subtitle: "KT Learning Lab 4: A Conceptual Overview"
 format:
   revealjs: 
     slide-number: c/t

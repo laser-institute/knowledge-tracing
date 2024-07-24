@@ -1,6 +1,5 @@
 ---
-title: "Module 1: Bayesian Knowledge Tracing"
-subtitle: "BKT-BF walkthrough Mac"
+title: "Module 1: BKT-BF walkthrough Mac"
 author: "LASER Institute"
 date: today 
 format:

@@ -1,6 +1,6 @@
 ---
-title: "Module 4 tem Response Theory and ELO"
-subtitle: "KT Learning Lab 4: A Conceptual Overview"
+title: "Module 3 Item Response Theory and ELO"
+subtitle: "KT Learning Lab 3: A Conceptual Overview"
 format:
   revealjs: 
     slide-number: c/t
@@ -21,6 +21,7 @@ bibliography: lit/references.bib
 editor: visual
 title-slide-attributes: 
   data-notes: Today we are going to talk about item response theory.
+---te
 ---
 
 ## Item Response Theory

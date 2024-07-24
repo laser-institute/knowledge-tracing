@@ -1,0 +1,159 @@
+---
+title: "Module 4: Case Study"
+subtitle: "Deep Knowledge Tracing"
+author: "LASER Institute"
+date: today 
+format:
+  html:
+    toc: true
+    toc-depth: 4
+    toc-location: right
+theme:
+  light: simplex
+  dark: cyborg
+editor: visual
+jupyter: python3
+bibliography: lit/references.bib
+---
+
+## Deep Knowledge Tracing
+
+As discussed in the lecture, most DKT-family papers focus on introducing a new algorithm, running that algorithm on standard datasets, and discussing how the new algorithm achieves better AUC values. For this case study, you will instead focus on running an existing algorithm on a new dataset. While this activity will focus on one implementation of DKT, the same general process will be broadly applicable to most implementations of DKT-family algorithms - and many implementations of other knowledge tracing algorithms as well.
+
+The case study will loosely follow Baker et al. (in press), which uses DKT's correctness predictions to produce estimates of students' skill levels.
+
+### Review the Research
+
+Baker, R., Scruggs, R., Pavlik, P.I., McLaren, B.M., Liu, Z. (in press) How Well Do Contemporary Knowledge Tracing Algorithms Predict the Knowledge Carried Out of a Digital Learning Game? To appear in *Educational Technology Research & Development* ([link](https://www.google.com/url?q=https%3A%2F%2Flearninganalytics.upenn.edu%2Fryanbaker%2Fetrd-scruggs.pdf))
+
+**Abstract**: Despite considerable advances in knowledge tracing algorithms, educational technologies that use this technology typically continue to use older algorithms, such as Bayesian Knowledge Tracing. One key reason for this is that contemporary knowledge tracing algorithms primarily infer next-problem correctness in the learning system, but do not attempt to infer the knowledge the student can carry out of the system, information more useful for teachers. The ability of knowledge tracing algorithms to predict problem correctness using data from intelligent tutoring systems has been extensively researched, but data from outcomes other than next-problem correctness have received less attention. In addition, there has been limited use of knowledge tracing algorithms in games, because algorithms that do attempt to infer knowledge from answer correctness are often too simple to capture the more complex evidence of learning within games. In this study, data from a digital learning game, Decimal Point, was used to compare ten knowledge tracing algorithms' ability to predict students' knowledge carried outside the learning system - measured here by posttest scores - given their game activity. All Opportunities Averaged (AOA), a method proposed by Scruggs, Baker, & McLaren (2020) was used to convert correctness predictions to knowledge estimates, which were also compared to the built-in estimates from algorithms that produced them. Although statistical testing was not feasible for these data, three algorithms tended to perform better than the others: Dynamic Key-Value Memory Networks, Logistic Knowledge Tracing, and a multivariate version of Elo. Algorithms' built-in estimates of student ability underperformed estimates produced by AOA, suggesting that some algorithms may be better at estimating performance than ability. Theoretical and methodological challenges related to comparing knowledge estimates with hypothesis testing are also discussed.
+
+Following Scruggs et al. (2020), this paper continued testing whether DKT-family algorithms' more-accurate correctness predictions could be used to produce more accurate estimates of student knowledge than either built-in student ability estimates or averaged correctness predictions from other algorithms.
+
+### DKT implementation
+
+@scruggs2023well used an implementation of DKT from Yeung and Yeung (2018), but that implementation requires deprecated Python libraries, so this case study will instead use a more modern implementation from Gervet et al. (2020). In addition to being easier to run, this implementation also exports correctness predictions automatically.
+
+**Colab note**: For fitting DKT, you'll need to be using a Colab runtime with a GPU. You can complete the earlier steps without a GPU, but switching the runtime type will reset the runtime environment, deleting all data.
+
+### Data
+
+Like most implementations of DKT-family algorithms, this implementation is intended to be run on the datasets reported in the paper. For this exercise, you will be working to run DKT on another dataset. You can either work with your own dataset, or, if you don't have a dataset in mind, you could work with a small dataset from Bruce McLaren's Decimal Point system, taken from Scruggs et al. (2020).
+
+As mentioned in the lecture, DKT-family algorithms tend to perform better on larger datasets, but for this case study, a smaller dataset should work fine - the Decimal Point data contains about 70K attempts. If you're interested in using your own dataset, read through the next section and consider the possible problems and how they may apply to your data. Take a look at one of the datasets included with the DKT implementation as well to see if your dataset contains the same information - user IDs, item IDs, correctness, and some sort of skill ID should probably be included.
+
+```{python}
+# First, clone the Git repository. This implementation also requires TensorboardX, so
+# we install that here.
+!git clone https://github.com/theophilegervet/learner-performance-prediction
+!pip install tensorboardX
+!mv learner-performance-prediction/* .
+```
+
+### Data preparation
+
+Take a look at the `prepare_data.py` file. That file preprocesses data from Assistments and several other data sets. `prepare_kddcup10` in that file is a long function, but it checks for several possible problems in the dataset. If you're using your own data, it's probably worth checking for such issues. Here's a partial list of things to think about:
+
+-   How many attempts must a student make to be included in the dataset?
+
+-   Have all practice problems - problems with extra help or scaffolding as compared to the rest of the activity - been removed?
+
+-   Have all items without an answer attempt been removed?
+
+-   Have all item attempts after the first attempt been removed?
+
+-   Is the data sorted in chronological order? If attempts are very fast, are the timestamps high-resolution enough to allow for proper sorting?
+
+-   If you're using a sparse dataset with relatively few attempts per item, it's good to check that all items appear in the training set. Some implementations crash if previously unseen items appear in the test set.
+
+Note that by default `prepare_data.py` constructs a train split and a test split. This implementation constructs its validation split from the train split. If you want to do hyperparameter tuning, you may want to edit `train_dkt2.py` to make sure that the validation split is the same for each combination of hyperparameters.
+
+### Hyperparameter tuning
+
+@scruggs2023well does not conduct hyperparameter tuning. In our experience with DKT-family algorithms, hyperparameter tuning can give some benefit, but rarely leads to large performance gains. However, if you are interested in hyperparameter tuning, Gervet et al. (2020) mentions that they tested the following hyperparameter values: \[50, 100, 200\] for embedding size and hidden layer dimension and \[1,2\] for number of hidden layers.
+
+Hyperparameters can be set with command-line arguments when running the implementation; see `train_dkt2.py` for more information.
+
+### Code wrangling
+
+Using prepare_kddcup as a starting point, edit your dataset or the Python code so that the code will format your data properly. Run prepare_data.py on your dataset.
+
+If you're working with the Decimal Point data, note that there are no timestamps, but the code expects them to be present to sort the data and de-duplicate attempts. The data is already sorted properly; you can either remove the portions of the code that work with timestamps or add dummy timestamps.
+
+Explanation To complete this, the student needs to:
+
+Look at the Python code for prepare_kddcup.
+
+Figure out which columns are referred to (and which column names are hardcoded vs the ones that can be passed in.
+
+Change either the code or data so that they match.
+
+Figure out how to handle problem IDs - in the Decimal Point data, they can just use problem numbers.
+
+Change "correct" and "incorrect" to 0 and 1.
+
+Remove references to timestamps (or add dummies).
+
+Edit dataset names and create a data folder so the code processes their dataset.
+
+Run prepare_data.py on their dataset.
+
+Once you're done modifying prepare_data.py, go ahead and run it on your data.
+
+`!python prepare_data_modified.py --dataset decimal`
+
+`# Now that the data is ready, it's time to train DKT. Change the dataset name as # needed.`
+
+`Make sure you're running on a GPU-enabled runtime.`
+
+`!python train_dkt2.py --dataset decimal`
+
+`Once it finishes training, it will compute the AUC on the test set.`
+
+### Getting and using the correctness predictions
+
+This implementation of DKT adds a column with its correctness prediction (`DKT2`) directly to the test data CSV. If you're working with another DKT implementation or another DKT-family algorithm, it may be more complicated to export correctness predictions. In particular, some algorithms may reorder students or attempts, making it difficult to connect correctness predictions back to their corresponding attempts.
+
+Once you have the correctness predictions attached to attempts, it's easy to compute AUC, RMSE, or other fit statistics. Here, we will use Pandas to load the data and scikit-learn to compute the statistics.
+
+`import pandas as pd`
+
+`df = pd.read_csv("data/decimal/preprocessed_data_test.csv", sep="\t")`
+
+`df`
+
+`The dataframe should now have a 'DKT2' column with correctness predictions.`
+
+`from sklearn.metrics import mean_squared_error, roc_auc_score print("RMSE:", mean_squared_error(df['correct'], df['DKT2'])**0.5) print("AUC:", roc_auc_score(df['correct'], df['DKT2']))`
+
+`Look at the RMSE and AUC values. Do you think DKT does a good job predicting correctness on the dataset?`
+
+### Averaging correctness predictions
+
+In Baker et al. (in press), instead of looking at AUC values, the correctness predictions were averaged to produce skill estimates. That can be done with Pandas' `groupby` function:
+
+`df['skill_estimate'] = df.groupby(["user_id", "skill_id"])['DKT2'].transform('mean') # This groups the dataframe by user_id and skill_id, then for each group, it computes the mean of the "DKT2" column. # 'transform' is used to duplicate the resulting means so that they are the same length as the original dataframe, # allowing them to be assigned to a new column.`
+
+`results = df.drop_duplicates(['user_id', 'skill_id']) # Drop duplicates to keep one row per user and skill.`
+
+`results.drop(["item_id", "correct", "timestamp"], axis=1, inplace=True) # And remove the extra columns, giving a list of skill estimates for each skill for each user. # Of course, if a user did not attempt a skill, since they were never in the original dataframe, they # are not listed here either.`
+
+`results`
+
+In this case study, we will stop here, not comparing the skill estimates to posttest scores - in part due to the statistical issues mentioned below.
+
+Baker et al. use DKT's correctness predictions to generate skill estimates as done here. Can you think of another use for the correctness predictions? Are there other ways to use them to say things about either an individual student's learning, more general skill learning (like BKT's guess and slip parameters), or behavior in the learning system?
+
+### Statistical comparisons
+
+As discussed in Baker et al. (in press), comparisons between student-level skill estimates are statistically complex and it can be difficult to avoid violating statistical assumptions. These statistical challenges may be one reason why there are few comparisons of knowledge tracing algorithms' skill estimates.
+
+As this case study does not use any posttest scores and focuses on one implementation of DKT, those statistical risks are moot, but they are worth keeping in mind if you plan to compare skill-level estimates from knowledge tracing algorithms, or if you compare knowledge tracing algorithms using metrics other than AUC, RMSE, or similar dataset-level statistics.
+
+### Some final notes
+
+As discussed in the lecture, we are skeptical about the value of item clustering or skill discovery in DKT-family models. If you're interested in exploring that further, there are relatively few papers to refer to, but Ding and Larson's work (2019, 2021) is worth reading; they discuss the internal structure of DKT-family models at some length.
+
+The correctness predictions in Baker et al. (in press) were computed as students worked through the learning system. That means that, when computing skill estimates, a prediction about a student's second attempt was considered just as meaningful as their last, even though the posttest was not given until students had finished working with the learning system.
+
+We have found in two data sets that those estimates are more accurate than estimates that were computed after all of a student's activity in the learning system. Can you think of reasons why this might be the case?。

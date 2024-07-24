@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="LASER Institute">
+<meta name="dcterms.date" content="2024-05-20">
+
+<title>Module 1: BKT-BF walkthrough Mac</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="kt-1-BKT-BF-walkthrough-Mac_files/libs/clipboard/clipboard.min.js"></script>
+<script src="kt-1-BKT-BF-walkthrough-Mac_files/libs/quarto-html/quarto.js"></script>
+<script src="kt-1-BKT-BF-walkthrough-Mac_files/libs/quarto-html/popper.min.js"></script>
+<script src="kt-1-BKT-BF-walkthrough-Mac_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="kt-1-BKT-BF-walkthrough-Mac_files/libs/quarto-html/anchor.min.js"></script>
+<link href="kt-1-BKT-BF-walkthrough-Mac_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="kt-1-BKT-BF-walkthrough-Mac_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="kt-1-BKT-BF-walkthrough-Mac_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="kt-1-BKT-BF-walkthrough-Mac_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="kt-1-BKT-BF-walkthrough-Mac_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="kt-1-BKT-BF-walkthrough-Mac_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="kt-1-BKT-BF-walkthrough-Mac_files/libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#section-1-java-ide-and-environment-setup" id="toc-section-1-java-ide-and-environment-setup" class="nav-link" data-scroll-target="#section-1-java-ide-and-environment-setup"><strong>Section 1: Java IDE and Environment Setup</strong></a>
+  <ul>
+  <li><a href="#application-for-jetbrain-educational-license" id="toc-application-for-jetbrain-educational-license" class="nav-link" data-scroll-target="#application-for-jetbrain-educational-license">Application for JetBrain Educational License</a></li>
+  <li><a href="#install-jetbrain-intellij-idea" id="toc-install-jetbrain-intellij-idea" class="nav-link" data-scroll-target="#install-jetbrain-intellij-idea">Install JetBrain Intellij IDEA</a></li>
+  <li><a href="#install-java-environment-and-activating-intellij" id="toc-install-java-environment-and-activating-intellij" class="nav-link" data-scroll-target="#install-java-environment-and-activating-intellij">Install Java Environment and Activating Intellij</a></li>
+  </ul></li>
+  <li><a href="#section-2-bkt-bf" id="toc-section-2-bkt-bf" class="nav-link" data-scroll-target="#section-2-bkt-bf"><strong>Section 2: BKT-BF</strong></a>
+  <ul>
+  <li><a href="#java-test-run" id="toc-java-test-run" class="nav-link" data-scroll-target="#java-test-run">Java Test Run</a></li>
+  <li><a href="#bkt-bf" id="toc-bkt-bf" class="nav-link" data-scroll-target="#bkt-bf">BKT-BF</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><strong>References</strong></a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Module 1: BKT-BF walkthrough Mac</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>LASER Institute </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 20, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>This guide seeks to help beginners with Java Environment Setup, JetBrain IntelliJ IDEA installation, and run Bayesian Knowledge Tracing Brute Force model fitting code(BFK-BF) by Baker, Corbett, Gowda, Wagner, MacLaren, Kauffman, Mitchell, &amp; Giguere(2010).</p>
+<p>This BKT-BF walkthrough guide is based on Macbook Air 2020, M1. We will specify when you need to pay attention to anything here.</p>
+</section>
+<section id="section-1-java-ide-and-environment-setup" class="level1">
+<h1><strong>Section 1: Java IDE and Environment Setup</strong></h1>
+<section id="application-for-jetbrain-educational-license" class="level2">
+<h2 class="anchored" data-anchor-id="application-for-jetbrain-educational-license">Application for JetBrain Educational License</h2>
+<p>If you haven’t applied for an educational license for JetBrain IntelliJ IDEA, please follow the instructions below to do so. If you have your own preferences about Java IDEs, please move on to the next step.</p>
+<p>Having an educational licenses allows you to use all the Pro version of&nbsp; JetBrains IDEs(e.g.&nbsp;PyCharm(Python), WebStorm(HTML), PhPStorm(PHP), IntelliJ IDEA(Java) etc.).</p>
+<p>Apply for an educational license for JetBrain via this website:</p>
+<p><a href="https://www.jetbrains.com/community/education/#students" class="uri">https://www.jetbrains.com/community/education/#students</a></p>
+<p>You should have a .edu email address to apply.</p>
+<ol type="1">
+<li><p>Scroll down, Click <strong>“Apply now”</strong></p>
+<p><img src="images/EL-1.png" class="img-fluid" width="333"></p></li>
+<li><p>Usually, we apply with a <strong>University email address, but feel free to apply with other methods if you have one.</strong></p>
+<p><img src="images/EL-2.png" class="img-fluid" width="516"></p></li>
+<li><p>Please follow the instructions in the verification email to activate your account.</p></li>
+</ol>
+</section>
+<section id="install-jetbrain-intellij-idea" class="level2">
+<h2 class="anchored" data-anchor-id="install-jetbrain-intellij-idea">Install JetBrain Intellij IDEA</h2>
+<ol type="1">
+<li><p>Go to <a href="https://www.jetbrains.com/idea/download/?section=mac" class="uri">https://www.jetbrains.com/idea/download/?section=mac</a> Click .dmg</p>
+<p>If your Mac uses Apple M series processors, click “.dmg(Apple Silicon)”</p>
+<p>If your Mac uses Intel processor, click “.dmgApple(Intel)”</p>
+<p>If educational license is not available for you, please scroll down to download the community edition)</p></li>
+</ol>
+<p><img src="images/intellijDownload.png" class="img-fluid"></p>
+<ol start="2" type="1">
+<li>Simply dragging it could install the IDEA</li>
+</ol>
+<p><img src="images/intellijDrag.png" class="img-fluid"></p>
+</section>
+<section id="install-java-environment-and-activating-intellij" class="level2">
+<h2 class="anchored" data-anchor-id="install-java-environment-and-activating-intellij">Install Java Environment and Activating Intellij</h2>
+<ol type="1">
+<li>Go to:<a href="https://www.oracle.com/java/technologies/downloads/#java21" class="uri">https://www.oracle.com/java/technologies/downloads/#java21</a></li>
+</ol>
+<p>If your Mac uses Apple M series processors, download “ARM64 DMG Installer”</p>
+<p>If your Mac uses Intel processors,&nbsp; download “x64 DMG Installer”</p>
+<p><img src="images/JDKDownload.png" class="img-fluid"></p>
+<ol start="2" type="1">
+<li>Open it, Click continue, then install. You might need to wait for a minute before continuing the following steps.</li>
+</ol>
+<p><img src="images/JDKInstall.png" class="img-fluid"></p>
+<ol start="3" type="1">
+<li>Click the Launchpad icon in the Dock, type Terminal in the search field, then click Terminal.</li>
+</ol>
+<p><img src="images/terminal.png" class="img-fluid"></p>
+<ol start="4" type="1">
+<li>Type Java -version, you should see below. My laptop installed JDK22, you should see JDK21.</li>
+</ol>
+<p><img src="images/TerminalTest.png" class="img-fluid"></p>
+<ol start="5" type="1">
+<li>Now Let’s open Intellij IDEA, Click settings on the button left, then Manage Licenses.</li>
+</ol>
+<p>For the first time you open it, you may need to agree to <strong>the terms of service</strong> and then decide <strong>whether or not you would like to share your data</strong></p>
+<p>This option is based on your willingness and will not affect your later use of this tool.</p>
+<p><img src="images/IntelliJIDEA.png" class="img-fluid"></p>
+<p>Activate your Ultimate edition by “Log in to Jetbrains account”</p>
+<p><img src="images/ActivateIntellij.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="section-2-bkt-bf" class="level1">
+<h1><strong>Section 2: BKT-BF</strong></h1>
+<section id="java-test-run" class="level2">
+<h2 class="anchored" data-anchor-id="java-test-run">Java Test Run</h2>
+<p>Now Let’s try create your first Java project, click <strong>New Project</strong></p>
+<p><img src="images/CreateProject.png" class="img-fluid"></p>
+<ol type="1">
+<li>Then, change the name of your project, Check Add sample code(No need for future projects, just for testing).</li>
+</ol>
+<p><img src="images/NewProjectSetting.png" class="img-fluid"></p>
+<ol start="3" type="1">
+<li>You might need to wait for few seconds for the first-time loading, then click “Run”</li>
+</ol>
+<p><img src="images/Intellij-Run.png" class="img-fluid"></p>
+<ol start="4" type="1">
+<li>Congratulations on your first Java Run!</li>
+</ol>
+<p><img src="images/Intellij-result.png" class="img-fluid"></p>
+</section>
+<section id="bkt-bf" class="level2">
+<h2 class="anchored" data-anchor-id="bkt-bf">BKT-BF</h2>
+<p>We successfully installed the Java environment and IDEA. Now we come to the actual BKT-BF code <span class="citation" data-cites="baker2010contextual">Baker et al. (<a href="#ref-baker2010contextual" role="doc-biblioref">2010</a>)</span>.</p>
+<p>Please download the BKT-BF with this link: <a href="https://learninganalytics.upenn.edu/ryanbaker/BKT-BruteForce.zip" class="uri">https://learninganalytics.upenn.edu/ryanbaker/BKT-BruteForce.zip</a></p>
+<p>For copyright statement, please refer to <a href="https://learninganalytics.upenn.edu/ryanbaker/edmtools.html" class="uri">https://learninganalytics.upenn.edu/ryanbaker/edmtools.html</a></p>
+<ol type="1">
+<li><p>Extract BKT-BruteForce.zip</p></li>
+<li><p>Copy computeKTparamsAll.java, right click on the src folder, then click Paste, then click OK</p>
+<p><img src="images/RightClick-Paste.png" class="img-fluid"></p>
+<p><img src="images/Paste-Yes.png" class="img-fluid"></p></li>
+<li><p>Similarly, copy TestData.txt, and paste to the root folder. Mine’s name is MyFirstJava</p>
+<p><img src="images/Paste-Data.png" class="img-fluid"> </p></li>
+<li><p>Now you may run the BKT-BF file, click Run, you should see:</p>
+<p><img src="images/FitModelResult.png" class="img-fluid"></p></li>
+</ol>
+<p>This output means: The best parameters for Skill META-DETERMINE-DXO are: L0 = 0.001, G=0.001, S=0.1 T=0.724 The best parameters for Skill META-DETERMINE-MIDDLE-GENE are: L0 = 0.001 G=0.235 S=0.1 T=0.09</p>
+<ol start="5" type="1">
+<li>Now you successfully ran the BKF-BF fitting method, If you have any data of your own, you can fit your BKT model to your own data! Just match the format in File. (TestData.txt)</li>
+</ol>
+</section>
+</section>
+<section id="references" class="level1 unnumbered">
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-baker2010contextual" class="csl-entry" role="listitem">
+Baker, Ryan SJ d, Albert T Corbett, Sujith M Gowda, Angela Z Wagner, Benjamin A MacLaren, Linda R Kauffman, Aaron P Mitchell, and Stephen Giguere. 2010. <span>“Contextual Slip and Prediction of Student Performance After Use of an Intelligent Tutor.”</span> In <em>User Modeling, Adaptation, and Personalization: 18th International Conference, UMAP 2010, Big Island, HI, USA, June 20-24, 2010. Proceedings 18</em>, 52–63. Springer.
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

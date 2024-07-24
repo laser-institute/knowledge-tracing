@@ -1,0 +1,191 @@
+---
+title: "KT Module Overview"
+subtitle: "Introduction"
+format:
+  revealjs: 
+    transition: fade
+    slide-number: c/t
+    progress: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    logo: images/LASERLogoB.png
+    theme: [default, css/laser.scss]
+    width: 1920
+    height: 1080
+    margin: 0.05
+    footer: <a href=https://www.go.ncsu.edu/laser-institute>go.ncsu.edu/laser-institute
+resources:
+  - demo.pdf
+bibliography: lit/references.bib
+editor: visual
+---
+
+## Welcome!
+
+Your instructor: Ryan Baker, Richard Scruggs
+
+Your facilitator: Yilin Liu
+
+## Useful Links
+
+[KT code along](https://colab.research.google.com/drive/1FCTs57ulbenDh2OEWxspG19_gHUk1o5W?usp=sharing)
+
+## KT Lab 1: Bayesian Knowledge Tracing
+
+::: columns
+::: {.column width="50%"}
+Intro Presentation:
+
+[Key Concepts](https://yilinl.quarto.pub/bayesian-knowledge-tracing)
+
+Essential Readings:
+
+-   Baker, R.S. (2023) [Big Data and Education](https://learninganalytics.upenn.edu/MOOT/bigdataeducation.html). Ch. 4, V1, V2, V5; Ch. 6, V8.
+
+-   @corbett1994knowledge [pdf](http://reports-archive.adm.cs.cmu.edu/anon/anon/usr0/ftp/home/ftp/1995/CMU-CS-95-129.pdf)
+
+-   @kang2022detecting [pdf](https://www.upenn.edu/learninganalytics/ryanbaker/Kang_Instructional_Science.pdf)
+:::
+
+::: {.column width="50%"}
+[ASSISTments](https://www.assistments.org/account/login).
+
+[Python warm-up](https://www.assistments.org/teacher/public_print?data=c2VxdWVuY2VfaWQ9UFNBQlgyQlMmb3Bfc2NhZj10cnVlJm9wX2hpbnQ9dHJ1)
+
+[How to create your ASSISTments account](https://learninganalytics.upenn.edu/ryanbaker/EDM2024/6191_HW_Instructions.pdf)
+
+[All the ASSISTments datasets and descriptions](https://learninganalytics.upenn.edu/ryanbaker/EDM2024/assignments.html)
+
+[Case Study](https://colab.research.google.com/drive/1y-D9G2ac6T9z14qSQ1y1fISAoCrDyFyY?usp=sharing)
+
+[Learning Lab 1 Badge](https://yilinliu.quarto.pub/module-1-applying-bkt-in-practice/)
+:::
+:::
+
+## KT Lab 2: Performance Factors Analysis
+
+::: columns
+::: {.column width="50%"}
+Intro Presentation:
+
+[Key Concepts](https://yilinl.quarto.pub/pfa/#/title-slide)
+
+Essential Readings:
+
+-   Baker, R.S. (2023) [Big Data and Education](https://learninganalytics.upenn.edu/MOOT/bigdataeducation.html). Ch. 4, V3, V7.
+
+-   @pavlik2009performance [pdf](http://pact.cs.cmu.edu/pubs/AIED%202009%20final%20Pavlik%20Cen%20Keodinger%20corrected.pdf)
+
+-   @choffin2019das3h [pdf](https://arxiv.org/pdf/1905.06873.pdf?ref=https://githubhelp.com)
+
+-   @pavlik2021logistic [pdf](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9616435&casa_token=rting_SiwBIAAAAA:SJ5kkUWSTsmZvlriPy4es1mrOoop2FCQ5fAVUGwuE30-eUqO1iX8JaOaS2nUauO9QK1snd4)
+:::
+
+::: {.column width="50%"}
+[ASSISTments](https://www.assistments.org/account/login)
+
+[Python warm-up](https://www.assistments.org/teacher/public_print?data=c2VxdWVuY2VfaWQ9UFNBQlgyQlMmb3Bfc2NhZj10cnVlJm9wX2hpbnQ9dHJ1)
+
+[How to create your ASSISTments account](https://learninganalytics.upenn.edu/ryanbaker/EDM2024/6191_HW_Instructions.pdf)
+
+[All the ASSISTments datasets and descriptions](https://learninganalytics.upenn.edu/ryanbaker/EDM2024/assignments.html)
+
+[Case Study](https://yilinliu.quarto.pub/module-2-case-study/)
+
+[Learning Lab 2 Badge](https://yilinliu.quarto.pub/module-2-applying-lkt-in-practice/)
+:::
+:::
+
+## KT Lab 3: Item Response Theory
+
+::: columns
+::: {.column width="50%"}
+Intro Presentation:
+
+[Key Concepts](https://yilinliu.quarto.pub/module-3-item-response-theory-and-elo/)
+
+Essential Readings
+
+-   Baker, R.S. (2023) [Big Data and Education](https://learninganalytics.upenn.edu/MOOT/bigdataeducation.html). Ch. 4, V4.
+
+-   Baker, F.B. (2001) [The Basics of Item Response Theory](https://eric.ed.gov/?id=ED458219).
+:::
+
+::: {.column width="50%"}
+[Case Study:](https://yilinliu.quarto.pub/module-3-case-study/)
+
+[Learning Lab 3 Badge](https://yilinliu.quarto.pub/module-3-applying-irt-in-practice/):
+:::
+:::
+
+## KT Lab 4: Deep Knowledge Tracing
+
+::: columns
+::: {.column width="50%"}
+Intro Presentation:
+
+[Key Concepts](https://yilinl.quarto.pub/module-4-deep-knowledge-tracing/#/title-slide)
+
+Essential Readings:
+
+-   Baker, R.S. (2023) [Big Data and Education](https://learninganalytics.upenn.edu/MOOT/bigdataeducation.html). Ch. 4, V6.
+
+-   @yeung2018addressing [pdf](https://arxiv.org/pdf/1806.02180.pdf)
+
+-   @pandey1907self [pdf](https://arxiv.org/pdf/1907.06837.pdf)
+
+-   @gervet2020deep [pdf](https://jedm.educationaldatamining.org/index.php/JEDM/article/download/451/123)
+:::
+
+::: {.column width="50%"}
+[Case Study](https://yilinliu.quarto.pub/kt-4-case-study/)
+
+[Learning Lab 4 Badge](https://yilinliu.quarto.pub/module-4-apply-dkt-in-researchpractice/):
+:::
+:::
+
+## Week Schedule Review
+
++-----------+----------------------+------------------------------------------+
+| Monday    | 1115a-1230p          | Track introduction                       |
++-----------+----------------------+------------------------------------------+
+| Monday    | 130p-2p              | ASSISTments setup                        |
++-----------+----------------------+------------------------------------------+
+| Tuesday   | 940a-11a             | KT basics                                |
++-----------+----------------------+------------------------------------------+
+| Tuesday   | 11a-1230p            | BKT lecture/discussion                   |
++-----------+----------------------+------------------------------------------+
+| Tuesday   | 130p-2p              | BKT activity in ASSISTments\             |
+|           |                      | (challenge activity: get BKT-BF running) |
++-----------+----------------------+------------------------------------------+
+| Wednesday | 940a-1130a           | BKT activity in ASSISTments (continued)  |
++-----------+----------------------+------------------------------------------+
+| Wednesday | 1130a-1230p, 130p-2p | PFA and LKT lecture/discussion           |
++-----------+----------------------+------------------------------------------+
+
+## Week Schedule Review
+
+|          |                      |                                                |
+|----------|----------------------|------------------------------------------------|
+| Thursday | 940a-1130a           | PFA activity in ASSISTments                    |
+| Thursday | 1130a-1230p, 130p-2p | IRT and ELO lecture/discussion                 |
+| Friday   | 940a-11a             | Deep Knowledge Tracing lecture/discussion      |
+| Friday   | 11a-1230p            | Memory algorithms lecture/discussion           |
+| Friday   | 130p-2p              | How to Apply BKT in Research/Practice activity |
+
+## Tell us about yourself
+
+Name
+
+Job
+
+Past experience in teaching
+
+Past experience with Learning Analytics or Data Science
+
+Past experience with Digital Learning Platforms
+
+## Any other questions?
+
+## References

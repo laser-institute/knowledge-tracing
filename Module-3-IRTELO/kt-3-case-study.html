@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.54">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="LASER Institute">
+<meta name="dcterms.date" content="2024-07-18">
+
+<title>Module 3: Case Study</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="kt-3-case-study_files/libs/clipboard/clipboard.min.js"></script>
+<script src="kt-3-case-study_files/libs/quarto-html/quarto.js"></script>
+<script src="kt-3-case-study_files/libs/quarto-html/popper.min.js"></script>
+<script src="kt-3-case-study_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="kt-3-case-study_files/libs/quarto-html/anchor.min.js"></script>
+<link href="kt-3-case-study_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="kt-3-case-study_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="kt-3-case-study_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="kt-3-case-study_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="kt-3-case-study_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="kt-3-case-study_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="kt-3-case-study_files/libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#prepare" id="toc-prepare" class="nav-link active" data-scroll-target="#prepare">1. Prepare</a>
+  <ul>
+  <li><a href="#a.-review-the-research" id="toc-a.-review-the-research" class="nav-link" data-scroll-target="#a.-review-the-research">1a. Review the Research</a>
+  <ul class="collapse">
+  <li><a href="#research-questions" id="toc-research-questions" class="nav-link" data-scroll-target="#research-questions">Research Questions</a></li>
+  <li><a href="#data-collection" id="toc-data-collection" class="nav-link" data-scroll-target="#data-collection">Data Collection</a></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
+  <li><a href="#key-findings" id="toc-key-findings" class="nav-link" data-scroll-target="#key-findings">Key Findings</a></li>
+  <li><a href="#question" id="toc-question" class="nav-link" data-scroll-target="#question">❓Question</a></li>
+  </ul></li>
+  <li><a href="#b.-load-packages" id="toc-b.-load-packages" class="nav-link" data-scroll-target="#b.-load-packages">1b. Load Packages</a>
+  <ul class="collapse">
+  <li><a href="#cran-the-comprehensive-r-archive-network" id="toc-cran-the-comprehensive-r-archive-network" class="nav-link" data-scroll-target="#cran-the-comprehensive-r-archive-network">CRAN: The Comprehensive R Archive Network</a></li>
+  <li><a href="#ltm-latent-trait-models-under-irt" id="toc-ltm-latent-trait-models-under-irt" class="nav-link" data-scroll-target="#ltm-latent-trait-models-under-irt">ltm: Latent Trait Models under IRT</a></li>
+  <li><a href="#psych" id="toc-psych" class="nav-link" data-scroll-target="#psych">psych</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#wrangle" id="toc-wrangle" class="nav-link" data-scroll-target="#wrangle">2. Wrangle</a>
+  <ul>
+  <li><a href="#import-the-dataset" id="toc-import-the-dataset" class="nav-link" data-scroll-target="#import-the-dataset">Import the dataset</a></li>
+  <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics">Descriptive Statistics</a></li>
+  </ul></li>
+  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model">3. Model</a>
+  <ul>
+  <li><a href="#fit-the-1pl-model" id="toc-fit-the-1pl-model" class="nav-link" data-scroll-target="#fit-the-1pl-model"><strong>Fit the 1PL model</strong></a></li>
+  <li><a href="#fit-the-2pl-model" id="toc-fit-the-2pl-model" class="nav-link" data-scroll-target="#fit-the-2pl-model">Fit <strong>the</strong> 2PL model</a></li>
+  <li><a href="#fit-the-3pl-model" id="toc-fit-the-3pl-model" class="nav-link" data-scroll-target="#fit-the-3pl-model">Fit <strong>the</strong> 3PL model</a></li>
+  <li><a href="#test-the-fit-of-the-1pl-model" id="toc-test-the-fit-of-the-1pl-model" class="nav-link" data-scroll-target="#test-the-fit-of-the-1pl-model"><strong>Test the fit of the 1PL model</strong></a>
+  <ul class="collapse">
+  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">👉 Your Turn ⤵</a></li>
+  </ul></li>
+  <li><a href="#communication" id="toc-communication" class="nav-link" data-scroll-target="#communication">4. Communication</a></li>
+  <li><a href="#item-characteristic-curves" id="toc-item-characteristic-curves" class="nav-link" data-scroll-target="#item-characteristic-curves"><strong>Item characteristic curves</strong></a>
+  <ul class="collapse">
+  <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1">❓Question</a></li>
+  </ul></li>
+  <li><a href="#item-information-curves" id="toc-item-information-curves" class="nav-link" data-scroll-target="#item-information-curves"><strong>Item information curves</strong></a>
+  <ul class="collapse">
+  <li><a href="#your-turn-1" id="toc-your-turn-1" class="nav-link" data-scroll-target="#your-turn-1"><strong>👉 Your Turn</strong> <strong>⤵</strong></a></li>
+  </ul></li>
+  <li><a href="#test-for-unidimensionality" id="toc-test-for-unidimensionality" class="nav-link" data-scroll-target="#test-for-unidimensionality"><strong>Test for unidimensionality</strong></a>
+  <ul class="collapse">
+  <li><a href="#your-turn-2" id="toc-your-turn-2" class="nav-link" data-scroll-target="#your-turn-2">👉 Your Turn ⤵</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Module 3: Case Study</h1>
+<p class="subtitle lead">Item Response Theory</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>LASER Institute </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 18, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="prepare" class="level2">
+<h2 class="anchored" data-anchor-id="prepare">1. Prepare</h2>
+<p>Our third case study is inspired by <span class="citation" data-cites="xie2019item">Xie et al. (<a href="#ref-xie2019item" role="doc-biblioref">2019</a>)</span> . The authors conducted a validation study of a computer science knowledge assessment using IRT to identify differences in question difficulty, and ability to discriminate knowledgeable students from non-knowledgeable students. The primary aim of this case study is to gain some hands-on experience with essential R packages and functions for working with Item Response Theory.</p>
+<section id="a.-review-the-research" class="level3">
+<h3 class="anchored" data-anchor-id="a.-review-the-research">1a. Review the Research</h3>
+<p><img src="images/paper.png" class="img-fluid"></p>
+<p>The full Paper Link is <a href="https://dl.acm.org/doi/pdf/10.1145/3287324.3287370">here</a></p>
+<p>In this study, Xie et al.&nbsp;(2019) conducted a validation study to evaluate the Second Computer Science 1 (SCS1) concept inventory using Item Response Theory (IRT). The prior research had used Classical Test Theory so it was not able to determine if the differences in scores resulted from the question difficulty or the learner’s knowledge. By employing IRT, the study was able to model question difficulty and learner knowledge separately. The authors identified problematic questions that needed revision.</p>
+<section id="research-questions" class="level4">
+<h4 class="anchored" data-anchor-id="research-questions">Research Questions</h4>
+<p>The authors’ four research questions were: 1: Do all the SCS1 questions measure the same underlying construct (CS1knowledge)? 2: For what levels of CS1 knowledge does the SCS1 measure well? 3: How closely do the difficulty levels of the SCS1 questions align with the knowledge levels of our sample group? 4: What do the response patterns of problematic questions reveal?</p>
+</section>
+<section id="data-collection" class="level4">
+<h4 class="anchored" data-anchor-id="data-collection">Data Collection</h4>
+<p>The authors analyzed responses to the SCS1, a 27-question multiple-choice assessment of CS1 knowledge. These responses are from 507 undergrad students from the University of Washington, Seattle and Georgia Institute of Technology. A pre-test and post-test were conducted but only the pre-test was analyzed. Test-takers who spent 10-70 minutes taking the SCS1 and attempted at least 10 questions were considered.</p>
+</section>
+<section id="analysis" class="level4">
+<h4 class="anchored" data-anchor-id="analysis">Analysis</h4>
+<p>First, they verified conditional item independence and unidimensionality. Then, they fit the Rasch, 1 Parameter Logistic (1PL), 2 parameter logistic (2PL), and 3 Parameter Logistic (3PL) models to the data with questions with the ltm package in R. Model performance was assessed using Akaike information criterion(AIC) and Bayesian information criterion (BIC) despite the 2PL model having a greater BIC than Rasch and 1PL models. The 2PL model was finally selected because all the questions fit. Q5, 13, 15, and 18 were found to be potentially too difficult. These items also didn’t do a great job of distinguishing students at different knowledge levels. Three questions (Q20, 24, 27) were removed from the analysis because they had poor factor loadings, indicating they did not align well with the rest of the assessment.</p>
+</section>
+<section id="key-findings" class="level4">
+<h4 class="anchored" data-anchor-id="key-findings">Key Findings</h4>
+<p>3 SCS1 questions may assess knowledge that is different from the rest of the test; 4 other questions were too difficult for this student group. IRT can reveal how and for whom each question was difficult, and estimate question difficulty and learner knowledge separately. The SCS1 needs more improvement in terms of validity.</p>
+</section>
+<section id="question" class="level4">
+<h4 class="anchored" data-anchor-id="question">❓Question</h4>
+<p>Are there any ways IRT could be useful to you in your work? Keep in mind that IRT can’t be used with data when student knowledge is changing, but related algorithms like temporal IRT and ELO can be used in those cases. Type a brief response in the space below:</p>
+</section>
+</section>
+<section id="b.-load-packages" class="level3">
+<h3 class="anchored" data-anchor-id="b.-load-packages">1b. Load Packages</h3>
+<p>In this case study, you will use the <code>ltm</code> package to build the basic IRT model and its variants.</p>
+<section id="cran-the-comprehensive-r-archive-network" class="level4">
+<h4 class="anchored" data-anchor-id="cran-the-comprehensive-r-archive-network">CRAN: The Comprehensive R Archive Network</h4>
+<p><strong><em>CRAN</em></strong> is a network of FTP and web servers around the world that store identical, up-to-date, versions of code and documentation for R and R packages.</p>
+<p>You can use the CRAN <a href="https://cran.r-project.org/mirrors.html">mirror</a> nearest to you to minimize network load.</p>
+</section>
+<section id="ltm-latent-trait-models-under-irt" class="level4">
+<h4 class="anchored" data-anchor-id="ltm-latent-trait-models-under-irt">ltm: Latent Trait Models under IRT</h4>
+<p>ltm package includes the analysis of multivariate dichotomous and polytomous data using latent trait models under the Item Response Theory approach. It includes Rasch, 2PL, the Birnbaum’s Three-Parameter, the Graded Response, and the Generalized Partial Credit Models.</p>
+<p>CRAN page: <a href="https://cran.r-project.org/web/packages/ltm/index.html" class="uri">https://cran.r-project.org/web/packages/ltm/index.html</a></p>
+<p>Use the code chunk below to load the ltm package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ltm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: MASS</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: msm</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: polycor</code></pre>
+</div>
+</div>
+</section>
+<section id="psych" class="level4">
+<h4 class="anchored" data-anchor-id="psych">psych</h4>
+<p>The “psych” package is an R package that provides various functions for psychological research and data analysis. It contains tools for data visualization, factor analysis, reliability analysis, correlation analysis, and more.</p>
+<p>CRAN page: <a href="https://cran.r-project.org/web/packages/psych/index.html" class="uri">https://cran.r-project.org/web/packages/psych/index.html</a></p>
+<p>Use the code chunk below to load the psych package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'psych'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:ltm':
+
+    factor.scores</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:polycor':
+
+    polyserial</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="wrangle" class="level2">
+<h2 class="anchored" data-anchor-id="wrangle">2. Wrangle</h2>
+<p>Data wrangling is the process of converting raw data into a format suitable for analysis.</p>
+<section id="import-the-dataset" class="level4">
+<h4 class="anchored" data-anchor-id="import-the-dataset">Import the dataset</h4>
+<p>First, you will import the data you will use: (simulated) results from N=500 individuals taking a 10-item test (V1-V10). Items are coded <code>1</code> for correct and <code>0</code> for incorrect responses. This dataset is from Dr.&nbsp;Julie Wood, <em>Introduction to IRT modeling.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>irtdata<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">"./data/ouirt.dat"</span>, <span class="at">header=</span>F)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(irtdata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">V1</th>
+<th style="text-align: right;">V2</th>
+<th style="text-align: right;">V3</th>
+<th style="text-align: right;">V4</th>
+<th style="text-align: right;">V5</th>
+<th style="text-align: right;">V6</th>
+<th style="text-align: right;">V7</th>
+<th style="text-align: right;">V8</th>
+<th style="text-align: right;">V9</th>
+<th style="text-align: right;">V10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="descriptive-statistics" class="level4">
+<h4 class="anchored" data-anchor-id="descriptive-statistics">Descriptive Statistics</h4>
+<p>The describe() function in the R Programming Language is a useful tool for generating descriptive statistics of data. It provides a comprehensive summary of the variables in a data frame, including central tendency, variability, and distribution measures.</p>
+<p>We add <code>psych::</code> before <code>describe</code> to specify that we are using the <code>describe</code> function in the <code>psych</code> package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(irtdata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 5%">
+<col style="width: 4%">
+<col style="width: 6%">
+<col style="width: 10%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 6%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">vars</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">median</th>
+<th style="text-align: right;">trimmed</th>
+<th style="text-align: right;">mad</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">range</th>
+<th style="text-align: right;">skew</th>
+<th style="text-align: right;">kurtosis</th>
+<th style="text-align: right;">se</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">V1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">0.150</td>
+<td style="text-align: right;">0.3574290</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0625</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.9545139</td>
+<td style="text-align: right;">1.823784</td>
+<td style="text-align: right;">0.0159847</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">V2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">0.268</td>
+<td style="text-align: right;">0.4433612</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.2100</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.0444577</td>
+<td style="text-align: right;">-0.910918</td>
+<td style="text-align: right;">0.0198277</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">V3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">0.318</td>
+<td style="text-align: right;">0.4661659</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.2725</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.7792763</td>
+<td style="text-align: right;">-1.395507</td>
+<td style="text-align: right;">0.0208476</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">V4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">0.296</td>
+<td style="text-align: right;">0.4569481</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.2450</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.8910946</td>
+<td style="text-align: right;">-1.208355</td>
+<td style="text-align: right;">0.0204353</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">V5</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">0.438</td>
+<td style="text-align: right;">0.4966380</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.4225</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.2491795</td>
+<td style="text-align: right;">-1.941781</td>
+<td style="text-align: right;">0.0222103</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">V6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">0.314</td>
+<td style="text-align: right;">0.4645812</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.2675</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.7991198</td>
+<td style="text-align: right;">-1.364124</td>
+<td style="text-align: right;">0.0207767</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">V7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">0.412</td>
+<td style="text-align: right;">0.4926880</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.3900</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.3565096</td>
+<td style="text-align: right;">-1.876642</td>
+<td style="text-align: right;">0.0220337</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">V8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">0.334</td>
+<td style="text-align: right;">0.4721120</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.2925</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.7018165</td>
+<td style="text-align: right;">-1.510463</td>
+<td style="text-align: right;">0.0211135</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">V9</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">0.318</td>
+<td style="text-align: right;">0.4661659</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.2725</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.7792763</td>
+<td style="text-align: right;">-1.395507</td>
+<td style="text-align: right;">0.0208476</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">V10</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">0.070</td>
+<td style="text-align: right;">0.2554025</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3.3604990</td>
+<td style="text-align: right;">9.311589</td>
+<td style="text-align: right;">0.0114219</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="model" class="level2">
+<h2 class="anchored" data-anchor-id="model">3. Model</h2>
+<p>Because this is simulated data, you will go directly into building the IRT model. Otherwise, we will clean the data, checking if there’s anything missing values, etc.</p>
+<section id="fit-the-1pl-model" class="level3">
+<h3 class="anchored" data-anchor-id="fit-the-1pl-model"><strong>Fit the 1PL model</strong></h3>
+<p>We fit the 1PL model to our 500 responses to our 10-item test. That is, we estimate item difficulty 𝑏 based on how people answered the items.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>PL1.rasch<span class="ot">&lt;-</span><span class="fu">rasch</span>(irtdata)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(PL1.rasch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+rasch(data = irtdata)
+
+Model Summary:
+   log.Lik      AIC      BIC
+ -2587.186 5196.372 5242.733
+
+Coefficients:
+            value std.err  z.vals
+Dffclt.V1  1.6581  0.1303 12.7219
+Dffclt.V2  0.9818  0.1031  9.5233
+Dffclt.V3  0.7499  0.0968  7.7431
+Dffclt.V4  0.8495  0.0993  8.5522
+Dffclt.V5  0.2482  0.0891  2.7851
+Dffclt.V6  0.7677  0.0973  7.8930
+Dffclt.V7  0.3528  0.0900  3.9186
+Dffclt.V8  0.6794  0.0953  7.1311
+Dffclt.V9  0.7499  0.0968  7.7429
+Dffclt.V10 2.3978  0.1764 13.5892
+Dscrmn     1.3782  0.0741 18.5941
+
+Integration:
+method: Gauss-Hermite
+quadrature points: 21 
+
+Optimization:
+Convergence: 0 
+max(|grad|): 0.0021 
+quasi-Newton: BFGS </code></pre>
+</div>
+</div>
+<p>You can see the difficulty estimates of all the items here. For example, the difficulty estimate for Item 1 is b=1.66, z=12.7. A z-value greater than 1.96 indicates that the difficulty parameter is significantly greater than zero. Higher difficulty estimates mean that it requires a higher knowledge level to answer the question correctly.</p>
+</section>
+<section id="fit-the-2pl-model" class="level3">
+<h3 class="anchored" data-anchor-id="fit-the-2pl-model">Fit <strong>the</strong> 2PL model</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>PL2.rasch<span class="ot">&lt;-</span><span class="fu">ltm</span>(irtdata<span class="sc">~</span>z1)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(PL2.rasch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+ltm(formula = irtdata ~ z1)
+
+Model Summary:
+  log.Lik      AIC      BIC
+ -2575.88 5191.759 5276.052
+
+Coefficients:
+            value std.err z.vals
+Dffclt.V1  1.6318  0.1920 8.4979
+Dffclt.V2  1.1022  0.1550 7.1098
+Dffclt.V3  0.8210  0.1270 6.4627
+Dffclt.V4  0.7778  0.1015 7.6660
+Dffclt.V5  0.2550  0.0925 2.7571
+Dffclt.V6  0.7372  0.1046 7.0473
+Dffclt.V7  0.4766  0.1339 3.5593
+Dffclt.V8  0.6493  0.0994 6.5356
+Dffclt.V9  0.6485  0.0889 7.2943
+Dffclt.V10 1.9257  0.2027 9.5001
+Dscrmn.V1  1.4183  0.2315 6.1265
+Dscrmn.V2  1.1445  0.1741 6.5733
+Dscrmn.V3  1.1910  0.1736 6.8621
+Dscrmn.V4  1.6444  0.2279 7.2157
+Dscrmn.V5  1.3398  0.1851 7.2367
+Dscrmn.V6  1.4973  0.2070 7.2335
+Dscrmn.V7  0.8748  0.1430 6.1185
+Dscrmn.V8  1.5133  0.2070 7.3116
+Dscrmn.V9  1.8716  0.2587 7.2357
+Dscrmn.V10 2.1060  0.4226 4.9834
+
+Integration:
+method: Gauss-Hermite
+quadrature points: 21 
+
+Optimization:
+Convergence: 0 
+max(|grad|): 0.00056 
+quasi-Newton: BFGS </code></pre>
+</div>
+</div>
+</section>
+<section id="fit-the-3pl-model" class="level3">
+<h3 class="anchored" data-anchor-id="fit-the-3pl-model">Fit <strong>the</strong> 3PL model</h3>
+<p>The 3PL model adds a parameter for the possibility that students can guess the answer without knowing it. This often makes it harder for models to converge.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>PL3.rasch<span class="ot">&lt;-</span><span class="fu">tpm</span>(irtdata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in tpm(irtdata): Hessian matrix at convergence is not positive definite; unstable solution.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(PL3.rasch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+tpm(data = irtdata)
+
+Model Summary:
+  log.Lik      AIC      BIC
+ -2573.76 5207.519 5333.958
+
+Coefficients:
+            value std.err z.vals
+Gussng.V1  0.0000  0.0009 0.0276
+Gussng.V2  0.1064  0.0571 1.8636
+Gussng.V3  0.0000  0.0019 0.0252
+Gussng.V4  0.0793  0.0429 1.8490
+Gussng.V5  0.0000  0.0024 0.0158
+Gussng.V6  0.0001  0.0026 0.0223
+Gussng.V7  0.0002  0.0058 0.0284
+Gussng.V8  0.0000  0.0003 0.0113
+Gussng.V9  0.0017     NaN    NaN
+Gussng.V10 0.0000  0.0001 0.0185
+Dffclt.V1  1.6360  0.1914 8.5456
+Dffclt.V2  1.2145  0.1387 8.7569
+Dffclt.V3  0.8177  0.1250 6.5434
+Dffclt.V4  0.8900  0.1104 8.0642
+Dffclt.V5  0.2580  0.0921 2.8002
+Dffclt.V6  0.7466  0.1055 7.0747
+Dffclt.V7  0.4772  0.1337 3.5684
+Dffclt.V8  0.6516  0.0983 6.6270
+Dffclt.V9  0.6569  0.0833 7.8816
+Dffclt.V10 1.9191  0.2001 9.5917
+Dscrmn.V1  1.4148  0.2298 6.1576
+Dscrmn.V2  2.0070  0.9136 2.1967
+Dscrmn.V3  1.2085  0.1753 6.8951
+Dscrmn.V4  2.5299  0.8111 3.1190
+Dscrmn.V5  1.3529  0.1866 7.2489
+Dscrmn.V6  1.4799  0.2061 7.1818
+Dscrmn.V7  0.8820  0.1438 6.1332
+Dscrmn.V8  1.5261  0.2069 7.3755
+Dscrmn.V9  1.8865  0.2261 8.3425
+Dscrmn.V10 2.1150  0.4193 5.0442
+
+Integration:
+method: Gauss-Hermite
+quadrature points: 21 
+
+Optimization:
+Optimizer: optim (BFGS)
+Convergence: 0 
+max(|grad|): 0.015 </code></pre>
+</div>
+</div>
+</section>
+<section id="test-the-fit-of-the-1pl-model" class="level3">
+<h3 class="anchored" data-anchor-id="test-the-fit-of-the-1pl-model"><strong>Test the fit of the 1PL model</strong></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">item.fit</span>(PL1.rasch,<span class="at">simulate.p.value=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Item-Fit Statistics and P-values
+
+Call:
+rasch(data = irtdata)
+
+Alternative: Items do not fit the model
+Ability Categories: 10
+Monte Carlo samples: 100 
+
+        X^2 Pr(&gt;X^2)
+V1  12.1830   0.6634
+V2  15.1135   0.4257
+V3  11.9995   0.7327
+V4  21.0226   0.1683
+V5  15.3784   0.5842
+V6  14.7103   0.4851
+V7   4.0974        1
+V8  23.3690   0.1089
+V9  26.4597   0.0594
+V10 25.7195   0.0198</code></pre>
+</div>
+</div>
+<p>Here, we use the fit function to test whether the individual items fit well in the 1PL model. You can see that Questions 4, 9, and 10 may not fit the 1PL model because they have low p-values here.</p>
+<section id="your-turn" class="level4">
+<h4 class="anchored" data-anchor-id="your-turn">👉 Your Turn ⤵</h4>
+<p>Test if these items fit well in the 2PL and 3PL models, and share your results.</p>
+</section>
+</section>
+<section id="communication" class="level3">
+<h3 class="anchored" data-anchor-id="communication">4. Communication</h3>
+</section>
+<section id="item-characteristic-curves" class="level3">
+<h3 class="anchored" data-anchor-id="item-characteristic-curves"><strong>Item characteristic curves</strong></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(PL1.rasch,<span class="at">type=</span><span class="fu">c</span>(<span class="st">"ICC"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="kt-3-case-study_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You can use the plot function to plot item characteristic curves. The x-axis represents a student’s level of ability/knowledge. The y-axis is the model’s estimated probability that a student will answer the question correctly.</p>
+<section id="question-1" class="level4">
+<h4 class="anchored" data-anchor-id="question-1">❓Question</h4>
+<p>According to these curves, which question is the most difficult one? Why?</p>
+<p>Type a brief response in the space below:</p>
+</section>
+</section>
+<section id="item-information-curves" class="level3">
+<h3 class="anchored" data-anchor-id="item-information-curves"><strong>Item information curves</strong></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(PL1.rasch,<span class="at">type=</span><span class="fu">c</span>(<span class="st">"IIC"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="kt-3-case-study_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Item information curves show how much “information” about the latent trait ability an item gives, which is related to discriminability. Practically speaking, a very difficult item could provide little information about students with low ability (because most of the students couldn’t answer it correctly). Correspondingly, very easy items will provide little information about persons with high ability levels (because almost most of the students could answer them correctly).</p>
+<p>Here, you can see that question 10 provides information about high knowledge levels while question 5 provides more information about low knowledge levels. Overall, you want to test if these items have a good coverage of all the knowledge levels. Otherwise, this item set is not able to identify a full range of knowledge levels.</p>
+<section id="your-turn-1" class="level4">
+<h4 class="anchored" data-anchor-id="your-turn-1"><strong>👉 Your Turn</strong> <strong>⤵</strong></h4>
+<p>Plot Item information curves and Item characteristic curves for 2PL and 3PL models and share your analysis below.</p>
+</section>
+</section>
+<section id="test-for-unidimensionality" class="level3">
+<h3 class="anchored" data-anchor-id="test-for-unidimensionality"><strong>Test for unidimensionality</strong></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unidimTest</span>(PL1.rasch,irtdata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Unidimensionality Check using Modified Parallel Analysis
+
+Call:
+rasch(data = irtdata)
+
+Matrix of tertachoric correlations
+        V1     V2     V3     V4     V5     V6     V7     V8     V9    V10
+V1  1.0000 0.3476 0.3357 0.3959 0.4449 0.4422 0.5215 0.3278 0.4158 0.3403
+V2  0.3476 1.0000 0.3124 0.3945 0.3909 0.3664 0.2408 0.3352 0.4293 0.4101
+V3  0.3357 0.3124 1.0000 0.3933 0.2970 0.3734 0.3011 0.4434 0.4040 0.4058
+V4  0.3959 0.3945 0.3933 1.0000 0.3853 0.5101 0.3035 0.4368 0.5135 0.6024
+V5  0.4449 0.3909 0.2970 0.3853 1.0000 0.3370 0.3526 0.4138 0.5149 0.3979
+V6  0.4422 0.3664 0.3734 0.5101 0.3370 1.0000 0.3137 0.4146 0.4801 0.4795
+V7  0.5215 0.2408 0.3011 0.3035 0.3526 0.3137 1.0000 0.3311 0.2054 0.1714
+V8  0.3278 0.3352 0.4434 0.4368 0.4138 0.4146 0.3311 1.0000 0.5069 0.4533
+V9  0.4158 0.4293 0.4040 0.5135 0.5149 0.4801 0.2054 0.5069 1.0000 0.6099
+V10 0.3403 0.4101 0.4058 0.6024 0.3979 0.4795 0.1714 0.4533 0.6099 1.0000
+
+Alternative hypothesis: the second eigenvalue of the observed data is substantially larger 
+            than the second eigenvalue of data under the assumed IRT model
+
+Second eigenvalue in the observed data: 0.6863
+Average of second eigenvalues in Monte Carlo samples: 0.4882
+Monte Carlo samples: 100
+p-value: 0.0396</code></pre>
+</div>
+</div>
+<p>Unidimensionality means that the item responses are primarily influenced by a single latent trait or ability. For instance, in a math test, all questions should primarily assess mathematical ability, not a mix of math and reading skills.</p>
+<p>The test is borderline significant at alpha=0.01 (p=0.0198), so unidimensionality (the idea that we’re measuring a single trait 𝜃𝜃 here) is rejected.</p>
+<section id="your-turn-2" class="level4">
+<h4 class="anchored" data-anchor-id="your-turn-2">👉 Your Turn ⤵</h4>
+<p>Test the Unidimensionality of the 2PL and 3PL models, what do you find?</p>
+
+</section>
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-xie2019item" class="csl-entry" role="listitem">
+Xie, Benjamin, Matthew J Davidson, Min Li, and Amy J Ko. 2019. <span>“An Item Response Theory Evaluation of a Language-Independent CS1 Knowledge Assessment.”</span> In <em>Proceedings of the 50th ACM Technical Symposium on Computer Science Education</em>, 699–705.
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

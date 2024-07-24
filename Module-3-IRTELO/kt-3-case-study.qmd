@@ -1,0 +1,206 @@
+---
+title: "Module 3: Case Study"
+subtitle: "Item Response Theory"
+author: "LASER Institute"
+date: today 
+format:
+  html:
+    df-print: kable
+    toc: true
+    toc-depth: 4
+    toc-location: right
+theme:
+  light: simplex b
+  dark: cyborg
+editor: visual
+bibliography: lit/references.bib
+---
+
+## 1. Prepare
+
+Our third case study is inspired by @xie2019item . The authors conducted a validation study of a computer science knowledge assessment using IRT to identify differences in question difficulty, and ability to discriminate knowledgeable students from non-knowledgeable students. The primary aim of this case study is to gain some hands-on experience with essential R packages and functions for working with Item Response Theory.
+
+### 1a. Review the Research
+
+![](images/paper.png)
+
+The full Paper Link is [here](https://dl.acm.org/doi/pdf/10.1145/3287324.3287370)
+
+In this study, Xie et al. (2019) conducted a validation study to evaluate the Second Computer Science 1 (SCS1) concept inventory using Item Response Theory (IRT). The prior research had used Classical Test Theory so it was not able to determine if the differences in scores resulted from the question difficulty or the learner’s knowledge. By employing IRT, the study was able to model question difficulty and learner knowledge separately. The authors identified problematic questions that needed revision.
+
+#### Research Questions
+
+The authors’ four research questions were: 1: Do all the SCS1 questions measure the same underlying construct (CS1knowledge)? 2: For what levels of CS1 knowledge does the SCS1 measure well? 3: How closely do the difficulty levels of the SCS1 questions align with the knowledge levels of our sample group? 4: What do the response patterns of problematic questions reveal?
+
+#### Data Collection
+
+The authors analyzed responses to the SCS1, a 27-question multiple-choice assessment of CS1 knowledge. These responses are from 507 undergrad students from the University of Washington, Seattle and Georgia Institute of Technology. A pre-test and post-test were conducted but only the pre-test was analyzed. Test-takers who spent 10-70 minutes taking the SCS1 and attempted at least 10 questions were considered.
+
+#### Analysis
+
+First, they verified conditional item independence and unidimensionality. Then, they fit the Rasch, 1 Parameter Logistic (1PL), 2 parameter logistic (2PL), and 3 Parameter Logistic (3PL) models to the data with questions with the ltm package in R. Model performance was assessed using Akaike information criterion(AIC) and Bayesian information criterion (BIC) despite the 2PL model having a greater BIC than Rasch and 1PL models. The 2PL model was finally selected because all the questions fit. Q5, 13, 15, and 18 were found to be potentially too difficult. These items also didn’t do a great job of distinguishing students at different knowledge levels. Three questions (Q20, 24, 27) were removed from the analysis because they had poor factor loadings, indicating they did not align well with the rest of the assessment.
+
+#### Key Findings
+
+3 SCS1 questions may assess knowledge that is different from the rest of the test; 4 other questions were too difficult for this student group. IRT can reveal how and for whom each question was difficult, and estimate question difficulty and learner knowledge separately. The SCS1 needs more improvement in terms of validity.
+
+#### ❓Question
+
+Are there any ways IRT could be useful to you in your work? Keep in mind that IRT can’t be used with data when student knowledge is changing, but related algorithms like temporal IRT and ELO can be used in those cases. Type a brief response in the space below:
+
+### 1b. Load Packages
+
+In this case study, you will use the `ltm` package to build the basic IRT model and its variants.
+
+#### CRAN: The Comprehensive R Archive Network
+
+***CRAN*** is a network of FTP and web servers around the world that store identical, up-to-date, versions of code and documentation for R and R packages.
+
+You can use the CRAN [mirror](https://cran.r-project.org/mirrors.html) nearest to you to minimize network load.
+
+#### ltm: Latent Trait Models under IRT
+
+ltm package includes the analysis of multivariate dichotomous and polytomous data using latent trait models under the Item Response Theory approach. It includes Rasch, 2PL, the Birnbaum's Three-Parameter, the Graded Response, and the Generalized Partial Credit Models.
+
+CRAN page: <https://cran.r-project.org/web/packages/ltm/index.html>
+
+Use the code chunk below to load the ltm package.
+
+```{r}
+library(ltm)
+```
+
+#### psych
+
+The “psych” package is an R package that provides various functions for psychological research and data analysis. It contains tools for data visualization, factor analysis, reliability analysis, correlation analysis, and more.
+
+CRAN page: <https://cran.r-project.org/web/packages/psych/index.html>
+
+Use the code chunk below to load the psych package.
+
+```{r}
+library(psych)
+```
+
+## 2. Wrangle
+
+Data wrangling is the process of converting raw data into a format suitable for analysis.
+
+#### Import the dataset
+
+First, you will import the data you will use: (simulated) results from N=500 individuals taking a 10-item test (V1-V10). Items are coded `1` for correct and `0` for incorrect responses. This dataset is from Dr. Julie Wood, *Introduction to IRT modeling.*
+
+```{r}
+irtdata<-read.table("./data/ouirt.dat", header=F)
+head(irtdata)
+```
+
+#### Descriptive Statistics
+
+The describe() function in the R Programming Language is a useful tool for generating descriptive statistics of data. It provides a comprehensive summary of the variables in a data frame, including central tendency, variability, and distribution measures.
+
+We add `psych::` before `describe` to specify that we are using the `describe` function in the `psych` package.
+
+```{r}
+psych::describe(irtdata)
+```
+
+## 3. Model
+
+Because this is simulated data, you will go directly into building the IRT model. Otherwise, we will clean the data, checking if there's anything missing values, etc.
+
+### **Fit the 1PL model**
+
+We fit the 1PL model to our 500 responses to our 10-item test. That is, we estimate item difficulty 𝑏 based on how people answered the items.
+
+```{r}
+PL1.rasch<-rasch(irtdata)
+summary(PL1.rasch)
+
+```
+
+You can see the difficulty estimates of all the items here. For example, the difficulty estimate for Item 1 is b=1.66, z=12.7. A z-value greater than 1.96 indicates that the difficulty parameter is significantly greater than zero. Higher difficulty estimates mean that it requires a higher knowledge level to answer the question correctly.
+
+### Fit **the** 2PL model
+
+```{r}
+PL2.rasch<-ltm(irtdata~z1)
+summary(PL2.rasch)
+```
+
+### Fit **the** 3PL model
+
+The 3PL model adds a parameter for the possibility that students can guess the answer without knowing it. This often makes it harder for models to converge.
+
+```{r}
+PL3.rasch<-tpm(irtdata)
+summary(PL3.rasch)
+```
+
+### **Test the fit of the 1PL model**
+
+```{r}
+item.fit(PL1.rasch,simulate.p.value=T)
+```
+
+Here, we use the fit function to test whether the individual items fit well in the 1PL model. You can see that Questions 4, 9, and 10 may not fit the 1PL model because they have low p-values here.
+
+#### 👉 Your Turn ⤵
+
+Test if these items fit well in the 2PL and 3PL models, and share your results.
+
+```{r}
+
+```
+
+### 4. Communication
+
+### **Item characteristic curves**
+
+```{r}
+plot(PL1.rasch,type=c("ICC"))
+```
+
+You can use the plot function to plot item characteristic curves. The x-axis represents a student’s level of ability/knowledge. The y-axis is the model’s estimated probability that a student will answer the question correctly.
+
+#### ❓Question
+
+According to these curves, which question is the most difficult one? Why?
+
+Type a brief response in the space below:
+
+### **Item information curves**
+
+```{r}
+plot(PL1.rasch,type=c("IIC"))
+```
+
+Item information curves show how much “information” about the latent trait ability an item gives, which is related to discriminability. Practically speaking, a very difficult item could provide little information about students with low ability (because most of the students couldn’t answer it correctly). Correspondingly, very easy items will provide little information about persons with high ability levels (because almost most of the students could answer them correctly).
+
+Here, you can see that question 10 provides information about high knowledge levels while question 5 provides more information about low knowledge levels. Overall, you want to test if these items have a good coverage of all the knowledge levels. Otherwise, this item set is not able to identify a full range of knowledge levels.
+
+#### **👉 Your Turn** **⤵**
+
+Plot Item information curves and Item characteristic curves for 2PL and 3PL models and share your analysis below.
+
+```{r}
+
+```
+
+### **Test for unidimensionality**
+
+```{r}
+unidimTest(PL1.rasch,irtdata)
+```
+
+Unidimensionality means that the item responses are primarily influenced by a single latent trait or ability. For instance, in a math test, all questions should primarily assess mathematical ability, not a mix of math and reading skills.
+
+The test is borderline significant at alpha=0.01 (p=0.0198), so unidimensionality (the idea that we’re measuring a single trait 𝜃𝜃 here) is rejected.
+
+#### 👉 Your Turn ⤵
+
+Test the Unidimensionality of the 2PL and 3PL models, what do you find?
+
+```{r}
+
+```

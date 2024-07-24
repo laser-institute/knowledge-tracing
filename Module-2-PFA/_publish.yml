@@ -2,3 +2,17 @@
   quarto-pub:
     - id: 844f3bd8-8194-433f-87d1-0be28ab9ad5c
       url: 'https://yilinl.quarto.pub/pfa'
+    - id: 28af6408-cfed-4f3b-a0d5-90918a25c639
+      url: 'https://yilinliu.quarto.pub/module-2-logistic-knowledge-tracing-and-performance-factors-analysis'
+- source: kt-2-LKT-walkthrough.qmd
+  quarto-pub:
+    - id: 96520102-3225-4ca8-a428-f99e87cec839
+      url: 'https://yilinliu.quarto.pub/module-2-lkt-walkthrough'
+- source: kt-2-LKT-howWouldIApply.qmd
+  quarto-pub:
+    - id: e0acc1e3-c120-4c9b-ae24-3194642d34f8
+      url: 'https://yilinliu.quarto.pub/module-2-applying-lkt-in-practice'
+- source: kt-2-case-study.qmd
+  quarto-pub:
+    - id: ce7ddc41-c6f9-4da9-9393-6e3e3060f1bd
+      url: 'https://yilinliu.quarto.pub/module-2-case-study'

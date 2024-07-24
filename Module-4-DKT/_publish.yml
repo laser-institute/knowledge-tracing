@@ -2,3 +2,15 @@
   quarto-pub:
     - id: a08cb87c-589a-4c87-8bd7-2937b053c835
       url: 'https://yilinl.quarto.pub/module-3-deep-knowledge-tracing'
+    - id: 317087db-a9f0-4357-9d41-5436154ab494
+      url: 'https://yilinl.quarto.pub/module-4-deep-knowledge-tracing'
+    - id: 4e2263a0-90a6-4008-b9db-205e195ee7c6
+      url: 'https://yilinliu.quarto.pub/module-4-deep-knowledge-tracing'
+- source: kt-4-case-study.qmd
+  quarto-pub:
+    - id: 0bb43b78-f5d4-4a9f-8f90-380bc5ac0e0e
+      url: 'https://yilinliu.quarto.pub/kt-4-case-study'
+- source: kt-4-howtoapply.qmd
+  quarto-pub:
+    - id: 8c1627a5-9c27-425a-9d65-5eaa13522a93
+      url: 'https://yilinliu.quarto.pub/module-4-apply-dkt-in-researchpractice'

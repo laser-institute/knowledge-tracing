@@ -2,7 +2,31 @@
   quarto-pub:
     - id: c2d10c35-f862-424b-8445-9e3793b08b56
       url: 'https://yilinl.quarto.pub/bayesian-knowledge-tracing'
+    - id: 9249333e-8607-448e-bf2f-077e45e2764f
+      url: 'https://yilinliu.quarto.pub/module-1-bayesian-knowledge-tracing'
 - source: kt-1-case-study.qmd
   quarto-pub:
     - id: 7a7600b8-b70e-4d02-907f-cad8a8a2c943
       url: 'https://yilinl.quarto.pub/intro-to-bkt'
+    - id: 902efa78-fbd0-4db3-9123-e7428a8b9877
+      url: 'https://yilinliu.quarto.pub/modul-1-casestudy'
+- source: kt-overview.qmd
+  quarto-pub:
+    - id: 113291e6-730b-4245-ba59-14e5589f49d1
+      url: 'https://yilinliu.quarto.pub/kt-introduction'
+- source: kt-1-HowWouldIApply.qmd
+  quarto-pub:
+    - id: 7f46f504-073e-46e1-993f-85df67ab5f33
+      url: 'https://yilinliu.quarto.pub/bkt-how-would-i-apply'
+    - id: d475c991-8e7c-4822-97a5-714977f2668a
+      url: 'https://yilinliu.quarto.pub/module-1-applying-bkt-in-practice'
+- source: kt-1-BKT-BF-walkthrough-Windows.qmd
+  quarto-pub:
+    - id: 0bf1338a-bf0c-4686-b42f-283cfd611710
+      url: 'https://yilinliu.quarto.pub/bkt-bf-walkthrougj'
+    - id: c05a65f9-d896-4fb2-bc2c-2a0952a57103
+      url: 'https://yilinliu.quarto.pub/module-1-bkt-bf-walkthrough-windows'
+- source: kt-1-BKT-BF-walkthrough-Mac.qmd
+  quarto-pub:
+    - id: 12e80af1-d840-47a6-a924-b1e016f55fdd
+      url: 'https://yilinliu.quarto.pub/module-1-bkt-bf-walkthrough-mac'

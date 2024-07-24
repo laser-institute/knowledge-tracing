@@ -1,6 +1,5 @@
 ---
-title: "Module 1: Bayesian Knowledge Tracing"
-subtitle: "BKT-BF walkthrough Windows"
+title: "Module 1: BKT-BF walkthrough Windows"
 author: "LASER Institute"
 date: today 
 format:

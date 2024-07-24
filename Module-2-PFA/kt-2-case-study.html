@@ -1,0 +1,2855 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.54">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="LASER Institute">
+<meta name="dcterms.date" content="2024-07-18">
+
+<title>Module 2: Case Study</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="kt-2-case-study_files/libs/clipboard/clipboard.min.js"></script>
+<script src="kt-2-case-study_files/libs/quarto-html/quarto.js"></script>
+<script src="kt-2-case-study_files/libs/quarto-html/popper.min.js"></script>
+<script src="kt-2-case-study_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="kt-2-case-study_files/libs/quarto-html/anchor.min.js"></script>
+<link href="kt-2-case-study_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="kt-2-case-study_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="kt-2-case-study_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="kt-2-case-study_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="kt-2-case-study_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="kt-2-case-study_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="kt-2-case-study_files/libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#prepare" id="toc-prepare" class="nav-link active" data-scroll-target="#prepare">1. Prepare</a>
+  <ul>
+  <li><a href="#a.-review-the-research" id="toc-a.-review-the-research" class="nav-link" data-scroll-target="#a.-review-the-research">1a. Review the Research</a>
+  <ul class="collapse">
+  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
+  <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question">Research Question</a></li>
+  <li><a href="#dataset-and-model" id="toc-dataset-and-model" class="nav-link" data-scroll-target="#dataset-and-model">Dataset and Model</a></li>
+  <li><a href="#challenges" id="toc-challenges" class="nav-link" data-scroll-target="#challenges">Challenges</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  </ul></li>
+  <li><a href="#b.-load-packages" id="toc-b.-load-packages" class="nav-link" data-scroll-target="#b.-load-packages">1b. Load Packages</a></li>
+  <li><a href="#cran-the-comprehensive-r-archive-network" id="toc-cran-the-comprehensive-r-archive-network" class="nav-link" data-scroll-target="#cran-the-comprehensive-r-archive-network">CRAN: The Comprehensive R Archive Network</a>
+  <ul class="collapse">
+  <li><a href="#lkt-logistic-knowledge-tracing" id="toc-lkt-logistic-knowledge-tracing" class="nav-link" data-scroll-target="#lkt-logistic-knowledge-tracing">LKT: Logistic Knowledge Tracing</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#wrangle" id="toc-wrangle" class="nav-link" data-scroll-target="#wrangle">2. Wrangle</a>
+  <ul>
+  <li><a href="#import-the-dataset" id="toc-import-the-dataset" class="nav-link" data-scroll-target="#import-the-dataset">Import the dataset</a></li>
+  <li><a href="#convert-to-a-data-table" id="toc-convert-to-a-data-table" class="nav-link" data-scroll-target="#convert-to-a-data-table">Convert to a data table</a>
+  <ul class="collapse">
+  <li><a href="#data-cleaning-and-transformation" id="toc-data-cleaning-and-transformation" class="nav-link" data-scroll-target="#data-cleaning-and-transformation">Data Cleaning and Transformation</a></li>
+  <li><a href="#student-level-cross-validation" id="toc-student-level-cross-validation" class="nav-link" data-scroll-target="#student-level-cross-validation">Student-level cross-validation</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#explore" id="toc-explore" class="nav-link" data-scroll-target="#explore">3. Explore</a>
+  <ul>
+  <li><a href="#take-a-look-at-the-dataset" id="toc-take-a-look-at-the-dataset" class="nav-link" data-scroll-target="#take-a-look-at-the-dataset">Take a look at the dataset</a></li>
+  </ul></li>
+  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model">4. Model</a>
+  <ul>
+  <li><a href="#additive-factors-model-afm-fixed-effect-version" id="toc-additive-factors-model-afm-fixed-effect-version" class="nav-link" data-scroll-target="#additive-factors-model-afm-fixed-effect-version">Additive Factors Model (AFM) fixed effect version</a></li>
+  <li><a href="#performance-factors-analysis-pfa-fixed-effects-version" id="toc-performance-factors-analysis-pfa-fixed-effects-version" class="nav-link" data-scroll-target="#performance-factors-analysis-pfa-fixed-effects-version">Performance Factors Analysis (PFA) fixed effects version</a></li>
+  <li><a href="#recent-performance-factors-analysis-rpfa" id="toc-recent-performance-factors-analysis-rpfa" class="nav-link" data-scroll-target="#recent-performance-factors-analysis-rpfa">Recent Performance Factors Analysis (RPFA)</a></li>
+  <li><a href="#individualized-additive-factors-model-iafm-fixed-effect-version" id="toc-individualized-additive-factors-model-iafm-fixed-effect-version" class="nav-link" data-scroll-target="#individualized-additive-factors-model-iafm-fixed-effect-version">Individualized Additive Factors Model (iAFM) fixed effect version</a></li>
+  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn"><strong>👉 Your Turn</strong> <strong>⤵</strong></a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Module 2: Case Study</h1>
+<p class="subtitle lead">Performance Factor Analysis/Logistic Knowledge Tracing</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>LASER Institute </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 18, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="prepare" class="level2">
+<h2 class="anchored" data-anchor-id="prepare">1. Prepare</h2>
+<p>Our second case study is inspired by Maier, Baker, &amp; Stalzer (2021). This research builds a model of exercise difficulties on pass-fail data. The primary aim of this case study is to gain some hands-on experience with essential R packages and functions for Logistic Knowledge Tracing, and its simplest variant, Performance Factors Analysis (PFA).</p>
+<section id="a.-review-the-research" class="level3">
+<h3 class="anchored" data-anchor-id="a.-review-the-research">1a. Review the Research</h3>
+<p><img src="images/clipboard-190941124.png" class="img-fluid" width="726"></p>
+<p><a href="https://learninganalytics.upenn.edu/ryanbaker/paper_29i.pdf">Link to the full paper</a></p>
+<p>This paper discussed some of the challenges in PFA’s real-world application and some potential solutions: insufficient number of practices, degenerate parameters, rare benchmarks, and compensatory vs.&nbsp;conjunctive skill relationships.</p>
+<section id="motivation" class="level4">
+<h4 class="anchored" data-anchor-id="motivation">Motivation</h4>
+<p>Althrough PFA has been widely used in research and very successful in predicting students’ future performance, there’s little study on what factors impact PFA’s performance in real-world settings.</p>
+</section>
+<section id="research-question" class="level4">
+<h4 class="anchored" data-anchor-id="research-question">Research Question</h4>
+<p>The central goal of this research is:</p>
+<blockquote class="blockquote">
+<p>This paper’s goal is to study the factors that have emerged for other algorithms, to better understand the use of PFA in real-world learning.</p>
+</blockquote>
+</section>
+<section id="dataset-and-model" class="level4">
+<h4 class="anchored" data-anchor-id="dataset-and-model">Dataset and Model</h4>
+<p>The data used in this paper is from Reveal Math Course 1, a digital core math product for 6th grade. This dataset includes 3073 students in 46 schools. The authors randomly select 20% of the students as testing set and 80% of the students as training set. Model’s performance was analyzed on the testing set.</p>
+<p>The authors trained a baseline model using the original formula. Overall, AUC is in the 0.78-0.80 range and RMSE values are in the 0.42-0.44 range.</p>
+</section>
+<section id="challenges" class="level4">
+<h4 class="anchored" data-anchor-id="challenges">Challenges</h4>
+<p>There are four challenges discussed in this paper.</p>
+<ol type="1">
+<li><p>Insufficient Number of Practices: The authors found when students in the data don’t encounter a skill enough times, the model will perform more poorly, and extreme parameters will appear. Thus, several experiments were conducted involving the number of practices per skill, filtering on real data. The authors find major improvement from 2 to 3 practices and it continues up to 6. They also find that the more practices found in the training data, the better the model will perform on the testing set. The improvement was the most substantial from the 2nd to 5th practices, but still increased up to practice 12.</p></li>
+<li><p>Degenerate Parameters: First, the authors identified 3 types of degeneracy:</p>
+<p>Type 1: γ &lt; 0 (Getting an item right leads to worse future performance overall)</p>
+<p>Type 2: γ &lt; ρ (Getting an item right leads to worse future performance than getting it wrong)</p>
+<p>Type 3: γ = ρ = 0 (No improvement)&nbsp;</p>
+<p>They found 6 skills that had type 1 degeneracy, and 7 skills had type 3 degeneracy. There was type 2 degeneracy if the model was trained with the data from 4 or fewer practices. The authors suggested fixing these problems by constraining the parameters during fitting (as done for BKT in Corbett and Anderson, <a href="https://d482c5458b674586b6876f2c43fd7c46.app.posit.cloud/p/b48053c7/#ref-DBLP:journals/umuai/CorbettA95">1995</a>).</p></li>
+<li><p>Rare vs Common Skills: A model needs to be able to handle both common and rare skills. Thus, the authors proposed to adjust the PFA formula to differentiate common and rare skills.. <img src="images/clipboard-3411763074.png" class="img-fluid" width="635">They proposed either fitting a common set of parameters across all rare skills, or using the average parameters of the common skills for the rare skills.&nbsp;</p></li>
+<li><p>Compensatory vs Conjunctive Skills in PFA: If skills are treated as conjunctive, then a student needs to know every skill tagged to an item, to solve it correctly. If skills are compensatory, then students need to know at least one of the skills tagged to an item, to solve it correctly. The original version of PFA is compensatory; the authors compared that to a conjunctive version and a mathematical model in between compensatory and conjunctive – assuming performance is an average of skills involved in the item. They found that both new versions performed worse than the original compensatory model. This contradicts a past result for BKT.</p></li>
+</ol>
+</section>
+<section id="summary" class="level4">
+<h4 class="anchored" data-anchor-id="summary">Summary</h4>
+<p>Overall, the authors believe that the degenerate parameters are an issue for PFA and there are still some other challenges that might appear in real-world settings. However, the authors argue that these challenges can be addressed with only minor adjustments. Thus, PFA is a very reasonable choice in real-world settings.</p>
+</section>
+</section>
+<section id="b.-load-packages" class="level3">
+<h3 class="anchored" data-anchor-id="b.-load-packages">1b. Load Packages</h3>
+<p>In this case study, you will use the data from <a href="https://pslcdatashop.web.cmu.edu/Export?datasetId=5513">this project</a> by Dr.&nbsp;Philip I. Pavlik Jr.&nbsp;to learn how to fit a PFA model. First, you will learn about the essential packages and resources you will be using in this case study.</p>
+</section>
+<section id="cran-the-comprehensive-r-archive-network" class="level3">
+<h3 class="anchored" data-anchor-id="cran-the-comprehensive-r-archive-network">CRAN: The Comprehensive R Archive Network</h3>
+<p><strong><em>CRAN</em></strong> is a network of FTP and web servers around the world that store identical, up-to-date, versions of code and documentation for R and R packages.</p>
+<p>You may use the CRAN <a href="https://cran.r-project.org/mirrors.html">mirror</a> nearest to you to minimize network load.</p>
+<section id="lkt-logistic-knowledge-tracing" class="level4">
+<h4 class="anchored" data-anchor-id="lkt-logistic-knowledge-tracing">LKT: Logistic Knowledge Tracing</h4>
+<p>This package computes Logistic Knowledge Tracing (‘LKT’) which is a general framework for tracking human learning in an educational software system. Please see Pavlik, Eglington, and Harrell-Williams (2021). The LKT framework allows a researcher or practitioner to select and then compute features of student data that are used as predictors of subsequent performance. LKT allows flexibility in the choice of predictive components and features. The system is built on top of ‘LiblineaR’, which computes logistic models quickly.</p>
+<p>CRAN Page; <a href="https://cran.r-project.org/package=LKT">https://CRAN.R-project.org/package=LKT</a></p>
+<p>Use the code chunk below to load the LKT package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(LKT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: SparseM</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: Matrix</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'Matrix'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:SparseM':
+
+    det</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: data.table</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: LiblineaR</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Package 'LKT' version 1.7.0
+Type 'citation("LKT")' for citing this R package in publications.</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="wrangle" class="level2">
+<h2 class="anchored" data-anchor-id="wrangle">2. Wrangle</h2>
+<p>Data wrangling is the process of converting raw data into a format suitable for analysis. Typically, data is not formatted in the necessary fashion for your package when you first obtain it.</p>
+<section id="import-the-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="import-the-dataset">Import the dataset</h3>
+<p>You’ll first import the raw dataset originally obtained from <a href="https://pslcdatashop.web.cmu.edu/DatasetInfo?datasetId=5513&amp;access_redir=1">this project</a> by Dr.&nbsp;Philip I. Pavlik Jr.&nbsp;This dataset is included in the LKT package as <code>largerawsample</code></p>
+<p>Use the code chunk below to import the dataset:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">41</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>val<span class="ot">&lt;-</span>largerawsample</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="convert-to-a-data-table" class="level3">
+<h3 class="anchored" data-anchor-id="convert-to-a-data-table">Convert to a data table</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>val <span class="ot">=</span> <span class="fu">setDT</span>(val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li><strong><code>data = setDT(data)</code></strong>: This line is using the <strong><code>setDT()</code></strong> function to convert the object <strong><code>data</code></strong> into a data.table object.</li>
+</ol>
+<section id="data-cleaning-and-transformation" class="level4">
+<h4 class="anchored" data-anchor-id="data-cleaning-and-transformation">Data Cleaning and Transformation</h4>
+<p>Next, you are going to prepare the data for subsequent analysis, making it more manageable, understandable, and suitable for the Performance Factors Analysis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Clean it up</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>val<span class="sc">$</span>KC..Default.<span class="ot">&lt;-</span>val<span class="sc">$</span>Problem.Name</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># get the times of each trial in seconds from 1970</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>val<span class="sc">$</span>CF..Time.<span class="ot">&lt;-</span><span class="fu">as.numeric</span>(<span class="fu">as.POSIXct</span>(<span class="fu">as.character</span>(val<span class="sc">$</span>Time),<span class="at">format=</span><span class="st">"%Y-%m-%d %H:%M:%S"</span>))</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#make sure it is ordered in the way the code expects</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>val<span class="ot">&lt;-</span>val[<span class="fu">order</span>(val<span class="sc">$</span>Anon.Student.Id, val<span class="sc">$</span>CF..Time.),]</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">#create a binary response column to predict and extract only data with a valid value</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>val<span class="sc">$</span>CF..ansbin.<span class="ot">&lt;-</span><span class="fu">ifelse</span>(<span class="fu">tolower</span>(val<span class="sc">$</span>Outcome)<span class="sc">==</span><span class="st">"correct"</span>,<span class="dv">1</span>,<span class="fu">ifelse</span>(<span class="fu">tolower</span>(val<span class="sc">$</span>Outcome)<span class="sc">==</span><span class="st">"incorrect"</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">1</span>))</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>val<span class="ot">&lt;-</span>val[val<span class="sc">$</span>CF..ansbin.<span class="sc">==</span><span class="dv">0</span> <span class="sc">|</span> val<span class="sc">$</span>CF..ansbin.<span class="sc">==</span><span class="dv">1</span>,]</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co"># create durations</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>val<span class="sc">$</span>Duration..sec.<span class="ot">&lt;-</span>(val<span class="sc">$</span>CF..End.Latency.<span class="sc">+</span>val<span class="sc">$</span>CF..Review.Latency.<span class="sc">+</span><span class="dv">500</span>)<span class="sc">/</span><span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li><p><strong><code>val$KC..Default.&lt;-val$Problem.Name</code></strong>:</p>
+<p>This line of code assigns the value of <strong><code>val$Problem.Name</code></strong> to <strong><code>val$KC..Default</code></strong>. In R, the <strong><code>&lt;-</code></strong> operator is used for assignment. So, it’s taking the value of <strong><code>val$Problem.Name</code></strong> and assigning it to <strong><code>val$KC..Default</code></strong>. By looking at the data, we could see that Problem.Name column is more accurate in describing the knowledge component (KC).</p></li>
+<li><p><code>val$CF..Time.&lt;-as.numeric(as.POSIXct(as.character(val$Time),format="%Y-%m-%d %H:%M:%S"))</code> :</p>
+<p>This line converts the <strong><code>Time</code></strong> column in the dataframe <strong><code>val</code></strong> into seconds since the UNIX epoch (January 1, 1970). It first converts <strong><code>Time</code></strong> to character type, then to POSIXct (a datetime object in R), and finally to numeric, resulting in the number of seconds since 1970.</p></li>
+<li><p><code>val&lt;-val[order(val$Anon.Student.Id, val$CF..Time.),]</code></p>
+<p>This line reorders the dataframe <strong><code>val</code></strong> based on two columns: <strong><code>Anon.Student.Id</code></strong> and <strong><code>CF..Time.</code></strong>. This ensures that the data is arranged in the expected order for further processing.</p></li>
+<li><p><code>val$CF..ansbin.&lt;-ifelse(tolower(val$Outcome)=="correct",1,ifelse(tolower(val$Outcome)=="incorrect",0,-1))</code></p>
+<p>This line creates a new column named <strong><code>CF..ansbin.</code></strong> in the dataframe <strong><code>val</code></strong>. It assigns 1 if the <strong><code>Outcome</code></strong> column (converted to lowercase) is “correct”, 0 if it’s “incorrect”, and -1 otherwise.</p></li>
+<li><p><code>val&lt;-val[val$CF..ansbin.==0 | val$CF..ansbin.==1,]</code></p>
+<p>This line filters the dataframe <strong><code>val</code></strong> to only include rows where the <strong><code>CF..ansbin.</code></strong> column value is either 0 or 1, meaning it’s either “incorrect” or “correct”. Rows with a value of -1 (indicating invalid or other outcomes) are excluded.</p></li>
+</ol>
+</section>
+<section id="student-level-cross-validation" class="level4">
+<h4 class="anchored" data-anchor-id="student-level-cross-validation">Student-level cross-validation</h4>
+<p>Creating student-level cross validation folds</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the number of folds</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get unique student IDs</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>unique_students <span class="ot">&lt;-</span> <span class="fu">unique</span>(val<span class="sc">$</span>Anon.Student.Id)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Randomly shuffle the student IDs</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>shuffled_students <span class="ot">&lt;-</span> <span class="fu">sample</span>(unique_students)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Split student IDs into k folds</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>folds <span class="ot">&lt;-</span> <span class="fu">split</span>(shuffled_students, <span class="fu">cut</span>(<span class="fu">seq_along</span>(shuffled_students), k, <span class="at">labels =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co">#Spilt data into 5, we will use this part for later cross-validation</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get test student IDs for this fold</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  test_student_ids <span class="ot">&lt;-</span> folds[[i]]</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create test and train datasets</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  test_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(val, Anon.Student.Id <span class="sc">%in%</span> test_student_ids)</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  train_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(val, <span class="sc">!</span>(Anon.Student.Id <span class="sc">%in%</span> test_student_ids))</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="explore" class="level2">
+<h2 class="anchored" data-anchor-id="explore">3. Explore</h2>
+<section id="take-a-look-at-the-dataset" class="level4">
+<h4 class="anchored" data-anchor-id="take-a-look-at-the-dataset">Take a look at the dataset</h4>
+<p>What does a LKT dataset look like? It is similar to what BKT expects but a little bit different. The dataset is huge and hard to print with R. Thus, please double-click the val under the “Environment” tab on the top-right of the R-studio to take a look at the data.</p>
+<p><img src="images/clipboard-706233257.png" class="img-fluid" width="456"></p>
+<p>There are many variables inside this sheet. However, only four of them matter. Let’s filter down to them::</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>val_actual <span class="ot">&lt;-</span> val[, <span class="fu">c</span>(<span class="st">'Anon.Student.Id'</span>, <span class="st">'Duration..sec.'</span>, <span class="st">'Outcome'</span>, <span class="st">'KC..Default.'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="model" class="level2">
+<h2 class="anchored" data-anchor-id="model">4. Model</h2>
+<p>In this section, we will build four variants of LKT, including the classic PFA variant.</p>
+<section id="additive-factors-model-afm-fixed-effect-version" class="level4">
+<h4 class="anchored" data-anchor-id="additive-factors-model-afm-fixed-effect-version">Additive Factors Model (AFM) fixed effect version</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get test student IDs for this fold</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  test_student_ids <span class="ot">&lt;-</span> folds[[i]]</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create test and train datasets</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  test_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(val, Anon.Student.Id <span class="sc">%in%</span> test_student_ids)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  train_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(val, <span class="sc">!</span>(Anon.Student.Id <span class="sc">%in%</span> test_student_ids))</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  modelob <span class="ot">&lt;-</span> <span class="fu">LKT</span>(</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> train_data, <span class="at">interc=</span><span class="cn">FALSE</span>,</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">components =</span> <span class="fu">c</span>(<span class="st">"Anon.Student.Id"</span>,<span class="st">"KC..Default."</span>,<span class="st">"KC..Default."</span>),</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"intercept"</span>, <span class="st">"intercept"</span>, <span class="st">"lineafm"</span>))</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="co">#We are not able to use its predict function to evaluate the model because it requires the input to be like the cross-validation only for post-hoc you mentioned.</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>intercept Anon.Student.Id      
+intercept KC..Default.      
+lineafm KC..Default.      
+lineafmKC..Default.+interceptKC..Default.+interceptAnon.Student.Id+0 
+McFadden's R2 logistic: 0.281026 
+LogLike logistic: -24565.54092487 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+lineafm KC..Default.      
+lineafmKC..Default.+interceptKC..Default.+interceptAnon.Student.Id+0 
+McFadden's R2 logistic: 0.282524 
+LogLike logistic: -24494.3868687 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+lineafm KC..Default.      
+lineafmKC..Default.+interceptKC..Default.+interceptAnon.Student.Id+0 
+McFadden's R2 logistic: 0.281208 
+LogLike logistic: -24584.42151538 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+lineafm KC..Default.      
+lineafmKC..Default.+interceptKC..Default.+interceptAnon.Student.Id+0 
+McFadden's R2 logistic: 0.280184 
+LogLike logistic: -24667.62329973 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+lineafm KC..Default.      
+lineafmKC..Default.+interceptKC..Default.+interceptAnon.Student.Id+0 
+McFadden's R2 logistic: 0.278589 
+LogLike logistic: -24653.48976553 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+lineafm KC..Default.      
+lineafmKC..Default.+interceptKC..Default.+interceptAnon.Student.Id+0 
+McFadden's R2 logistic: 0.276386 
+LogLike logistic: -24702.61159494 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+lineafm KC..Default.      
+lineafmKC..Default.+interceptKC..Default.+interceptAnon.Student.Id+0 
+McFadden's R2 logistic: 0.27789 
+LogLike logistic: -24736.80843883 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+lineafm KC..Default.      
+lineafmKC..Default.+interceptKC..Default.+interceptAnon.Student.Id+0 
+McFadden's R2 logistic: 0.280686 
+LogLike logistic: -24555.37111879 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+lineafm KC..Default.      
+lineafmKC..Default.+interceptKC..Default.+interceptAnon.Student.Id+0 
+McFadden's R2 logistic: 0.283496 
+LogLike logistic: -24474.95933085 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+lineafm KC..Default.      
+lineafmKC..Default.+interceptKC..Default.+interceptAnon.Student.Id+0 
+McFadden's R2 logistic: 0.279564 
+LogLike logistic: -24641.98474237 </code></pre>
+</div>
+</div>
+</section>
+<section id="performance-factors-analysis-pfa-fixed-effects-version" class="level4">
+<h4 class="anchored" data-anchor-id="performance-factors-analysis-pfa-fixed-effects-version">Performance Factors Analysis (PFA) fixed effects version</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a> <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get test student IDs for this fold</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  test_student_ids <span class="ot">&lt;-</span> folds[[i]]</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create test and train datasets</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  test_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(val, Anon.Student.Id <span class="sc">%in%</span> test_student_ids)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  train_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(val, <span class="sc">!</span>(Anon.Student.Id <span class="sc">%in%</span> test_student_ids))</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>   modelob <span class="ot">&lt;-</span> <span class="fu">LKT</span>(<span class="at">data =</span> train_data, <span class="at">interc=</span><span class="cn">FALSE</span>,</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">components =</span> <span class="fu">c</span>(<span class="st">"Anon.Student.Id"</span>, <span class="st">"KC..Default."</span>, <span class="st">"KC..Default."</span>, <span class="st">"KC..Default."</span>),</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"intercept"</span>, <span class="st">"intercept"</span>, <span class="st">"linesuc$"</span>,<span class="st">"linefail$"</span>))</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">#We are not able to use its predict function to evaluate the model because it requires the input to be like the cross-validation only for post-hoc you mentioned.</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>intercept Anon.Student.Id      
+intercept KC..Default.      
+linesuc$ KC..Default.      
+linefail$ KC..Default.      
+linefailKC..Default.:e$data$KC..Default.+linesucKC..Default.:e$data$KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+0 
+McFadden's R2 logistic: 0.296799 
+LogLike logistic: -24026.62217982 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+linesuc$ KC..Default.      
+linefail$ KC..Default.      
+linefailKC..Default.:e$data$KC..Default.+linesucKC..Default.:e$data$KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+0 
+McFadden's R2 logistic: 0.297911 
+LogLike logistic: -23969.0834224 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+linesuc$ KC..Default.      
+linefail$ KC..Default.      
+linefailKC..Default.:e$data$KC..Default.+linesucKC..Default.:e$data$KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+0 
+McFadden's R2 logistic: 0.297551 
+LogLike logistic: -24025.43568836 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+linesuc$ KC..Default.      
+linefail$ KC..Default.      
+linefailKC..Default.:e$data$KC..Default.+linesucKC..Default.:e$data$KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+0 
+McFadden's R2 logistic: 0.295854 
+LogLike logistic: -24130.64399046 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+linesuc$ KC..Default.      
+linefail$ KC..Default.      
+linefailKC..Default.:e$data$KC..Default.+linesucKC..Default.:e$data$KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+0 
+McFadden's R2 logistic: 0.294546 
+LogLike logistic: -24108.16484272 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+linesuc$ KC..Default.      
+linefail$ KC..Default.      
+linefailKC..Default.:e$data$KC..Default.+linesucKC..Default.:e$data$KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+0 
+McFadden's R2 logistic: 0.292228 
+LogLike logistic: -24161.79039832 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+linesuc$ KC..Default.      
+linefail$ KC..Default.      
+linefailKC..Default.:e$data$KC..Default.+linesucKC..Default.:e$data$KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+0 
+McFadden's R2 logistic: 0.293494 
+LogLike logistic: -24202.25645085 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+linesuc$ KC..Default.      
+linefail$ KC..Default.      
+linefailKC..Default.:e$data$KC..Default.+linesucKC..Default.:e$data$KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+0 
+McFadden's R2 logistic: 0.295854 
+LogLike logistic: -24037.57754262 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+linesuc$ KC..Default.      
+linefail$ KC..Default.      
+linefailKC..Default.:e$data$KC..Default.+linesucKC..Default.:e$data$KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+0 
+McFadden's R2 logistic: 0.298337 
+LogLike logistic: -23968.02093564 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+linesuc$ KC..Default.      
+linefail$ KC..Default.      
+linefailKC..Default.:e$data$KC..Default.+linesucKC..Default.:e$data$KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+0 
+McFadden's R2 logistic: 0.295235 
+LogLike logistic: -24105.9586779 </code></pre>
+</div>
+</div>
+</section>
+<section id="recent-performance-factors-analysis-rpfa" class="level4">
+<h4 class="anchored" data-anchor-id="recent-performance-factors-analysis-rpfa">Recent Performance Factors Analysis (RPFA)</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get test student IDs for this fold</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  test_student_ids <span class="ot">&lt;-</span> folds[[i]]</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create test and train datasets</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  test_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(val, Anon.Student.Id <span class="sc">%in%</span> test_student_ids)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  train_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(val, <span class="sc">!</span>(Anon.Student.Id <span class="sc">%in%</span> test_student_ids))</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  modelob <span class="ot">&lt;-</span> <span class="fu">LKT</span>(</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> train_data, <span class="at">interc=</span><span class="cn">TRUE</span>,</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">components =</span> <span class="fu">c</span>(<span class="st">"Anon.Student.Id"</span>, <span class="st">"KC..Default."</span>, <span class="st">"KC..Default."</span>, <span class="st">"KC..Default."</span>),</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"intercept"</span>, <span class="st">"intercept"</span>, <span class="st">"propdec2"</span>,<span class="st">"linefail"</span>),</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">seedpars=</span><span class="fu">c</span>(.<span class="dv">9</span>))</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">#We are not able to use its predict function to evaluate the model because it requires the input to be like the cross-validation only for post-hoc you mentioned.</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.9     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.303662 
+LogLike logistic: -23792.12236292 
+step par values =0.9
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.901     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.303656 
+LogLike logistic: -23792.33706398 
+step par values =0.901
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.899     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.303669 
+LogLike logistic: -23791.90538776 
+step par values =0.899
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 1e-05     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.303776 
+LogLike logistic: -23788.24949303 
+step par values =1e-05
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.00101     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.303804 
+LogLike logistic: -23787.28935824 
+step par values =0.00101
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 1e-05     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.303776 
+LogLike logistic: -23788.24949303 
+step par values =1e-05
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.734815803198664     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305522 
+LogLike logistic: -23728.59435754 
+step par values =0.7348158
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.735815803198664     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305507 
+LogLike logistic: -23729.10571664 
+step par values =0.7358158
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.733815803198664     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305537 
+LogLike logistic: -23728.08215979 
+step par values =0.7338158
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.367412901599332     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309327 
+LogLike logistic: -23598.57347096 
+step par values =0.3674129
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.368412901599332     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309328 
+LogLike logistic: -23598.5456633 
+step par values =0.3684129
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.366412901599332     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309326 
+LogLike logistic: -23598.60394574 
+step par values =0.3664129
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.430766152395334     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309222 
+LogLike logistic: -23602.16519134 
+step par values =0.4307662
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.431766152395334     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309218 
+LogLike logistic: -23602.30752799 
+step par values =0.4317662
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.429766152395334     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309226 
+LogLike logistic: -23602.02544642 
+step par values =0.4297662
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.378029493896894     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309332 
+LogLike logistic: -23598.41477712 
+step par values =0.3780295
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.379029493896894     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309332 
+LogLike logistic: -23598.41609841 
+step par values =0.3790295
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.377029493896894     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309332 
+LogLike logistic: -23598.41619037 
+step par values =0.3770295
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.9     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305639 
+LogLike logistic: -23705.26106657 
+step par values =0.9
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.901     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305632 
+LogLike logistic: -23705.49384689 
+step par values =0.901
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.899     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305646 
+LogLike logistic: -23705.02590783 
+step par values =0.899
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 1e-05     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.306082 
+LogLike logistic: -23690.1259535 
+step par values =1e-05
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.00101     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.30611 
+LogLike logistic: -23689.1899932 
+step par values =0.00101
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 1e-05     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.306082 
+LogLike logistic: -23690.1259535 
+step par values =1e-05
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.720014645110008     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.307836 
+LogLike logistic: -23630.26594274 
+step par values =0.7200146
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.721014645110008     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.30782 
+LogLike logistic: -23630.80980742 
+step par values =0.7210146
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.719014645110008     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.307852 
+LogLike logistic: -23629.72226351 
+step par values =0.7190146
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.360012322555004     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311562 
+LogLike logistic: -23503.056232 
+step par values =0.3600123
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.361012322555004     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311565 
+LogLike logistic: -23502.94806186 
+step par values =0.3610123
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.359012322555004     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311562 
+LogLike logistic: -23503.04214612 
+step par values =0.3590123
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.450407752905635     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311349 
+LogLike logistic: -23510.33271787 
+step par values =0.4504078
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.451407752905635     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311341 
+LogLike logistic: -23510.60891123 
+step par values =0.4514078
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.449407752905635     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311354 
+LogLike logistic: -23510.14659806 
+step par values =0.4494078
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.377863725450229     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311573 
+LogLike logistic: -23502.67885171 
+step par values =0.3778637
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.378863725450229     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311573 
+LogLike logistic: -23502.68157522 
+step par values =0.3788637
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.376863725450229     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311573 
+LogLike logistic: -23502.67260974 
+step par values =0.3768637
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.9     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.304779 
+LogLike logistic: -23778.22905255 
+step par values =0.9
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.901     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.304771 
+LogLike logistic: -23778.49304749 
+step par values =0.901
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.899     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.304787 
+LogLike logistic: -23777.96263915 
+step par values =0.899
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 1e-05     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305517 
+LogLike logistic: -23752.97870888 
+step par values =1e-05
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.00101     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305546 
+LogLike logistic: -23752.00559618 
+step par values =0.00101
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 1e-05     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305517 
+LogLike logistic: -23752.97870888 
+step par values =1e-05
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.707253614577823     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.30737 
+LogLike logistic: -23689.61658746 
+step par values =0.7072536
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.708253614577823     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.307353 
+LogLike logistic: -23690.20078709 
+step par values =0.7082536
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.706253614577823     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.307387 
+LogLike logistic: -23689.03210051 
+step par values =0.7062536
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.353631807288912     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311084 
+LogLike logistic: -23562.56944961 
+step par values =0.3536318
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.354631807288912     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311086 
+LogLike logistic: -23562.51134174 
+step par values =0.3546318
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.352631807288912     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311083 
+LogLike logistic: -23562.62330292 
+step par values =0.3526318
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.44886052718576     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.310865 
+LogLike logistic: -23570.08220309 
+step par values =0.4488605
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.44986052718576     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.310859 
+LogLike logistic: -23570.29385231 
+step par values =0.4498605
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.44786052718576     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.310871 
+LogLike logistic: -23569.87325379 
+step par values =0.4478605
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.373048563836488     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.3111 
+LogLike logistic: -23562.02401578 
+step par values =0.3730486
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.374048563836488     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.3111 
+LogLike logistic: -23562.02164769 
+step par values =0.3740486
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.372048563836488     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.3111 
+LogLike logistic: -23562.02214449 
+step par values =0.3720486
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.9     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.303686 
+LogLike logistic: -23862.23088735 
+step par values =0.9
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.901     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.303679 
+LogLike logistic: -23862.47341352 
+step par values =0.901
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.899     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.303693 
+LogLike logistic: -23861.98613435 
+step par values =0.899
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 1e-05     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.304245 
+LogLike logistic: -23843.07805263 
+step par values =1e-05
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.00101     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.304273 
+LogLike logistic: -23842.11736082 
+step par values =0.00101
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 1e-05     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.304245 
+LogLike logistic: -23843.07805263 
+step par values =1e-05
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.717929524473896     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305962 
+LogLike logistic: -23784.21895337 
+step par values =0.7179295
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.718929524473896     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305946 
+LogLike logistic: -23784.77517095 
+step par values =0.7189295
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.716929524473896     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305979 
+LogLike logistic: -23783.6621847 
+step par values =0.7169295
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.358969762236948     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309742 
+LogLike logistic: -23654.71033445 
+step par values =0.3589698
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.359969762236948     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309743 
+LogLike logistic: -23654.67292088 
+step par values =0.3599698
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.357969762236948     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.30974 
+LogLike logistic: -23654.75127625 
+step par values =0.3579698
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.433916785557788     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.3096 
+LogLike logistic: -23659.56403194 
+step par values =0.4339168
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.434916785557788     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309595 
+LogLike logistic: -23659.73220482 
+step par values =0.4349168
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.432916785557788     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309605 
+LogLike logistic: -23659.39837689 
+step par values =0.4329168
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.372921679645575     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.30975 
+LogLike logistic: -23654.43301719 
+step par values =0.3729217
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.373921679645575     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.30975 
+LogLike logistic: -23654.43421273 
+step par values =0.3739217
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.371921679645575     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.30975 
+LogLike logistic: -23654.43541669 
+step par values =0.3719217
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.9     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.302085 
+LogLike logistic: -23850.52998773 
+step par values =0.9
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.901     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.302078 
+LogLike logistic: -23850.79168033 
+step par values =0.901
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.899     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.302093 
+LogLike logistic: -23850.26598738 
+step par values =0.899
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 1e-05     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.302683 
+LogLike logistic: -23830.10020446 
+step par values =1e-05
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.00101     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.302711 
+LogLike logistic: -23829.12849377 
+step par values =0.00101
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 1e-05     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.302683 
+LogLike logistic: -23830.10020446 
+step par values =1e-05
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.708385381806019     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.304601 
+LogLike logistic: -23764.56511175 
+step par values =0.7083854
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.709385381806019     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.304584 
+LogLike logistic: -23765.13349886 
+step par values =0.7093854
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.707385381806019     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.304617 
+LogLike logistic: -23763.9963869 
+step par values =0.7073854
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.354197690903009     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.308232 
+LogLike logistic: -23640.46626876 
+step par values =0.3541977
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.355197690903009     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.308234 
+LogLike logistic: -23640.41116418 
+step par values =0.3551977
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.353197690903009     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.30823 
+LogLike logistic: -23640.52423248 
+step par values =0.3531977
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.450811161726273     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.308012 
+LogLike logistic: -23648.00254996 
+step par values =0.4508112
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.451811161726273     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.308005 
+LogLike logistic: -23648.21252749 
+step par values =0.4518112
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.449811161726273     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.308018 
+LogLike logistic: -23647.79516415 
+step par values =0.4498112
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.374101819494     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.308249 
+LogLike logistic: -23639.90215515 
+step par values =0.3741018
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.375101819494     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.308249 
+LogLike logistic: -23639.90211795 
+step par values =0.3751018
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.373101819494     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.308249 
+LogLike logistic: -23639.90266647 
+step par values =0.3731018
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.9     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.299685 
+LogLike logistic: -23907.24035191 
+step par values =0.9
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.901     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.299678 
+LogLike logistic: -23907.47504461 
+step par values =0.901
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.899     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.299692 
+LogLike logistic: -23907.00331314 
+step par values =0.899
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 1e-05     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.299975 
+LogLike logistic: -23897.31298051 
+step par values =1e-05
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.00101     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.300004 
+LogLike logistic: -23896.32258599 
+step par values =0.00101
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 1e-05     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.299975 
+LogLike logistic: -23897.31298051 
+step par values =1e-05
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.726890905331514     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.301787 
+LogLike logistic: -23835.46820628 
+step par values =0.7268909
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.727890905331514     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.301771 
+LogLike logistic: -23836.01291835 
+step par values =0.7278909
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.725890905331514     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.301803 
+LogLike logistic: -23834.92274498 
+step par values =0.7258909
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.363450452665757     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.30568 
+LogLike logistic: -23702.55900772 
+step par values =0.3634505
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.364450452665757     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305681 
+LogLike logistic: -23702.52403008 
+step par values =0.3644505
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.362450452665757     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305679 
+LogLike logistic: -23702.59629442 
+step par values =0.3624505
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.434725636159748     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305546 
+LogLike logistic: -23707.15255171 
+step par values =0.4347256
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.435725636159748     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305541 
+LogLike logistic: -23707.3167591 
+step par values =0.4357256
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.433725636159748     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305551 
+LogLike logistic: -23706.99102039 
+step par values =0.4337256
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.376054043496508     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305687 
+LogLike logistic: -23702.33057641 
+step par values =0.376054
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.377054043496508     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305687 
+LogLike logistic: -23702.33244729 
+step par values =0.377054
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.375054043496508     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305687 
+LogLike logistic: -23702.33211415 
+step par values =0.375054
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.9     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.301328 
+LogLike logistic: -23933.88443716 
+step par values =0.9
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.901     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.301322 
+LogLike logistic: -23934.11109853 
+step par values =0.901
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.899     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.301335 
+LogLike logistic: -23933.65503503 
+step par values =0.899
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 1e-05     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.301557 
+LogLike logistic: -23926.06823005 
+step par values =1e-05
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.00101     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.301585 
+LogLike logistic: -23925.07719076 
+step par values =0.00101
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 1e-05     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.301557 
+LogLike logistic: -23926.06823005 
+step par values =1e-05
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.731653541149117     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.303339 
+LogLike logistic: -23864.9926847 
+step par values =0.7316535
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.732653541149117     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.303324 
+LogLike logistic: -23865.53712858 
+step par values =0.7326535
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.730653541149117     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.303355 
+LogLike logistic: -23864.4511802 
+step par values =0.7306535
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.365831770574559     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.307275 
+LogLike logistic: -23730.1862253 
+step par values =0.3658318
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.366831770574559     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.307276 
+LogLike logistic: -23730.15359143 
+step par values =0.3668318
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.364831770574559     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.307274 
+LogLike logistic: -23730.22171912 
+step par values =0.3648318
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.435256147882253     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.307145 
+LogLike logistic: -23734.61603992 
+step par values =0.4352561
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.436256147882253     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.307141 
+LogLike logistic: -23734.7770838 
+step par values =0.4362561
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.434256147882253     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.30715 
+LogLike logistic: -23734.46160794 
+step par values =0.4342561
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.377560576096484     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.307281 
+LogLike logistic: -23729.98310677 
+step par values =0.3775606
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.378560576096484     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.307281 
+LogLike logistic: -23729.98392485 
+step par values =0.3785606
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.376560576096484     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.30728 
+LogLike logistic: -23729.98884128 
+step par values =0.3765606
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.9     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.304308 
+LogLike logistic: -23748.96397254 
+step par values =0.9
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.901     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.304301 
+LogLike logistic: -23749.20332138 
+step par values =0.901
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.899     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.304315 
+LogLike logistic: -23748.72209898 
+step par values =0.899
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 1e-05     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305638 
+LogLike logistic: -23703.55598527 
+step par values =1e-05
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.00101     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305666 
+LogLike logistic: -23702.61647316 
+step par values =0.00101
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 1e-05     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305638 
+LogLike logistic: -23703.55598527 
+step par values =1e-05
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.716504197903449     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.306677 
+LogLike logistic: -23668.09867471 
+step par values =0.7165042
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.717504197903449     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.30666 
+LogLike logistic: -23668.67979511 
+step par values =0.7175042
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.715504197903449     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.306694 
+LogLike logistic: -23667.51605197 
+step par values =0.7155042
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.358257098951725     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.310813 
+LogLike logistic: -23526.89233088 
+step par values =0.3582571
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.359257098951725     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.310814 
+LogLike logistic: -23526.88935939 
+step par values =0.3592571
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.357257098951725     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.310813 
+LogLike logistic: -23526.89814696 
+step par values =0.3572571
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.367972424032452     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.310811 
+LogLike logistic: -23526.98362008 
+step par values =0.3679724
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.368972424032452     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.31081 
+LogLike logistic: -23527.00820202 
+step par values =0.3689724
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.366972424032452     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.310811 
+LogLike logistic: -23526.96186853 
+step par values =0.3669724
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.359803135289355     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.310814 
+LogLike logistic: -23526.8889371 
+step par values =0.3598031
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.360803135289355     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.310813 
+LogLike logistic: -23526.89035351 
+step par values =0.3608031
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.358803135289355     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.310813 
+LogLike logistic: -23526.89189523 
+step par values =0.3588031
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.9     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305895 
+LogLike logistic: -23709.83963294 
+step par values =0.9
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.901     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305888 
+LogLike logistic: -23710.06500597 
+step par values =0.901
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.899     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305902 
+LogLike logistic: -23709.61216075 
+step par values =0.899
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 1e-05     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.30631 
+LogLike logistic: -23695.65424328 
+step par values =1e-05
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.00101     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.306338 
+LogLike logistic: -23694.71575653 
+step par values =0.00101
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 1e-05     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.30631 
+LogLike logistic: -23695.65424328 
+step par values =1e-05
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.725069577453781     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.30793 
+LogLike logistic: -23640.30729808 
+step par values =0.7250696
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.726069577453781     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.307915 
+LogLike logistic: -23640.82811692 
+step par values =0.7260696
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.724069577453781     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.307946 
+LogLike logistic: -23639.78358123 
+step par values =0.7240696
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.36253978872689     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311651 
+LogLike logistic: -23513.21540835 
+step par values =0.3625398
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.36353978872689     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311652 
+LogLike logistic: -23513.18945573 
+step par values =0.3635398
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.36153978872689     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.31165 
+LogLike logistic: -23513.24616908 
+step par values =0.3615398
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.4223585627378     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.31156 
+LogLike logistic: -23516.31336316 
+step par values =0.4223586
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.4233585627378     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311557 
+LogLike logistic: -23516.44413593 
+step par values =0.4233586
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.4213585627378     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311564 
+LogLike logistic: -23516.18308553 
+step par values =0.4213586
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.372986558238997     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311655 
+LogLike logistic: -23513.06705901 
+step par values =0.3729866
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.373986558238997     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311655 
+LogLike logistic: -23513.06825373 
+step par values =0.3739866
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.371986558238997     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311655 
+LogLike logistic: -23513.06848763 
+step par values =0.3719866
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.9     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.303374 
+LogLike logistic: -23827.58216959 
+step par values =0.9
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.901     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.303367 
+LogLike logistic: -23827.82572569 
+step par values =0.901
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.899     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.303381 
+LogLike logistic: -23827.3358928 
+step par values =0.899
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 1e-05     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.303952 
+LogLike logistic: -23807.81331674 
+step par values =1e-05
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.00101     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.303981 
+LogLike logistic: -23806.8290433 
+step par values =0.00101
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 1e-05     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.303952 
+LogLike logistic: -23807.81331674 
+step par values =1e-05
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.720676729068247     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305664 
+LogLike logistic: -23749.27414943 
+step par values =0.7206767
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.721676729068247     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.305647 
+LogLike logistic: -23749.84421246 
+step par values =0.7216767
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.719676729068247     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.30568 
+LogLike logistic: -23748.70575313 
+step par values =0.7196767
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.360343364534123     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309587 
+LogLike logistic: -23615.0591039 
+step par values =0.3603434
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.361343364534123     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309589 
+LogLike logistic: -23615.02165801 
+step par values =0.3613434
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.359343364534123     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309586 
+LogLike logistic: -23615.09547539 
+step par values =0.3593434
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.431018463696028     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309459 
+LogLike logistic: -23619.44121322 
+step par values =0.4310185
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.432018463696028     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309455 
+LogLike logistic: -23619.59968842 
+step par values =0.4320185
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.430018463696028     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309464 
+LogLike logistic: -23619.27755776 
+step par values =0.4300185
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.373536599284732     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309595 
+LogLike logistic: -23614.79713016 
+step par values =0.3735366
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.374536599284732     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309595 
+LogLike logistic: -23614.79375162 
+step par values =0.3745366
+
+intercept Anon.Student.Id      
+intercept KC..Default.      
+propdec2 KC..Default. 0.372536599284732     
+linefail KC..Default.      
+linefailKC..Default.+propdec2KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.309595 
+LogLike logistic: -23614.79544109 
+step par values =0.3725366</code></pre>
+</div>
+</div>
+<p>The RPFA includes seedpars=c(.9)). It is the an initial set of parameter values. These values serve as a starting point for your parameter search.</p>
+</section>
+<section id="individualized-additive-factors-model-iafm-fixed-effect-version" class="level4">
+<h4 class="anchored" data-anchor-id="individualized-additive-factors-model-iafm-fixed-effect-version">Individualized Additive Factors Model (iAFM) fixed effect version</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get test student IDs for this fold</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  test_student_ids <span class="ot">&lt;-</span> folds[[i]]</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create test and train datasets</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  test_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(val, Anon.Student.Id <span class="sc">%in%</span> test_student_ids)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  train_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(val, <span class="sc">!</span>(Anon.Student.Id <span class="sc">%in%</span> test_student_ids))</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  modelob <span class="ot">&lt;-</span> <span class="fu">LKT</span>(</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> train_data, </span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">interc =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">components =</span> <span class="fu">c</span>(<span class="st">"Anon.Student.Id"</span>, <span class="st">"KC..Default."</span>, <span class="st">"KC..Default."</span>, <span class="st">"KC..Default."</span>),</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">features =</span> <span class="fu">c</span>(<span class="st">"intercept"</span>, <span class="st">"intercept"</span>, <span class="st">"lineafm$"</span>, <span class="st">"lineafm"</span>),</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">interacts =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">"Anon.Student.Id"</span>)</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>  <span class="co">#We are not able to use its predict function to evaluate the model because it requires the input to be like the cross-validation only for post-hoc you mentioned.</span></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>intercept Anon.Student.Id      
+intercept KC..Default.      
+lineafm$ KC..Default.      
+lineafm KC..Default.      
+lineafmKC..Default.:Anon.Student.Id+lineafmKC..Default.:e$data$KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311049 
+LogLike logistic: -23539.74268589 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+lineafm$ KC..Default.      
+lineafm KC..Default.      
+lineafmKC..Default.:Anon.Student.Id+lineafmKC..Default.:e$data$KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.312475 
+LogLike logistic: -23471.8884848 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+lineafm$ KC..Default.      
+lineafm KC..Default.      
+lineafmKC..Default.:Anon.Student.Id+lineafmKC..Default.:e$data$KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311373 
+LogLike logistic: -23552.69933589 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+lineafm$ KC..Default.      
+lineafm KC..Default.      
+lineafmKC..Default.:Anon.Student.Id+lineafmKC..Default.:e$data$KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.30944 
+LogLike logistic: -23665.05743707 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+lineafm$ KC..Default.      
+lineafm KC..Default.      
+lineafmKC..Default.:Anon.Student.Id+lineafmKC..Default.:e$data$KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.307359 
+LogLike logistic: -23670.3203292 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+lineafm$ KC..Default.      
+lineafm KC..Default.      
+lineafmKC..Default.:Anon.Student.Id+lineafmKC..Default.:e$data$KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.306656 
+LogLike logistic: -23669.26537705 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+lineafm$ KC..Default.      
+lineafm KC..Default.      
+lineafmKC..Default.:Anon.Student.Id+lineafmKC..Default.:e$data$KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.306947 
+LogLike logistic: -23741.40162218 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+lineafm$ KC..Default.      
+lineafm KC..Default.      
+lineafmKC..Default.:Anon.Student.Id+lineafmKC..Default.:e$data$KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.310378 
+LogLike logistic: -23541.77130457 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+lineafm$ KC..Default.      
+lineafm KC..Default.      
+lineafmKC..Default.:Anon.Student.Id+lineafmKC..Default.:e$data$KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.311698 
+LogLike logistic: -23511.61239808 
+intercept Anon.Student.Id      
+intercept KC..Default.      
+lineafm$ KC..Default.      
+lineafm KC..Default.      
+lineafmKC..Default.:Anon.Student.Id+lineafmKC..Default.:e$data$KC..Default.+interceptKC..Default.+interceptAnon.Student.Id+1 
+McFadden's R2 logistic: 0.308813 
+LogLike logistic: -23641.55985305 </code></pre>
+</div>
+</div>
+<p><strong>interacts = c(NA, NA, NA, “Anon.Student.Id”)</strong>: This argument specifies interactions between components. Here:</p>
+<ul>
+<li><p>The first three components have no interaction (<code>NA</code>).</p></li>
+<li><p>The fourth component (<code>"KC..Default."</code>) interacts with <code>"Anon.Student.Id"</code>.</p></li>
+</ul>
+</section>
+<section id="your-turn" class="level4">
+<h4 class="anchored" data-anchor-id="your-turn"><strong>👉 Your Turn</strong> <strong>⤵</strong></h4>
+<p>Now you have tried to build a few LKT model variants. You’ve only built some of the simpler variants. Pavlik’s papers show other, more complex variants.</p>
+<p>Please write codes below to build an LKT model using <a href="https://drive.google.com/file/d/1cU6Ft4R3hLqA7G1rIGArVfelSZvc6RxY/view">2012 ASSISTments dataset</a>. More Background about this research is <a href="https://sites.google.com/site/assistmentsdata/datasets/2012-13-school-data-with-affect">here</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Your code below</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

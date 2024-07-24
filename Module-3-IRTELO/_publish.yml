@@ -2,3 +2,15 @@
   quarto-pub:
     - id: aaeab73b-4906-4677-9578-911dc30d4841
       url: 'https://yilinl.quarto.pub/irtelo'
+    - id: b36f28d1-796c-491a-9f2d-9e8f4b6bcad2
+      url: 'https://yilinliu.quarto.pub/module-4-irt'
+    - id: 2943baf0-f88b-40d9-b2f6-7de21986c855
+      url: 'https://yilinliu.quarto.pub/module-3-item-response-theory-and-elo'
+- source: kt-3-case-study.qmd
+  quarto-pub:
+    - id: e59bd47a-2d4b-4958-82d1-7f0dbc4e0072
+      url: 'https://yilinliu.quarto.pub/module-3-case-study'
+- source: kt-3-howtoapply.qmd
+  quarto-pub:
+    - id: f312d41e-51cb-43ca-8297-b5c8a88ae410
+      url: 'https://yilinliu.quarto.pub/module-3-applying-irt-in-practice'
