@@ -22,17 +22,7 @@ The first KT case study is inspired by the work of @zambrano2024investigating, w
 
 ![](images/laser-cycle.png){width="80%"}
 
-In this case study, you will learn how to do the data wrangling, fit the model, and analyze the goodness of the model. @zambrano2024investigating utilized BKT brute-force grid search(BKT-BF, in Java) to fit the BKT model but you will use pyBKT(Python) here. pyBKT is easier to start with but slower in performance. Specifically, this case study addresses the follow topics:
-
-1.  **Prepare**: Before analysis, you'll read a recent paper about BKT, learn about the current trend, and get introduced to the {pandas}, {sklearn}, and {pyBKT} packages for data wrangling and analyzing the BKT model.
-
-2.  **Wrangle**:
-
-3.  **Explore**:
-
-4.  **Model**: In the model section of the case study, you will learn basic techniques for fitting and evaluating a BKT model. You will also explore a variant of the BKT model and an advanced feature called Roster in the pyBKT package.
-
-5.  
+In this case study, you will learn how to do the data wrangling, fit the model, and analyze the goodness of the model. @zambrano2024investigating utilized BKT brute-force grid search(BKT-BF, in Java) to fit the BKT model but you will use pyBKT(Python) here. pyBKT is easier to start with but slower in performance.
 
 ### 1a. Review the Research
 
@@ -295,13 +285,7 @@ The current dataset only has response time. You will need to create another bina
 ```{python}
 #This part is just an example and the code will not show to the participants  
 df4=df3 
-df4.insert(8, 'FiveSecs', 0)  
-def cal_5secs(row):    
-  if row['time'] > 5:         
-    return 1    
-  else:         
-    return 0  
-df4["FiveSecs"] = df4.apply(cal_5secs, axis=1)
+df4["FiveSecs"] = df['time']>5
 ```
 
 #### Build your 5 seconds model
@@ -400,7 +384,9 @@ model_fixedparam.params()
 Fix the slip rate to 0.3 and the guess rate to 0.2 when fitting your model, is the model getting better or worse?
 
 ```{python}
-
+model_fixedparam = Model(seed=42)
+defaults = {'order_id': 'ID', 'skill_name': 'KC', 'correct': 'right', 'user_id': 'Student'}
+model_fixedparam.coef_ = {'CHOOSE-X-AXIS-QUANTITATIVE': {'slips': np.array([0.3]), 'guesses': np.array([0.2])}}
+model_fixedparam.fit(data = df3, fixed=True, defaults = defaults)
+model_fixedparam.params()
 ```
-
-## 5. COMMUNICATE
