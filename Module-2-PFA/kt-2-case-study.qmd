@@ -14,6 +14,7 @@ theme:
   dark: cyborg
 editor: visual
 bibliography: lit/references.bib
+csl: apa/apa-6th-edition.csl
 ---
 
 ## 1. Prepare
@@ -161,7 +162,7 @@ Creating student-level cross validation folds
 
 ```{r}
 # Define the number of folds
-k <- 10
+k <- 5
 
 # Get unique student IDs
 unique_students <- unique(val$Anon.Student.Id)
@@ -172,16 +173,9 @@ shuffled_students <- sample(unique_students)
 # Split student IDs into k folds
 folds <- split(shuffled_students, cut(seq_along(shuffled_students), k, labels = FALSE))
 
-
-#Spilt data into 5, we will use this part for later cross-validation
 for (i in 1:k) {
-  # Get test student IDs for this fold
-  test_student_ids <- folds[[i]]
-  
-  # Create test and train datasets
-  test_data <- subset(val, Anon.Student.Id %in% test_student_ids)
-  train_data <- subset(val, !(Anon.Student.Id %in% test_student_ids))
-  
+  # Add fold numbers to dataset.
+  val$fold[val$Anon.Student.Id %in% folds[[i]]] <- i
 }
 ```
 
@@ -206,72 +200,93 @@ In this section, we will build four variants of LKT, including the classic PFA v
 #### Additive Factors Model (AFM) fixed effect version
 
 ```{r}
-for (i in 1:k) {
-  # Get test student IDs for this fold
-  test_student_ids <- folds[[i]]
-  
-  # Create test and train datasets
-  test_data <- subset(val, Anon.Student.Id %in% test_student_ids)
+auc_values <- c()
+rmse_values <- c()
+ll_values <- c()
+r2_values <- c()
 
-  train_data <- subset(val, !(Anon.Student.Id %in% test_student_ids))
- 
-  
+for (i in 1:k) {
+  test_fold <- i
+
+# Fit the model. Note that usefolds is a vector of folds to include. We use everything except the held-out test fold.
   modelob <- LKT(
-      data = train_data, interc=FALSE,
+      data = val, interc=FALSE,
       components = c("Anon.Student.Id","KC..Default.","KC..Default."),
-      features = c("intercept", "intercept", "lineafm"))
-  #We are not able to use its predict function to evaluate the model because it requires the input to be like the cross-validation only for post-hoc you mentioned.
- 
-  
+      features = c("intercept", "intercept", "lineafm"), usefolds=(1:k)[-test_fold])
+
+# Run the model on the held-out test fold. Save the results in 'results'.
+  results <- predict_lkt(modelob, data=val, return_stats = TRUE, fold = test_fold)
+
+#Save the metrics to the vectors.
+  auc_values <- c(auc_values, results$AUC)
+  rmse_values <- c(rmse_values, results$RMSE)
+  ll_values <- c(ll_values, results$ll)
+  r2_values <- c(r2_values, results$R2)
+
 }
+print(mean(auc_values))
 
 ```
 
 #### Performance Factors Analysis (PFA) fixed effects version
 
 ```{r}
- for (i in 1:k) {
-  # Get test student IDs for this fold
-  test_student_ids <- folds[[i]]
-  
-  # Create test and train datasets
-  test_data <- subset(val, Anon.Student.Id %in% test_student_ids)
+auc_values <- c()
+rmse_values <- c()
+ll_values <- c()
+r2_values <- c()
 
-  train_data <- subset(val, !(Anon.Student.Id %in% test_student_ids))
- 
-  
-   modelob <- LKT(data = train_data, interc=FALSE,
-      components = c("Anon.Student.Id", "KC..Default.", "KC..Default.", "KC..Default."),
-      features = c("intercept", "intercept", "linesuc$","linefail$"))
-  #We are not able to use its predict function to evaluate the model because it requires the input to be like the cross-validation only for post-hoc you mentioned.
-  
-  
+for (i in 1:k) {
+  test_fold <- i
+
+# Fit the model. Note that usefolds is a vector of folds to include. We use everything except the held-out test fold.
+  modelob <- LKT(
+      data = val, interc=FALSE,
+      components = c("Anon.Student.Id", "KC..Default.", "KC..Default.", "KC..Default."), features = c("intercept", "intercept", "linesuc$","linefail$"), usefolds=(1:k)[-test_fold])
+
+# Run the model on the held-out test fold. Save the results in 'results'.
+  results <- predict_lkt(modelob, data=val, return_stats = TRUE, fold = test_fold)
+
+#Save the metrics to the vectors.
+  auc_values <- c(auc_values, results$AUC)
+  rmse_values <- c(rmse_values, results$RMSE)
+  ll_values <- c(ll_values, results$ll)
+  r2_values <- c(r2_values, results$R2)
+
 }
+print(mean(auc_values))
+
 ```
 
 #### Recent Performance Factors Analysis (RPFA)
 
 ```{r}
+
+auc_values <- c()
+rmse_values <- c()
+ll_values <- c()
+r2_values <- c()
+
 for (i in 1:k) {
-  # Get test student IDs for this fold
-  test_student_ids <- folds[[i]]
-  
-  # Create test and train datasets
-  test_data <- subset(val, Anon.Student.Id %in% test_student_ids)
+  test_fold <- i
 
-  train_data <- subset(val, !(Anon.Student.Id %in% test_student_ids))
- 
-  
+# Fit the model. Note that usefolds is a vector of folds to include. We use everything except the held-out test fold.
   modelob <- LKT(
-      data = train_data, interc=TRUE,
+      data = val, interc=TRUE,
       components = c("Anon.Student.Id", "KC..Default.", "KC..Default.", "KC..Default."),
-      features = c("intercept", "intercept", "propdec2","linefail"),
-      seedpars=c(.9))
-  #We are not able to use its predict function to evaluate the model because it requires the input to be like the cross-validation only for post-hoc you mentioned.
- 
-  
-}
+      features = c("intercept", "intercept", "propdec2","linefail"), usefolds=(1:k)[-test_fold])
 
+# Run the model on the held-out test fold. Save the results in 'results'.
+  results <- predict_lkt(modelob, data=val, return_stats = TRUE, fold = test_fold)
+
+#Save the metrics to the vectors.
+  auc_values <- c(auc_values, results$AUC)
+  rmse_values <- c(rmse_values, results$RMSE)
+  ll_values <- c(ll_values, results$ll)
+  r2_values <- c(r2_values, results$R2)
+
+}
+print(mean(auc_values))
  
 ```
 
@@ -280,27 +295,31 @@ The RPFA includes seedpars=c(.9)). It is the an initial set of parameter values.
 #### Individualized Additive Factors Model (iAFM) fixed effect version
 
 ```{r}
+auc_values <- c()
+rmse_values <- c()
+ll_values <- c()
+r2_values <- c()
+
 for (i in 1:k) {
-  # Get test student IDs for this fold
-  test_student_ids <- folds[[i]]
-  
-  # Create test and train datasets
-  test_data <- subset(val, Anon.Student.Id %in% test_student_ids)
+  test_fold <- i
 
-  train_data <- subset(val, !(Anon.Student.Id %in% test_student_ids))
- 
-  
+# Fit the model. Note that usefolds is a vector of folds to include. We use everything except the held-out test fold.
   modelob <- LKT(
-  data = train_data, 
-  interc = TRUE,
-  components = c("Anon.Student.Id", "KC..Default.", "KC..Default.", "KC..Default."),
-  features = c("intercept", "intercept", "lineafm$", "lineafm"),
-  interacts = c(NA, NA, NA, "Anon.Student.Id")
-)
-  #We are not able to use its predict function to evaluate the model because it requires the input to be like the cross-validation only for post-hoc you mentioned.
+      data = val, interc=TRUE,
+      components = c("Anon.Student.Id", "KC..Default.", "KC..Default.", "KC..Default."),
+  features = c("intercept", "intercept", "lineafm$", "lineafm"), usefolds=(1:k)[-test_fold])
 
-  
+# Run the model on the held-out test fold. Save the results in 'results'.
+  results <- predict_lkt(modelob, data=val, return_stats = TRUE, fold = test_fold)
+
+#Save the metrics to the vectors.
+  auc_values <- c(auc_values, results$AUC)
+  rmse_values <- c(rmse_values, results$RMSE)
+  ll_values <- c(ll_values, results$ll)
+  r2_values <- c(r2_values, results$R2)
+
 }
+print(mean(auc_values))
 ```
 
 **interacts = c(NA, NA, NA, "Anon.Student.Id")**: This argument specifies interactions between components. Here:
@@ -318,3 +337,49 @@ Please write codes below to build an LKT model using [2012 ASSISTments dataset](
 ```{r}
 #Your code below
 ```
+
+#### Publishing with Quarto Pub
+
+Quarto Pub is a free publishing service for content created with Quarto. Quarto Pub is ideal for blogs, course or project websites, books, reports, presentations, and personal hobby sites.
+
+It’s important to note that all documents and sites published to Quarto Pub are **publicly visible**. You should only publish content you wish to share publicly.
+
+To publish to Quarto Pub, you will use the `quarto publish` command to publish content rendered on your local machine or via Posit Cloud.
+
+Before attempting your first publish, be sure that you have created a free [Quarto Pub](https://quartopub.com/) account.
+
+The `quarto publish` command provides a very straightforward way to publish documents to Quarto Pub.
+
+For example, here is the Terminal command to publish a generic Quarto `document.qmd` to each of this service:
+
+``` {.bash filename="Terminal"}
+quarto publish quarto-pub document.qmd
+```
+
+You can access your the terminal from directly **Terminal Pane** in the lower left corner as shown below:
+
+![](images/clipboard-2273714529.png)
+
+The actual command you will enter into your terminal to publish your orientation case study is:
+
+`quarto publish quarto-pub kt-1-case-study.qmd`
+
+When you publish to Quarto Pub using `quarto publish` an access token is used to grant permission for publishing to your account. The first time you publish to Quarto Pub the Quarto CLI will automatically launch a browser to authorize one as shown below.
+
+``` {.bash filename="Terminal"}
+$ quarto publish quarto-pub
+? Authorize (Y/n) › 
+❯ In order to publish to Quarto Pub you need to
+  authorize your account. Please be sure you are
+  logged into the correct Quarto Pub account in 
+  your default web browser, then press Enter or 
+  'Y' to authorize.
+```
+
+Authorization will launch your default web browser to confirm that you want to allow publishing from Quarto CLI. An access token will be generated and saved locally by the Quarto CLI.
+
+Once you've authorized Quarto Pub and published your case study, it should take you immediately to the published document. See my example for the BKT conceptual overview here: <https://laserkt.quarto.pub/module-1-bayesian-knowledge-tracing/>.
+
+After you've published your first document, you can continue adding more documents, slides, books and even publish entire websites!
+
+![](images/clipboard-1851305920.png)
