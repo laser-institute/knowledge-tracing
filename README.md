@@ -15,17 +15,17 @@ Module 2: Performance Factor Analysis & Logistic Knowledge Tracing
 [PFA&LKT Badge Activity](https://laserkt.quarto.pub/module-2-applying-lkt-in-practice/)  
 [PFA&LKT Readings](https://laserkt.quarto.pub/kt-module-overview/#/kt-lab-2-performance-factors-analysis)  
 
-Module 3: Item Response Theory & ELO
+Module 3: Item Response Theory & ELO  
 [IRT&ELO Conceptual Overview](https://laserkt.quarto.pub/module-3-item-response-theory-and-elo/#/title-slide)  
 [IRT&ELO Case Study](https://laserkt.quarto.pub/module-3-case-study/)  
 [IRT&ELO Badge Activity]([https://laserkt.quarto.pub/module-2-applying-lkt-in-practice/](https://laserkt.quarto.pub/module-3-applying-irt-in-practice/))  
 [IRT&ELO Readings](https://laserkt.quarto.pub/kt-module-overview/#/kt-lab-3-item-response-theory)  
 
-Module 4: Deep Knowledge Tracing
+Module 4: Deep Knowledge Tracing  
 [DKT Conceptual Overview](https://laserkt.quarto.pub/module-4-deep-knowledge-tracing/#/title-slide)  
 [DKT Case Study](https://colab.research.google.com/drive/1b6ukOU-Bt-PiAbhr7I0YlhJFXKM69Kl3?usp=sharing)  
-[DKT Badge Activity](https://laserkt.quarto.pub/module-4-apply-dkt-in-researchpractice/)
+[DKT Badge Activity](https://laserkt.quarto.pub/module-4-apply-dkt-in-researchpractice/)  
 [DKT Readings](https://laserkt.quarto.pub/kt-module-overview/#/kt-lab-4-deep-knowledge-tracing)  
 
-Module 5: Memory Algorithm
-[Memory Algorithm Conceptual Overview](https://laserkt.quarto.pub/module-5-memory-algorithms/#/title-slide)
+Module 5: Memory Algorithm  
+[Memory Algorithm Conceptual Overview](https://laserkt.quarto.pub/module-5-memory-algorithms/#/title-slide)  
