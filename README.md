@@ -18,7 +18,7 @@ Module 2: Performance Factor Analysis & Logistic Knowledge Tracing
 Module 3: Item Response Theory & ELO  
 [IRT&ELO Conceptual Overview](https://laserkt.quarto.pub/module-3-item-response-theory-and-elo/#/title-slide)  
 [IRT&ELO Case Study](https://laserkt.quarto.pub/module-3-case-study/)  
-[IRT&ELO Badge Activity]([https://laserkt.quarto.pub/module-2-applying-lkt-in-practice/](https://laserkt.quarto.pub/module-3-applying-irt-in-practice/))  
+[IRT&ELO Badge Activity](https://laserkt.quarto.pub/module-3-applying-irt-in-practice/)  
 [IRT&ELO Readings](https://laserkt.quarto.pub/kt-module-overview/#/kt-lab-3-item-response-theory)  
 
 Module 4: Deep Knowledge Tracing  
