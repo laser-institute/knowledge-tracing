@@ -8,7 +8,7 @@ BKT-BF walkthrough:[Mac](https://laserkt.quarto.pub/module-1-bkt-bf-walkthrough-
 [Bayesian knowledge tracing Badge Activity](https://laserkt.quarto.pub/module-1-applying-bkt-in-practice/)  
 [Bayesian knowledge tracing Readings](https://laserkt.quarto.pub/kt-module-overview/#/kt-lab-1-bayesian-knowledge-tracing)    
 
-Module 2: Performance Factor Analysis & Logistic Knowledge Tracing
+Module 2: Performance Factor Analysis & Logistic Knowledge Tracing  
 [PFA&LKT Conceptual Overview](https://laserkt.quarto.pub/module-2-logistic-knowledge-tracing-and-performance-factors-analysis/#/title-slide)  
 [Performance Factor Analysis Case Study](https://laserkt.quarto.pub/module-2-case-study-5c24/)  
 [Logistic Knowledge Tracing walkthrough](https://laserkt.quarto.pub/module-2-lkt-walkthrough/)  
