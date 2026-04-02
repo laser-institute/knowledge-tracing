@@ -1,0 +1,356 @@
+---
+title: "Item Response Theory Code-Along Activity"
+author: "LASER Institute"
+date: today
+format:
+  html:
+    toc: true
+    toc-depth: 4
+    toc-location: right
+theme:
+  light: simplex
+  dark: cyborg
+editor: visual
+bibliography: lit/references.bib
+---
+
+# Introduction to Item Response Theory
+
+In this activity, we will explore **Item Response Theory (IRT)** — a family of psychometric models used to analyze responses to test items. Unlike Classical Test Theory (CTT), IRT models the relationship between a student's latent ability and their probability of answering an item correctly, enabling us to separately estimate *item difficulty*, *discrimination*, and *guessing* parameters.
+
+We will work with a simulated dataset of **N = 500 students** responding to a **10-item binary-scored test** (1 = correct, 0 = incorrect). This dataset was originally provided by Dr. Julie Wood for introducing IRT modeling.
+
+In this tutorial, we will fit and compare three IRT model variants:
+
+-   **1 Parameter Logistic (1PL / Rasch) Model** — estimates item difficulty only
+-   **2 Parameter Logistic (2PL) Model** — estimates both item difficulty and discrimination
+-   **3 Parameter Logistic (3PL) Model** — adds a guessing parameter
+
+Before we begin, ensure the following R packages are installed:
+
+```{r}
+#| label: install-packages
+#| warning: false
+#| eval: false
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+install.packages(c("ltm", "psych"))
+```
+
+# 1. Prepare
+
+## 1a. Load Packages
+
+### ltm: Latent Trait Models under IRT
+
+The `ltm` package provides tools for fitting IRT models to multivariate dichotomous (binary) and polytomous data. It implements the Rasch, 1PL, 2PL (Birnbaum), 3PL, Graded Response, and Generalized Partial Credit models.
+
+-   CRAN page: <https://cran.r-project.org/web/packages/ltm/index.html>
+
+```{r}
+#| label: load-ltm
+#| warning: false
+library(ltm)
+```
+
+### psych
+
+The `psych` package offers a broad set of tools for psychological and educational research, including descriptive statistics, factor analysis, reliability analysis, and parallel analysis.
+
+-   CRAN page: <https://cran.r-project.org/web/packages/psych/index.html>
+
+```{r}
+#| label: load-psych
+#| warning: false
+library(psych)
+```
+
+## 1b. Reflection Question
+
+::: callout-important
+### ❓ Question
+
+Think about an assessment you have encountered in your research or teaching context (e.g., a quiz, survey, or diagnostic tool). What limitations might Classical Test Theory have in evaluating that instrument? How might IRT address those limitations?
+
+*Type a brief response here:*
+:::
+
+------------------------------------------------------------------------
+
+# 2. Wrangle
+
+## Import the Dataset
+
+We load the simulated dataset containing binary item responses (0/1) for 500 students across 10 test items (V1–V10).
+
+```{r}
+#| label: import-data
+irtdata <- read.table("./data/ouirt.dat", header = FALSE)
+head(irtdata)
+```
+
+Notice that each row represents one student and each column represents one item. Values are either `0` (incorrect) or `1` (correct).
+
+## Descriptive Statistics
+
+Before fitting any model, it is good practice to examine the basic properties of the data. The `psych::describe()` function provides a comprehensive summary of each item, including the mean (which equals the proportion of students who answered correctly — the **p-value** in CTT) and measures of variability.
+
+```{r}
+#| label: descriptives
+psych::describe(irtdata)
+```
+
+::: callout-note
+The `mean` column here reflects the **item difficulty** in the classical sense: higher means indicate easier items (more students answered correctly). Note how item V10 has a mean of only 0.07 — very few students answered it correctly.
+:::
+
+::: callout-important
+### ❓ Question
+
+Based on the descriptive statistics, which items appear to be the most difficult and the easiest? What does the skewness of these items tell you?
+
+*Type a brief response here:*
+:::
+
+------------------------------------------------------------------------
+
+# 3. Model
+
+Because this is a simulated dataset with clean binary responses, we proceed directly to model fitting. In an applied setting, you would first conduct data cleaning steps such as handling missing responses and checking for invalid patterns (e.g., students who answered no items).
+
+## Fit the 1PL (Rasch) Model
+
+The **1 Parameter Logistic model** (also called the Rasch model in the constrained form used here) estimates a single **difficulty** parameter ($b$) for each item. All items share the same discrimination parameter, constrained to be equal.
+
+The probability that a student with ability $\theta$ answers item $i$ correctly is:
+
+$$P(X_{ij} = 1 \mid \theta_j) = \frac{e^{(\theta_j - b_i)}}{1 + e^{(\theta_j - b_i)}}$$
+
+```{r}
+#| label: fit-1pl
+PL1.rasch <- rasch(irtdata)
+summary(PL1.rasch)
+```
+
+Examine the output carefully:
+
+-   `Dffclt.*` — the difficulty estimate ($b$) for each item. Higher values = harder items.
+-   `Dscrmn` — the single (shared) discrimination parameter.
+-   A z-value greater than **1.96** indicates that item difficulty is significantly different from zero.
+
+::: callout-note
+### Interpreting Difficulty
+
+Items with $b > 1$ are relatively difficult for this sample group. Notice that V1 ($b = 1.66$) and V10 ($b = 2.40$) are the hardest items, while V5 ($b = 0.25$) and V7 ($b = 0.35$) are comparatively easier.
+:::
+
+## Fit the 2PL Model
+
+The **2 Parameter Logistic model** adds an item-specific **discrimination** parameter ($a$), allowing items to differ in how well they distinguish between students of varying ability levels.
+
+$$P(X_{ij} = 1 \mid \theta_j) = \frac{e^{a_i(\theta_j - b_i)}}{1 + e^{a_i(\theta_j - b_i)}}$$
+
+```{r}
+#| label: fit-2pl
+PL2.rasch <- ltm(irtdata ~ z1)
+summary(PL2.rasch)
+```
+
+Now each item has its own `Dscrmn.*` (discrimination) estimate. Items with higher discrimination values are better at separating students with different ability levels.
+
+## Fit the 3PL Model
+
+The **3 Parameter Logistic model** adds a **guessing** parameter ($c$), representing the probability that a very low-ability student answers the item correctly by chance.
+
+$$P(X_{ij} = 1 \mid \theta_j) = c_i + (1 - c_i) \cdot \frac{e^{a_i(\theta_j - b_i)}}{1 + e^{a_i(\theta_j - b_i)}}$$
+
+```{r}
+#| label: fit-3pl
+#| warning: true
+PL3.rasch <- tpm(irtdata)
+summary(PL3.rasch)
+```
+
+::: callout-note
+The 3PL model often produces convergence warnings (e.g., "Hessian matrix at convergence is not positive definite"). This is common, especially with smaller datasets, because the guessing parameter is difficult to estimate reliably. Note that for many items, the guessing estimates (`Gussng.*`) are near zero, suggesting guessing is not a major factor in this dataset.
+:::
+
+## Model Comparison: AIC and BIC
+
+Compare the fit of the three models using their AIC and BIC values from the summaries above. Lower AIC/BIC indicates better model fit, penalized for complexity.
+
+::: callout-important
+### ❓ Question
+
+Fill in the table below based on the model summaries:
+
+| Model | AIC | BIC |
+|-------|-----|-----|
+| 1PL   |     |     |
+| 2PL   |     |     |
+| 3PL   |     |     |
+
+Which model appears to fit best according to AIC? According to BIC? Why might the two criteria lead to different conclusions?
+
+*Type a brief response here:*
+:::
+
+## Test Item Fit in the 1PL Model
+
+The `item.fit()` function tests whether individual items conform to the assumed model. A low p-value indicates that an item does **not** fit the model well.
+
+```{r}
+#| label: item-fit-1pl
+item.fit(PL1.rasch, simulate.p.value = TRUE)
+```
+
+Items with low p-values (e.g., V4, V9, V10) may be poorly represented by the 1PL model. This suggests they may require an item-specific discrimination parameter (as in the 2PL).
+
+::: callout-important
+### 👉 Your Turn ⤵
+
+Test item fit for the **2PL** and **3PL** models using the same `item.fit()` function. Do the same items show poor fit across all three models, or does fit improve when additional parameters are included? Report your findings below.
+
+```{r}
+#| label: item-fit-yourturns
+# Test item fit for the 2PL model
+# YOUR CODE HERE
+
+# Test item fit for the 3PL model
+# YOUR CODE HERE
+```
+
+*Summarize your observations here:*
+:::
+
+------------------------------------------------------------------------
+
+# 4. Communication
+
+## Item Characteristic Curves (ICC)
+
+Item Characteristic Curves display the relationship between a student's latent ability ($\theta$, x-axis) and the probability of a correct response (y-axis) for each item. The shape of the curve is determined by the model parameters.
+
+```{r}
+#| label: icc-1pl
+plot(PL1.rasch, type = c("ICC"))
+```
+
+-   Curves that are **shifted to the right** represent harder items (require higher ability to achieve a 50% correct probability).
+-   Curves that are **steeper** would indicate higher discrimination (visible more clearly in the 2PL model).
+
+::: callout-important
+### ❓ Question
+
+According to the 1PL ICC plot, which item is the most difficult? Which item provides the most information for students at moderate ability levels? Explain your reasoning.
+
+*Type a brief response here:*
+:::
+
+## Item Information Curves (IIC)
+
+Item Information Curves show the amount of psychometric **information** each item contributes at different ability levels. A narrow, tall peak indicates an item is most informative for a narrow range of ability, while a broader curve indicates utility across a wider range.
+
+```{r}
+#| label: iic-1pl
+plot(PL1.rasch, type = c("IIC"))
+```
+
+Examine where along the ability spectrum each item provides the most information. A well-designed assessment should have items that collectively cover a broad range of ability levels.
+
+::: callout-important
+### 👉 Your Turn ⤵
+
+Plot the **Item Characteristic Curves** and **Item Information Curves** for the **2PL** and **3PL** models. 
+
+-   How do the ICCs change when item-specific discrimination is allowed?
+-   Do the IICs suggest the item set provides adequate coverage across ability levels?
+
+```{r}
+#| label: icc-iic-2pl-3pl
+# ICC for 2PL model
+# YOUR CODE HERE
+
+# IIC for 2PL model
+# YOUR CODE HERE
+
+# ICC for 3PL model
+# YOUR CODE HERE
+
+# IIC for 3PL model
+# YOUR CODE HERE
+```
+
+*Summarize your observations and analysis here:*
+:::
+
+## Test Information Curve
+
+In addition to individual item information, we can examine the **Test Information Curve (TIC)**, which aggregates information across all items. This helps determine the range of student ability for which the test is most precise.
+
+```{r}
+#| label: tic-1pl
+plot(PL1.rasch, type = c("IIC"), items = 0)
+```
+
+::: callout-note
+`items = 0` in the `plot()` call instructs R to plot the total test information rather than individual item curves.
+:::
+
+## Test for Unidimensionality
+
+A key assumption of IRT is **unidimensionality** — the notion that all items primarily measure a single underlying latent trait ($\theta$). The `unidimTest()` function uses a modified parallel analysis to evaluate this assumption.
+
+```{r}
+#| label: unidim-1pl
+unidimTest(PL1.rasch, irtdata)
+```
+
+-   The test compares the **second eigenvalue** of the observed tetrachoric correlation matrix to the average second eigenvalue under simulated IRT-conforming data.
+-   A statistically significant result (low p-value) suggests the data may be **multidimensional**, meaning items are measuring more than one trait.
+
+::: callout-important
+### 👉 Your Turn ⤵
+
+Run the unidimensionality test on the **2PL** and **3PL** models. Do you reach the same conclusion across all three models? What might a violation of unidimensionality imply for the validity of the assessment?
+
+```{r}
+#| label: unidim-yourturns
+# Unidimensionality test for the 2PL model
+# YOUR CODE HERE
+
+# Unidimensionality test for the 3PL model
+# YOUR CODE HERE
+```
+
+*Summarize your findings and their implications here:*
+:::
+
+------------------------------------------------------------------------
+
+# 5. Publishing with Quarto Pub
+
+Quarto Pub is a free publishing platform for documents created with Quarto. All published content is **publicly visible**, so only share content you intend to make public.
+
+To publish this document, use the following command in the **Terminal** pane:
+
+``` terminal
+quarto publish quarto-pub kt-3-codealong.qmd
+```
+
+The first time you publish, Quarto CLI will prompt you to authorize your Quarto Pub account via a browser window. After authorization, an access token is saved locally. Subsequent publishes to the same document will update the existing page automatically.
+
+For reference, see the example publication here: <https://laserkt.quarto.pub/module-1-bayesian-knowledge-tracing/>
+
+------------------------------------------------------------------------
+
+# Conclusion
+
+In this code-along activity, you fitted and compared three core IRT models — 1PL, 2PL, and 3PL — to a 10-item binary assessment. You examined item difficulty and discrimination estimates, evaluated item and model fit, visualized item and test information curves, and tested the unidimensionality assumption. 
+
+IRT provides a powerful framework for understanding the psychometric properties of assessments at the item level, making it particularly valuable for developing, validating, and improving educational measurement instruments.
+
+------------------------------------------------------------------------
+
+# References
+
+Xie, B., Davidson, M. J., Li, M., & Ko, A. J. (2019). An item response theory evaluation of a language-independent CS1 knowledge assessment. *Proceedings of the 50th ACM Technical Symposium on Computer Science Education*, 699–705.
